@@ -1,0 +1,429 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Analysis of the Fitness Landscape &mdash; PyGMO 1.1.7dev documentation</title>
+  
+
+  
+  
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  
+  
+
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:'../',
+        VERSION:'1.1.7dev',
+        COLLAPSE_INDEX:false,
+        FILE_SUFFIX:'.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+    <script type="text/javascript">
+        jQuery(function () {
+            SphinxRtdTheme.StickyNav.enable();
+        });
+    </script>
+  
+
+  
+    <link rel="top" title="PyGMO 1.1.7dev documentation" href="../index.html"/>
+        <link rel="up" title="Landscape Analysis using Dr. PyGMO" href="landscape_analysis_with_DrPyGMO.html"/>
+        <link rel="next" title="Analysis of the Constraints Landscape" href="analysis_constrained_problem.html"/>
+        <link rel="prev" title="Landscape Analysis using Dr. PyGMO" href="landscape_analysis_with_DrPyGMO.html"/> 
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        <a href="../index.html" class="fa fa-home"> PyGMO</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        
+        
+            <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../install.html">Install PyGMO</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../install.html#preparing-your-system-to-compile-pygmo">Preparing your system to compile PyGMO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../install.html#download-pygmo-code">Download PyGMO code</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../install.html#compiling-and-installing-under-unix">Compiling and Installing under Unix</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../install.html#compiling-and-installing-under-windows">Compiling and Installing under Windows</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../quickstart.html">Quick Start</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../quickstart.html#on-one-cpu">On one CPU</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../quickstart.html#on-many-cpus">On many CPUs ...</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../quickstart.html#and-migrating-solutions">... and migrating solutions ...</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../quickstart.html#and-between-different-algorithms">... and between different algorithms ...</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Tutorials</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="adding_problems_and_algorithms_to_PyGMO.html">Adding new problems and algorithms to PyGMO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="meta_problems_meta_algorithms.html">Meta-problems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="multi_objective_optimization_with_PyGMO.html">Multi Objective Optimization with PyGMO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hypervolumes_in_PyGMO.html">Hypervolumes with PyGMO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dealing_with_constraints_in_PyGMO.html">Dealing with constraints in PyGMO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="racing.html">Racing in PyGMO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tsp.html">Traveling Salesman Problems with PyGMO</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="landscape_analysis_with_DrPyGMO.html">Landscape Analysis using Dr. PyGMO</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/index.html">Examples</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../examples/example1.html">A study on Mixing Variants of Differential Evolution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples/example2.html">Monitoring the Information Flow in a large archipelago</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples/example3.html">Testing Algorithms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples/example4.html">Multi-objective optimization in the asynchronous island model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples/example5.html">Designing and optimizing interplanetary trajectories</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples/example6.html">Participating to the CEC2013 Competition (v 1.1.5)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples/example7.html">Travelling Salesman Problem for Active Space Debris Removal</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples/local_optimization.html">Third-party Non-linear optimizers in PyGMO</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../documentation/index.html">User Documentation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../documentation/individual.html">Individual and Champion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../documentation/population.html">Population</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../documentation/migration.html">Migration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../documentation/topology.html">Topology</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../documentation/island.html">Island and Archipelago</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../documentation/algorithms.html">Algorithms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../documentation/problems.html">Problems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../documentation/hypervolume.html">Hypervolume</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../documentation/racing.html">Racing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../documentation/analysis.html">Dr. PyGMO - Analysis Module</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference external" href="http://esa.github.io/pagmo/">PaGMO API</a></li>
+</ul>
+
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../index.html">PyGMO</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="index.html">Tutorials</a> &raquo;</li>
+      
+          <li><a href="landscape_analysis_with_DrPyGMO.html">Landscape Analysis using Dr. PyGMO</a> &raquo;</li>
+      
+    <li>Analysis of the Fitness Landscape</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          <a href="../_sources/tutorials/analysis_unconstrained_problem.txt" rel="nofollow"> View page source</a>
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            
+  <div class="section" id="analysis-of-the-fitness-landscape">
+<span id="analysis-unconstrained-problem"></span><h1>Analysis of the Fitness Landscape<a class="headerlink" href="#analysis-of-the-fitness-landscape" title="Permalink to this headline">¶</a></h1>
+<p>In this tutorial we want to show how to use the lanscape anlaysis module Dr. PyGMO for the analysis of the fitness function.</p>
+<div class="section" id="instantiate-analysis-module">
+<h2>Instantiate Analysis Module<a class="headerlink" href="#instantiate-analysis-module" title="Permalink to this headline">¶</a></h2>
+<p>First, we need to instantiate the analysis class as follows:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">PyGMO</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="c">#We instantiate the optimization problem as usual. We will choose a 4-dimensional 2-objective</span>
+<span class="c">#problem.</span>
+<span class="n">prob</span><span class="o">=</span><span class="n">problem</span><span class="o">.</span><span class="n">kur</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+
+<span class="c">#Now we instantiate the analysis class. In this case we will sample 500 points via sobol method</span>
+<span class="c">#and choose output to file.</span>
+<span class="n">inspector</span><span class="o">=</span><span class="n">util</span><span class="o">.</span><span class="n">analysis</span><span class="p">(</span><span class="n">prob</span><span class="p">,</span> <span class="mi">500</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s">&#39;sobol&#39;</span><span class="p">,</span> <span class="n">output_to_file</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>It is also an option to instantiate the class with an existing population object, for example:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">pop</span><span class="o">=</span><span class="n">population</span><span class="p">(</span><span class="n">prob</span><span class="p">,</span><span class="mi">500</span><span class="p">)</span>
+<span class="n">isl</span><span class="o">=</span><span class="n">island</span><span class="p">(</span><span class="n">algorithm</span><span class="o">.</span><span class="n">nsga_II</span><span class="p">(),</span><span class="n">pop</span><span class="p">)</span>
+<span class="n">isl</span><span class="o">.</span><span class="n">evolve</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span>
+<span class="n">pop_after_20_gen</span><span class="o">=</span><span class="n">isl</span><span class="o">.</span><span class="n">population</span>
+
+<span class="n">inspector_kur_20</span><span class="o">=</span><span class="n">util</span><span class="o">.</span><span class="n">analysis</span><span class="p">(</span><span class="n">pop_after_20_gen</span><span class="p">,</span><span class="n">output_to_file</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="tests-on-fitness-functions">
+<h2>Tests on fitness functions<a class="headerlink" href="#tests-on-fitness-functions" title="Permalink to this headline">¶</a></h2>
+<p>Now we can start launching some of the analysis. We will launch all of those that
+make sense for a 2-objective unconstrained problem.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">inspector</span><span class="o">.</span><span class="n">f_distribution</span><span class="p">()</span>
+
+<span class="n">inspector</span><span class="o">.</span><span class="n">f_linearity_convexity</span><span class="p">()</span>
+
+<span class="c">#We will compute all regression properties for linear, quadratic and cubic regression, with</span>
+<span class="c">#and without interaction.</span>
+<span class="n">inspector</span><span class="o">.</span><span class="n">f_regression</span><span class="p">(</span><span class="n">degree</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">],</span><span class="n">interaction</span><span class="o">=</span><span class="p">[</span><span class="bp">False</span><span class="p">,</span><span class="bp">True</span><span class="p">,</span><span class="bp">False</span><span class="p">,</span><span class="bp">True</span><span class="p">,</span><span class="bp">False</span><span class="p">,</span><span class="bp">True</span><span class="p">])</span>
+
+<span class="n">inspector</span><span class="o">.</span><span class="n">f_sensitivity</span><span class="p">()</span>
+
+<span class="c">#The levelset test is very slow, we do not recommend launching it out of development purposes.</span>
+<span class="c">#Anyway this is an example so here it is. We will launch it using percentile 45 as threshold</span>
+<span class="c">#instead of the default 50, and only with 2-fold crossvalidation for tuning of svm.</span>
+<span class="n">inspector</span><span class="o">.</span><span class="n">levelset</span><span class="p">(</span><span class="n">threshold</span><span class="o">=</span><span class="mi">45</span><span class="p">,</span> <span class="n">k_tune</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="c">#For the local searches, we will choose Nelder-Mead simplex algorithm. As it is a multi-objective</span>
+<span class="c">#problem, we will also choose a decomposition method, for instance weighted with uniform weights.</span>
+<span class="c">#To keep it short, we will only show properties of the best 3 clusters instead of the default 10.</span>
+<span class="c">#We will also generate a scatter plot for dimensions x1 and x2.</span>
+<span class="n">inspector</span><span class="o">.</span><span class="n">local_search</span><span class="p">(</span><span class="n">clusters_to_show</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">scatter_plot_dimensions</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">],</span>\
+<span class="n">algo</span><span class="o">=</span><span class="n">algorithm</span><span class="o">.</span><span class="n">gsl_nm</span><span class="p">(),</span> <span class="n">decomposition_method</span><span class="o">=</span><span class="s">&#39;weighted&#39;</span><span class="p">,</span> <span class="n">weights</span><span class="o">=</span><span class="s">&#39;uniform&#39;</span><span class="p">)</span>
+
+<span class="c">#Being only a 2-objective problem, we probably will not obtain dimensionality reduction, but we</span>
+<span class="c">#will launch this test all the same to look into the f-correlation matrix.</span>
+<span class="n">inspector</span><span class="o">.</span><span class="n">f_correlation</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>The output should be something like this:</p>
+<div class="highlight-none"><div class="highlight"><pre>===============================================================================
+                                   ANALYSIS
+===============================================================================
+-------------------------------------------------------------------------------
+PROBLEM PROPERTIES
+-------------------------------------------------------------------------------
+Problem name: Kursawe&#39;s study
+        Global dimension:                       4
+        Integer dimension:                      0
+        Fitness dimension:                      2
+        Constraints dimension:                  0
+        Inequality constraints dimension:       0
+        Lower bounds: [-5, -5, -5, -5]
+        Upper bounds: [5, 5, 5, 5]
+        Constraints tolerance: []
+
+-------------------------------------------------------------------------------
+SAMPLED [500] POINTS VIA sobol METHOD FOR THE SUBSEQUENT TESTS
+--------------------------------------------------------------------------------
+F-DISTRIBUTION FEATURES (2 OBJECTIVES)
+--------------------------------------------------------------------------------
+Fitness magnitude :
+     Min :                               [-30.0, -10.636]
+     Max :                               [-8.118, 27.962]
+     Peak-to-peak (scale factor) :       [21.882, 38.598]
+Fitness distribution :
+     Mean :                              [0.706, 0.484]
+     Standard deviation :                [0.146, 0.176]
+     Percentiles :
+           5 :                           [0.449, 0.208]
+           10 :                          [0.513, 0.256]
+           25 :                          [0.614, 0.358]
+           50 :                          [0.728, 0.483]
+           75 :                          [0.818, 0.613]
+     Skew :                              [-0.725, 0.016]
+     Kurtosis :                          [0.592, -0.499]
+Number of peaks of f-distribution :      [1, 1]
+*F-distribution plot : &lt;figure_1.png&gt;
+*X-PCP plot obj.1 :    &lt;figure_2.png&gt;
+*X-PCP plot obj.2 :    &lt;figure_3.png&gt;
+</pre></div>
+</div>
+<img alt="../_images/analysis_fdistr.png" src="../_images/analysis_fdistr.png" />
+<div class="highlight-none"><div class="highlight"><pre>-------------------------------------------------------------------------------
+PROBABILITY OF LINEARITY AND CONVEXITY
+-------------------------------------------------------------------------------
+Number of pairs of points used :         [500]
+Probability of linearity :               [0.0, 0.0]
+Probability of convexity :               [0.938, 0.544]
+Mean deviation from linearity :          [0.098, 0.201]
+-------------------------------------------------------------------------------
+F-REGRESSION
+-------------------------------------------------------------------------------
+OBJECTIVE 1 :
+ DEGREE         F             R2      R2adj       RMSE      R2pred   PRESS-RMSE
+   1          0.051         0.001     -0.01      0.147      -0.021     0.147
+  1(i)        0.051         0.001     -0.01      0.147      -0.021     0.147
+   2         253.291        0.887     0.883       0.05      0.879      0.051
+  2(i)       253.291        0.887     0.883       0.05      0.879      0.051
+   3         181.939        0.927     0.922      0.041      0.919      0.041
+  3(i)       181.939        0.927     0.922      0.041      0.919      0.041
+OBJECTIVE 2 :
+ DEGREE         F             R2      R2adj       RMSE      R2pred   PRESS-RMSE
+   1          0.384         0.004     -0.006     0.177      -0.019     0.178
+  1(i)        0.384         0.004     -0.006     0.177      -0.019     0.178
+   2          3.018         0.085     0.057      0.171      0.023      0.174
+  2(i)        3.018         0.085     0.057      0.171      0.023      0.174
+   3          1.823         0.113     0.051      0.172      -0.03      0.179
+  3(i)        1.823         0.113     0.051      0.172      -0.03      0.179
+-------------------------------------------------------------------------------
+F-SENSITIVITY
+-------------------------------------------------------------------------------
+Number of points used :     [500]
+OBJECTIVE 1 :
+  Percentiles :             |    0    |    25   |    50   |    75   |   100   |
+     Gradient norm :        |   0.0   |  0.831  |  0.951  |  1.114  |  1.734  |
+    |dFx|_max/|dFx|_min :   |  1.387  |   2.71  |  4.073  |  8.895  |   inf   |
+     Hessian conditioning : |   2.0   |  3.401  |  5.482  |  10.931 | 2048.592|
+     Gradient sparsity :                                [0.0]
+     Fraction of points with PD hessian :               [0.002]
+     Fraction of points with PSD (not PD) hessian :     [0.0]
+OBJECTIVE 2 :
+  Percentiles :             |    0    |    25   |    50   |    75   |   100   |
+     Gradient norm :        |   0.0   |  36.605 |  60.743 |  85.195 | 151.023 |
+    |dFx|_max/|dFx|_min :   |  1.014  |  10.043 |  28.023 |  89.425 |   inf   |
+     Hessian conditioning : |   1.0   |  45.903 |  276.67 | 974.877 |46518.448|
+     Gradient sparsity :                                [0.0]
+     Fraction of points with PD hessian :               [0.064]
+     Fraction of points with PSD (not PD) hessian :     [0.0]
+*Gradient/Jacobian sparsity plot : &lt;figure_4.png&gt;
+*Objective Gradient/Jacobian PCP plot : &lt;figure_5.png&gt;
+*Objective Gradient/Jacobian PCP plot (inverted) : &lt;figure_6.png&gt;
+</pre></div>
+</div>
+<img alt="../_images/analysis_fsens.png" src="../_images/analysis_fsens.png" />
+<div class="highlight-none"><div class="highlight"><pre>-------------------------------------------------------------------------------
+LEVELSET FEATURES
+-------------------------------------------------------------------------------
+Percentile 45  :
+     Mean Misclassification Errors
+         Linear Kernel :                 [0.45, 0.45]
+         Quadratic Kernel :              [0.242, 0.464]
+         Non-Linear Kernel (RBF):        [0.054, 0.428]
+     P-Values :
+         Linear/Quadratic :              [0.0, 0.438]
+         Linear/Nonlinear :              [0.0, 0.028]
+         Quadratic/Nonlinear :           [0.0, 0.067]
+--------------------------------------------------------------------------------
+LOCAL SEARCH
+--------------------------------------------------------------------------------
+WARNING: get_local_extrema is decomposing multi-objective problem by means of
+weighted method, with uniform weight vector!
+Local searches performed :               1000
+Quartiles of CPU time per search [ms]:   7.0 / 19.0 / 26.0 / 36.0 / 51.0
+Number of clusters identified :          159
+Cluster properties (max. best 3 clusters) :
+     Cluster n. 1 :
+         Size:                           4.0 ,  0.4 %
+         Cluster X_center :              [0.402, 0.433, 0.442, 0.498]
+         Mean objective value :          [0.275, 0.121]
+         F(X_center) :                   [0.221, 0.168]
+         Cluster span in F :             [0.202, 0.134]
+         Cluster radius in X :           0.159
+         Radius of attraction :          0.188
+     Cluster n. 2 :
+         Size:                           7.0 ,  0.7 %
+         Cluster X_center :              [0.509, 0.478, 0.51, 0.516]
+         Mean objective value :          [0.131, 0.276]
+         F(X_center) :                   [0.061, 0.297]
+         Cluster span in F :             [0.207, 0.203]
+         Cluster radius in X :           0.157
+         Radius of attraction :          0.172
+     Cluster n. 3 :
+         Size:                           6.0 ,  0.6 %
+         Cluster X_center :              [0.214, 0.712, 0.487, 0.406]
+         Mean objective value :          [0.508, 0.082]
+         F(X_center) :                   [0.47, 0.436]
+         Cluster span in F :             [0.208, 0.162]
+         Cluster radius in X :           0.219
+         Radius of attraction :          0.216
+*Cluster PCP plot (global) : &lt;figure_7.png&gt;
+*Cluster PCP plot (cluster n.1) : &lt;figure_8.png&gt;
+*Cluster PCP plot (cluster n.2) : &lt;figure_9.png&gt;
+*Cluster PCP plot (cluster n.3) : &lt;figure_10.png&gt;
+*Cluster scatter plot (dimensions [1, 2]) : &lt;figure_11.png&gt;
+</pre></div>
+</div>
+<img alt="../_images/analysis_ls.png" src="../_images/analysis_ls.png" />
+<div class="highlight-none"><div class="highlight"><pre>--------------------------------------------------------------------------------
+OBJECTIVE CORRELATION
+--------------------------------------------------------------------------------
+Critical objectives from first PCA :     [1, 2]
+Eigenvalues   Relative contribution                   Eigenvectors
+   0.723             36.128%                        [-0.707, 0.707]
+   1.277             63.872%                         [0.707, 0.707]
+Objective correlation matrix :
+     [  1.0    0.277  ]
+     [ 0.277    1.0   ]
+</pre></div>
+</div>
+</div>
+</div>
+
+
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="analysis_constrained_problem.html" class="btn btn-neutral float-right" title="Analysis of the Constraints Landscape"/>Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="landscape_analysis_with_DrPyGMO.html" class="btn btn-neutral" title="Landscape Analysis using Dr. PyGMO"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2015, Dario Izzo and Francesco Biscani.
+    </p>
+  </div>
+
+  <a href="https://github.com/snide/sphinx_rtd_theme">Sphinx theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+</body>
+</html>

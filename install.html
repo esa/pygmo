@@ -1,0 +1,320 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Install PyGMO &mdash; PyGMO 1.1.7dev documentation</title>
+  
+
+  
+  
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  
+  
+
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:'./',
+        VERSION:'1.1.7dev',
+        COLLAPSE_INDEX:false,
+        FILE_SUFFIX:'.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+      <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+    <script type="text/javascript">
+        jQuery(function () {
+            SphinxRtdTheme.StickyNav.enable();
+        });
+    </script>
+  
+
+  
+    <link rel="top" title="PyGMO 1.1.7dev documentation" href="index.html"/>
+        <link rel="next" title="Quick Start" href="quickstart.html"/>
+        <link rel="prev" title="Welcome to PyGMO" href="index.html"/> 
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        <a href="index.html" class="fa fa-home"> PyGMO</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        
+        
+            <ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="">Install PyGMO</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#preparing-your-system-to-compile-pygmo">Preparing your system to compile PyGMO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#download-pygmo-code">Download PyGMO code</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#compiling-and-installing-under-unix">Compiling and Installing under Unix</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#compiling-and-installing-under-windows">Compiling and Installing under Windows</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="quickstart.html">Quick Start</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="quickstart.html#on-one-cpu">On one CPU</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quickstart.html#on-many-cpus">On many CPUs ...</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quickstart.html#and-migrating-solutions">... and migrating solutions ...</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quickstart.html#and-between-different-algorithms">... and between different algorithms ...</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="tutorials/index.html">Tutorials</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="tutorials/adding_problems_and_algorithms_to_PyGMO.html">Adding new problems and algorithms to PyGMO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorials/meta_problems_meta_algorithms.html">Meta-problems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorials/multi_objective_optimization_with_PyGMO.html">Multi Objective Optimization with PyGMO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorials/hypervolumes_in_PyGMO.html">Hypervolumes with PyGMO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorials/dealing_with_constraints_in_PyGMO.html">Dealing with constraints in PyGMO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorials/racing.html">Racing in PyGMO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorials/tsp.html">Traveling Salesman Problems with PyGMO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorials/landscape_analysis_with_DrPyGMO.html">Landscape Analysis using Dr. PyGMO</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="examples/index.html">Examples</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="examples/example1.html">A study on Mixing Variants of Differential Evolution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples/example2.html">Monitoring the Information Flow in a large archipelago</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples/example3.html">Testing Algorithms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples/example4.html">Multi-objective optimization in the asynchronous island model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples/example5.html">Designing and optimizing interplanetary trajectories</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples/example6.html">Participating to the CEC2013 Competition (v 1.1.5)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples/example7.html">Travelling Salesman Problem for Active Space Debris Removal</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples/local_optimization.html">Third-party Non-linear optimizers in PyGMO</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="documentation/index.html">User Documentation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="documentation/individual.html">Individual and Champion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="documentation/population.html">Population</a></li>
+<li class="toctree-l2"><a class="reference internal" href="documentation/migration.html">Migration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="documentation/topology.html">Topology</a></li>
+<li class="toctree-l2"><a class="reference internal" href="documentation/island.html">Island and Archipelago</a></li>
+<li class="toctree-l2"><a class="reference internal" href="documentation/algorithms.html">Algorithms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="documentation/problems.html">Problems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="documentation/hypervolume.html">Hypervolume</a></li>
+<li class="toctree-l2"><a class="reference internal" href="documentation/racing.html">Racing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="documentation/analysis.html">Dr. PyGMO - Analysis Module</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference external" href="http://esa.github.io/pagmo/">PaGMO API</a></li>
+</ul>
+
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="index.html">PyGMO</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="index.html">Docs</a> &raquo;</li>
+      
+    <li>Install PyGMO</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          <a href="_sources/install.txt" rel="nofollow"> View page source</a>
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            
+  <div class="section" id="install-pygmo">
+<span id="howtoinstall"></span><h1>Install PyGMO<a class="headerlink" href="#install-pygmo" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="preparing-your-system-to-compile-pygmo">
+<h2>Preparing your system to compile PyGMO<a class="headerlink" href="#preparing-your-system-to-compile-pygmo" title="Permalink to this headline">¶</a></h2>
+<p>We assume you have root access to your unix machine (or you are administering your Windows machine)
+and a working python installation. As PyGMO has some dependencies, you will need to install
+a few packages before being able to install PyGMO on your machine. All are supported by most package managers,
+so that a simple apt-get or emerge should suffice to prepare your system.</p>
+<ul class="simple">
+<li>Install <a class="reference external" href="http://git-scm.com">git</a></li>
+<li>Install <a class="reference external" href="http://www.cmake.org">CMake</a> with its ccmake utility</li>
+<li>Install <a class="reference external" href="http://www.boost.org">boost libraries</a> both headers and compiled libraries</li>
+</ul>
+<p>Other packages are actually optional and they will enhance PyGMO functionalities if present:</p>
+<ul class="simple">
+<li>SNOPT (proprietary)</li>
+<li><a class="reference external" href="https://projects.coin-or.org/Ipopt">IPOPT</a></li>
+<li><a class="reference external" href="http://www.scipy.org/">SciPy</a></li>
+<li><a class="reference external" href="http://ab-initio.mit.edu/wiki/index.php/NLopt">NLOPT</a> (compiled with the c++ flag activated)</li>
+<li><a class="reference external" href="http://www.gnu.org/s/gsl/">GSL</a> (version 1.15 required)</li>
+<li><a class="reference external" href="http://keptoolbox.sourceforge.net/">PyKEP</a> (version 1.15 required)</li>
+</ul>
+<p>These packages need to be compiled in such a way as to allow PyGMO 1) to find them 2) tho use them.
+See the dedicated pages on how to make sure this happens.</p>
+</div>
+<div class="section" id="download-pygmo-code">
+<h2>Download PyGMO code<a class="headerlink" href="#download-pygmo-code" title="Permalink to this headline">¶</a></h2>
+<p>PyGMO source code is part of the <a class="reference external" href="https://github.com/esa/pagmo/">pagmo GitHub  project</a>.
+The <a class="reference external" href="http://git-scm.com">git</a> versioning system is needed to access the code.</p>
+<p>Open a terminal (where git is available) and type:</p>
+<div class="highlight-python"><div class="highlight"><pre>git clone https://github.com/esa/pagmo.git
+</pre></div>
+</div>
+</div>
+<div class="section" id="compiling-and-installing-under-unix">
+<h2>Compiling and Installing under Unix<a class="headerlink" href="#compiling-and-installing-under-unix" title="Permalink to this headline">¶</a></h2>
+<p>Assuming you have just downloaded the source code you will have created a directory pagmo in your current directory, move there:</p>
+<div class="highlight-python"><div class="highlight"><pre>cd pagmo
+</pre></div>
+</div>
+<p>You will now need to create a build directory where to build the source code, so:</p>
+<div class="highlight-python"><div class="highlight"><pre>mkdir build
+</pre></div>
+</div>
+<p>You can now move there:</p>
+<div class="highlight-python"><div class="highlight"><pre>cd build
+</pre></div>
+</div>
+<p>and have ccmake help you select the options that are most suitable for you:</p>
+<div class="highlight-python"><div class="highlight"><pre>ccmake ../
+</pre></div>
+</div>
+<p>After pressing c once, a typical ccmake screen will look like</p>
+<img alt="_images/ccmake1.png" src="_images/ccmake1.png" />
+<p>note that the PyGMO option is selcted as well as other options requiring external libraries ....</p>
+<p>At this point (after pressing c again) in case all required system libraries are found
+you should be seeing something like this on the screen:</p>
+<img alt="_images/ccmake2.png" src="_images/ccmake2.png" />
+<p>You can now press &#8216;g&#8217; to generate a make file and exit ccmake utility. You are back to the prompt where you can now type:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">make</span>
+</pre></div>
+</div>
+<p>and:</p>
+<div class="highlight-python"><div class="highlight"><pre>sudo make install
+</pre></div>
+</div>
+<p>Watch carefully the message in the terminal where the installation path is given to check
+that the correct python dist-packages or site-packages directory has been located</p>
+<p>Here is a typical example of the output obtained (gentoo system):</p>
+<img alt="_images/install1.png" src="_images/install1.png" />
+</div>
+<div class="section" id="compiling-and-installing-under-windows">
+<h2>Compiling and Installing under Windows<a class="headerlink" href="#compiling-and-installing-under-windows" title="Permalink to this headline">¶</a></h2>
+<p>We here outline the procedure we followed when providing the Windows Binaries. In our system, we had
+CMake 2.8.6, Python 2.7, Boost 1.47.0 and MinGW with Msys 1.0.11 (all installed in C:)</p>
+<ul>
+<li><p class="first">We compiled the boost libraries with the command &#8221;.b2 toolset=gcc link=shared&#8221;</p>
+</li>
+<li><p class="first">NOTE: The whole boost directory must be placed where the CMake script can find it (e.g. in C:/boost).
+This required renaming the folder from &#8220;boost_x_xx_xx&#8221; to &#8220;boost&#8221;) Alternatively, one can directly tell CMake where the boost_x_xx_xx folder is, in which case make sure to fill in both
+the header and the library fields (toggling advanced view)</p>
+</li>
+<li><p class="first">Check, when running CMake, that all libraries are found correctly</p>
+</li>
+<li><p class="first">When running a make install, Windows will probably put your PyGMO directory under Program Files/PyGMO,
+move it to the correct place (e.g. C:/Python27/Lib/site-packages/)</p>
+</li>
+<li><p class="first">Remember to place the necessary libraries in Windows/System32. In particular you will need
+a) the pagmo library (libpagmo.dll)
+b) the boost date-time library
+c) the boost serialization library
+d) the boost python library
+e) the boost thread library</p>
+</li>
+<li><p class="first">You need to place the minGW ibraries libgfortran-3.dll, libquadmath-0.dll and pthreadGC2 in the core directory.</p>
+</li>
+<li><dl class="first docutils">
+<dt>If the option GSL is activated you need to provide the GSL libraries, in particular</dt>
+<dd><p class="first last">a) libgslcblas.a b) libgsl.a c) the include dir of gsl. We have compiled gsl-1.15 using msys 1.0.11 configure make install
+(it first required to define &#8220;#define HAVE_DECL_ISNAN 1&#8221; and &#8221; #define HAVE_DECL_FINITE 1&#8221; in config.h of the gsl downloaded distribution). The static libs
+are then created in cblas/.lib and /lib. We have pointed CMake to those files and to msys local/include for the include files.
+One could also link to the dynamic .dll files that are created in the local/lib directry of msys after make install. In
+this case remember to put those libraries (libgsl-0.dll and libgslcblas-0.dll) in the folder System32 too.</p>
+</dd>
+</dl>
+</li>
+<li><p class="first">If the option Ipopt is activated you need to tell CMake explicitly where to find Ipopt, in particular
+a) libcoinblas.a b) libcoinlapack.a c) libcoinmumps.a d) libipopt.a e) The include dir of ipopt.
+We have compiled Ipopt 3.10.1 using msys 1.0.11 and the usual config make install procedure .....
+(MUMPS is used as linear solver) and later linked to the static libraries created in lib/.</p>
+</li>
+<li><p class="first">If the option NLOPT is activated you need to tell CMake explicitly where to find NLOPT and in particular
+a) nlopt-0.dll b) nlopt.h and nlopt.hhp. We downloaded the already available Windows binaries for NLOPT 2.2.3</p>
+</li>
+</ul>
+</div>
+</div>
+
+
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="quickstart.html" class="btn btn-neutral float-right" title="Quick Start"/>Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="index.html" class="btn btn-neutral" title="Welcome to PyGMO"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2015, Dario Izzo and Francesco Biscani.
+    </p>
+  </div>
+
+  <a href="https://github.com/snide/sphinx_rtd_theme">Sphinx theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+</body>
+</html>

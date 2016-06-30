@@ -1,0 +1,350 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Racing algorithms &mdash; PyGMO 1.1.7dev documentation</title>
+  
+
+  
+  
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  
+  
+
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:'../',
+        VERSION:'1.1.7dev',
+        COLLAPSE_INDEX:false,
+        FILE_SUFFIX:'.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+    <script type="text/javascript">
+        jQuery(function () {
+            SphinxRtdTheme.StickyNav.enable();
+        });
+    </script>
+  
+
+  
+    <link rel="top" title="PyGMO 1.1.7dev documentation" href="../index.html"/>
+        <link rel="up" title="Racing in PyGMO" href="racing.html"/>
+        <link rel="next" title="A PSO algorithm using racing" href="using_racing_in_pso.html"/>
+        <link rel="prev" title="Racing the individuals in stochastic optimization problems" href="racing_individuals.html"/> 
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        <a href="../index.html" class="fa fa-home"> PyGMO</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        
+        
+            <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../install.html">Install PyGMO</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../install.html#preparing-your-system-to-compile-pygmo">Preparing your system to compile PyGMO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../install.html#download-pygmo-code">Download PyGMO code</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../install.html#compiling-and-installing-under-unix">Compiling and Installing under Unix</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../install.html#compiling-and-installing-under-windows">Compiling and Installing under Windows</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../quickstart.html">Quick Start</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../quickstart.html#on-one-cpu">On one CPU</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../quickstart.html#on-many-cpus">On many CPUs ...</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../quickstart.html#and-migrating-solutions">... and migrating solutions ...</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../quickstart.html#and-between-different-algorithms">... and between different algorithms ...</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Tutorials</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="adding_problems_and_algorithms_to_PyGMO.html">Adding new problems and algorithms to PyGMO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="meta_problems_meta_algorithms.html">Meta-problems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="multi_objective_optimization_with_PyGMO.html">Multi Objective Optimization with PyGMO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hypervolumes_in_PyGMO.html">Hypervolumes with PyGMO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dealing_with_constraints_in_PyGMO.html">Dealing with constraints in PyGMO</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="racing.html">Racing in PyGMO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tsp.html">Traveling Salesman Problems with PyGMO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="landscape_analysis_with_DrPyGMO.html">Landscape Analysis using Dr. PyGMO</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/index.html">Examples</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../examples/example1.html">A study on Mixing Variants of Differential Evolution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples/example2.html">Monitoring the Information Flow in a large archipelago</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples/example3.html">Testing Algorithms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples/example4.html">Multi-objective optimization in the asynchronous island model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples/example5.html">Designing and optimizing interplanetary trajectories</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples/example6.html">Participating to the CEC2013 Competition (v 1.1.5)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples/example7.html">Travelling Salesman Problem for Active Space Debris Removal</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples/local_optimization.html">Third-party Non-linear optimizers in PyGMO</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../documentation/index.html">User Documentation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../documentation/individual.html">Individual and Champion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../documentation/population.html">Population</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../documentation/migration.html">Migration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../documentation/topology.html">Topology</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../documentation/island.html">Island and Archipelago</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../documentation/algorithms.html">Algorithms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../documentation/problems.html">Problems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../documentation/hypervolume.html">Hypervolume</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../documentation/racing.html">Racing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../documentation/analysis.html">Dr. PyGMO - Analysis Module</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference external" href="http://esa.github.io/pagmo/">PaGMO API</a></li>
+</ul>
+
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../index.html">PyGMO</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="index.html">Tutorials</a> &raquo;</li>
+      
+          <li><a href="racing.html">Racing in PyGMO</a> &raquo;</li>
+      
+    <li>Racing algorithms</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          <a href="../_sources/tutorials/racing_algorithms.txt" rel="nofollow"> View page source</a>
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            
+  <div class="section" id="racing-algorithms">
+<span id="id1"></span><h1>Racing algorithms<a class="headerlink" href="#racing-algorithms" title="Permalink to this headline">¶</a></h1>
+<p>Given an optimization problem, the solution provided by a stochastic optimizers
+will not be deterministic, as their names implied. Nevertheless, the intrinsic
+properties of each individual optimizers may make themselves perform better on
+some classes of problems and worse on certain problems. Well, we are not too
+concerned about this No Free Lunch Theorem here. There is another interesting
+question: Given a problem (or a list of problems), which optimization
+algorithms at our disposal is the most appropriate one, that will yield the
+best optimization performance? Is there a way to find the answer without
+resorting to pure brute force approach?</p>
+<p>The approach of racing algorithms is based on statistical testing. Each
+algorithm will be evaluated iteratively throughout the race. The performance of
+an algorithm is defined as its ability to evolve a population, measured by the
+fitness of the evolved champion. Whenever statistical significant evidence
+about the inferiority of an algorithm is found, that algorithm will be dropped
+out of the race. Naturally, it is guaranteed that the eventually survived
+algorithms are statistically significantly better than those which are
+discarded. The underlying statistical testing machinery used is Friedman test.</p>
+<div class="section" id="using-race-algo-to-race-algorithms">
+<h2>Using <tt class="docutils literal"><span class="pre">race_algo</span></tt> to race algorithms<a class="headerlink" href="#using-race-algo-to-race-algorithms" title="Permalink to this headline">¶</a></h2>
+<p>Let us first set up a a problem and the algorithms of interest.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">PyGMO</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="n">prob</span> <span class="o">=</span> <span class="n">problem</span><span class="o">.</span><span class="n">ackley</span><span class="p">()</span>
+<span class="n">algo_list</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">algo_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">algorithm</span><span class="o">.</span><span class="n">de</span><span class="p">(</span><span class="n">gen</span><span class="o">=</span><span class="mi">100</span><span class="p">))</span>
+<span class="n">algo_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">algorithm</span><span class="o">.</span><span class="n">cmaes</span><span class="p">(</span><span class="n">gen</span><span class="o">=</span><span class="mi">100</span><span class="p">))</span>
+<span class="n">algo_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">algorithm</span><span class="o">.</span><span class="n">pso</span><span class="p">(</span><span class="n">gen</span><span class="o">=</span><span class="mi">100</span><span class="p">))</span>
+</pre></div>
+</div>
+<p><tt class="docutils literal"><span class="pre">race_algo</span></tt> contains the mechanisms that can be used to race different
+algorithms. Its interface is very similar to that of <tt class="docutils literal"><span class="pre">pop_race</span></tt>. The
+following code sets up the necessary racing object and start the race. The
+population size intialization argument specifies how large the internal
+populations to be evolved should be, while each algorithm is being evaluated.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">racer</span> <span class="o">=</span> <span class="n">util</span><span class="o">.</span><span class="n">race_algo</span><span class="p">(</span><span class="n">algo_list</span><span class="p">,</span> <span class="n">prob</span><span class="p">,</span> <span class="n">pop_size</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">winners</span><span class="p">,</span> <span class="n">n_evaluation</span> <span class="o">=</span> <span class="n">racer</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">n_final</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>There are a couple of arguments that can be specified for <tt class="docutils literal"><span class="pre">run</span></tt>, such as
+<tt class="docutils literal"><span class="pre">max_count</span></tt> which indicates the allowed computation budget. As above,
+the indices of the winning algorithm are stored in <tt class="docutils literal"><span class="pre">winners</span></tt>, while
+<tt class="docutils literal"><span class="pre">n_evaluation</span></tt> reflects how many calls to <tt class="docutils literal"><span class="pre">evolve()</span></tt> has been made.</p>
+<p>In addition, it is possible to cover a range of problems simultaneously.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">probs</span> <span class="o">=</span> <span class="p">[</span><span class="n">problem</span><span class="o">.</span><span class="n">ackley</span><span class="p">(),</span> <span class="n">problem</span><span class="o">.</span><span class="n">griewank</span><span class="p">()]</span>
+<span class="n">racer</span> <span class="o">=</span> <span class="n">util</span><span class="o">.</span><span class="n">race_algo</span><span class="p">(</span><span class="n">algo_list</span><span class="p">,</span> <span class="n">probs</span><span class="p">,</span> <span class="n">pop_size</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">winners</span><span class="p">,</span> <span class="n">n_evaluation</span> <span class="o">=</span> <span class="n">racer</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">n_final</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Internally, when <tt class="docutils literal"><span class="pre">race_algo</span></tt> is assigning a performance measure to each
+algorithm, it randomly samples one of the problems and evolve popualtion with
+respect to that problem.</p>
+</div>
+<div class="section" id="example-identifying-good-configurations-of-an-algorithm">
+<h2>Example: Identifying good configurations of an algorithm<a class="headerlink" href="#example-identifying-good-configurations-of-an-algorithm" title="Permalink to this headline">¶</a></h2>
+<p>This example shows how <tt class="docutils literal"><span class="pre">race_algo</span></tt> can be used to select the good
+configurations of an algorithm. Taking <tt class="docutils literal"><span class="pre">pso_gen</span></tt> as an example, there are
+quite a few parameters to be configured. We will focus on the three of the
+parameters as shown in the following code.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">PyGMO</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">import</span> <span class="nn">itertools</span>
+
+<span class="n">prob</span> <span class="o">=</span> <span class="n">problem</span><span class="o">.</span><span class="n">ackley</span><span class="p">()</span>
+
+<span class="n">pop_size</span> <span class="o">=</span> <span class="mi">20</span>
+<span class="n">fits</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="n">variants</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">]</span>
+<span class="n">neighb_types</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">]</span>
+<span class="n">neighb_param</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">]</span>
+<span class="n">pars</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">itertools</span><span class="o">.</span><span class="n">product</span><span class="p">(</span><span class="n">variants</span><span class="p">,</span> <span class="n">neighb_types</span><span class="p">,</span> <span class="n">neighb_param</span><span class="p">))</span>
+<span class="n">algo_list</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">pars</span><span class="p">:</span>
+    <span class="n">args</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="n">args</span><span class="p">[</span><span class="s">&#39;variant&#39;</span><span class="p">],</span> <span class="n">args</span><span class="p">[</span><span class="s">&#39;neighb_type&#39;</span><span class="p">],</span> <span class="n">args</span><span class="p">[</span><span class="s">&#39;neighb_param&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">p</span>
+    <span class="n">algo_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">algorithm</span><span class="o">.</span><span class="n">pso</span><span class="p">(</span><span class="n">gen</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span><span class="o">**</span><span class="n">args</span><span class="p">))</span>
+
+<span class="n">racer</span> <span class="o">=</span> <span class="n">util</span><span class="o">.</span><span class="n">race_algo</span><span class="p">(</span><span class="n">algo_list</span><span class="p">,</span> <span class="n">prob</span><span class="p">,</span> <span class="n">pop_size</span><span class="o">=</span><span class="n">pop_size</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">winners</span><span class="p">,</span> <span class="n">n_evaluated</span> <span class="o">=</span> <span class="n">racer</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">algo_list</span><span class="p">)</span><span class="o">*</span><span class="mi">30</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">,</span> <span class="p">[],</span> <span class="bp">True</span><span class="p">,</span> <span class="bp">True</span><span class="p">)</span>
+
+<span class="k">print</span> <span class="s">&#39;Winning algorithm:&#39;</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">winners</span><span class="p">:</span>
+    <span class="k">print</span> <span class="nb">zip</span><span class="p">([</span><span class="s">&#39;variant&#39;</span><span class="p">,</span> <span class="s">&#39;neighb_type&#39;</span><span class="p">,</span> <span class="s">&#39;neighb_param&#39;</span><span class="p">],</span> <span class="n">pars</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+
+<span class="k">print</span> <span class="s">&#39;Evaluated algorithms for </span><span class="si">%d</span><span class="s"> times&#39;</span> <span class="o">%</span> <span class="n">n_evaluated</span>
+
+<span class="n">algo_default</span> <span class="o">=</span> <span class="n">algorithm</span><span class="o">.</span><span class="n">pso_gen</span><span class="p">(</span><span class="n">gen</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+<span class="n">algo_selected</span> <span class="o">=</span> <span class="n">algo_list</span><span class="p">[</span><span class="n">winners</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span>
+<span class="n">pop</span> <span class="o">=</span> <span class="n">population</span><span class="p">(</span><span class="n">prob</span><span class="p">,</span> <span class="n">pop_size</span><span class="p">)</span>
+<span class="n">pop_default</span> <span class="o">=</span> <span class="n">algo_default</span><span class="o">.</span><span class="n">evolve</span><span class="p">(</span><span class="n">pop</span><span class="p">)</span>
+<span class="n">pop_selected</span> <span class="o">=</span> <span class="n">algo_selected</span><span class="o">.</span><span class="n">evolve</span><span class="p">(</span><span class="n">pop</span><span class="p">)</span>
+<span class="k">print</span> <span class="s">&#39;Default algorithm:&#39;</span><span class="p">,</span> <span class="n">pop_default</span><span class="o">.</span><span class="n">champion</span><span class="o">.</span><span class="n">f</span>
+<span class="k">print</span> <span class="s">&#39;Selected algorithm:&#39;</span><span class="p">,</span> <span class="n">pop_selected</span><span class="o">.</span><span class="n">champion</span><span class="o">.</span><span class="n">f</span>
+</pre></div>
+</div>
+<p>The output should be similar to the following (feel free to try a few more times due to the effects of random population initialization):</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">Winning</span> <span class="n">algorithm</span><span class="p">:</span>
+<span class="p">[(</span><span class="s">&#39;variant&#39;</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span> <span class="p">(</span><span class="s">&#39;neighb_type&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="s">&#39;neighb_param&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)]</span>
+<span class="p">[(</span><span class="s">&#39;variant&#39;</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span> <span class="p">(</span><span class="s">&#39;neighb_type&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="s">&#39;neighb_param&#39;</span><span class="p">,</span> <span class="mi">2</span><span class="p">)]</span>
+<span class="p">[(</span><span class="s">&#39;variant&#39;</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span> <span class="p">(</span><span class="s">&#39;neighb_type&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="s">&#39;neighb_param&#39;</span><span class="p">,</span> <span class="mi">3</span><span class="p">)]</span>
+<span class="p">[(</span><span class="s">&#39;variant&#39;</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span> <span class="p">(</span><span class="s">&#39;neighb_type&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="s">&#39;neighb_param&#39;</span><span class="p">,</span> <span class="mi">4</span><span class="p">)]</span>
+<span class="p">[(</span><span class="s">&#39;variant&#39;</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span> <span class="p">(</span><span class="s">&#39;neighb_type&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="s">&#39;neighb_param&#39;</span><span class="p">,</span> <span class="mi">5</span><span class="p">)]</span>
+<span class="n">Evaluated</span> <span class="n">algorithms</span> <span class="k">for</span> <span class="mi">354</span> <span class="n">times</span>
+<span class="n">Default</span> <span class="n">algorithm</span><span class="p">:</span> <span class="p">(</span><span class="mf">0.8463040459318276</span><span class="p">,)</span>
+<span class="n">Selected</span> <span class="n">algorithm</span><span class="p">:</span> <span class="p">(</span><span class="mf">0.05200250235673254</span><span class="p">,)</span>
+</pre></div>
+</div>
+<p>Initially, the combinations of parameters result in a total of 120
+configurations to be chosen from. Using <tt class="docutils literal"><span class="pre">race_pop</span></tt>, staistical significant
+results can be obtained after 354 evaluations. Without racing mechanism, this
+is translated to running about only 3 trials on each algorithm configuration,
+based on which statistical significant conclusion is difficult to be established.
+This issue, as well as the appropriate distribution of computational budget, is
+automatically handled by <tt class="docutils literal"><span class="pre">race_algo</span></tt>.</p>
+<div class="section" id="why-not-choosing-a-single-best-winner">
+<h3>Why not choosing a single best winner?<a class="headerlink" href="#why-not-choosing-a-single-best-winner" title="Permalink to this headline">¶</a></h3>
+<p>However, <tt class="docutils literal"><span class="pre">race_algo</span></tt> is not magic. Consider changing <tt class="docutils literal"><span class="pre">n_final</span></tt> in the above
+example from 5 to 4 (or less). The output are:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">Winning</span> <span class="n">algorithm</span><span class="p">:</span>
+<span class="p">[(</span><span class="s">&#39;Variant&#39;</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span> <span class="p">(</span><span class="s">&#39;neighb_type&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="s">&#39;neighb_param&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)]</span>
+<span class="p">[(</span><span class="s">&#39;Variant&#39;</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span> <span class="p">(</span><span class="s">&#39;neighb_type&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="s">&#39;neighb_param&#39;</span><span class="p">,</span> <span class="mi">2</span><span class="p">)]</span>
+<span class="p">[(</span><span class="s">&#39;Variant&#39;</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span> <span class="p">(</span><span class="s">&#39;neighb_type&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="s">&#39;neighb_param&#39;</span><span class="p">,</span> <span class="mi">3</span><span class="p">)]</span>
+<span class="p">[(</span><span class="s">&#39;Variant&#39;</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span> <span class="p">(</span><span class="s">&#39;neighb_type&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="s">&#39;neighb_param&#39;</span><span class="p">,</span> <span class="mi">4</span><span class="p">)]</span>
+<span class="n">Evaluated</span> <span class="n">algorithms</span> <span class="k">for</span> <span class="mi">3599</span> <span class="n">times</span>
+<span class="n">Default</span> <span class="n">algorithm</span><span class="p">:</span> <span class="p">(</span><span class="mf">2.187472414230023</span><span class="p">,)</span>
+<span class="n">Selected</span> <span class="n">algorithm</span><span class="p">:</span> <span class="p">(</span><span class="mf">0.04567759094164403</span><span class="p">,)</span>
+</pre></div>
+</div>
+<p>The consumed evaluation count is dramatically larger! The reason is that the
+last 5 surviving algorithms are so close to each other that it is very
+difficult to statistically significantly distinguish their performance. In fact, the race is forcefully terminated as the provided budget is exhausted.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Racing mechanism is most useful when the diversity of the entities in the
+racing pool is large, as the worse ones can be quickly weeded out with high
+staistical confidence, saving the evaluation budget the rest. When the
+entities are too similar to each other, the required evaluation will be
+very high in order to derive statistical significant conclusion.</p>
+</div>
+</div>
+</div>
+</div>
+
+
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="using_racing_in_pso.html" class="btn btn-neutral float-right" title="A PSO algorithm using racing"/>Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="racing_individuals.html" class="btn btn-neutral" title="Racing the individuals in stochastic optimization problems"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2015, Dario Izzo and Francesco Biscani.
+    </p>
+  </div>
+
+  <a href="https://github.com/snide/sphinx_rtd_theme">Sphinx theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+</body>
+</html>

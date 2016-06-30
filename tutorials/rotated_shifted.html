@@ -1,0 +1,297 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Rotated and Shifted problems &mdash; PyGMO 1.1.7dev documentation</title>
+  
+
+  
+  
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  
+  
+
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:'../',
+        VERSION:'1.1.7dev',
+        COLLAPSE_INDEX:false,
+        FILE_SUFFIX:'.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+    <script type="text/javascript">
+        jQuery(function () {
+            SphinxRtdTheme.StickyNav.enable();
+        });
+    </script>
+  
+
+  
+    <link rel="top" title="PyGMO 1.1.7dev documentation" href="../index.html"/>
+        <link rel="up" title="Meta-problems" href="meta_problems_meta_algorithms.html"/>
+        <link rel="next" title="The Noisy meta-problem" href="noisy.html"/>
+        <link rel="prev" title="Meta-problems" href="meta_problems_meta_algorithms.html"/> 
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        <a href="../index.html" class="fa fa-home"> PyGMO</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        
+        
+            <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../install.html">Install PyGMO</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../install.html#preparing-your-system-to-compile-pygmo">Preparing your system to compile PyGMO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../install.html#download-pygmo-code">Download PyGMO code</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../install.html#compiling-and-installing-under-unix">Compiling and Installing under Unix</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../install.html#compiling-and-installing-under-windows">Compiling and Installing under Windows</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../quickstart.html">Quick Start</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../quickstart.html#on-one-cpu">On one CPU</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../quickstart.html#on-many-cpus">On many CPUs ...</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../quickstart.html#and-migrating-solutions">... and migrating solutions ...</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../quickstart.html#and-between-different-algorithms">... and between different algorithms ...</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Tutorials</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="adding_problems_and_algorithms_to_PyGMO.html">Adding new problems and algorithms to PyGMO</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="meta_problems_meta_algorithms.html">Meta-problems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="multi_objective_optimization_with_PyGMO.html">Multi Objective Optimization with PyGMO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hypervolumes_in_PyGMO.html">Hypervolumes with PyGMO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dealing_with_constraints_in_PyGMO.html">Dealing with constraints in PyGMO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="racing.html">Racing in PyGMO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tsp.html">Traveling Salesman Problems with PyGMO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="landscape_analysis_with_DrPyGMO.html">Landscape Analysis using Dr. PyGMO</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/index.html">Examples</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../examples/example1.html">A study on Mixing Variants of Differential Evolution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples/example2.html">Monitoring the Information Flow in a large archipelago</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples/example3.html">Testing Algorithms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples/example4.html">Multi-objective optimization in the asynchronous island model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples/example5.html">Designing and optimizing interplanetary trajectories</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples/example6.html">Participating to the CEC2013 Competition (v 1.1.5)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples/example7.html">Travelling Salesman Problem for Active Space Debris Removal</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples/local_optimization.html">Third-party Non-linear optimizers in PyGMO</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../documentation/index.html">User Documentation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../documentation/individual.html">Individual and Champion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../documentation/population.html">Population</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../documentation/migration.html">Migration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../documentation/topology.html">Topology</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../documentation/island.html">Island and Archipelago</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../documentation/algorithms.html">Algorithms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../documentation/problems.html">Problems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../documentation/hypervolume.html">Hypervolume</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../documentation/racing.html">Racing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../documentation/analysis.html">Dr. PyGMO - Analysis Module</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference external" href="http://esa.github.io/pagmo/">PaGMO API</a></li>
+</ul>
+
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../index.html">PyGMO</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="index.html">Tutorials</a> &raquo;</li>
+      
+          <li><a href="meta_problems_meta_algorithms.html">Meta-problems</a> &raquo;</li>
+      
+    <li>Rotated and Shifted problems</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          <a href="../_sources/tutorials/rotated_shifted.txt" rel="nofollow"> View page source</a>
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            
+  <div class="section" id="rotated-and-shifted-problems">
+<span id="rotated-shifted"></span><h1>Rotated and Shifted problems<a class="headerlink" href="#rotated-and-shifted-problems" title="Permalink to this headline">¶</a></h1>
+<p>In this tutorial we will learn how to use meta-problems. These are optimization problems that transform somehow
+another optimization problem. In particular we will have a look to the rotated and shifted meta-problems.
+Let us start creating a shifted problem.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">In</span> <span class="p">[</span><span class="mi">1</span><span class="p">]:</span> <span class="kn">from</span> <span class="nn">PyGMO</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="n">In</span> <span class="p">[</span><span class="mi">2</span><span class="p">]:</span> <span class="n">prob</span> <span class="o">=</span> <span class="n">problem</span><span class="o">.</span><span class="n">ackley</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">In</span> <span class="p">[</span><span class="mi">3</span><span class="p">]:</span> <span class="n">shifted_prob1</span> <span class="o">=</span> <span class="n">problem</span><span class="o">.</span><span class="n">shifted</span><span class="p">(</span><span class="n">problem</span><span class="o">=</span><span class="n">prob</span><span class="p">)</span>
+<span class="n">In</span> <span class="p">[</span><span class="mi">4</span><span class="p">]:</span> <span class="n">shifted_prob2</span> <span class="o">=</span> <span class="n">problem</span><span class="o">.</span><span class="n">shifted</span><span class="p">(</span><span class="n">problem</span><span class="o">=</span><span class="n">prob</span><span class="p">,</span><span class="n">shift</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
+<span class="n">In</span> <span class="p">[</span><span class="mi">5</span><span class="p">]:</span> <span class="n">shifted_prob3</span> <span class="o">=</span> <span class="n">problem</span><span class="o">.</span><span class="n">shifted</span><span class="p">(</span><span class="n">problem</span><span class="o">=</span><span class="n">prob</span><span class="p">,</span><span class="n">shift</span><span class="o">=</span><span class="p">[</span><span class="mi">23</span><span class="p">,</span><span class="o">-</span><span class="mf">12.2</span><span class="p">,</span><span class="mi">22</span><span class="p">,</span><span class="mi">33</span><span class="p">,</span><span class="mf">5.3</span><span class="p">])</span>
+</pre></div>
+</div>
+<p>We have used three different constructors to instantiate the new problem with a random shift vector (shifted_prob1),
+with a uniform shift vector (shifted_prob2) and with a fully defined shift vector (shifted_prob3). In all
+cases we may extract the shift vector using the corresponding attribute</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">In</span> <span class="p">[</span><span class="mi">4</span><span class="p">]:</span> <span class="n">shift1</span> <span class="o">=</span> <span class="n">shifted_prob1</span><span class="o">.</span><span class="n">shift_vector</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">11</span><span class="p">]:</span> <span class="p">(</span><span class="mf">22.05074397709721</span><span class="p">,</span> <span class="mf">42.30378775731836</span><span class="p">,</span> <span class="mf">41.28781073553851</span><span class="p">,</span> <span class="o">-</span><span class="mf">37.032452729545746</span><span class="p">,</span> <span class="o">-</span><span class="mf">43.15424830101163</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>We may now check that such a shift does not change the performance of a given algorithm. We choose,
+for this tutorial Improved Harmony Search, but you can try changing it to test others.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">In</span> <span class="p">[</span><span class="mi">5</span><span class="p">]:</span>  <span class="n">l</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
+<span class="n">In</span> <span class="p">[</span><span class="mi">6</span><span class="p">]:</span>  <span class="n">algo</span> <span class="o">=</span> <span class="n">algorithm</span><span class="o">.</span><span class="n">ihs</span><span class="p">(</span><span class="mi">1000</span><span class="p">);</span>
+<span class="n">In</span> <span class="p">[</span><span class="mi">7</span><span class="p">]:</span>  <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">100</span><span class="p">):</span>
+             <span class="n">pop</span> <span class="o">=</span> <span class="n">population</span><span class="p">(</span><span class="n">prob</span><span class="p">,</span><span class="mi">20</span><span class="p">)</span>
+             <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">15</span><span class="p">):</span>
+                 <span class="n">pop</span> <span class="o">=</span> <span class="n">algo</span><span class="o">.</span><span class="n">evolve</span><span class="p">(</span><span class="n">pop</span><span class="p">)</span>
+             <span class="n">l</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">pop</span><span class="o">.</span><span class="n">champion</span><span class="o">.</span><span class="n">f</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">In</span> <span class="p">[</span><span class="mi">8</span><span class="p">]:</span>  <span class="n">l_shift</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
+<span class="n">In</span> <span class="p">[</span><span class="mi">9</span><span class="p">]:</span>  <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">100</span><span class="p">):</span>
+             <span class="n">pop</span> <span class="o">=</span> <span class="n">population</span><span class="p">(</span><span class="n">shifted_prob1</span><span class="p">,</span><span class="mi">20</span><span class="p">)</span>
+             <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">15</span><span class="p">):</span>
+                 <span class="n">pop</span> <span class="o">=</span> <span class="n">algo</span><span class="o">.</span><span class="n">evolve</span><span class="p">(</span><span class="n">pop</span><span class="p">)</span>
+             <span class="n">l_shift</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">pop</span><span class="o">.</span><span class="n">champion</span><span class="o">.</span><span class="n">f</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">In</span> <span class="p">[</span><span class="mi">10</span><span class="p">]:</span> <span class="n">boxplot</span><span class="p">([</span><span class="n">l</span><span class="p">,</span><span class="n">l_shift</span><span class="p">])</span>
+</pre></div>
+</div>
+<p>which will produce a plot similar to:</p>
+<img alt="../_images/comparison_shifted.png" src="../_images/comparison_shifted.png" />
+<p>where one can clearly see how the algorithm ihs does not change its performances when the search space is shifted.</p>
+<p>We now repeat the same procedure for a rotated problem.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">In</span> <span class="p">[</span><span class="mi">1</span><span class="p">]:</span> <span class="kn">from</span> <span class="nn">PyGMO</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="n">In</span> <span class="p">[</span><span class="mi">2</span><span class="p">]:</span> <span class="n">prob</span> <span class="o">=</span> <span class="n">problem</span><span class="o">.</span><span class="n">ackley</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">In</span> <span class="p">[</span><span class="mi">3</span><span class="p">]:</span> <span class="n">shifted_prob</span> <span class="o">=</span> <span class="n">problem</span><span class="o">.</span><span class="n">rotated</span><span class="p">(</span><span class="n">problem</span><span class="o">=</span><span class="n">prob</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Also in the case of the rotated problem the kwarg rotation allows to pass a rotation matrix directly, otherwise a random
+orthonormal matrix will be generated and can be extracted by the problem.rotation attribute.</p>
+<p>Running the same procedure as for the shifted problem returns a picture like the one below.</p>
+<img alt="../_images/comparison_rotated.png" src="../_images/comparison_rotated.png" />
+<p>Which clearly indicates how the rotation affects negatively the algorithm performance.</p>
+<p>Note that meta-problems can be nested together, so it is perfectly valid to have</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">In</span> <span class="p">[</span><span class="mi">1</span><span class="p">]:</span> <span class="kn">from</span> <span class="nn">PyGMO</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="n">In</span> <span class="p">[</span><span class="mi">2</span><span class="p">]:</span> <span class="n">prob</span> <span class="o">=</span> <span class="n">problem</span><span class="o">.</span><span class="n">ackley</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">In</span> <span class="p">[</span><span class="mi">3</span><span class="p">]:</span> <span class="n">new_prob</span> <span class="o">=</span> <span class="n">problem</span><span class="o">.</span><span class="n">rotated</span><span class="p">(</span><span class="n">problem</span><span class="o">.</span><span class="n">shifted</span><span class="p">(</span><span class="n">problem</span><span class="o">.</span><span class="n">rotated</span><span class="p">(</span><span class="n">prob</span><span class="p">)))</span>
+</pre></div>
+</div>
+<p>To make sure one can reconstruct the original problem, the transformations applied are logged in the problem __repr__ method</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">In</span> <span class="p">[</span><span class="mi">4</span><span class="p">]:</span> <span class="k">print</span> <span class="n">new_prob</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">4</span><span class="p">]:</span>
+<span class="n">Problem</span> <span class="n">name</span><span class="p">:</span> <span class="n">Ackley</span> <span class="p">[</span><span class="n">Rotated</span><span class="p">]</span> <span class="p">[</span><span class="n">Shifted</span><span class="p">]</span> <span class="p">[</span><span class="n">Rotated</span><span class="p">]</span>
+     <span class="n">Global</span> <span class="n">dimension</span><span class="p">:</span>                       <span class="mi">5</span>
+     <span class="n">Integer</span> <span class="n">dimension</span><span class="p">:</span>                      <span class="mi">0</span>
+     <span class="n">Fitness</span> <span class="n">dimension</span><span class="p">:</span>                      <span class="mi">1</span>
+     <span class="n">Constraints</span> <span class="n">dimension</span><span class="p">:</span>                  <span class="mi">0</span>
+     <span class="n">Inequality</span> <span class="n">constraints</span> <span class="n">dimension</span><span class="p">:</span>       <span class="mi">0</span>
+     <span class="n">Lower</span> <span class="n">bounds</span><span class="p">:</span> <span class="p">[</span><span class="o">-</span><span class="mf">1.4142135623730951</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.4142135623730951</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.4142135623730951</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.4142135623730951</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.4142135623730951</span><span class="p">]</span>
+     <span class="n">Upper</span> <span class="n">bounds</span><span class="p">:</span> <span class="p">[</span><span class="mf">1.4142135623730951</span><span class="p">,</span> <span class="mf">1.4142135623730951</span><span class="p">,</span> <span class="mf">1.4142135623730951</span><span class="p">,</span> <span class="mf">1.4142135623730951</span><span class="p">,</span> <span class="mf">1.4142135623730951</span><span class="p">]</span>
+     <span class="n">Constraints</span> <span class="n">tolerance</span><span class="p">:</span>                  <span class="mi">0</span>
+
+     <span class="n">Rotation</span> <span class="n">matrix</span><span class="p">:</span>
+<span class="o">-</span><span class="mf">0.599649</span>   <span class="mf">0.20824</span> <span class="mf">0.0152832</span> <span class="o">-</span><span class="mf">0.740073</span> <span class="o">-</span><span class="mf">0.221622</span>
+<span class="o">-</span><span class="mf">0.263871</span> <span class="o">-</span><span class="mf">0.341942</span>  <span class="mf">0.873749</span>  <span class="mf">0.072256</span>  <span class="mf">0.211634</span>
+<span class="o">-</span><span class="mf">0.114375</span> <span class="o">-</span><span class="mf">0.709787</span> <span class="o">-</span><span class="mf">0.157299</span> <span class="mf">0.0906273</span> <span class="o">-</span><span class="mf">0.670943</span>
+<span class="mf">0.663241</span>  <span class="mf">0.209505</span>  <span class="mf">0.425168</span> <span class="o">-</span><span class="mf">0.326385</span> <span class="o">-</span><span class="mf">0.478461</span>
+<span class="mf">0.343255</span> <span class="o">-</span><span class="mf">0.540391</span>  <span class="o">-</span><span class="mf">0.17555</span> <span class="o">-</span><span class="mf">0.576482</span>  <span class="mf">0.476451</span>
+
+     <span class="n">Shift</span> <span class="n">vector</span><span class="p">:</span> <span class="p">[</span><span class="o">-</span><span class="mf">2.5281990225671565</span><span class="p">,</span> <span class="mf">2.2507667730831695</span><span class="p">,</span> <span class="mf">2.260031719866459</span><span class="p">,</span> <span class="o">-</span><span class="mf">2.6037537655145679</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.45739118339223306</span><span class="p">]</span>
+
+
+     <span class="n">Rotation</span> <span class="n">matrix</span><span class="p">:</span>
+<span class="o">-</span><span class="mf">0.469888</span>  <span class="o">-</span><span class="mf">0.334498</span>  <span class="o">-</span><span class="mf">0.813054</span>  <span class="mf">0.0761044</span> <span class="o">-</span><span class="mf">0.0216481</span>
+<span class="o">-</span><span class="mf">0.416312</span>  <span class="o">-</span><span class="mf">0.467594</span>   <span class="mf">0.372853</span>  <span class="o">-</span><span class="mf">0.513315</span>   <span class="mf">0.453352</span>
+ <span class="mf">0.413702</span>  <span class="mf">0.0719025</span>  <span class="o">-</span><span class="mf">0.277365</span>   <span class="mf">0.149243</span>   <span class="mf">0.851161</span>
+ <span class="mf">0.182474</span>   <span class="mf">0.391322</span>  <span class="o">-</span><span class="mf">0.341818</span>  <span class="o">-</span><span class="mf">0.830096</span> <span class="o">-</span><span class="mf">0.0875853</span>
+<span class="o">-</span><span class="mf">0.633596</span>   <span class="mf">0.714957</span>  <span class="mf">0.0784432</span>   <span class="mf">0.139221</span>    <span class="mf">0.24871</span>
+</pre></div>
+</div>
+</div>
+
+
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="noisy.html" class="btn btn-neutral float-right" title="The Noisy meta-problem"/>Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="meta_problems_meta_algorithms.html" class="btn btn-neutral" title="Meta-problems"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2015, Dario Izzo and Francesco Biscani.
+    </p>
+  </div>
+
+  <a href="https://github.com/snide/sphinx_rtd_theme">Sphinx theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+</body>
+</html>

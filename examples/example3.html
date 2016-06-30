@@ -1,0 +1,277 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Testing Algorithms &mdash; PyGMO 1.1.7dev documentation</title>
+  
+
+  
+  
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  
+  
+
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:'../',
+        VERSION:'1.1.7dev',
+        COLLAPSE_INDEX:false,
+        FILE_SUFFIX:'.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+    <script type="text/javascript">
+        jQuery(function () {
+            SphinxRtdTheme.StickyNav.enable();
+        });
+    </script>
+  
+
+  
+    <link rel="top" title="PyGMO 1.1.7dev documentation" href="../index.html"/>
+        <link rel="up" title="Examples" href="index.html"/>
+        <link rel="next" title="Multi-objective optimization in the asynchronous island model" href="example4.html"/>
+        <link rel="prev" title="Monitoring the Information Flow in a large archipelago" href="example2.html"/> 
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        <a href="../index.html" class="fa fa-home"> PyGMO</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        
+        
+            <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../install.html">Install PyGMO</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../install.html#preparing-your-system-to-compile-pygmo">Preparing your system to compile PyGMO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../install.html#download-pygmo-code">Download PyGMO code</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../install.html#compiling-and-installing-under-unix">Compiling and Installing under Unix</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../install.html#compiling-and-installing-under-windows">Compiling and Installing under Windows</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../quickstart.html">Quick Start</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../quickstart.html#on-one-cpu">On one CPU</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../quickstart.html#on-many-cpus">On many CPUs ...</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../quickstart.html#and-migrating-solutions">... and migrating solutions ...</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../quickstart.html#and-between-different-algorithms">... and between different algorithms ...</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/index.html">Tutorials</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/adding_problems_and_algorithms_to_PyGMO.html">Adding new problems and algorithms to PyGMO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/meta_problems_meta_algorithms.html">Meta-problems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/multi_objective_optimization_with_PyGMO.html">Multi Objective Optimization with PyGMO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/hypervolumes_in_PyGMO.html">Hypervolumes with PyGMO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/dealing_with_constraints_in_PyGMO.html">Dealing with constraints in PyGMO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/racing.html">Racing in PyGMO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/tsp.html">Traveling Salesman Problems with PyGMO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/landscape_analysis_with_DrPyGMO.html">Landscape Analysis using Dr. PyGMO</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Examples</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="example1.html">A study on Mixing Variants of Differential Evolution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example2.html">Monitoring the Information Flow in a large archipelago</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="">Testing Algorithms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example4.html">Multi-objective optimization in the asynchronous island model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example5.html">Designing and optimizing interplanetary trajectories</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example6.html">Participating to the CEC2013 Competition (v 1.1.5)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example7.html">Travelling Salesman Problem for Active Space Debris Removal</a></li>
+<li class="toctree-l2"><a class="reference internal" href="local_optimization.html">Third-party Non-linear optimizers in PyGMO</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../documentation/index.html">User Documentation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../documentation/individual.html">Individual and Champion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../documentation/population.html">Population</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../documentation/migration.html">Migration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../documentation/topology.html">Topology</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../documentation/island.html">Island and Archipelago</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../documentation/algorithms.html">Algorithms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../documentation/problems.html">Problems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../documentation/hypervolume.html">Hypervolume</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../documentation/racing.html">Racing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../documentation/analysis.html">Dr. PyGMO - Analysis Module</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference external" href="http://esa.github.io/pagmo/">PaGMO API</a></li>
+</ul>
+
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../index.html">PyGMO</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="index.html">Examples</a> &raquo;</li>
+      
+    <li>Testing Algorithms</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          <a href="../_sources/examples/example3.txt" rel="nofollow"> View page source</a>
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            
+  <div class="section" id="testing-algorithms">
+<h1>Testing Algorithms<a class="headerlink" href="#testing-algorithms" title="Permalink to this headline">¶</a></h1>
+<p>PaGMO can be used to test the performance of algorithms on problem sets.
+We show how simple is to do so using a basic set-up..</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">PyGMO</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="n">trials</span> <span class="o">=</span> <span class="mi">50</span>
+<span class="n">individuals</span> <span class="o">=</span> <span class="mi">20</span>
+<span class="n">generations</span> <span class="o">=</span> <span class="mi">500</span>
+<span class="n">prob_list</span> <span class="o">=</span> <span class="p">[</span><span class="n">problem</span><span class="o">.</span><span class="n">schwefel</span><span class="p">(</span><span class="n">dim</span> <span class="o">=</span> <span class="mi">10</span><span class="p">),</span> <span class="n">problem</span><span class="o">.</span><span class="n">rastrigin</span><span class="p">(</span><span class="n">dim</span> <span class="o">=</span> <span class="mi">10</span><span class="p">),</span> <span class="n">problem</span><span class="o">.</span><span class="n">rosenbrock</span><span class="p">(</span><span class="n">dim</span> <span class="o">=</span> <span class="mi">10</span><span class="p">)]</span>
+<span class="n">algo_list</span> <span class="o">=</span> <span class="p">[</span><span class="n">algorithm</span><span class="o">.</span><span class="n">pso</span><span class="p">(</span><span class="n">gen</span> <span class="o">=</span> <span class="n">generations</span><span class="p">),</span> <span class="n">algorithm</span><span class="o">.</span><span class="n">de</span><span class="p">(</span><span class="n">gen</span> <span class="o">=</span> <span class="n">generations</span><span class="p">)]</span>
+</pre></div>
+</div>
+<p>We have instantiated the problems and algorithms we want to test. We have used default parameters
+and variants implicitly, but these could be specified as well and compared. We now run the tests ...
+note that we use the island rather than the archipelago, thus the test WILL NOT run in multiple threads.
+One could speed things up (in a multiple CPU environment) byt using the archipelago
+and an unconnected topology.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">for</span> <span class="n">prob</span> <span class="ow">in</span> <span class="n">prob_list</span><span class="p">:</span>
+     <span class="k">for</span> <span class="n">algo</span> <span class="ow">in</span> <span class="n">algo_list</span><span class="p">:</span>
+             <span class="n">best</span> <span class="o">=</span> <span class="p">[]</span>
+             <span class="n">best_x</span> <span class="o">=</span> <span class="p">[]</span>
+             <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">trials</span><span class="p">):</span>
+                     <span class="c"># Here we create the optimization problem .....</span>
+                     <span class="n">isl</span> <span class="o">=</span> <span class="n">island</span><span class="p">(</span><span class="n">algo</span><span class="p">,</span><span class="n">prob</span><span class="p">,</span><span class="n">individuals</span><span class="p">)</span>
+                     <span class="c"># And here we solve it</span>
+                     <span class="n">isl</span><span class="o">.</span><span class="n">evolve</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+                     <span class="n">isl</span><span class="o">.</span><span class="n">join</span><span class="p">()</span>
+                     <span class="n">best</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">isl</span><span class="o">.</span><span class="n">population</span><span class="o">.</span><span class="n">champion</span><span class="o">.</span><span class="n">f</span><span class="p">)</span>
+                     <span class="n">best_x</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">isl</span><span class="o">.</span><span class="n">population</span><span class="o">.</span><span class="n">champion</span><span class="o">.</span><span class="n">x</span><span class="p">)</span>
+     <span class="c">#Here you can store the results ....</span>
+</pre></div>
+</div>
+<p>The final script (included in PyGMO) is:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">run_test</span><span class="p">(</span><span class="n">n_trials</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> <span class="n">pop_size</span> <span class="o">=</span> <span class="mi">20</span><span class="p">,</span> <span class="n">n_gen</span> <span class="o">=</span> <span class="mi">500</span><span class="p">):</span>
+     <span class="kn">from</span> <span class="nn">PyGMO</span> <span class="kn">import</span> <span class="n">problem</span><span class="p">,</span> <span class="n">algorithm</span><span class="p">,</span> <span class="n">island</span>
+     <span class="kn">from</span> <span class="nn">numpy</span> <span class="kn">import</span> <span class="n">mean</span><span class="p">,</span> <span class="n">std</span>
+     <span class="n">number_of_trials</span> <span class="o">=</span> <span class="n">n_trials</span>
+     <span class="n">number_of_individuals</span> <span class="o">=</span> <span class="n">pop_size</span>
+     <span class="n">number_of_generations</span> <span class="o">=</span> <span class="n">n_gen</span>
+
+     <span class="n">prob_list</span> <span class="o">=</span> <span class="p">[</span><span class="n">problem</span><span class="o">.</span><span class="n">schwefel</span><span class="p">(</span><span class="n">dim</span> <span class="o">=</span> <span class="mi">10</span><span class="p">),</span> <span class="n">problem</span><span class="o">.</span><span class="n">michalewicz</span><span class="p">(</span><span class="n">dim</span> <span class="o">=</span> <span class="mi">10</span><span class="p">),</span> <span class="n">problem</span><span class="o">.</span><span class="n">rastrigin</span><span class="p">(</span><span class="n">dim</span> <span class="o">=</span> <span class="mi">10</span><span class="p">),</span> <span class="n">problem</span><span class="o">.</span><span class="n">rosenbrock</span><span class="p">(</span><span class="n">dim</span> <span class="o">=</span> <span class="mi">10</span><span class="p">),</span> <span class="n">problem</span><span class="o">.</span><span class="n">ackley</span><span class="p">(</span><span class="n">dim</span> <span class="o">=</span> <span class="mi">10</span><span class="p">),</span> <span class="n">problem</span><span class="o">.</span><span class="n">griewank</span><span class="p">(</span><span class="n">dim</span> <span class="o">=</span> <span class="mi">10</span><span class="p">)]</span>
+     <span class="k">if</span> <span class="n">__extensions__</span><span class="p">[</span><span class="s">&#39;gtop&#39;</span><span class="p">]:</span>
+             <span class="n">prob_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">problem</span><span class="o">.</span><span class="n">cassini_1</span><span class="p">())</span>
+             <span class="n">prob_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">problem</span><span class="o">.</span><span class="n">cassini_2</span><span class="p">())</span>
+             <span class="n">prob_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">problem</span><span class="o">.</span><span class="n">gtoc_1</span><span class="p">())</span>
+             <span class="n">prob_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">problem</span><span class="o">.</span><span class="n">rosetta</span><span class="p">())</span>
+             <span class="n">prob_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">problem</span><span class="o">.</span><span class="n">messenger_full</span><span class="p">())</span>
+             <span class="n">prob_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">problem</span><span class="o">.</span><span class="n">tandem</span><span class="p">(</span><span class="n">prob_id</span> <span class="o">=</span> <span class="mi">6</span><span class="p">,</span> <span class="n">max_tof</span> <span class="o">=</span> <span class="mi">10</span><span class="p">))</span>
+
+     <span class="n">algo_list</span> <span class="o">=</span> <span class="p">[</span><span class="n">algorithm</span><span class="o">.</span><span class="n">pso</span><span class="p">(</span><span class="n">gen</span> <span class="o">=</span> <span class="n">number_of_generations</span><span class="p">),</span> <span class="n">algorithm</span><span class="o">.</span><span class="n">de</span><span class="p">(</span><span class="n">gen</span> <span class="o">=</span> <span class="n">number_of_generations</span><span class="p">,</span><span class="n">xtol</span><span class="o">=</span><span class="mf">1e-30</span><span class="p">,</span> <span class="n">ftol</span><span class="o">=</span><span class="mf">1e-30</span><span class="p">),</span> <span class="n">algorithm</span><span class="o">.</span><span class="n">de_self_adaptive</span><span class="p">(</span><span class="n">gen</span> <span class="o">=</span> <span class="n">number_of_generations</span><span class="p">,</span> <span class="n">restart</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">variant_adptv</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span><span class="n">xtol</span><span class="o">=</span><span class="mf">1e-30</span><span class="p">,</span> <span class="n">ftol</span><span class="o">=</span><span class="mf">1e-30</span><span class="p">),</span> <span class="n">algorithm</span><span class="o">.</span><span class="n">de_1220</span><span class="p">(</span><span class="n">gen</span> <span class="o">=</span> <span class="n">number_of_generations</span><span class="p">,</span> <span class="n">restart</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">variant_adptv</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span><span class="n">xtol</span><span class="o">=</span><span class="mf">1e-30</span><span class="p">,</span> <span class="n">ftol</span><span class="o">=</span><span class="mf">1e-30</span><span class="p">),</span> <span class="n">algorithm</span><span class="o">.</span><span class="n">sa_corana</span><span class="p">(</span><span class="nb">iter</span> <span class="o">=</span> <span class="n">number_of_generations</span><span class="o">*</span><span class="n">number_of_individuals</span><span class="p">,</span><span class="n">Ts</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span><span class="n">Tf</span> <span class="o">=</span> <span class="mf">0.01</span><span class="p">),</span> <span class="n">algorithm</span><span class="o">.</span><span class="n">ihs</span><span class="p">(</span><span class="nb">iter</span> <span class="o">=</span> <span class="n">number_of_generations</span><span class="o">*</span><span class="n">number_of_individuals</span><span class="p">),</span> <span class="n">algorithm</span><span class="o">.</span><span class="n">sga</span><span class="p">(</span><span class="n">gen</span> <span class="o">=</span> <span class="n">number_of_generations</span><span class="p">),</span> <span class="n">algorithm</span><span class="o">.</span><span class="n">cmaes</span><span class="p">(</span><span class="n">gen</span> <span class="o">=</span> <span class="n">number_of_generations</span><span class="p">,</span><span class="n">xtol</span><span class="o">=</span><span class="mf">1e-30</span><span class="p">,</span> <span class="n">ftol</span><span class="o">=</span><span class="mf">1e-30</span><span class="p">),</span> <span class="n">algorithm</span><span class="o">.</span><span class="n">bee_colony</span><span class="p">(</span><span class="n">gen</span> <span class="o">=</span> <span class="n">number_of_generations</span><span class="o">/</span><span class="mi">2</span><span class="p">)]</span>
+     <span class="k">print</span><span class="p">(</span><span class="s">&#39;</span><span class="se">\n</span><span class="s">Trials: &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">n_trials</span><span class="p">)</span> <span class="o">+</span> <span class="s">&#39; - Population size: &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">pop_size</span><span class="p">)</span> <span class="o">+</span> <span class="s">&#39; - Generations: &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">n_gen</span><span class="p">))</span>
+     <span class="k">for</span> <span class="n">prob</span> <span class="ow">in</span> <span class="n">prob_list</span><span class="p">:</span>
+             <span class="k">print</span><span class="p">(</span><span class="s">&#39;</span><span class="se">\n</span><span class="s">Testing problem: &#39;</span> <span class="o">+</span> <span class="n">prob</span><span class="o">.</span><span class="n">get_name</span><span class="p">()</span> <span class="o">+</span> <span class="s">&#39;, Dimension: &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">prob</span><span class="o">.</span><span class="n">dimension</span><span class="p">)</span> <span class="p">)</span>
+             <span class="k">print</span><span class="p">(</span><span class="s">&#39;With Population Size: &#39;</span> <span class="o">+</span>  <span class="nb">str</span><span class="p">(</span><span class="n">pop_size</span><span class="p">)</span> <span class="p">)</span>
+             <span class="k">for</span> <span class="n">algo</span> <span class="ow">in</span> <span class="n">algo_list</span><span class="p">:</span>
+                     <span class="k">print</span><span class="p">(</span><span class="s">&#39; &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">algo</span><span class="p">))</span>
+                     <span class="n">best</span> <span class="o">=</span> <span class="p">[]</span>
+                     <span class="n">best_x</span> <span class="o">=</span> <span class="p">[]</span>
+                     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">number_of_trials</span><span class="p">):</span>
+                             <span class="n">isl</span> <span class="o">=</span> <span class="n">island</span><span class="p">(</span><span class="n">algo</span><span class="p">,</span><span class="n">prob</span><span class="p">,</span><span class="n">number_of_individuals</span><span class="p">)</span>
+                             <span class="n">isl</span><span class="o">.</span><span class="n">evolve</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+                             <span class="n">isl</span><span class="o">.</span><span class="n">join</span><span class="p">()</span>
+                             <span class="n">best</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">isl</span><span class="o">.</span><span class="n">population</span><span class="o">.</span><span class="n">champion</span><span class="o">.</span><span class="n">f</span><span class="p">)</span>
+                             <span class="n">best_x</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">isl</span><span class="o">.</span><span class="n">population</span><span class="o">.</span><span class="n">champion</span><span class="o">.</span><span class="n">x</span><span class="p">)</span>
+                     <span class="k">print</span><span class="p">(</span><span class="s">&#39; Best:</span><span class="se">\t</span><span class="s">&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="nb">min</span><span class="p">(</span><span class="n">best</span><span class="p">)[</span><span class="mi">0</span><span class="p">]))</span>
+                     <span class="k">print</span><span class="p">(</span><span class="s">&#39; Mean:</span><span class="se">\t</span><span class="s">&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">mean</span><span class="p">(</span><span class="n">best</span><span class="p">)))</span>
+                     <span class="k">print</span><span class="p">(</span><span class="s">&#39; Std:</span><span class="se">\t</span><span class="s">&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">std</span><span class="p">(</span><span class="n">best</span><span class="p">)))</span>
+</pre></div>
+</div>
+<p>You may check the output created by PyGMO.run_test() online at <a class="reference external" href="http://sourceforge.net/apps/mediawiki/pagmo/index.php?title=Tests">PaGMO Tests</a></p>
+</div>
+
+
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="example4.html" class="btn btn-neutral float-right" title="Multi-objective optimization in the asynchronous island model"/>Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="example2.html" class="btn btn-neutral" title="Monitoring the Information Flow in a large archipelago"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2015, Dario Izzo and Francesco Biscani.
+    </p>
+  </div>
+
+  <a href="https://github.com/snide/sphinx_rtd_theme">Sphinx theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+</body>
+</html>

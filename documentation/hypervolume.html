@@ -1,0 +1,516 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Hypervolume &mdash; PyGMO 1.1.7dev documentation</title>
+  
+
+  
+  
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  
+  
+
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:'../',
+        VERSION:'1.1.7dev',
+        COLLAPSE_INDEX:false,
+        FILE_SUFFIX:'.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+    <script type="text/javascript">
+        jQuery(function () {
+            SphinxRtdTheme.StickyNav.enable();
+        });
+    </script>
+  
+
+  
+    <link rel="top" title="PyGMO 1.1.7dev documentation" href="../index.html"/>
+        <link rel="up" title="User Documentation" href="index.html"/>
+        <link rel="next" title="Racing" href="racing.html"/>
+        <link rel="prev" title="Problems" href="problems.html"/> 
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        <a href="../index.html" class="fa fa-home"> PyGMO</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        
+        
+            <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../install.html">Install PyGMO</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../install.html#preparing-your-system-to-compile-pygmo">Preparing your system to compile PyGMO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../install.html#download-pygmo-code">Download PyGMO code</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../install.html#compiling-and-installing-under-unix">Compiling and Installing under Unix</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../install.html#compiling-and-installing-under-windows">Compiling and Installing under Windows</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../quickstart.html">Quick Start</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../quickstart.html#on-one-cpu">On one CPU</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../quickstart.html#on-many-cpus">On many CPUs ...</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../quickstart.html#and-migrating-solutions">... and migrating solutions ...</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../quickstart.html#and-between-different-algorithms">... and between different algorithms ...</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/index.html">Tutorials</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/adding_problems_and_algorithms_to_PyGMO.html">Adding new problems and algorithms to PyGMO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/meta_problems_meta_algorithms.html">Meta-problems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/multi_objective_optimization_with_PyGMO.html">Multi Objective Optimization with PyGMO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/hypervolumes_in_PyGMO.html">Hypervolumes with PyGMO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/dealing_with_constraints_in_PyGMO.html">Dealing with constraints in PyGMO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/racing.html">Racing in PyGMO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/tsp.html">Traveling Salesman Problems with PyGMO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/landscape_analysis_with_DrPyGMO.html">Landscape Analysis using Dr. PyGMO</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/index.html">Examples</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../examples/example1.html">A study on Mixing Variants of Differential Evolution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples/example2.html">Monitoring the Information Flow in a large archipelago</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples/example3.html">Testing Algorithms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples/example4.html">Multi-objective optimization in the asynchronous island model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples/example5.html">Designing and optimizing interplanetary trajectories</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples/example6.html">Participating to the CEC2013 Competition (v 1.1.5)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples/example7.html">Travelling Salesman Problem for Active Space Debris Removal</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples/local_optimization.html">Third-party Non-linear optimizers in PyGMO</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">User Documentation</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="individual.html">Individual and Champion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="population.html">Population</a></li>
+<li class="toctree-l2"><a class="reference internal" href="migration.html">Migration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="topology.html">Topology</a></li>
+<li class="toctree-l2"><a class="reference internal" href="island.html">Island and Archipelago</a></li>
+<li class="toctree-l2"><a class="reference internal" href="algorithms.html">Algorithms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="problems.html">Problems</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="">Hypervolume</a></li>
+<li class="toctree-l2"><a class="reference internal" href="racing.html">Racing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="analysis.html">Dr. PyGMO - Analysis Module</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference external" href="http://esa.github.io/pagmo/">PaGMO API</a></li>
+</ul>
+
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../index.html">PyGMO</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="index.html">User Documentation</a> &raquo;</li>
+      
+    <li>Hypervolume</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          <a href="../_sources/documentation/hypervolume.txt" rel="nofollow"> View page source</a>
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            
+  <div class="section" id="hypervolume">
+<span id="id1"></span><h1>Hypervolume<a class="headerlink" href="#hypervolume" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="a-quick-look">
+<h2>A Quick Look<a class="headerlink" href="#a-quick-look" title="Permalink to this headline">¶</a></h2>
+<p>Many multiple objective optimization problems often require a good method for comparison of solutions.
+The question of how to do it is neither trivial, nor definite.
+Hypervolume indicator (also known as Lebesgue measure or S-metric) found its application in that domain.
+PyGMO allows for computing the hypervolume for the population objects (in that case, each individual fitness vector is treated as d-dimensional point), or for the
+fixed set of points.</p>
+<p>Main class for that purpose is the <a class="reference internal" href="#PyGMO.util.hypervolume" title="PyGMO.util.hypervolume"><tt class="xref py py-class docutils literal"><span class="pre">PyGMO.util.hypervolume</span></tt></a> class.
+It is a main interface for computation of the hypervolume.
+In order to compute a hypervolume from a population object, you can do the following:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">PyGMO</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">PyGMO.util</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="n">prob</span> <span class="o">=</span> <span class="n">problem</span><span class="o">.</span><span class="n">dtlz</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">pop</span> <span class="o">=</span> <span class="n">population</span><span class="p">(</span><span class="n">prob</span><span class="p">,</span><span class="mi">20</span><span class="p">)</span>
+<span class="n">hv</span> <span class="o">=</span> <span class="n">hypervolume</span><span class="p">(</span><span class="n">pop</span><span class="p">)</span>
+<span class="k">print</span> <span class="n">hv</span><span class="o">.</span><span class="n">compute</span><span class="p">(</span><span class="n">r</span> <span class="o">=</span> <span class="p">[</span><span class="mf">1000.0</span><span class="p">]</span><span class="o">*</span><span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Additionally, you can use the same module for the computation of a fixed hypervolume problem:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">PyGMO.util</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="n">hv</span> <span class="o">=</span> <span class="n">hypervolume</span><span class="p">([[</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p">],[</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p">]])</span>
+<span class="k">print</span> <span class="n">hv</span><span class="o">.</span><span class="n">compute</span><span class="p">(</span><span class="n">r</span> <span class="o">=</span> <span class="p">[</span><span class="mf">4.0</span><span class="p">]</span><span class="o">*</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>You can also explicitly request an particular algorithm for the computation:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">PyGMO.util</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="n">hv</span> <span class="o">=</span> <span class="n">hypervolume</span><span class="p">([[</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span> <span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">]])</span>
+<span class="k">print</span> <span class="n">hv</span><span class="o">.</span><span class="n">compute</span><span class="p">(</span><span class="n">r</span> <span class="o">=</span> <span class="p">[</span><span class="mf">3.5</span><span class="p">]</span><span class="o">*</span><span class="mi">3</span><span class="p">,</span> <span class="n">algorithm</span> <span class="o">=</span> <span class="n">hv_algorithm</span><span class="o">.</span><span class="n">hv3d</span><span class="p">())</span>
+</pre></div>
+</div>
+<p>Besides the computation of the hypervolume of given pareto front (which may serve as a quality indicator), other methods are available as well:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">PyGMO.util</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="n">hv</span> <span class="o">=</span> <span class="n">hypervolume</span><span class="p">([[</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span> <span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">]])</span>
+<span class="k">print</span> <span class="n">hv</span><span class="o">.</span><span class="n">exclusive</span><span class="p">(</span><span class="n">p_idx</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">r</span> <span class="o">=</span> <span class="p">[</span><span class="mf">3.5</span><span class="p">]</span><span class="o">*</span><span class="mi">3</span><span class="p">)</span>  <span class="c"># returns the exclusive volume by point 0</span>
+<span class="k">print</span> <span class="n">hv</span><span class="o">.</span><span class="n">least_contributor</span><span class="p">(</span><span class="n">r</span> <span class="o">=</span> <span class="p">[</span><span class="mf">3.5</span><span class="p">]</span><span class="o">*</span><span class="mi">3</span><span class="p">)</span>  <span class="c"># returns the index of the least contributor</span>
+</pre></div>
+</div>
+<p>Method &#8216;exlusive&#8217; computes the hypervolume of the point at given index.
+Method &#8216;least_contributors&#8217; returns the index of the individual (point) contributing the least to the hypervolume.</p>
+<div class="section" id="available-hypervolume-algorithms">
+<h3>Available Hypervolume algorithms<a class="headerlink" href="#available-hypervolume-algorithms" title="Permalink to this headline">¶</a></h3>
+<table border="1" class="docutils">
+<colgroup>
+<col width="24%" />
+<col width="30%" />
+<col width="46%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Common Name</th>
+<th class="head">Name in PyGMO</th>
+<th class="head">Comments</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>hv2d</td>
+<td><a class="reference internal" href="#PyGMO.util.hv_algorithm.hv2d" title="PyGMO.util.hv_algorithm.hv2d"><tt class="xref py py-class docutils literal"><span class="pre">PyGMO.util.hv_algorithm.hv2d</span></tt></a></td>
+<td>Algorithm for quick computation of 2d hypervolumes.</td>
+</tr>
+<tr class="row-odd"><td>hv3d</td>
+<td><a class="reference internal" href="#PyGMO.util.hv_algorithm.hv3d" title="PyGMO.util.hv_algorithm.hv3d"><tt class="xref py py-class docutils literal"><span class="pre">PyGMO.util.hv_algorithm.hv3d</span></tt></a></td>
+<td>Algorithm for quick computation of 3d hypervolumes.</td>
+</tr>
+<tr class="row-even"><td>hv4d</td>
+<td><a class="reference internal" href="#PyGMO.util.hv_algorithm.hv4d" title="PyGMO.util.hv_algorithm.hv4d"><tt class="xref py py-class docutils literal"><span class="pre">PyGMO.util.hv_algorithm.hv4d</span></tt></a></td>
+<td>Algorithm for quick computation of 4d hypervolumes.</td>
+</tr>
+<tr class="row-odd"><td>WFG</td>
+<td><a class="reference internal" href="#PyGMO.util.hv_algorithm.wfg" title="PyGMO.util.hv_algorithm.wfg"><tt class="xref py py-class docutils literal"><span class="pre">PyGMO.util.hv_algorithm.wfg</span></tt></a></td>
+<td>General algorithm for any dimension.</td>
+</tr>
+<tr class="row-even"><td>HOY</td>
+<td><a class="reference internal" href="#PyGMO.util.hv_algorithm.hoy" title="PyGMO.util.hv_algorithm.hoy"><tt class="xref py py-class docutils literal"><span class="pre">PyGMO.util.hv_algorithm.hoy</span></tt></a></td>
+<td>General algorithm for any dimension.</td>
+</tr>
+<tr class="row-odd"><td>Bringmann-Friedrich approximation</td>
+<td><a class="reference internal" href="#PyGMO.util.hv_algorithm.bf_approx" title="PyGMO.util.hv_algorithm.bf_approx"><tt class="xref py py-class docutils literal"><span class="pre">PyGMO.util.hv_algorithm.bf_approx</span></tt></a></td>
+<td>Algorithm for computation of the approximated least contributor.</td>
+</tr>
+<tr class="row-even"><td>FPRAS</td>
+<td><a class="reference internal" href="#PyGMO.util.hv_algorithm.bf_fpras" title="PyGMO.util.hv_algorithm.bf_fpras"><tt class="xref py py-class docutils literal"><span class="pre">PyGMO.util.hv_algorithm.bf_fpras</span></tt></a></td>
+<td>Algorithm for computation of the approximated hypervolume.</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="detailed-documentation">
+<h2>Detailed Documentation<a class="headerlink" href="#detailed-documentation" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="PyGMO.util.hypervolume">
+<em class="property">class </em><tt class="descclassname">PyGMO.util.</tt><tt class="descname">hypervolume</tt><a class="headerlink" href="#PyGMO.util.hypervolume" title="Permalink to this definition">¶</a></dt>
+<dd><p>This class allows for setting up hypervolume computation problems.
+Given hypervolume problem can be set up using population object, or by a list object.</p>
+<dl class="method">
+<dt id="PyGMO.util.hypervolume.__init__">
+<tt class="descname">__init__</tt><big>(</big><em>(PyGMO.population)pop</em><big>)</big><a class="headerlink" href="#PyGMO.util.hypervolume.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructs a hypervolume problem from a population object.
+In that case, each individual&#8217;s fitness vector is pulled from the population, and treated as a point
+in hyperspace.</p>
+<dl class="docutils">
+<dt>USAGE:</dt>
+<dd><p class="first">from PyGMO import *
+from PyGMO.util import *</p>
+<p>prob = problem.dtlz(1)</p>
+<p>pop = population(prob,20)</p>
+<p class="last">hv = hypervolume(pop)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt>
+<tt class="descname">__init__</tt><big>(</big><em>(list)L</em><big>)</big></dt>
+<dd><p>Constructs a custom hypervolume problem from a list.
+List object must contain other list objects that represent points in hyperspace.
+List object cannot be empty, and the dimension of each point must be no lesser than 2.</p>
+<dl class="docutils">
+<dt>USAGE:</dt>
+<dd><p class="first">from PyGMO.util import *</p>
+<p class="last">hv = hypervolume([[2,1,1], [1,1,2], [1,2,1]])</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="PyGMO.util.hypervolume.compute">
+<tt class="descname">compute</tt><big>(</big><em>r</em>, <em>algorithm = None</em><big>)</big><a class="headerlink" href="#PyGMO.util.hypervolume.compute" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computes the hypervolume for given problem, using the provided reference point r.
+Keyword <cite>algorithm</cite> must be an instance of algorithms that can be found inside <cite>PyGMO.util.hv_algorithm</cite> module.
+If the keyword is not provided, PyGMO chooses one automatically using the information about the reference point.
+In case of 2, 3 and 4 dimensions, algorithms hv2d, hv3d and hv4d are used.
+For larger dimensions the default method is the WFG.
+As of yet, it is required that reference point is numerically no lesser by each dimension than any point from the previously constructed set of points.</p>
+<ul class="simple">
+<li>r - reference point used for computation</li>
+<li>algorithm (optional) - hypervolume algorithm used for the computation, uses the best performing algorithm for given dimension by default</li>
+</ul>
+<dl class="docutils">
+<dt>USAGE:</dt>
+<dd><p class="first">print hv.compute([3,3,3])</p>
+<p>print hv.compute([3,3,3], algorithm = hv_algorithm.hv3d())</p>
+<p class="last">print hv.compute([3,3,3], algorithm = hv_algorithm.wfg())</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="PyGMO.util.hypervolume.exclusive">
+<tt class="descname">exclusive</tt><big>(</big><em>p_idx</em>, <em>r</em>, <em>algorithm = None</em><big>)</big><a class="headerlink" href="#PyGMO.util.hypervolume.exclusive" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computes the exlusive hypervolume for point at given index &#8216;p_idx&#8217;, using the provided reference point &#8216;r&#8217; and the hypervolume algorithm (optional).
+Keyword <cite>algorithm</cite> must be an instance of algorithms that can be found inside <cite>PyGMO.util.hv_algorithm</cite> module.
+If the keyword is not provided, PyGMO chooses one automatically using the information about the reference point.</p>
+<ul class="simple">
+<li>p_idx - index of the point for which we compute the exclusive hypervolume</li>
+<li>r - reference point used for computation</li>
+<li>algorithm (optional) - hypervolume algorithm used for the computation, uses the best performing algorithm for given dimension by default</li>
+</ul>
+<dl class="docutils">
+<dt>USAGE:</dt>
+<dd><p class="first">hv.exclusive(p_idx=5, r=[5.0]*3)</p>
+<p class="last">hv.exclusive(p_idx=5, r=[5.0]*3, algorithm=hv_algorithm.hv3d())</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="PyGMO.util.hypervolume.least_contributor">
+<tt class="descname">least_contributor</tt><big>(</big><em>r</em>, <em>algorithm = None</em><big>)</big><a class="headerlink" href="#PyGMO.util.hypervolume.least_contributor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computes the least contributor to the hypervolume using provided reference point &#8216;r&#8217; and the hypervolume algorithm (optional).
+Keyword <cite>algorithm</cite> must be an instance of algorithms that can be found inside <cite>PyGMO.util.hv_algorithm</cite> module.
+If the keyword is not provided, PyGMO chooses one automatically using the information about the reference point.</p>
+<ul class="simple">
+<li>r - reference point used for computation</li>
+<li>algorithm (optional) - hypervolume algorithm used for the computation, uses the best performing algorithm for given dimension by default</li>
+</ul>
+<dl class="docutils">
+<dt>USAGE:</dt>
+<dd><p class="first">hv.least_contributor(r=[5.0]*3)</p>
+<p class="last">hv.least_contributor(r=[5.0]*3, algorithm=hv_algorithm.bf_approx())</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="PyGMO.util.hv_algorithm.hv2d">
+<em class="property">class </em><tt class="descclassname">PyGMO.util.hv_algorithm.</tt><tt class="descname">hv2d</tt><a class="headerlink" href="#PyGMO.util.hv_algorithm.hv2d" title="Permalink to this definition">¶</a></dt>
+<dd><blockquote>
+<div>This is the quick algorithm the 2 dimensional problems.</div></blockquote>
+<dl class="method">
+<dt id="PyGMO.util.hv_algorithm.hv2d.__init__">
+<tt class="descname">__init__</tt><big>(</big><big>)</big><a class="headerlink" href="#PyGMO.util.hv_algorithm.hv2d.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates an instance of <cite>PyGMO.util.hv_algorithm.hv2d</cite> class that serves as a parameter to the hypervolume object.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="PyGMO.util.hv_algorithm.hv3d">
+<em class="property">class </em><tt class="descclassname">PyGMO.util.hv_algorithm.</tt><tt class="descname">hv3d</tt><a class="headerlink" href="#PyGMO.util.hv_algorithm.hv3d" title="Permalink to this definition">¶</a></dt>
+<dd><blockquote>
+<div>This is the quick algorithm for the 3 dimensional problems.</div></blockquote>
+<dl class="method">
+<dt id="PyGMO.util.hv_algorithm.hv3d.__init__">
+<tt class="descname">__init__</tt><big>(</big><big>)</big><a class="headerlink" href="#PyGMO.util.hv_algorithm.hv3d.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates an instance of <cite>PyGMO.util.hv_algorithm.hv3d</cite> class that serves as a parameter to the hypervolume object.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="PyGMO.util.hv_algorithm.hv4d">
+<em class="property">class </em><tt class="descclassname">PyGMO.util.hv_algorithm.</tt><tt class="descname">hv4d</tt><a class="headerlink" href="#PyGMO.util.hv_algorithm.hv4d" title="Permalink to this definition">¶</a></dt>
+<dd><blockquote>
+<div>This is the quick algorithm for the 4 dimensional problems.</div></blockquote>
+<dl class="method">
+<dt id="PyGMO.util.hv_algorithm.hv4d.__init__">
+<tt class="descname">__init__</tt><big>(</big><big>)</big><a class="headerlink" href="#PyGMO.util.hv_algorithm.hv4d.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates an instance of <cite>PyGMO.util.hv_algorithm.hv4d</cite> class that serves as a parameter to the hypervolume object.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="PyGMO.util.hv_algorithm.wfg">
+<em class="property">class </em><tt class="descclassname">PyGMO.util.hv_algorithm.</tt><tt class="descname">wfg</tt><a class="headerlink" href="#PyGMO.util.hv_algorithm.wfg" title="Permalink to this definition">¶</a></dt>
+<dd><blockquote>
+<div>This is the implementation of the WFG algorithm.
+Its main purpose is handling hypervolume computation for any dimension.</div></blockquote>
+<dl class="method">
+<dt id="PyGMO.util.hv_algorithm.wfg.__init__">
+<tt class="descname">__init__</tt><big>(</big><big>)</big><a class="headerlink" href="#PyGMO.util.hv_algorithm.wfg.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates an instance of <cite>PyGMO.util.hv_algorithm.wfg</cite> class that serves as a parameter to the hypervolume object.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="PyGMO.util.hv_algorithm.hoy">
+<em class="property">class </em><tt class="descclassname">PyGMO.util.hv_algorithm.</tt><tt class="descname">hoy</tt><a class="headerlink" href="#PyGMO.util.hv_algorithm.hoy" title="Permalink to this definition">¶</a></dt>
+<dd><blockquote>
+<div>This is the implementation of the HOY algorithm.
+Its main purpose is handling hypervolume computation for any dimension.</div></blockquote>
+<dl class="method">
+<dt id="PyGMO.util.hv_algorithm.hoy.__init__">
+<tt class="descname">__init__</tt><big>(</big><big>)</big><a class="headerlink" href="#PyGMO.util.hv_algorithm.hoy.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates an instance of <cite>PyGMO.util.hv_algorithm.hoy</cite> class that serves as a parameter to the hypervolume object.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="PyGMO.util.hv_algorithm.bf_approx">
+<em class="property">class </em><tt class="descclassname">PyGMO.util.hv_algorithm.</tt><tt class="descname">bf_approx</tt><a class="headerlink" href="#PyGMO.util.hv_algorithm.bf_approx" title="Permalink to this definition">¶</a></dt>
+<dd><blockquote>
+<div>This is the implementation of the Bringmann-Friedrich approximation algorithm.
+Its main purpose is handling least contributor computation for any dimension.
+Algorithm&#8217;s output is an approximation of the exact one to a certain degree of accuracy and certain confidence.</div></blockquote>
+<dl class="method">
+<dt id="PyGMO.util.hv_algorithm.bf_approx.__init__">
+<tt class="descname">__init__</tt><big>(</big><em>use_exact = True</em>, <em>trivial_subcase_size = 1</em>, <em>eps = 1e-1</em>, <em>delta = 1e-4</em>, <em>gamma = 0.25</em>, <em>delta_multiplier = 0.775</em>, <em>initial_delta_coeff = 1e-1</em>, <em>alpha = 0.2</em><big>)</big><a class="headerlink" href="#PyGMO.util.hv_algorithm.bf_approx.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates an instance of <cite>PyGMO.util.hv_algorithm.bf_approx</cite> class that serves as a parameter to the hypervolume object.
+Default values for the parameters of the algorithm were obtained from the shark implementation of the algorithm:
+<a class="reference external" href="http://image.diku.dk/shark/doxygen_pages/html/_least_contributor_approximator_8hpp_source.html">http://image.diku.dk/shark/doxygen_pages/html/_least_contributor_approximator_8hpp_source.html</a></p>
+<dl class="docutils">
+<dt>Parameters:</dt>
+<dd><ul class="first last simple">
+<li>use_exact - should bf_approx use exact methods for computation</li>
+<li>trivial_subcase_size - when the number of points overlapping the bounding box is smaller or equal to that argument, we compute the exlusive hypervolume exactly</li>
+<li>eps - accuracy of approximation</li>
+<li>delta - confidence of approximation</li>
+<li>gamma - constant used for computation of delta for each of the points during the sampling</li>
+<li>delta_multiplier - factor with which delta diminishes each round</li>
+<li>initial_delta_coeff - initial coefficient multiplied by the delta at round 0</li>
+<li>alpha - coefficicient stating how accurately current lowest contributor should be sampled</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="PyGMO.util.hv_algorithm.bf_fpras">
+<em class="property">class </em><tt class="descclassname">PyGMO.util.hv_algorithm.</tt><tt class="descname">bf_fpras</tt><a class="headerlink" href="#PyGMO.util.hv_algorithm.bf_fpras" title="Permalink to this definition">¶</a></dt>
+<dd><blockquote>
+<div>This is the implementation of the Bringmann-Friedrich FPRAS algorithm, applied to the hypervolume computation problem.
+Its main purpose is handling hypervolume computation for any dimension.
+Algorithm&#8217;s output is an approximation of the exact one to a certain degree of accuracy and certain confidence.</div></blockquote>
+<dl class="method">
+<dt id="PyGMO.util.hv_algorithm.bf_fpras.__init__">
+<tt class="descname">__init__</tt><big>(</big><em>eps = 1e-2</em>, <em>delta = 1e-2</em><big>)</big><a class="headerlink" href="#PyGMO.util.hv_algorithm.bf_fpras.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates an instance of <cite>PyGMO.util.hv_algorithm.bf_fpras</cite> class that serves as a parameter to the hypervolume object.</p>
+<dl class="docutils">
+<dt>Parameters:</dt>
+<dd><ul class="first last simple">
+<li>eps - accuracy of approximation</li>
+<li>delta - probability of error of the approximation</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+</div>
+
+
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="racing.html" class="btn btn-neutral float-right" title="Racing"/>Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="problems.html" class="btn btn-neutral" title="Problems"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2015, Dario Izzo and Francesco Biscani.
+    </p>
+  </div>
+
+  <a href="https://github.com/snide/sphinx_rtd_theme">Sphinx theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+</body>
+</html>

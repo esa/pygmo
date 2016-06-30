@@ -1,0 +1,592 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Migration &mdash; PyGMO 1.1.7dev documentation</title>
+  
+
+  
+  
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  
+  
+
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:'../',
+        VERSION:'1.1.7dev',
+        COLLAPSE_INDEX:false,
+        FILE_SUFFIX:'.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+    <script type="text/javascript">
+        jQuery(function () {
+            SphinxRtdTheme.StickyNav.enable();
+        });
+    </script>
+  
+
+  
+    <link rel="top" title="PyGMO 1.1.7dev documentation" href="../index.html"/>
+        <link rel="up" title="User Documentation" href="index.html"/>
+        <link rel="next" title="Topology" href="topology.html"/>
+        <link rel="prev" title="Population" href="population.html"/> 
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        <a href="../index.html" class="fa fa-home"> PyGMO</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        
+        
+            <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../install.html">Install PyGMO</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../install.html#preparing-your-system-to-compile-pygmo">Preparing your system to compile PyGMO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../install.html#download-pygmo-code">Download PyGMO code</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../install.html#compiling-and-installing-under-unix">Compiling and Installing under Unix</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../install.html#compiling-and-installing-under-windows">Compiling and Installing under Windows</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../quickstart.html">Quick Start</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../quickstart.html#on-one-cpu">On one CPU</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../quickstart.html#on-many-cpus">On many CPUs ...</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../quickstart.html#and-migrating-solutions">... and migrating solutions ...</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../quickstart.html#and-between-different-algorithms">... and between different algorithms ...</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/index.html">Tutorials</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/adding_problems_and_algorithms_to_PyGMO.html">Adding new problems and algorithms to PyGMO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/meta_problems_meta_algorithms.html">Meta-problems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/multi_objective_optimization_with_PyGMO.html">Multi Objective Optimization with PyGMO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/hypervolumes_in_PyGMO.html">Hypervolumes with PyGMO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/dealing_with_constraints_in_PyGMO.html">Dealing with constraints in PyGMO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/racing.html">Racing in PyGMO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/tsp.html">Traveling Salesman Problems with PyGMO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/landscape_analysis_with_DrPyGMO.html">Landscape Analysis using Dr. PyGMO</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/index.html">Examples</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../examples/example1.html">A study on Mixing Variants of Differential Evolution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples/example2.html">Monitoring the Information Flow in a large archipelago</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples/example3.html">Testing Algorithms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples/example4.html">Multi-objective optimization in the asynchronous island model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples/example5.html">Designing and optimizing interplanetary trajectories</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples/example6.html">Participating to the CEC2013 Competition (v 1.1.5)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples/example7.html">Travelling Salesman Problem for Active Space Debris Removal</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples/local_optimization.html">Third-party Non-linear optimizers in PyGMO</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">User Documentation</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="individual.html">Individual and Champion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="population.html">Population</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="">Migration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="topology.html">Topology</a></li>
+<li class="toctree-l2"><a class="reference internal" href="island.html">Island and Archipelago</a></li>
+<li class="toctree-l2"><a class="reference internal" href="algorithms.html">Algorithms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="problems.html">Problems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hypervolume.html">Hypervolume</a></li>
+<li class="toctree-l2"><a class="reference internal" href="racing.html">Racing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="analysis.html">Dr. PyGMO - Analysis Module</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference external" href="http://esa.github.io/pagmo/">PaGMO API</a></li>
+</ul>
+
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../index.html">PyGMO</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="index.html">User Documentation</a> &raquo;</li>
+      
+    <li>Migration</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          <a href="../_sources/documentation/migration.txt" rel="nofollow"> View page source</a>
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            
+  <div class="section" id="migration">
+<span id="id1"></span><h1>Migration<a class="headerlink" href="#migration" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="the-algorithm">
+<h2>The algorithm<a class="headerlink" href="#the-algorithm" title="Permalink to this headline">¶</a></h2>
+<p>Migration, in PyGMO, happens asynchronously in each <a class="reference internal" href="island.html#PyGMO.island" title="PyGMO.island"><tt class="xref py py-class docutils literal"><span class="pre">PyGMO.island</span></tt></a> between calls of the evolve() method
+of the  <a class="reference internal" href="island.html#PyGMO.archipelago" title="PyGMO.archipelago"><tt class="xref py py-class docutils literal"><span class="pre">PyGMO.archipelago</span></tt></a> where the <a class="reference internal" href="island.html#PyGMO.island" title="PyGMO.island"><tt class="xref py py-class docutils literal"><span class="pre">PyGMO.island</span></tt></a> has been pushed back. Each islands maintains a
+database of outgoing (or incoming) migrants. The various databases are used before evolution to replace
+some <a class="reference internal" href="individual.html#PyGMO.individual" title="PyGMO.individual"><tt class="xref py py-class docutils literal"><span class="pre">PyGMO.individual</span></tt></a> in the <a class="reference internal" href="island.html#PyGMO.island" title="PyGMO.island"><tt class="xref py py-class docutils literal"><span class="pre">PyGMO.island</span></tt></a> and are then updated after evolution with the
+new selected migrants.</p>
+<p>The algorithm is rather complex and the user does not need to know/understand its details as PyGMO sets defaults
+values for all of its many parameters. These are:</p>
+<div class="section" id="migration-rates">
+<h3>Migration Rates<a class="headerlink" href="#migration-rates" title="Permalink to this headline">¶</a></h3>
+<p>Default value: 1</p>
+<p>These parameters defines the number of individuals that are selected from each <a class="reference internal" href="island.html#PyGMO.island" title="PyGMO.island"><tt class="xref py py-class docutils literal"><span class="pre">PyGMO.island</span></tt></a> for <em>migration</em> as well as
+the number of migrants that will be considered for insertion in each <a class="reference internal" href="island.html#PyGMO.island" title="PyGMO.island"><tt class="xref py py-class docutils literal"><span class="pre">PyGMO.island</span></tt></a>.
+To Migration Rates are set by the &#8216;s_policy&#8217; and &#8216;r_policy&#8217; kwarg in the <a class="reference internal" href="island.html#PyGMO.island" title="PyGMO.island"><tt class="xref py py-class docutils literal"><span class="pre">PyGMO.island</span></tt></a> constructor. This can be done by specifying
+the absolute number of individuals (migration.rate_type.absolute) or the fraction of the <a class="reference internal" href="population.html#PyGMO.population" title="PyGMO.population"><tt class="xref py py-class docutils literal"><span class="pre">PyGMO.population</span></tt></a> individuals
+(migration.rate_type.fractional)</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">PyGMO</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="n">prob</span> <span class="o">=</span> <span class="n">problem</span><span class="o">.</span><span class="n">schwefel</span><span class="p">(</span><span class="mi">15</span><span class="p">)</span>
+<span class="n">algo</span> <span class="o">=</span> <span class="n">algorithm</span><span class="o">.</span><span class="n">de</span><span class="p">(</span><span class="n">gen</span> <span class="o">=</span> <span class="mi">100</span><span class="p">)</span> <span class="c">#instantiates differential evolution with default params and 100 generations</span>
+<span class="n">selection</span> <span class="o">=</span> <span class="n">migration</span><span class="o">.</span><span class="n">best_s_policy</span><span class="p">(</span><span class="mf">0.10</span><span class="p">,</span><span class="n">migration</span><span class="o">.</span><span class="n">rate_type</span><span class="o">.</span><span class="n">fractional</span><span class="p">)</span>
+<span class="n">replacement</span> <span class="o">=</span> <span class="n">migration</span><span class="o">.</span><span class="n">fair_r_policy</span><span class="p">(</span><span class="mf">0.25</span><span class="p">,</span><span class="n">migration</span><span class="o">.</span><span class="n">rate_type</span><span class="o">.</span><span class="n">fractional</span><span class="p">)</span>
+<span class="n">isl</span> <span class="o">=</span> <span class="n">island</span><span class="p">(</span><span class="n">algo</span><span class="p">,</span><span class="n">prob</span><span class="p">,</span><span class="n">s_policy</span> <span class="o">=</span> <span class="n">selection</span><span class="p">,</span> <span class="n">r_policy</span> <span class="o">=</span> <span class="n">replacement</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="migration-direction">
+<h3>Migration Direction<a class="headerlink" href="#migration-direction" title="Permalink to this headline">¶</a></h3>
+<p>Default value: migration_direction.destination</p>
+<p>In PyGMO the asynchronous <em>migration</em> is implemented by keeping a migrants database on each island. Then one of the following
+options can be followed:</p>
+<ul>
+<li><p class="first">&#8216;destination&#8217;: The internal migrants database stores, for each <a class="reference internal" href="island.html#PyGMO.island" title="PyGMO.island"><tt class="xref py py-class docutils literal"><span class="pre">PyGMO.island</span></tt></a>, the individuals that are meant to migrate from that island. Before each evolution, the <a class="reference internal" href="island.html#PyGMO.island" title="PyGMO.island"><tt class="xref py py-class docutils literal"><span class="pre">PyGMO.island</span></tt></a> will get migrating individuals from those made available by the islands connecting to it. After each evolution, the <a class="reference internal" href="island.html#PyGMO.island" title="PyGMO.island"><tt class="xref py py-class docutils literal"><span class="pre">PyGMO.island</span></tt></a> will update its list of best individuals in the database.</p>
+</li>
+<li><dl class="first docutils">
+<dt>&#8216;source&#8217;: The internal migrants database stores for each <a class="reference internal" href="island.html#PyGMO.island" title="PyGMO.island"><tt class="xref py py-class docutils literal"><span class="pre">PyGMO.island</span></tt></a> the individuals that are</dt>
+<dd><p class="first last">meant to migrate to that <a class="reference internal" href="island.html#PyGMO.island" title="PyGMO.island"><tt class="xref py py-class docutils literal"><span class="pre">PyGMO.island</span></tt></a>. Before each evolution, an <a class="reference internal" href="island.html#PyGMO.island" title="PyGMO.island"><tt class="xref py py-class docutils literal"><span class="pre">PyGMO.island</span></tt></a> will
+check if individuals destined to it are available in the database, and, in such case will, migrate over
+incoming individuals before starting evolution. After each evolution, the <a class="reference internal" href="island.html#PyGMO.island" title="PyGMO.island"><tt class="xref py py-class docutils literal"><span class="pre">PyGMO.island</span></tt></a> will
+place its candidate individuals for emigration in the database slots of the island(s) to which it connects.</p>
+</dd>
+</dl>
+</li>
+</ul>
+<p>The <em>migration</em> direction is set by the &#8216;migration_direction&#8217; kwarg in the <a class="reference internal" href="island.html#PyGMO.archipelago" title="PyGMO.archipelago"><tt class="xref py py-class docutils literal"><span class="pre">PyGMO.archipelago</span></tt></a> constructor</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">PyGMO</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="n">prob</span> <span class="o">=</span> <span class="n">problem</span><span class="o">.</span><span class="n">schwefel</span><span class="p">(</span><span class="mi">15</span><span class="p">)</span>
+<span class="n">algo</span> <span class="o">=</span> <span class="n">algorithm</span><span class="o">.</span><span class="n">de</span><span class="p">(</span><span class="n">gen</span> <span class="o">=</span> <span class="mi">100</span><span class="p">)</span> <span class="c">#instantiates differential evolution with default params and 100 generations</span>
+<span class="n">direction</span> <span class="o">=</span> <span class="n">migration_direction</span><span class="o">.</span><span class="n">source</span>
+<span class="n">archi</span> <span class="o">=</span> <span class="n">archipelago</span><span class="p">(</span><span class="n">migration_direction</span> <span class="o">=</span> <span class="n">direction</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="migration-distribution-type">
+<span id="distribution-type-label"></span><h3>Migration Distribution Type<a class="headerlink" href="#migration-distribution-type" title="Permalink to this headline">¶</a></h3>
+<p>Default value: distribution_type.point_to_point</p>
+<p>When <em>migration</em> happens one has to decide which of the connected islands contributes to the event. This is decided
+by the distribution type that can be one of the following:</p>
+<ul class="simple">
+<li>&#8216;point to point&#8217;: only one of the neighbourghing islands, selected at random, is sending (or receiving) the individuals</li>
+<li>&#8216;broadcast&#8217;: all neighbourghing islands are sending (or receiving) the individuals</li>
+</ul>
+<p>The migration distribution type is set by the &#8216;distribution_type&#8217; kwarg in the <a class="reference internal" href="island.html#PyGMO.archipelago" title="PyGMO.archipelago"><tt class="xref py py-class docutils literal"><span class="pre">PyGMO.archipelago</span></tt></a> constructor</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">PyGMO</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="n">prob</span> <span class="o">=</span> <span class="n">problem</span><span class="o">.</span><span class="n">schwefel</span><span class="p">(</span><span class="mi">15</span><span class="p">)</span>
+<span class="n">algo</span> <span class="o">=</span> <span class="n">algorithm</span><span class="o">.</span><span class="n">de</span><span class="p">(</span><span class="n">gen</span> <span class="o">=</span> <span class="mi">100</span><span class="p">)</span> <span class="c">#instantiates differential evolution with default params and 100 generations</span>
+<span class="n">distribution</span> <span class="o">=</span> <span class="n">distribution_type</span><span class="o">.</span><span class="n">broadcast</span>
+<span class="n">archi</span> <span class="o">=</span> <span class="n">archipelago</span><span class="p">(</span><span class="n">distribution_type</span> <span class="o">=</span> <span class="n">distribution</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="migration-selection-policy">
+<h3>Migration Selection Policy<a class="headerlink" href="#migration-selection-policy" title="Permalink to this headline">¶</a></h3>
+<p>Default value: migration.best_s_policy(1)</p>
+<p>The selection policy is the object responsible to choose out of a <a class="reference internal" href="population.html#PyGMO.population" title="PyGMO.population"><tt class="xref py py-class docutils literal"><span class="pre">PyGMO.population</span></tt></a> the individuals that will migrate. All selection policies derive from the same base class and currently a few are implemented:</p>
+<ul class="simple">
+<li>&#8216;migration.best_s_policy&#8217;: Selects the best individuals for a single-objective optimization problem. For a multi-objective optimization problem, an individual is considered better as another individual if it has a lower non-domination rank or - if the non-domination ranks of both individuals are equal - a higher crowding distance.</li>
+<li>&#8216;migration.best_kill_s_policy&#8217;: The same as &#8216;migration.best_s_policy&#8217; but every selected individual gets reinitialized in the originating population.</li>
+<li>&#8216;migration.random_s_policy&#8217;: Individuals are selected uniformly at random.</li>
+<li>&#8216;migration.hv_greedy_s_policy&#8217;: Select the best individuals for a single-objective optimization problem. For a multi-objective optimization problem, and individual is considered better than another individual if its exclusive contribution to the hypervolume (see <cite>PyGMO.hypervolume</cite> for more details) is greater. The set of best individuals is created iteratively - after each selection of the individual, it is removed from the population so it does not diminish the contributions of other individuals.</li>
+<li>&#8216;migration.hv_best_s_policy&#8217;: Select the best individuals for a single-objective optimization problem. For a multi-objective optimization problem, and individual is considered better than another individual if its exclusive contribution to the hypervolume (see <cite>PyGMO.hypervolume</cite> for more details) is greater. The main distinction between this policy and <cite>PyGMO.hv_best_s_policy</cite> is computing all the contributions at once (without the removal step).</li>
+</ul>
+<p>The selection policy is set by the &#8216;s_policy&#8217; kwarg in the <a class="reference internal" href="island.html#PyGMO.island" title="PyGMO.island"><tt class="xref py py-class docutils literal"><span class="pre">PyGMO.island</span></tt></a> constructor</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">PyGMO</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="n">prob</span> <span class="o">=</span> <span class="n">problem</span><span class="o">.</span><span class="n">schwefel</span><span class="p">(</span><span class="mi">15</span><span class="p">)</span>
+<span class="n">algo</span> <span class="o">=</span> <span class="n">algorithm</span><span class="o">.</span><span class="n">de</span><span class="p">(</span><span class="n">gen</span> <span class="o">=</span> <span class="mi">100</span><span class="p">)</span> <span class="c">#instantiates differential evolution with default params and 100 generations</span>
+<span class="n">best2</span> <span class="o">=</span> <span class="n">migration</span><span class="o">.</span><span class="n">best_s_policy</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="c"># two individuals will be selected as the best</span>
+<span class="n">isl</span> <span class="o">=</span> <span class="n">island</span><span class="p">(</span><span class="n">algo</span><span class="p">,</span><span class="n">prob</span><span class="p">,</span><span class="n">s_policy</span> <span class="o">=</span> <span class="n">best2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="migration-replacement-policy">
+<h3>Migration Replacement Policy<a class="headerlink" href="#migration-replacement-policy" title="Permalink to this headline">¶</a></h3>
+<p>Default value: migration.fair_r_policy(1)</p>
+<p>The replacement policy is the object responsible to substitute the individuals in a population with the
+migrants. All replacement policies derive from the same base class and currently a few are implemented:</p>
+<ul class="simple">
+<li>&#8216;migration.fair_r_policy&#8217;: simply replaces the worst individuals in the island  with the best of the incoming migrants. This is subject to the added condition that the migrants are better. For multi-objective optimization problems, an individual is considered better than another individual if it has a lower non-domination rank or - if the non-domination ranks are equal - a higher crowding distance (compare with &#8216;migration.best_s_policy&#8217;)</li>
+<li>&#8216;migration.random_r_policy&#8217;: replaces random individuals in the island with random incoming migrants</li>
+<li>&#8216;migration.worst_r_policy&#8217;: replaces the worst individuals in the island with the best of the incoming migrants. In a multi-objective setting, the meaning of <em>better</em> is like in &#8216;migration.fair_r_policy&#8217; or &#8216;migration.best_s_policy&#8217;).</li>
+<li>&#8216;migration.hv_greedy_r_policy&#8217;: Replaces a the worst individuals in the island with the best of the incoming immigrants.
+The distinction between individuals is made based on their exclusive contribution to the hypervolume (see <cite>PyGMO.hypervolume</cite> for more details).
+Both sets are determined iteratively - set of worst islanders is determined by choosing the least contributor among them, and then removing it from the population in order to prevent it from diminishing the contributions of other individuals.
+Likewise, the set of best immigrants is determined by their exclusive contribution to the hypervolume in an iterative fashion, except this time the greatest contributor is chosen.</li>
+<li>&#8216;migration.hv_fair_r_policy&#8217;:
+The distinction between individuals is made based on their exclusive contribution to the hypervolume (see <cite>PyGMO.hypervolume</cite> for more details).
+Both sets are determined by computing the contributions to the hypervolume at once, without the removal step (as opposed to the &#8216;migration.hv_greedy_r_policy&#8217;).</li>
+</ul>
+<p>The replacement policy is set by the &#8216;r_policy&#8217; kwarg in the island constructor</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">PyGMO</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="n">prob</span> <span class="o">=</span> <span class="n">problem</span><span class="o">.</span><span class="n">schwefel</span><span class="p">(</span><span class="mi">15</span><span class="p">)</span>
+<span class="n">algo</span> <span class="o">=</span> <span class="n">algorithm</span><span class="o">.</span><span class="n">de</span><span class="p">(</span><span class="n">gen</span> <span class="o">=</span> <span class="mi">100</span><span class="p">)</span> <span class="c">#instantiates differential evolution with default params and 100 generations</span>
+<span class="n">random4</span> <span class="o">=</span> <span class="n">migration</span><span class="o">.</span><span class="n">random_policy</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span> <span class="c"># four individuals will be selected at random</span>
+                                     <span class="c"># from the migrants and will replace random individuals</span>
+<span class="n">isl</span> <span class="o">=</span> <span class="n">island</span><span class="p">(</span><span class="n">algo</span><span class="p">,</span><span class="n">prob</span><span class="p">,</span><span class="n">s_policy</span> <span class="o">=</span> <span class="n">best2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="migration-topology">
+<h3>Migration Topology<a class="headerlink" href="#migration-topology" title="Permalink to this headline">¶</a></h3>
+<p>Default value: migration.unconnected()</p>
+<p>The migration topology determines which island will be connected to which island. It also takes care that when an island is pushed back into an
+archipelago, the topological properties of the resulting new connectivity graph are left unchanged.
+It is set by the &#8216;topology&#8217; kwarg in the archipelago constructor</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">PyGMO</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="n">prob</span> <span class="o">=</span> <span class="n">problem</span><span class="o">.</span><span class="n">schwefel</span><span class="p">(</span><span class="mi">15</span><span class="p">)</span>
+<span class="n">algo</span> <span class="o">=</span> <span class="n">algorithm</span><span class="o">.</span><span class="n">de</span><span class="p">(</span><span class="n">gen</span> <span class="o">=</span> <span class="mi">100</span><span class="p">)</span> <span class="c">#instantiates differential evolution with default params and 100 generations</span>
+<span class="n">topo</span> <span class="o">=</span> <span class="n">topology</span><span class="o">.</span><span class="n">ring</span><span class="p">()</span>
+<span class="n">archi</span> <span class="o">=</span> <span class="n">archipelago</span><span class="p">(</span><span class="n">algo</span><span class="p">,</span><span class="n">prob</span><span class="p">,</span><span class="n">topology</span> <span class="o">=</span> <span class="n">topo</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="the-classes">
+<h2>The Classes<a class="headerlink" href="#the-classes" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="PyGMO.migration.best_s_policy">
+<em class="property">class </em><tt class="descclassname">PyGMO.migration.</tt><tt class="descname">best_s_policy</tt><big>(</big><span class="optional">[</span><em>n=1</em>, <em>type = migration.rate_type.absolute</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#PyGMO.migration.best_s_policy" title="Permalink to this definition">¶</a></dt>
+<dd><p>A selection policy that selects the n best <a class="reference internal" href="individual.html#PyGMO.individual" title="PyGMO.individual"><tt class="xref py py-class docutils literal"><span class="pre">PyGMO.individual</span></tt></a> in
+the <a class="reference internal" href="island.html#PyGMO.island" title="PyGMO.island"><tt class="xref py py-class docutils literal"><span class="pre">PyGMO.island</span></tt></a>&#8216;s <a class="reference internal" href="population.html#PyGMO.population" title="PyGMO.population"><tt class="xref py py-class docutils literal"><span class="pre">PyGMO.population</span></tt></a>. If type is migration.rate_type.fractional then n, in [0,1], is interpreted
+as the fraction of the population to be selected. This class is used exclusively in the <a class="reference internal" href="island.html#PyGMO.island" title="PyGMO.island"><tt class="xref py py-class docutils literal"><span class="pre">PyGMO.island</span></tt></a>
+constructor as a possible kwarg for the key &#8216;s_policy&#8217;</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">PyGMO</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="n">prob</span> <span class="o">=</span> <span class="n">problem</span><span class="o">.</span><span class="n">griewank</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">algo</span> <span class="o">=</span> <span class="n">algorithm</span><span class="o">.</span><span class="n">bee_colony</span><span class="p">(</span><span class="n">gen</span> <span class="o">=</span> <span class="mi">10</span><span class="p">)</span> <span class="c">#instantiates artificial bee colony with default params and 10 generations</span>
+<span class="n">best2</span> <span class="o">=</span> <span class="n">migration</span><span class="o">.</span><span class="n">best_s_policy</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">best50pc</span> <span class="o">=</span> <span class="n">migration</span><span class="o">.</span><span class="n">best_s_policy</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span><span class="n">migration</span><span class="o">.</span><span class="n">rate_type</span><span class="o">.</span><span class="n">fractional</span><span class="p">)</span>
+<span class="n">isl1</span> <span class="o">=</span> <span class="n">island</span><span class="p">(</span><span class="n">algo</span><span class="p">,</span><span class="n">prob</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="n">s_policy</span> <span class="o">=</span> <span class="n">best2</span><span class="p">)</span>  <span class="c">#2 of the best individuals will migrate</span>
+<span class="n">isl2</span> <span class="o">=</span> <span class="n">island</span><span class="p">(</span><span class="n">algo</span><span class="p">,</span><span class="n">prob</span><span class="p">,</span><span class="mi">32</span><span class="p">,</span><span class="n">s_policy</span> <span class="o">=</span> <span class="n">best50pc</span><span class="p">)</span> <span class="c">#50% of 32 (i.e. 16) best individuals will migrate</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="class">
+<dt id="PyGMO.migration.best_kill_s_policy">
+<em class="property">class </em><tt class="descclassname">PyGMO.migration.</tt><tt class="descname">best_kill_s_policy</tt><big>(</big><span class="optional">[</span><em>n=1</em>, <em>type = migration.rate_type.absolute</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#PyGMO.migration.best_kill_s_policy" title="Permalink to this definition">¶</a></dt>
+<dd><p>A selection policy that selects the n best <a class="reference internal" href="individual.html#PyGMO.individual" title="PyGMO.individual"><tt class="xref py py-class docutils literal"><span class="pre">PyGMO.individual</span></tt></a> in
+the <a class="reference internal" href="island.html#PyGMO.island" title="PyGMO.island"><tt class="xref py py-class docutils literal"><span class="pre">PyGMO.island</span></tt></a>&#8216;s <a class="reference internal" href="population.html#PyGMO.population" title="PyGMO.population"><tt class="xref py py-class docutils literal"><span class="pre">PyGMO.population</span></tt></a> and kills them in the original population so that
+only the migrant will survive. A new random individual will replace the migrant in the original population
+If type is migration.rate_type.fractional then n, in [0,1], is interpreted
+as the fraction of the population to be selected. This class is used exclusively in the <a class="reference internal" href="island.html#PyGMO.island" title="PyGMO.island"><tt class="xref py py-class docutils literal"><span class="pre">PyGMO.island</span></tt></a>
+constructor as a possible kwarg for the key &#8216;s_policy&#8217;</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">PyGMO</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="n">prob</span> <span class="o">=</span> <span class="n">problem</span><span class="o">.</span><span class="n">griewank</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">algo</span> <span class="o">=</span> <span class="n">algorithm</span><span class="o">.</span><span class="n">bee_colony</span><span class="p">(</span><span class="n">gen</span> <span class="o">=</span> <span class="mi">10</span><span class="p">)</span> <span class="c">#instantiates artificial bee colony with default params and 10 generations</span>
+<span class="n">best2</span> <span class="o">=</span> <span class="n">migration</span><span class="o">.</span><span class="n">best_kill_s_policy</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">best50pc</span> <span class="o">=</span> <span class="n">migration</span><span class="o">.</span><span class="n">best_s_policy</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span><span class="n">migration</span><span class="o">.</span><span class="n">rate_type</span><span class="o">.</span><span class="n">fractional</span><span class="p">)</span>
+<span class="n">isl1</span> <span class="o">=</span> <span class="n">island</span><span class="p">(</span><span class="n">algo</span><span class="p">,</span><span class="n">prob</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="n">s_policy</span> <span class="o">=</span> <span class="n">best2</span><span class="p">)</span>  <span class="c">#2 of the best individuals will migrate and be reinitialized in pop</span>
+<span class="n">isl2</span> <span class="o">=</span> <span class="n">island</span><span class="p">(</span><span class="n">algo</span><span class="p">,</span><span class="n">prob</span><span class="p">,</span><span class="mi">32</span><span class="p">,</span><span class="n">s_policy</span> <span class="o">=</span> <span class="n">best50pc</span><span class="p">)</span> <span class="c">#50% of 32 (i.e. 16) best individuals will migrate</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="class">
+<dt id="PyGMO.migration.random_s_policy">
+<em class="property">class </em><tt class="descclassname">PyGMO.migration.</tt><tt class="descname">random_s_policy</tt><big>(</big><span class="optional">[</span><em>n=1</em>, <em>type = migration.rate_type.absolute</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#PyGMO.migration.random_s_policy" title="Permalink to this definition">¶</a></dt>
+<dd><p>This selection policy selects n random <a class="reference internal" href="individual.html#PyGMO.individual" title="PyGMO.individual"><tt class="xref py py-class docutils literal"><span class="pre">PyGMO.individual</span></tt></a> in the <a class="reference internal" href="island.html#PyGMO.island" title="PyGMO.island"><tt class="xref py py-class docutils literal"><span class="pre">PyGMO.island</span></tt></a>&#8216;s <a class="reference internal" href="population.html#PyGMO.population" title="PyGMO.population"><tt class="xref py py-class docutils literal"><span class="pre">PyGMO.population</span></tt></a>
+selected uniformly. This class is used exclusively in the <a class="reference internal" href="island.html#PyGMO.island" title="PyGMO.island"><tt class="xref py py-class docutils literal"><span class="pre">PyGMO.island</span></tt></a>
+constructor as a possible kwarg for the key &#8216;s_policy&#8217;</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">PyGMO</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="n">prob</span> <span class="o">=</span> <span class="n">problem</span><span class="o">.</span><span class="n">griewank</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">algo</span> <span class="o">=</span> <span class="n">algorithm</span><span class="o">.</span><span class="n">bee_colony</span><span class="p">(</span><span class="n">gen</span> <span class="o">=</span> <span class="mi">10</span><span class="p">)</span> <span class="c">#instantiates artificial bee colony with default params and 10 generations</span>
+<span class="n">random10</span> <span class="o">=</span> <span class="n">migration</span><span class="o">.</span><span class="n">random_s_policy</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">best10</span> <span class="o">=</span> <span class="n">migration</span><span class="o">.</span><span class="n">best_s_policy</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">isl1</span> <span class="o">=</span> <span class="n">island</span><span class="p">(</span><span class="n">algo</span><span class="p">,</span><span class="n">prob</span><span class="p">,</span><span class="mi">50</span><span class="p">,</span><span class="n">s_policy</span> <span class="o">=</span> <span class="n">best10</span><span class="p">)</span> <span class="c">#10 random individuals will be selected for migration</span>
+<span class="n">isl2</span> <span class="o">=</span> <span class="n">island</span><span class="p">(</span><span class="n">algo</span><span class="p">,</span><span class="n">prob</span><span class="p">,</span><span class="mi">50</span><span class="p">,</span><span class="n">s_policy</span> <span class="o">=</span> <span class="n">best10</span><span class="p">)</span> <span class="c">#the 10 best individuals will be selected for migration</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="class">
+<dt id="PyGMO.migration.hv_greedy_s_policy">
+<em class="property">class </em><tt class="descclassname">PyGMO.migration.</tt><tt class="descname">hv_greedy_s_policy</tt><big>(</big><span class="optional">[</span><em>n=1</em>, <em>type = migration.rate_type.absolute</em>, <em>nadir_eps=1.0</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#PyGMO.migration.hv_greedy_s_policy" title="Permalink to this definition">¶</a></dt>
+<dd><p>This selection policy selects n <a class="reference internal" href="individual.html#PyGMO.individual" title="PyGMO.individual"><tt class="xref py py-class docutils literal"><span class="pre">PyGMO.individual</span></tt></a> in the <a class="reference internal" href="island.html#PyGMO.island" title="PyGMO.island"><tt class="xref py py-class docutils literal"><span class="pre">PyGMO.island</span></tt></a>&#8216;s <a class="reference internal" href="population.html#PyGMO.population" title="PyGMO.population"><tt class="xref py py-class docutils literal"><span class="pre">PyGMO.population</span></tt></a>.
+The comparison between individuals is made according to the exclusive hypervolume they contribute to the population
+(see <cite>PyGMO.hypervolume</cite> for more details). The resulting set of individuals is created iteratively, with each step consisting of selecting the
+greatest contributor, and then removing it from the population to prevent it fromt diminishing the exclusive contributions of the
+remaining individuals.
+The reference point for all hypervolume computations is the current nadir-point of the population with an off-set determined by the <tt class="docutils literal"><span class="pre">nadir_eps</span></tt>.</p>
+<p>NOTE: This migration applies only to multi-objective problems. In case of a single-objective problem, the <cite>PyGMO.migration.best_s_policy</cite> is used instead.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">PyGMO</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="n">prob</span> <span class="o">=</span> <span class="n">problem</span><span class="o">.</span><span class="n">dtlz</span><span class="p">(</span><span class="n">prob_id</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span> <span class="n">fdim</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">algo</span> <span class="o">=</span> <span class="n">algorithm</span><span class="o">.</span><span class="n">nsga_II</span><span class="p">(</span><span class="n">gen</span> <span class="o">=</span> <span class="mi">10</span><span class="p">)</span> <span class="c">#instantiates the NSGA-II algorithm</span>
+<span class="n">hv_greedy_10</span> <span class="o">=</span> <span class="n">migration</span><span class="o">.</span><span class="n">hv_greedy_s_policy</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">isl</span> <span class="o">=</span> <span class="n">island</span><span class="p">(</span><span class="n">algo</span><span class="p">,</span> <span class="n">prob</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="n">s_policy</span> <span class="o">=</span> <span class="n">hv_greedy_10</span><span class="p">)</span> <span class="c">#10 random individuals will be selected for migration</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="class">
+<dt id="PyGMO.migration.hv_best_s_policy">
+<em class="property">class </em><tt class="descclassname">PyGMO.migration.</tt><tt class="descname">hv_best_s_policy</tt><big>(</big><span class="optional">[</span><em>n=1</em>, <em>type = migration.rate_type.absolute</em>, <em>nadir_eps=1.0</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#PyGMO.migration.hv_best_s_policy" title="Permalink to this definition">¶</a></dt>
+<dd><p>This selection policy selects n <a class="reference internal" href="individual.html#PyGMO.individual" title="PyGMO.individual"><tt class="xref py py-class docutils literal"><span class="pre">PyGMO.individual</span></tt></a> in the <a class="reference internal" href="island.html#PyGMO.island" title="PyGMO.island"><tt class="xref py py-class docutils literal"><span class="pre">PyGMO.island</span></tt></a>&#8216;s <a class="reference internal" href="population.html#PyGMO.population" title="PyGMO.population"><tt class="xref py py-class docutils literal"><span class="pre">PyGMO.population</span></tt></a>.
+The comparison between individuals is made according to the exclusive hypervolume they contribute to the population
+(see <cite>PyGMO.hypervolume</cite> for more details). The resulting set of individuals is created by computing all contributions
+for each of the individuals of the population, and then selecting <tt class="docutils literal"><span class="pre">n</span></tt> greatest contributors.
+The reference point for all hypervolume computations is the current nadir-point of the population with an off-set determined by the <tt class="docutils literal"><span class="pre">nadir_eps</span></tt>.</p>
+<p>NOTE: This migration applies only to multi-objective problems. In case of a single-objective problem, the <cite>PyGMO.migration.best_s_policy</cite> is used instead.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">PyGMO</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="n">prob</span> <span class="o">=</span> <span class="n">problem</span><span class="o">.</span><span class="n">dtlz</span><span class="p">(</span><span class="n">prob_id</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span> <span class="n">fdim</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">algo</span> <span class="o">=</span> <span class="n">algorithm</span><span class="o">.</span><span class="n">nsga_II</span><span class="p">(</span><span class="n">gen</span> <span class="o">=</span> <span class="mi">10</span><span class="p">)</span> <span class="c">#instantiates the NSGA-II algorithm</span>
+<span class="n">hv_greedy_10</span> <span class="o">=</span> <span class="n">migration</span><span class="o">.</span><span class="n">hv_greedy_s_policy</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">isl</span> <span class="o">=</span> <span class="n">island</span><span class="p">(</span><span class="n">algo</span><span class="p">,</span> <span class="n">prob</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="n">s_policy</span> <span class="o">=</span> <span class="n">hv_greedy_10</span><span class="p">)</span> <span class="c">#10 random individuals will be selected for migration</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="class">
+<dt id="PyGMO.migration.fair_r_policy">
+<em class="property">class </em><tt class="descclassname">PyGMO.migration.</tt><tt class="descname">fair_r_policy</tt><big>(</big><span class="optional">[</span><em>n=1</em>, <em>type = migration.rate_type.absolute</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#PyGMO.migration.fair_r_policy" title="Permalink to this definition">¶</a></dt>
+<dd><p>A replacement policy that replaces the worst n <a class="reference internal" href="individual.html#PyGMO.individual" title="PyGMO.individual"><tt class="xref py py-class docutils literal"><span class="pre">PyGMO.individual</span></tt></a> in the <a class="reference internal" href="island.html#PyGMO.island" title="PyGMO.island"><tt class="xref py py-class docutils literal"><span class="pre">PyGMO.island</span></tt></a>&#8216;s
+<a class="reference internal" href="population.html#PyGMO.population" title="PyGMO.population"><tt class="xref py py-class docutils literal"><span class="pre">PyGMO.population</span></tt></a> with the best n migrants. Each replacement takes place if and only if
+the migrant is considered better. If type is migration.rate_type.fractional then n, in [0,1], is interpreted
+as the fraction of the population to be replaced. This class is used exclusively in the <a class="reference internal" href="island.html#PyGMO.island" title="PyGMO.island"><tt class="xref py py-class docutils literal"><span class="pre">PyGMO.island</span></tt></a>
+constructor as a possible kwarg for the key &#8216;r_policy&#8217;</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">PyGMO</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="n">prob</span> <span class="o">=</span> <span class="n">problem</span><span class="o">.</span><span class="n">griewank</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">algo</span> <span class="o">=</span> <span class="n">algorithm</span><span class="o">.</span><span class="n">bee_colony</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span> <span class="c">#instantiates artificial bee colony with default params and 10 generations</span>
+<span class="n">fair2</span> <span class="o">=</span> <span class="n">migration</span><span class="o">.</span><span class="n">fair_r_policy</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">fair20pc</span> <span class="o">=</span> <span class="n">migration</span><span class="o">.</span><span class="n">fair_r_policy</span><span class="p">(</span><span class="mf">0.2</span><span class="p">,</span><span class="n">migration</span><span class="o">.</span><span class="n">rate_type</span><span class="o">.</span><span class="n">fractional</span><span class="p">)</span>
+<span class="n">isl1</span> <span class="o">=</span> <span class="n">island</span><span class="p">(</span><span class="n">algo</span><span class="p">,</span><span class="n">prob</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="n">r_policy</span> <span class="o">=</span> <span class="n">fair2</span><span class="p">)</span>  <span class="c">#2 of the worst individuals will be considered for replacement</span>
+<span class="n">isl2</span> <span class="o">=</span> <span class="n">island</span><span class="p">(</span><span class="n">algo</span><span class="p">,</span><span class="n">prob</span><span class="p">,</span><span class="mi">100</span><span class="p">,</span><span class="n">r_policy</span> <span class="o">=</span> <span class="n">fair20pc</span><span class="p">)</span> <span class="c">#20% of 100 (i.e. 20) worst individuals will be considered for replacement</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="class">
+<dt id="PyGMO.migration.random_r_policy">
+<em class="property">class </em><tt class="descclassname">PyGMO.migration.</tt><tt class="descname">random_r_policy</tt><big>(</big><span class="optional">[</span><em>n=1</em>, <em>type = migration.rate_type.absolute</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#PyGMO.migration.random_r_policy" title="Permalink to this definition">¶</a></dt>
+<dd><p>A replacement policy that replaces n random <a class="reference internal" href="individual.html#PyGMO.individual" title="PyGMO.individual"><tt class="xref py py-class docutils literal"><span class="pre">PyGMO.individual</span></tt></a> in the <a class="reference internal" href="island.html#PyGMO.island" title="PyGMO.island"><tt class="xref py py-class docutils literal"><span class="pre">PyGMO.island</span></tt></a>&#8216;s
+<a class="reference internal" href="population.html#PyGMO.population" title="PyGMO.population"><tt class="xref py py-class docutils literal"><span class="pre">PyGMO.population</span></tt></a> with random n migrants. If type is migration.rate_type.fractional then n, in [0,1], is interpreted
+as the fraction of the population to be replaced. This class is used exclusively in the <a class="reference internal" href="island.html#PyGMO.island" title="PyGMO.island"><tt class="xref py py-class docutils literal"><span class="pre">PyGMO.island</span></tt></a>
+constructor as a possible kwarg for the key &#8216;r_policy&#8217;</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">PyGMO</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="n">prob</span> <span class="o">=</span> <span class="n">problem</span><span class="o">.</span><span class="n">griewank</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">algo</span> <span class="o">=</span> <span class="n">algorithm</span><span class="o">.</span><span class="n">bee_colony</span><span class="p">(</span><span class="n">gen</span> <span class="o">=</span> <span class="mi">10</span><span class="p">)</span> <span class="c">#instantiates artificial bee colony with default params and 10 generations</span>
+<span class="n">random2</span> <span class="o">=</span> <span class="n">migration</span><span class="o">.</span><span class="n">random_r_policy</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">isl</span> <span class="o">=</span> <span class="n">island</span><span class="p">(</span><span class="n">algo</span><span class="p">,</span><span class="n">prob</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="n">r_policy</span> <span class="o">=</span> <span class="n">random2</span><span class="p">)</span>  <span class="c">#2 random individuals will be replaced with random migrants</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="class">
+<dt id="PyGMO.migration.worst_r_policy">
+<em class="property">class </em><tt class="descclassname">PyGMO.migration.</tt><tt class="descname">worst_r_policy</tt><big>(</big><span class="optional">[</span><em>n=1</em>, <em>type = migration.rate_type.absolute</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#PyGMO.migration.worst_r_policy" title="Permalink to this definition">¶</a></dt>
+<dd><p>A replacement policy that replaces the n worst <a class="reference internal" href="individual.html#PyGMO.individual" title="PyGMO.individual"><tt class="xref py py-class docutils literal"><span class="pre">PyGMO.individual</span></tt></a> in the <a class="reference internal" href="island.html#PyGMO.island" title="PyGMO.island"><tt class="xref py py-class docutils literal"><span class="pre">PyGMO.island</span></tt></a>&#8216;s
+<a class="reference internal" href="population.html#PyGMO.population" title="PyGMO.population"><tt class="xref py py-class docutils literal"><span class="pre">PyGMO.population</span></tt></a> with the best n migrants. If type is migration.rate_type.fractional then n, in [0,1], is interpreted
+as the fraction of the population to be replaced. This class is used exclusively in the <a class="reference internal" href="island.html#PyGMO.island" title="PyGMO.island"><tt class="xref py py-class docutils literal"><span class="pre">PyGMO.island</span></tt></a>
+constructor as a possible kwarg for the key &#8216;r_policy&#8217;</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">PyGMO</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="n">prob</span> <span class="o">=</span> <span class="n">problem</span><span class="o">.</span><span class="n">griewank</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">algo</span> <span class="o">=</span> <span class="n">algorithm</span><span class="o">.</span><span class="n">bee_colony</span><span class="p">(</span><span class="n">gen</span> <span class="o">=</span> <span class="mi">10</span><span class="p">)</span> <span class="c">#instantiates artificial bee colony with default params and 10 generations</span>
+<span class="n">worst2</span> <span class="o">=</span> <span class="n">migration</span><span class="o">.</span><span class="n">worst_r_policy</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">isl</span> <span class="o">=</span> <span class="n">island</span><span class="p">(</span><span class="n">algo</span><span class="p">,</span><span class="n">prob</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="n">r_policy</span> <span class="o">=</span> <span class="n">worst2</span><span class="p">)</span>  <span class="c">#the 2 worst individuals will be replaced by the best migrants</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="class">
+<dt id="PyGMO.migration.hv_greedy_r_policy">
+<em class="property">class </em><tt class="descclassname">PyGMO.migration.</tt><tt class="descname">hv_greedy_r_policy</tt><big>(</big><span class="optional">[</span><em>n=1</em>, <em>type = migration.rate_type.absolute</em>, <em>nadir_eps = 1.0</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#PyGMO.migration.hv_greedy_r_policy" title="Permalink to this definition">¶</a></dt>
+<dd><p>A replacement policy that replaces the worst n <a class="reference internal" href="individual.html#PyGMO.individual" title="PyGMO.individual"><tt class="xref py py-class docutils literal"><span class="pre">PyGMO.individual</span></tt></a> in the <a class="reference internal" href="island.html#PyGMO.island" title="PyGMO.island"><tt class="xref py py-class docutils literal"><span class="pre">PyGMO.island</span></tt></a>&#8216;s
+<a class="reference internal" href="population.html#PyGMO.population" title="PyGMO.population"><tt class="xref py py-class docutils literal"><span class="pre">PyGMO.population</span></tt></a> with the best n immigrants. Each replacement takes place if and only if
+the migrant is considered better.  The comparison between individuals is made according to the exclusive hypervolume they contribute to the population
+(see <cite>PyGMO.hypervolume</cite> for more details).
+If type is migration.rate_type.fractional then n, in [0,1], is interpreted as the fraction of the population to be replaced.
+The reference point for all hypervolume computations is the current nadir-point of the population with an off-set determined by the <tt class="docutils literal"><span class="pre">nadir_eps</span></tt>.</p>
+<p>The sets of worst islanders and best immigrants are determined according to the exclusive contribution by each individual.
+This is done <tt class="docutils literal"><span class="pre">iteratively</span></tt>; after each request for the least (in case of worst set) or greatest (in case of best set) contributor,
+the individual is removed from the working population, in order to prevent it from diminishing the exclusive contributions by other points.</p>
+<p>NOTE: This migration applies only to multi-objective problems. In case of a single-objective problem, the <cite>PyGMO.migration.fair_r_policy</cite> is used instead.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">PyGMO</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="n">prob</span> <span class="o">=</span> <span class="n">problem</span><span class="o">.</span><span class="n">dltz3</span><span class="p">(</span><span class="n">fdim</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">algo</span> <span class="o">=</span> <span class="n">algorithm</span><span class="o">.</span><span class="n">nsga_II</span><span class="p">(</span><span class="n">gen</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span> <span class="c"># Instantiates the NSGA-II algorithm</span>
+<span class="n">hv_greedy</span> <span class="o">=</span> <span class="n">migration</span><span class="o">.</span><span class="n">hv_greedy_r_policy</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">isl</span> <span class="o">=</span> <span class="n">island</span><span class="p">(</span><span class="n">algo</span><span class="p">,</span><span class="n">prob</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="n">r_policy</span> <span class="o">=</span> <span class="n">hv_greedy</span><span class="p">)</span>  <span class="c"># 2 of the worst individuals will be considered for replacement</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="class">
+<dt id="PyGMO.migration.hv_fair_r_policy">
+<em class="property">class </em><tt class="descclassname">PyGMO.migration.</tt><tt class="descname">hv_fair_r_policy</tt><big>(</big><span class="optional">[</span><em>n=1</em>, <em>type = migration.rate_type.absolute</em>, <em>nadir_eps = 1.0</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#PyGMO.migration.hv_fair_r_policy" title="Permalink to this definition">¶</a></dt>
+<dd><p>A replacement policy that replaces the worst n <a class="reference internal" href="individual.html#PyGMO.individual" title="PyGMO.individual"><tt class="xref py py-class docutils literal"><span class="pre">PyGMO.individual</span></tt></a> in the <a class="reference internal" href="island.html#PyGMO.island" title="PyGMO.island"><tt class="xref py py-class docutils literal"><span class="pre">PyGMO.island</span></tt></a>&#8216;s
+<a class="reference internal" href="population.html#PyGMO.population" title="PyGMO.population"><tt class="xref py py-class docutils literal"><span class="pre">PyGMO.population</span></tt></a> with the best n immigrants. Each replacement takes place if and only if
+the migrant is considered better.  The comparison between individuals is made according to the exclusive hypervolume they contribute to the population
+(see <cite>PyGMO.hypervolume</cite> for more details).
+If type is migration.rate_type.fractional then n, in [0,1], is interpreted as the fraction of the population to be replaced.
+The reference point for all hypervolume computations is the current nadir-point of the population with an off-set determined by the <tt class="docutils literal"><span class="pre">nadir_eps</span></tt>.</p>
+<p>The sets of worst islanders and best immigrants are determined according to the exclusive contribution by each individual.
+This is done by a single computation of the exclusive contributions over a joined population of original individuals and the immigrants.
+The vector of contributions serves as a mean for determining the required sets.</p>
+<p>NOTE: This migration applies only to multi-objective problems. In case of a single-objective problem, the <cite>PyGMO.migration.fair_r_policy</cite> is used instead.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">PyGMO</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="n">prob</span> <span class="o">=</span> <span class="n">problem</span><span class="o">.</span><span class="n">dltz3</span><span class="p">(</span><span class="n">fdim</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">algo</span> <span class="o">=</span> <span class="n">algorithm</span><span class="o">.</span><span class="n">nsga_II</span><span class="p">(</span><span class="n">gen</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span> <span class="c"># Instantiates the NSGA-II algorithm</span>
+<span class="n">hv_fair</span> <span class="o">=</span> <span class="n">migration</span><span class="o">.</span><span class="n">hv_fair_r_policy</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">isl</span> <span class="o">=</span> <span class="n">island</span><span class="p">(</span><span class="n">algo</span><span class="p">,</span><span class="n">prob</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="n">r_policy</span> <span class="o">=</span> <span class="n">hv_fair</span><span class="p">)</span>  <span class="c"># 3 of the worst individuals will be considered for replacement</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="class">
+<dt id="PyGMO.distribution_type">
+<em class="property">class </em><tt class="descclassname">PyGMO.</tt><tt class="descname">distribution_type</tt><a class="headerlink" href="#PyGMO.distribution_type" title="Permalink to this definition">¶</a></dt>
+<dd><p>This class attributes are be used to set the kwarg &#8216;distribution_type&#8217; of the <a class="reference internal" href="island.html#PyGMO.archipelago" title="PyGMO.archipelago"><tt class="xref py py-class docutils literal"><span class="pre">PyGMO.archipelago</span></tt></a> constructor kwarg &#8216;migration_direction&#8217; to
+define whether the migrants will be distributed to one of the neighbouring island chosen at random or to all
+of them</p>
+<dl class="attribute">
+<dt id="PyGMO.distribution_type.point_to_point">
+<tt class="descname">point_to_point</tt><a class="headerlink" href="#PyGMO.distribution_type.point_to_point" title="Permalink to this definition">¶</a></dt>
+<dd><p>Migrants are distributed to one of neighbouring <a class="reference internal" href="island.html#PyGMO.island" title="PyGMO.island"><tt class="xref py py-class docutils literal"><span class="pre">PyGMO.island</span></tt></a> selected at random</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="PyGMO.distribution_type.broadcast">
+<tt class="descname">broadcast</tt><a class="headerlink" href="#PyGMO.distribution_type.broadcast" title="Permalink to this definition">¶</a></dt>
+<dd><p>Migrants are distributed to all neighbouring <a class="reference internal" href="island.html#PyGMO.island" title="PyGMO.island"><tt class="xref py py-class docutils literal"><span class="pre">PyGMO.island</span></tt></a></p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="PyGMO.migration_direction">
+<em class="property">class </em><tt class="descclassname">PyGMO.</tt><tt class="descname">migration_direction</tt><a class="headerlink" href="#PyGMO.migration_direction" title="Permalink to this definition">¶</a></dt>
+<dd><p>This class attributes are be used to set the kwarg &#8216;migration_direction&#8217; of the <a class="reference internal" href="island.html#PyGMO.archipelago" title="PyGMO.archipelago"><tt class="xref py py-class docutils literal"><span class="pre">PyGMO.archipelago</span></tt></a> constructor kwarg &#8216;migration_direction&#8217; to
+define whether the migrant databases will contain the incoming or the outgoing individuals.</p>
+<dl class="attribute">
+<dt id="PyGMO.migration_direction.destination">
+<tt class="descname">destination</tt><a class="headerlink" href="#PyGMO.migration_direction.destination" title="Permalink to this definition">¶</a></dt>
+<dd><p>Migrant database contains outgoing individuals</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="PyGMO.migration_direction.source">
+<tt class="descname">source</tt><a class="headerlink" href="#PyGMO.migration_direction.source" title="Permalink to this definition">¶</a></dt>
+<dd><p>Migrant database contains incoming individuals</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="PyGMO.migration.rate_type">
+<em class="property">class </em><tt class="descclassname">PyGMO.migration.</tt><tt class="descname">rate_type</tt><a class="headerlink" href="#PyGMO.migration.rate_type" title="Permalink to this definition">¶</a></dt>
+<dd><blockquote>
+<div>This class attributes are used to set the second arg in the various selection and replacement policies
+(<a class="reference internal" href="#PyGMO.migration.best_s_policy" title="PyGMO.migration.best_s_policy"><tt class="xref py py-class docutils literal"><span class="pre">PyGMO.migration.best_s_policy</span></tt></a>, <a class="reference internal" href="#PyGMO.migration.fair_r_policy" title="PyGMO.migration.fair_r_policy"><tt class="xref py py-class docutils literal"><span class="pre">PyGMO.migration.fair_r_policy</span></tt></a>,
+<a class="reference internal" href="#PyGMO.migration.worst_r_policy" title="PyGMO.migration.worst_r_policy"><tt class="xref py py-class docutils literal"><span class="pre">PyGMO.migration.worst_r_policy</span></tt></a>, <a class="reference internal" href="#PyGMO.migration.random_r_policy" title="PyGMO.migration.random_r_policy"><tt class="xref py py-class docutils literal"><span class="pre">PyGMO.migration.random_r_policy</span></tt></a>)</div></blockquote>
+<dl class="attribute">
+<dt id="PyGMO.migration.rate_type.absolute">
+<tt class="descname">absolute</tt><a class="headerlink" href="#PyGMO.migration.rate_type.absolute" title="Permalink to this definition">¶</a></dt>
+<dd><p>The number of migrants is specified as an absolute number</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="PyGMO.migration.rate_type.fractional">
+<tt class="descname">fractional</tt><a class="headerlink" href="#PyGMO.migration.rate_type.fractional" title="Permalink to this definition">¶</a></dt>
+<dd><p>The number of migrants is specified as fraction of the <a class="reference internal" href="population.html#PyGMO.population" title="PyGMO.population"><tt class="xref py py-class docutils literal"><span class="pre">PyGMO.population</span></tt></a> size</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+</div>
+
+
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="topology.html" class="btn btn-neutral float-right" title="Topology"/>Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="population.html" class="btn btn-neutral" title="Population"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2015, Dario Izzo and Francesco Biscani.
+    </p>
+  </div>
+
+  <a href="https://github.com/snide/sphinx_rtd_theme">Sphinx theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+</body>
+</html>

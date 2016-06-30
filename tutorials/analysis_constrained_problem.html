@@ -1,0 +1,344 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Analysis of the Constraints Landscape &mdash; PyGMO 1.1.7dev documentation</title>
+  
+
+  
+  
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  
+  
+
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:'../',
+        VERSION:'1.1.7dev',
+        COLLAPSE_INDEX:false,
+        FILE_SUFFIX:'.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+    <script type="text/javascript">
+        jQuery(function () {
+            SphinxRtdTheme.StickyNav.enable();
+        });
+    </script>
+  
+
+  
+    <link rel="top" title="PyGMO 1.1.7dev documentation" href="../index.html"/>
+        <link rel="up" title="Landscape Analysis using Dr. PyGMO" href="landscape_analysis_with_DrPyGMO.html"/>
+        <link rel="next" title="Examples" href="../examples/index.html"/>
+        <link rel="prev" title="Analysis of the Fitness Landscape" href="analysis_unconstrained_problem.html"/> 
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        <a href="../index.html" class="fa fa-home"> PyGMO</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        
+        
+            <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../install.html">Install PyGMO</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../install.html#preparing-your-system-to-compile-pygmo">Preparing your system to compile PyGMO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../install.html#download-pygmo-code">Download PyGMO code</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../install.html#compiling-and-installing-under-unix">Compiling and Installing under Unix</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../install.html#compiling-and-installing-under-windows">Compiling and Installing under Windows</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../quickstart.html">Quick Start</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../quickstart.html#on-one-cpu">On one CPU</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../quickstart.html#on-many-cpus">On many CPUs ...</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../quickstart.html#and-migrating-solutions">... and migrating solutions ...</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../quickstart.html#and-between-different-algorithms">... and between different algorithms ...</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Tutorials</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="adding_problems_and_algorithms_to_PyGMO.html">Adding new problems and algorithms to PyGMO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="meta_problems_meta_algorithms.html">Meta-problems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="multi_objective_optimization_with_PyGMO.html">Multi Objective Optimization with PyGMO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hypervolumes_in_PyGMO.html">Hypervolumes with PyGMO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dealing_with_constraints_in_PyGMO.html">Dealing with constraints in PyGMO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="racing.html">Racing in PyGMO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tsp.html">Traveling Salesman Problems with PyGMO</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="landscape_analysis_with_DrPyGMO.html">Landscape Analysis using Dr. PyGMO</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/index.html">Examples</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../examples/example1.html">A study on Mixing Variants of Differential Evolution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples/example2.html">Monitoring the Information Flow in a large archipelago</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples/example3.html">Testing Algorithms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples/example4.html">Multi-objective optimization in the asynchronous island model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples/example5.html">Designing and optimizing interplanetary trajectories</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples/example6.html">Participating to the CEC2013 Competition (v 1.1.5)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples/example7.html">Travelling Salesman Problem for Active Space Debris Removal</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples/local_optimization.html">Third-party Non-linear optimizers in PyGMO</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../documentation/index.html">User Documentation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../documentation/individual.html">Individual and Champion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../documentation/population.html">Population</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../documentation/migration.html">Migration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../documentation/topology.html">Topology</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../documentation/island.html">Island and Archipelago</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../documentation/algorithms.html">Algorithms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../documentation/problems.html">Problems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../documentation/hypervolume.html">Hypervolume</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../documentation/racing.html">Racing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../documentation/analysis.html">Dr. PyGMO - Analysis Module</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference external" href="http://esa.github.io/pagmo/">PaGMO API</a></li>
+</ul>
+
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../index.html">PyGMO</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="index.html">Tutorials</a> &raquo;</li>
+      
+          <li><a href="landscape_analysis_with_DrPyGMO.html">Landscape Analysis using Dr. PyGMO</a> &raquo;</li>
+      
+    <li>Analysis of the Constraints Landscape</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          <a href="../_sources/tutorials/analysis_constrained_problem.txt" rel="nofollow"> View page source</a>
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            
+  <div class="section" id="analysis-of-the-constraints-landscape">
+<span id="analysis-constrained-problem"></span><h1>Analysis of the Constraints Landscape<a class="headerlink" href="#analysis-of-the-constraints-landscape" title="Permalink to this headline">¶</a></h1>
+<p>In this tutorial we want to show how to use the lanscape anlaysis module Dr. PyGMO for the analysis of the constraint functions.</p>
+<div class="section" id="instantiate-analysis-module">
+<h2>Instantiate Analysis Module<a class="headerlink" href="#instantiate-analysis-module" title="Permalink to this headline">¶</a></h2>
+<p>First, we need to instantiate the analysis class as follows:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">PyGMO</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="c">#We instantiate the optimization problem as usual.</span>
+<span class="n">prob</span><span class="o">=</span><span class="n">problem</span><span class="o">.</span><span class="n">cec2006</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+
+<span class="c">#Now we instantiate the analysis class. In this case we will sample 1000 points via via latin</span>
+<span class="c">#hypersquare sampling (lhs) and choose output to file.</span>
+<span class="n">inspector</span><span class="o">=</span><span class="n">util</span><span class="o">.</span><span class="n">analysis</span><span class="p">(</span><span class="n">prob</span><span class="p">,</span><span class="mi">1000</span><span class="p">,</span><span class="s">&#39;lhs&#39;</span><span class="p">,</span><span class="n">output_to_file</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="tests-on-constraints-functions">
+<h2>Tests on constraints functions<a class="headerlink" href="#tests-on-constraints-functions" title="Permalink to this headline">¶</a></h2>
+<p>Now we can start launching the tests related to the constraints functions.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">inspector</span><span class="o">.</span><span class="n">c_feasibility</span><span class="p">()</span>
+<span class="n">inspector</span><span class="o">.</span><span class="n">c_linearity</span><span class="p">()</span>
+<span class="n">inspector</span><span class="o">.</span><span class="n">c_regression</span><span class="p">(</span><span class="n">degree</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">],</span><span class="n">interaction</span><span class="o">=</span><span class="p">[</span><span class="bp">False</span><span class="p">,</span><span class="bp">True</span><span class="p">,</span><span class="bp">False</span><span class="p">,</span><span class="bp">True</span><span class="p">])</span>
+<span class="n">inspector</span><span class="o">.</span><span class="n">c_sensitivity</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>The output will look like this:</p>
+<div class="highlight-none"><div class="highlight"><pre>===============================================================================
+                                   ANALYSIS
+===============================================================================
+-------------------------------------------------------------------------------
+PROBLEM PROPERTIES
+-------------------------------------------------------------------------------
+Problem name: CEC2006 - g5
+        Global dimension:                       4
+        Integer dimension:                      0
+        Fitness dimension:                      1
+        Constraints dimension:                  5
+        Inequality constraints dimension:       2
+        Lower bounds: [0, 0, -0.55000000000000004, -0.55000000000000004]
+        Upper bounds: [1200, 1200, 0.55000000000000004, 0.55000000000000004]
+        Constraints tolerance: [0.0001, 0.0001, 0.0001, 0, 0]
+
+-------------------------------------------------------------------------------
+SAMPLED [1000] POINTS VIA lhs METHOD FOR THE SUBSEQUENT TESTS
+-------------------------------------------------------------------------------
+C-FEASIBILITY
+-------------------------------------------------------------------------------
+Constraint h_1 :
+     Effectiveness &gt;=0 :                 [0.416]
+     Effectiveness &lt;=0 :                 [0.584]
+     Number of feasible points found :   [0]
+Constraint h_2 :
+     Effectiveness &gt;=0 :                 [0.388]
+     Effectiveness &lt;=0 :                 [0.612]
+     Number of feasible points found :   [0]
+Constraint h_3 :
+     Effectiveness &gt;=0 :                 [0.879]
+     Effectiveness &lt;=0 :                 [0.121]
+     Number of feasible points found :   [0]
+Constraint g_1 :
+     Effectiveness &gt;0 :                  [0.128]
+     Redundancy wrt. all other ic :      [0.0]
+     Number of feasible points found :   [872]
+Constraint g_2 :
+     Effectiveness &gt;0 :                  [0.124]
+     Redundancy wrt. all other ic :      [0.0]
+     Number of feasible points found :   [876]
+Pairwise redundancy (ic) :
+_____|   g1   |   g2   |
+ g1  |  1.0   |  0.0   |
+ g2  |  0.0   |  1.0   |
+-------------------------------------------------------------------------------
+C-LINEARITY
+-------------------------------------------------------------------------------
+Number of pairs of points used :         [1000]
+              CONSTRAINT         PROBABILITY OF LINEARITY
+                 h_1                     [0.005]
+                 h_2                     [0.005]
+                 h_3                     [0.003]
+                 g_1                      [1.0]
+                 g_2                      [1.0]
+-------------------------------------------------------------------------------
+C-REGRESSION
+-------------------------------------------------------------------------------
+CONSTRAINT h_1 :
+ DEGREE         F*            R2      R2adj       RMSE      R2pred   PRESS-RMSE
+   1        126286.466      0.999     0.999      0.006      0.999      0.006
+  1(i)      126286.466      0.999     0.999      0.006      0.999      0.006
+   2        348689.605       1.0       1.0       0.002       1.0       0.002
+  2(i)      348689.605       1.0       1.0       0.002       1.0       0.002
+CONSTRAINT h_2 :
+ DEGREE         F*            R2      R2adj       RMSE      R2pred   PRESS-RMSE
+   1        47625.385       0.998     0.998       0.01      0.998       0.01
+  1(i)      47625.385       0.998     0.998       0.01      0.998       0.01
+   2        292418.74        1.0       1.0       0.002       1.0       0.002
+  2(i)      292418.74        1.0       1.0       0.002       1.0       0.002
+CONSTRAINT h_3 :
+ DEGREE         F*            R2      R2adj       RMSE      R2pred   PRESS-RMSE
+   1        51587.224       0.998     0.998      0.011      0.998      0.012
+  1(i)      51587.224       0.998     0.998      0.011      0.998      0.012
+   2        223152.687       1.0       1.0       0.003       1.0       0.003
+  2(i)      223152.687       1.0       1.0       0.003       1.0       0.003
+CONSTRAINT g_1 :
+ DEGREE         F*            R2      R2adj       RMSE      R2pred   PRESS-RMSE
+   1         2.6e+31         1.0       1.0      1.0e-15      1.0     1.086e-15
+  1(i)       2.6e+31         1.0       1.0      1.0e-15      1.0     1.086e-15
+   2        3.907e+30        1.0       1.0     2.581e-15     1.0     2.557e-15
+  2(i)      3.907e+30        1.0       1.0     2.581e-15     1.0     2.557e-15
+CONSTRAINT g_2 :
+ DEGREE         F*            R2      R2adj       RMSE      R2pred   PRESS-RMSE
+   1        1.792e+31        1.0       1.0     1.205e-15     1.0     1.135e-15
+  1(i)      1.792e+31        1.0       1.0     1.205e-15     1.0     1.135e-15
+   2        2.322e+30        1.0       1.0     3.347e-15     1.0     3.493e-15
+  2(i)      2.322e+30        1.0       1.0     3.347e-15     1.0     3.493e-15
+-------------------------------------------------------------------------------
+C-SENSITIVITY
+-------------------------------------------------------------------------------
+CONSTRAINT g_1 :
+  Percentiles :             |    0    |    25   |    50   |    75   |   100   |
+     Gradient norm :        |  0.608  |   0.68  |  0.702  |  0.721  |  0.731  |
+    |dFx|_max/|dFx|_min :   |   inf   |   inf   |   inf   |   inf   |   inf   |
+     Gradient sparsity :            [0.4]
+CONSTRAINT g_2 :
+  Percentiles :             |    0    |    25   |    50   |    75   |   100   |
+     Gradient norm :        |  0.477  |  0.696  |  0.751  |  0.776  |  0.793  |
+    |dFx|_max/|dFx|_min :   |   inf   |   inf   |   inf   |   inf   |   inf   |
+     Gradient sparsity :            [0.4]
+*Constraints Gradient/Jacobian sparsity plot : &lt;figure_1.png&gt;
+*Constraint Gradient/Jacobian PCP plot : &lt;figure_2.png&gt;
+*Constraint Gradient/Jacobian PCP plot (inverted) : &lt;figure_3.png&gt;
+</pre></div>
+</div>
+<img alt="../_images/analysis_cstrs.png" src="../_images/analysis_cstrs.png" />
+</div>
+</div>
+
+
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../examples/index.html" class="btn btn-neutral float-right" title="Examples"/>Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="analysis_unconstrained_problem.html" class="btn btn-neutral" title="Analysis of the Fitness Landscape"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2015, Dario Izzo and Francesco Biscani.
+    </p>
+  </div>
+
+  <a href="https://github.com/snide/sphinx_rtd_theme">Sphinx theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+</body>
+</html>

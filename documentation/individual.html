@@ -1,0 +1,301 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Individual and Champion &mdash; PyGMO 1.1.7dev documentation</title>
+  
+
+  
+  
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  
+  
+
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:'../',
+        VERSION:'1.1.7dev',
+        COLLAPSE_INDEX:false,
+        FILE_SUFFIX:'.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+    <script type="text/javascript">
+        jQuery(function () {
+            SphinxRtdTheme.StickyNav.enable();
+        });
+    </script>
+  
+
+  
+    <link rel="top" title="PyGMO 1.1.7dev documentation" href="../index.html"/>
+        <link rel="up" title="User Documentation" href="index.html"/>
+        <link rel="next" title="Population" href="population.html"/>
+        <link rel="prev" title="User Documentation" href="index.html"/> 
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        <a href="../index.html" class="fa fa-home"> PyGMO</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        
+        
+            <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../install.html">Install PyGMO</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../install.html#preparing-your-system-to-compile-pygmo">Preparing your system to compile PyGMO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../install.html#download-pygmo-code">Download PyGMO code</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../install.html#compiling-and-installing-under-unix">Compiling and Installing under Unix</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../install.html#compiling-and-installing-under-windows">Compiling and Installing under Windows</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../quickstart.html">Quick Start</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../quickstart.html#on-one-cpu">On one CPU</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../quickstart.html#on-many-cpus">On many CPUs ...</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../quickstart.html#and-migrating-solutions">... and migrating solutions ...</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../quickstart.html#and-between-different-algorithms">... and between different algorithms ...</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/index.html">Tutorials</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/adding_problems_and_algorithms_to_PyGMO.html">Adding new problems and algorithms to PyGMO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/meta_problems_meta_algorithms.html">Meta-problems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/multi_objective_optimization_with_PyGMO.html">Multi Objective Optimization with PyGMO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/hypervolumes_in_PyGMO.html">Hypervolumes with PyGMO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/dealing_with_constraints_in_PyGMO.html">Dealing with constraints in PyGMO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/racing.html">Racing in PyGMO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/tsp.html">Traveling Salesman Problems with PyGMO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/landscape_analysis_with_DrPyGMO.html">Landscape Analysis using Dr. PyGMO</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/index.html">Examples</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../examples/example1.html">A study on Mixing Variants of Differential Evolution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples/example2.html">Monitoring the Information Flow in a large archipelago</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples/example3.html">Testing Algorithms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples/example4.html">Multi-objective optimization in the asynchronous island model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples/example5.html">Designing and optimizing interplanetary trajectories</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples/example6.html">Participating to the CEC2013 Competition (v 1.1.5)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples/example7.html">Travelling Salesman Problem for Active Space Debris Removal</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples/local_optimization.html">Third-party Non-linear optimizers in PyGMO</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">User Documentation</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="">Individual and Champion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="population.html">Population</a></li>
+<li class="toctree-l2"><a class="reference internal" href="migration.html">Migration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="topology.html">Topology</a></li>
+<li class="toctree-l2"><a class="reference internal" href="island.html">Island and Archipelago</a></li>
+<li class="toctree-l2"><a class="reference internal" href="algorithms.html">Algorithms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="problems.html">Problems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hypervolume.html">Hypervolume</a></li>
+<li class="toctree-l2"><a class="reference internal" href="racing.html">Racing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="analysis.html">Dr. PyGMO - Analysis Module</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference external" href="http://esa.github.io/pagmo/">PaGMO API</a></li>
+</ul>
+
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../index.html">PyGMO</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="index.html">User Documentation</a> &raquo;</li>
+      
+    <li>Individual and Champion</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          <a href="../_sources/documentation/individual.txt" rel="nofollow"> View page source</a>
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            
+  <div class="section" id="individual-and-champion">
+<h1>Individual and Champion<a class="headerlink" href="#individual-and-champion" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="PyGMO.individual">
+<em class="property">class </em><tt class="descclassname">PyGMO.</tt><tt class="descname">individual</tt><a class="headerlink" href="#PyGMO.individual" title="Permalink to this definition">¶</a></dt>
+<dd><p>This class represents the concept of an <em>individual</em>. In PyGMO, an <em>individual</em> is the solution to some optimization
+problem, enriched with some memory of its past (this usually records the best position so far occupied in the solution
+space by a certain individual), and a velocity, representing the variation in the search space of an <em>individual</em> position.</p>
+<p>While it is important to know what an <em>individual</em> is, the user rarely constructs or manipulate individuals as these
+actions are performed by other classes that also ensure the information contained in an <em>individual</em> is consistent
+(i.e. length of the chromosomes, etc. )</p>
+<dl class="method">
+<dt id="PyGMO.individual.__init__">
+<tt class="descname">__init__</tt><big>(</big><big>)</big><a class="headerlink" href="#PyGMO.individual.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructs an empty <em>individual</em></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="PyGMO.individual.cur_f">
+<tt class="descname">cur_f</tt><a class="headerlink" href="#PyGMO.individual.cur_f" title="Permalink to this definition">¶</a></dt>
+<dd><p>Tuple containing the current fitness of the <em>individual</em> w.r.t a problem (can contain more than one fitness score for multi-objective optimization)</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="PyGMO.individual.cur_x">
+<tt class="descname">cur_x</tt><a class="headerlink" href="#PyGMO.individual.cur_x" title="Permalink to this definition">¶</a></dt>
+<dd><p>Tuple containing the current chromosome (or decision vector) defining the <em>individual</em></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="PyGMO.individual.cur_c">
+<tt class="descname">cur_c</tt><a class="headerlink" href="#PyGMO.individual.cur_c" title="Permalink to this definition">¶</a></dt>
+<dd><p>Tuple containing the current constraint vector defining an <em>individual</em> w.r.t a problem (this will be empty in unconstrained optimizaion problems)</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="PyGMO.individual.best_f">
+<tt class="descname">best_f</tt><a class="headerlink" href="#PyGMO.individual.best_f" title="Permalink to this definition">¶</a></dt>
+<dd><p>Tuple containing the <em>individual</em> fitness corresponding to best_x (the individual can move out of good points as a result of the optimization process)</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="PyGMO.individual.best_x">
+<tt class="descname">best_x</tt><a class="headerlink" href="#PyGMO.individual.best_x" title="Permalink to this definition">¶</a></dt>
+<dd><p>Tuple storing the chromosome corresponding to the best position encountered so far since the individual creation (individual can move out of good areas as a resualt of the optimization process)</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="PyGMO.individual.best_c">
+<tt class="descname">best_c</tt><a class="headerlink" href="#PyGMO.individual.best_c" title="Permalink to this definition">¶</a></dt>
+<dd><p>Tuple containing the constraint vector corresponding to best_x</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="PyGMO.individual.cur_v">
+<tt class="descname">cur_v</tt><a class="headerlink" href="#PyGMO.individual.cur_v" title="Permalink to this definition">¶</a></dt>
+<dd><p>Velocity of an <em>individual</em> (that is the difference in cur_x between generations). This information is crucial in algorithms such as Particle Swarm Optimization (PSO), but it gets, by default, updated also by other algorithms.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="PyGMO.champion">
+<em class="property">class </em><tt class="descclassname">PyGMO.</tt><tt class="descname">champion</tt><a class="headerlink" href="#PyGMO.champion" title="Permalink to this definition">¶</a></dt>
+<dd><p>This class represents the concept of a <em>champion</em>, i.e. the best among a set of individuals. Differently from
+an <a class="reference internal" href="#PyGMO.individual" title="PyGMO.individual"><tt class="xref py py-class docutils literal"><span class="pre">PyGMO.individual</span></tt></a> a <em>champion</em> does not have memory, nor a velocity. Similarly from the class <a class="reference internal" href="#PyGMO.individual" title="PyGMO.individual"><tt class="xref py py-class docutils literal"><span class="pre">PyGMO.individual</span></tt></a> the user rarely constructs or manipulate
+objects from this class as these actions are performed by other classes that also ensure the information
+contained in a <em>champion</em> is consistent (i.e. it actually is the best in a set of individuals, etc. )</p>
+<dl class="method">
+<dt id="PyGMO.champion.__init__">
+<tt class="descname">__init__</tt><big>(</big><big>)</big><a class="headerlink" href="#PyGMO.champion.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructs an empty <em>champion</em></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="PyGMO.champion.f">
+<tt class="descname">f</tt><a class="headerlink" href="#PyGMO.champion.f" title="Permalink to this definition">¶</a></dt>
+<dd><p>Tuple containing the fitness of the <em>champion</em> w.r.t a problem (can contain more than one fitness score for multi-objective optimization)</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="PyGMO.champion.x">
+<tt class="descname">x</tt><a class="headerlink" href="#PyGMO.champion.x" title="Permalink to this definition">¶</a></dt>
+<dd><p>Tuple containing the chromosome (or decision vector) defining the <em>champion</em></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="PyGMO.champion.c">
+<tt class="descname">c</tt><a class="headerlink" href="#PyGMO.champion.c" title="Permalink to this definition">¶</a></dt>
+<dd><p>Tuple containing the constraint vector defining a <em>champion</em> w.r.t a problem (this will be empty in unconstrained optimizaion problems)</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="population.html" class="btn btn-neutral float-right" title="Population"/>Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="index.html" class="btn btn-neutral" title="User Documentation"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2015, Dario Izzo and Francesco Biscani.
+    </p>
+  </div>
+
+  <a href="https://github.com/snide/sphinx_rtd_theme">Sphinx theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+</body>
+</html>

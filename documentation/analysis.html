@@ -1,0 +1,1709 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Dr. PyGMO - Analysis Module &mdash; PyGMO 1.1.7dev documentation</title>
+  
+
+  
+  
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  
+  
+
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:'../',
+        VERSION:'1.1.7dev',
+        COLLAPSE_INDEX:false,
+        FILE_SUFFIX:'.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+    <script type="text/javascript">
+        jQuery(function () {
+            SphinxRtdTheme.StickyNav.enable();
+        });
+    </script>
+  
+
+  
+    <link rel="top" title="PyGMO 1.1.7dev documentation" href="../index.html"/>
+        <link rel="up" title="User Documentation" href="index.html"/>
+        <link rel="prev" title="Racing" href="racing.html"/> 
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        <a href="../index.html" class="fa fa-home"> PyGMO</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        
+        
+            <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../install.html">Install PyGMO</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../install.html#preparing-your-system-to-compile-pygmo">Preparing your system to compile PyGMO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../install.html#download-pygmo-code">Download PyGMO code</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../install.html#compiling-and-installing-under-unix">Compiling and Installing under Unix</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../install.html#compiling-and-installing-under-windows">Compiling and Installing under Windows</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../quickstart.html">Quick Start</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../quickstart.html#on-one-cpu">On one CPU</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../quickstart.html#on-many-cpus">On many CPUs ...</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../quickstart.html#and-migrating-solutions">... and migrating solutions ...</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../quickstart.html#and-between-different-algorithms">... and between different algorithms ...</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/index.html">Tutorials</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/adding_problems_and_algorithms_to_PyGMO.html">Adding new problems and algorithms to PyGMO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/meta_problems_meta_algorithms.html">Meta-problems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/multi_objective_optimization_with_PyGMO.html">Multi Objective Optimization with PyGMO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/hypervolumes_in_PyGMO.html">Hypervolumes with PyGMO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/dealing_with_constraints_in_PyGMO.html">Dealing with constraints in PyGMO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/racing.html">Racing in PyGMO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/tsp.html">Traveling Salesman Problems with PyGMO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/landscape_analysis_with_DrPyGMO.html">Landscape Analysis using Dr. PyGMO</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/index.html">Examples</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../examples/example1.html">A study on Mixing Variants of Differential Evolution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples/example2.html">Monitoring the Information Flow in a large archipelago</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples/example3.html">Testing Algorithms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples/example4.html">Multi-objective optimization in the asynchronous island model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples/example5.html">Designing and optimizing interplanetary trajectories</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples/example6.html">Participating to the CEC2013 Competition (v 1.1.5)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples/example7.html">Travelling Salesman Problem for Active Space Debris Removal</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples/local_optimization.html">Third-party Non-linear optimizers in PyGMO</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">User Documentation</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="individual.html">Individual and Champion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="population.html">Population</a></li>
+<li class="toctree-l2"><a class="reference internal" href="migration.html">Migration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="topology.html">Topology</a></li>
+<li class="toctree-l2"><a class="reference internal" href="island.html">Island and Archipelago</a></li>
+<li class="toctree-l2"><a class="reference internal" href="algorithms.html">Algorithms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="problems.html">Problems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hypervolume.html">Hypervolume</a></li>
+<li class="toctree-l2"><a class="reference internal" href="racing.html">Racing</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="">Dr. PyGMO - Analysis Module</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference external" href="http://esa.github.io/pagmo/">PaGMO API</a></li>
+</ul>
+
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../index.html">PyGMO</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="index.html">User Documentation</a> &raquo;</li>
+      
+    <li>Dr. PyGMO - Analysis Module</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          <a href="../_sources/documentation/analysis.txt" rel="nofollow"> View page source</a>
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            
+  <div class="section" id="dr-pygmo-analysis-module">
+<h1>Dr. PyGMO - Analysis Module<a class="headerlink" href="#dr-pygmo-analysis-module" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="a-quick-look">
+<h2>A Quick Look<a class="headerlink" href="#a-quick-look" title="Permalink to this headline">¶</a></h2>
+<p>Optimization problems are often provided as black box functions. A number of exploratory techniques based on sampling of the search space are
+available to help to gain knowledge about the problem. In particular we are interested about problem characteristics that can be critical for
+the performance of the algorithms or those that can help the user to reformulate the problem in a more efficient way.
+You may follow the <a class="reference internal" href="../tutorials/landscape_analysis_with_DrPyGMO.html#landscape-analysis-with-drpygmo"><em>Landscape Analysis using Dr. PyGMO</em></a> tutorial for a better insight on its use. Hereafter the list of test available in the
+current version of the module <em>PyGMO.util.analysis</em>.</p>
+<p><strong>NOTE:</strong> The packages, pandas and numpy (for plots), scikit-learn (for levelset analysis) need to be installed for having the complete set of functionalities.</p>
+<div class="section" id="tests">
+<h3>Tests<a class="headerlink" href="#tests" title="Permalink to this headline">¶</a></h3>
+<table border="1" class="docutils">
+<colgroup>
+<col width="24%" />
+<col width="39%" />
+<col width="36%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Common Name</th>
+<th class="head">Name in PyGMO</th>
+<th class="head">Comments</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Sample</td>
+<td><a class="reference internal" href="#PyGMO.util.analysis.sample" title="PyGMO.util.analysis.sample"><tt class="xref py py-func docutils literal"><span class="pre">PyGMO.util.analysis.sample()</span></tt></a></td>
+<td>Sampling of the search space</td>
+</tr>
+<tr class="row-odd"><td>F-distribution</td>
+<td><a class="reference internal" href="#PyGMO.util.analysis.f_distribution" title="PyGMO.util.analysis.f_distribution"><tt class="xref py py-func docutils literal"><span class="pre">PyGMO.util.analysis.f_distribution()</span></tt></a></td>
+<td>Distribution of sampled fitness values</td>
+</tr>
+<tr class="row-even"><td>F-linearity and convexity</td>
+<td><a class="reference internal" href="#PyGMO.util.analysis.f_linearity_convexity" title="PyGMO.util.analysis.f_linearity_convexity"><tt class="xref py py-func docutils literal"><span class="pre">PyGMO.util.analysis.f_linearity_convexity()</span></tt></a></td>
+<td>Probability of linearity and convexity of fitness function</td>
+</tr>
+<tr class="row-odd"><td>F-regression</td>
+<td><a class="reference internal" href="#PyGMO.util.analysis.f_regression" title="PyGMO.util.analysis.f_regression"><tt class="xref py py-func docutils literal"><span class="pre">PyGMO.util.analysis.f_regression()</span></tt></a></td>
+<td>Polynomial regression on fitness function</td>
+</tr>
+<tr class="row-even"><td>F-correlation</td>
+<td><a class="reference internal" href="#PyGMO.util.analysis.f_correlation" title="PyGMO.util.analysis.f_correlation"><tt class="xref py py-func docutils literal"><span class="pre">PyGMO.util.analysis.f_correlation()</span></tt></a></td>
+<td>Fitness dimensionality reduction via PCA</td>
+</tr>
+<tr class="row-odd"><td>F-sensitivity</td>
+<td><a class="reference internal" href="#PyGMO.util.analysis.f_sensitivity" title="PyGMO.util.analysis.f_sensitivity"><tt class="xref py py-func docutils literal"><span class="pre">PyGMO.util.analysis.f_sensitivity()</span></tt></a></td>
+<td>Jacobian and Hessian of fitness function</td>
+</tr>
+<tr class="row-even"><td>Levelset</td>
+<td><a class="reference internal" href="#PyGMO.util.analysis.levelset" title="PyGMO.util.analysis.levelset"><tt class="xref py py-func docutils literal"><span class="pre">PyGMO.util.analysis.levelset()</span></tt></a></td>
+<td>SVM binary classification</td>
+</tr>
+<tr class="row-odd"><td>Local search</td>
+<td><a class="reference internal" href="#PyGMO.util.analysis.local_search" title="PyGMO.util.analysis.local_search"><tt class="xref py py-func docutils literal"><span class="pre">PyGMO.util.analysis.local_search()</span></tt></a></td>
+<td>Clustering of local minima</td>
+</tr>
+<tr class="row-even"><td>C-feasibility</td>
+<td><a class="reference internal" href="#PyGMO.util.analysis.c_feasibility" title="PyGMO.util.analysis.c_feasibility"><tt class="xref py py-func docutils literal"><span class="pre">PyGMO.util.analysis.c_feasibility()</span></tt></a></td>
+<td>Constraint effectiveness and redundancy</td>
+</tr>
+<tr class="row-odd"><td>C-linearity</td>
+<td><a class="reference internal" href="#PyGMO.util.analysis.c_linearity" title="PyGMO.util.analysis.c_linearity"><tt class="xref py py-func docutils literal"><span class="pre">PyGMO.util.analysis.c_linearity()</span></tt></a></td>
+<td>Probability of linearity of constraints function</td>
+</tr>
+<tr class="row-even"><td>C-regression</td>
+<td><a class="reference internal" href="#PyGMO.util.analysis.c_regression" title="PyGMO.util.analysis.c_regression"><tt class="xref py py-func docutils literal"><span class="pre">PyGMO.util.analysis.c_regression()</span></tt></a></td>
+<td>Polynomial regression on constraints function</td>
+</tr>
+<tr class="row-odd"><td>C-sensitivity</td>
+<td><a class="reference internal" href="#PyGMO.util.analysis.c_sensitivity" title="PyGMO.util.analysis.c_sensitivity"><tt class="xref py py-func docutils literal"><span class="pre">PyGMO.util.analysis.c_sensitivity()</span></tt></a></td>
+<td>Jacobian of constraints function</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="detailed-documentation">
+<h2>Detailed Documentation<a class="headerlink" href="#detailed-documentation" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="PyGMO.util.analysis">
+<em class="property">class </em><tt class="descclassname">PyGMO.util.</tt><tt class="descname">analysis</tt><big>(</big><em>input_object</em>, <em>npoints=0</em>, <em>method='sobol'</em>, <em>first=1</em>, <em>output_to_file=False</em><big>)</big><a class="headerlink" href="#PyGMO.util.analysis" title="Permalink to this definition">¶</a></dt>
+<dd><p>This class contains the tools necessary for exploratory analysis of the search,
+fitness and constraint space of a given problem. Several tests can be conducted
+on a low-discrepancy sample of the search space or on an existing population.
+The aim is to gain insight into the problem properties and to aid algorithm
+selection.</p>
+</dd></dl>
+
+<hr class="docutils" />
+<blockquote>
+<div><dl class="method">
+<dt id="PyGMO.util.analysis.__init__">
+<tt class="descclassname">analysis.</tt><tt class="descname">__init__</tt><big>(</big><big>)</big><a class="headerlink" href="#PyGMO.util.analysis.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructor of the analysis class from a problem or population object. Also calls
+analysis.sample when npoints&gt;0 or by default when a population object is input.</p>
+<p><strong>USAGE:</strong>
+analysis(input_object=prob [, npoints=1000, method=&#8217;sobol&#8217;, first=1, output_to_file=False])</p>
+<ul>
+<li><p class="first">input_object: problem or population object used to initialise the analysis.</p>
+</li>
+<li><p class="first">npoints: number of points of the search space to sample. If a population is input,
+a random subset of its individuals of size npoints will be sampled. Option npoints==&#8217;all&#8217; will
+sample the whole population. If a problem is input, a set of size npoints will be
+selected using the specified method. If set to zero, no sampling will be conducted.</p>
+</li>
+<li><p class="first">method: method used to sample the normalized search space. Used only when input_object is a problem, otherwise ignored. Options are:</p>
+<blockquote>
+<div><ul class="simple">
+<li>&#8216;sobol&#8217;: sampling based on sobol low-discrepancy sequence. Default option.</li>
+<li>&#8216;faure&#8217;: sampling based on faure low-discrepancy sequence. Dim [2,23].</li>
+<li>&#8216;halton&#8217;: sampling based on halton low-discrepancy sequence. Dim &lt;10.</li>
+<li>&#8216;lhs&#8217;: latin hypersquare sampling.</li>
+<li>&#8216;montecarlo&#8217;: Monte Carlo (random) sampling.</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p class="first">first: used only when sampling with &#8216;sobol&#8217;, &#8216;faure&#8217; or &#8216;halton&#8217;. Index of the first element
+of the sequence that will be included in the sample. Defaults to 1. Set to &gt;1 to skip. If set
+to 0 with &#8216;sobol&#8217; method, point (0,0,...,0) will also be sampled.</p>
+</li>
+<li><p class="first">output_to_file: if True, all outputs generated by this class will be written to the file
+log.txt and all plots saved as .png images in the directory ./analysis_X/ which is specified
+in attribute analysis.dir. If False, all of them will be shown on screen.</p>
+</li>
+</ul>
+</dd></dl>
+
+</div></blockquote>
+<hr class="docutils" />
+<blockquote>
+<div><dl class="method">
+<dt id="PyGMO.util.analysis.sample">
+<tt class="descclassname">analysis.</tt><tt class="descname">sample</tt><big>(</big><big>)</big><a class="headerlink" href="#PyGMO.util.analysis.sample" title="Permalink to this definition">¶</a></dt>
+<dd><p>Routine used to sample the search space. Samples in x, f and c and scales the datasets.</p>
+<p><strong>USAGE:</strong>
+analysis.sample(npoints=1000 [, method=&#8217;sobol&#8217;, first=1])</p>
+<ul>
+<li><p class="first">npoints: number of points of the search space to sample.</p>
+</li>
+<li><p class="first">method: method used to sample the normalized search space. Options are:</p>
+<blockquote>
+<div><ul class="simple">
+<li>&#8216;sobol&#8217;: sampling based on sobol low-discrepancy sequence. Default option.</li>
+<li>&#8216;faure&#8217;: sampling based on faure low-discrepancy sequence. Dim [2,23].</li>
+<li>&#8216;halton&#8217;: sampling based on halton low-discrepancy sequence. Dim &lt;10.</li>
+<li>&#8216;lhs&#8217;: latin hypersquare sampling.</li>
+<li>&#8216;montecarlo&#8217;: Monte Carlo (random) sampling.</li>
+<li>&#8216;pop&#8217;: sampling by selection of random individuals from a population. Can only
+be used when a population object has ben input to the constructor.</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p class="first">first: used only when sampling with &#8216;sobol&#8217;, &#8216;faure&#8217; or &#8216;halton&#8217;. Index of the first element
+of the sequence that will be included in the sample. Defaults to 1. Set to &gt;1 to skip. If set
+to 0 with &#8216;sobol&#8217; method, point (0,0,...,0) will also be sampled.</p>
+</li>
+</ul>
+<p><strong>The following parameters are stored as attributes of the class:</strong></p>
+<ul class="simple">
+<li>analysis.npoints: number of points sampled.</li>
+<li>analysis.points[number of points sampled][search dimension]: chromosome of points sampled.</li>
+<li>analysis.f[number of points sampled][fitness dimension]: fitness vector of points sampled.</li>
+<li>analysis.ub[search dimension]: upper bounds of search space.</li>
+<li>analysis.lb[search dimension]: lower bounds of search space.</li>
+<li>analysis.dim: search dimension, number of variables in search space</li>
+<li>analysis.cont_dim: number of continuous variables in search space</li>
+<li>analysis.int_dim: number of integer variables in search space</li>
+<li>analysis.c_dim: number of constraints</li>
+<li>analysis.ic_dim: number of inequality constraints</li>
+<li>analysis.f_dim: fitness dimension, number of objectives</li>
+<li>analysis.f_offset: minimum values of unscaled fitness functions. Used for scaling.</li>
+<li>analysis.f_span: peak-to-peak values of unscaled fitness functions. Used for scaling.</li>
+</ul>
+<p><strong>NOTE:</strong> when calling sample, all sampling methods can be used and the search space is sampled within its box constraints. If a population has been input to the
+constructor, a subset of individuals are selected (randomly).</p>
+</dd></dl>
+
+</div></blockquote>
+<hr class="docutils" />
+<blockquote>
+<div><dl class="method">
+<dt id="PyGMO.util.analysis.f_distribution">
+<tt class="descclassname">analysis.</tt><tt class="descname">f_distribution</tt><big>(</big><big>)</big><a class="headerlink" href="#PyGMO.util.analysis.f_distribution" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function gives the user information about the f-distribution of the sampled search-space. All properties are shown per objective (each objective one column). To compute the fitness distribution (mean, std, percentile, skeweness and kurtosis),
+the fitness values have been scaled between 0 and 1.</p>
+<p><strong>USAGE:</strong>
+analysis.f_distribution([percentile=[0,25,50,75,100], show_plot=True, save_plot=False, scale=True, round_to=4])</p>
+<ul class="simple">
+<li>percentile: percentiles to show. Number or iterable. Defaults to [].</li>
+<li>plot_f_distribution: if True, the f-distribution plot will be generated and shown on screen or saved.</li>
+<li>plot_x_pcp: if True, the x-PCP plot will be generated and shown on screen or saved, using as interval limits the same percentiles demanded via argument percentile. Defaults to True.</li>
+<li>round_to: precision of the results printed. Defaults to 3.</li>
+</ul>
+<p><strong>Prints to screen or file:</strong></p>
+<ul>
+<li><p class="first">Fitness magnitude: minimum, maximum and peak-to-peak absolute values per objective.</p>
+</li>
+<li><p class="first">Fitness distribution parameters (computed on scaled dataset):</p>
+<blockquote>
+<div><ul class="simple">
+<li>Mean</li>
+<li>Standard deviation</li>
+<li>Percentiles specified</li>
+<li>Skew</li>
+<li>Kurtosis</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p class="first">Number of peaks of f-distribution as probability density function.</p>
+</li>
+</ul>
+<p><strong>Shows or saves to file:</strong></p>
+<ul class="simple">
+<li>Plot of f-distribution as probability density function.</li>
+<li>X-PCP: pcp of chromosome of points in the sample grouped by fitness value ranges (percentiles).</li>
+</ul>
+</dd></dl>
+
+</div></blockquote>
+<hr class="docutils" />
+<blockquote>
+<div><dl class="method">
+<dt id="PyGMO.util.analysis.f_linearity_convexity">
+<tt class="descclassname">analysis.</tt><tt class="descname">f_linearity_convexity</tt><big>(</big><big>)</big><a class="headerlink" href="#PyGMO.util.analysis.f_linearity_convexity" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function gives the user information about the probability of linearity and convexity
+of the fitness function(s). See analysis._p_lin_conv for a more thorough description of
+these tests. All properties are shown per objective.</p>
+<p><strong>USAGE:</strong>
+analysis.f_linearity_convexity([n_pairs=1000, tolerance=10**(-8), round_to=4])</p>
+<ul class="simple">
+<li>n_pairs: number of pairs of points used in the test. If set to 0, it will use as many pairs of points as points there are in the sample. Defaults to 0.</li>
+<li>tol: tolerance considered to rate the function as linear or convex between two points. Defaults to 10**(-8).</li>
+<li>round_to: precision of the results printed. Defaults to 3.</li>
+</ul>
+<p><strong>Prints to screen or file:</strong></p>
+<ul class="simple">
+<li>Number of pairs of points used in test</li>
+<li>Probability of linearity [0,1].</li>
+<li>Probability of convexity [0,1].</li>
+<li>Mean deviation from linearity, scaled with corresponding fitness scale factor.</li>
+</ul>
+<p><strong>NOTE:</strong> integer variable values are fixed during each of the tests and linearity or convexity
+is assessed as regards the continuous part of the chromosome.</p>
+</dd></dl>
+
+</div></blockquote>
+<hr class="docutils" />
+<blockquote>
+<div><dl class="method">
+<dt id="PyGMO.util.analysis.f_regression">
+<tt class="descclassname">analysis.</tt><tt class="descname">f_regression</tt><big>(</big><big>)</big><a class="headerlink" href="#PyGMO.util.analysis.f_regression" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function performs polynomial regressions on each objective function and measures the
+precision of these regressions.</p>
+<p><strong>USAGE:</strong>
+analysis.f_regression(degree=[1,1,2] [, interaction= [False,True,False], pred=True, tol=10**(-8),round_to=4])</p>
+<ul class="simple">
+<li>degree: integer (or list of integers) specifying the degree of the regression(s) to perform.</li>
+<li>interaction: bool (or list of bools of same length as degree). If True, interaction products of
+first order will be added. These are all terms of order regression_degree+1 that involve at least 2
+variables. If a single boolean is input, this will be applied to all regressions performed. Defaults
+to False.</li>
+<li>pred: bool (or list of bools of same length as degree). If True, prediction propperties will also
+be evaluated (their process of evaluation involves performing one regression per point in the sample).
+These are the last 2 columns of the output table. If a single boolean is input, this will be applied
+to all regressions performed. Defaults to True.</li>
+<li>tol: tolerance to consider a coefficient of the regression model as zero. Defaults to 10**(-8).</li>
+<li>round_to: precision of the results printed. Defaults to 3.</li>
+</ul>
+<p><strong>Prints to screen or file:</strong></p>
+<ul class="simple">
+<li>Degree: Degree of the regression. (i) indicates the addition of interaction products.</li>
+<li>F: F-statistic value of the regression.</li>
+<li>R2: R-square coefficient.</li>
+<li>R2adj: adjusted R-square coefficient.</li>
+<li>RMSE: Root Mean Square Eror.</li>
+<li>R2pred: prediction R-square coefficient.</li>
+<li>PRESS-RMSE: prediction RMSE.</li>
+</ul>
+<p><strong>REF:</strong> <a class="reference external" href="http://www.cavs.msstate.edu/publications/docs/2005/01/741A%20comparative%20study.pdf">http://www.cavs.msstate.edu/publications/docs/2005/01/741A%20comparative%20study.pdf</a></p>
+</dd></dl>
+
+</div></blockquote>
+<hr class="docutils" />
+<blockquote>
+<div><dl class="method">
+<dt id="PyGMO.util.analysis.f_correlation">
+<tt class="descclassname">analysis.</tt><tt class="descname">f_correlation</tt><big>(</big><big>)</big><a class="headerlink" href="#PyGMO.util.analysis.f_correlation" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function performs first dimensionality reduction via PCA on the fitness sample of
+multi-objective problems following the algorithm proposed in the reference. It also gives the user other informations about objective
+function correlation for a possible fitness dimensionality reduction.</p>
+<p><strong>REF:</strong> Deb K. and Saxena D.K, On Finding Pareto-Optimal Solutions Through Dimensionality
+Reduction for Certain Large-Dimensional Multi-Objective Optimization Problems, KanGAL
+Report No. 2005011, IIT Kanpur, 2005.</p>
+<p><strong>USAGE:</strong>
+analysis.f_correlation([tc=0.95, tabs=0.1, round_to=4])</p>
+<ul class="simple">
+<li>tc: threshold cut. When the cumulative contribution of the eigenvalues absolute value
+equals this fraction of its maximum value, the reduction algorithm stops. A higher
+threshold cut means less reduction (see reference). Defaults to 0.95.</li>
+<li>tabs: absolute tolerance. A Principal Component is treated differently if the absolute
+value of its corresponding eigenvalue is lower than this value (see reference). Defaults
+to 0.1.</li>
+</ul>
+<p><strong>Prints to screen or file:</strong></p>
+<ul class="simple">
+<li>Critical objectives from first PCA: objectives not to be eliminated of the problem.</li>
+<li>Eigenvalues, relative contribution, eigenvectors (of the objective correlation matrix).</li>
+<li>Objective correlation matrix.</li>
+</ul>
+</dd></dl>
+
+</div></blockquote>
+<hr class="docutils" />
+<blockquote>
+<div><dl class="method">
+<dt id="PyGMO.util.analysis.f_sensitivity">
+<tt class="descclassname">analysis.</tt><tt class="descname">f_sensitivity</tt><big>(</big><big>)</big><a class="headerlink" href="#PyGMO.util.analysis.f_sensitivity" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function evaluates the jacobian matrix and hessian tensor in a subset of the sample
+in order to extract information about sensitivity of the fitness function(s) with respect
+to the search variables. All results are presented per objective and scaled with the
+corresponding scale factors.</p>
+<p><strong>USAGE:</strong>
+analysis.f_sensitivity([hessian=True, plot_gradient_sparsity=True, plot_pcp=True, plot_inverted_pcp=True, sample_size=0, h=0.01,conv_tol=10**(-6), zero_tol=10**(-8), tmax=15, round_to=3])</p>
+<ul class="simple">
+<li>hessian: if True, the hessian tensor and its properties will also be evaluated. Defaults to True.</li>
+<li>plot_gradient_sparsity: if True, the Jacobian matrix sparsity plot will be generated.</li>
+<li>plot_pcp: if True, the gradient PCP (with chromosome in X-axis) will be generated. Defaults to True.</li>
+<li>plot_inverted_pcp: if True, the gradient PCP (with F in X-axis) will be generated. Defaults to True.</li>
+<li>sample_size: number of points to calculate the gradient or hessian at. If set to 0, all the sample will be picked. Defaults to 0.</li>
+<li>h: initial fraction of the search space span used as dx for evaluation of derivatives.</li>
+<li>conv_tol: convergence parameter for Richardson extrapolation method. Defaults to 10**(-6).</li>
+<li>zero_tol: tolerance for considering a component nule during the sparsity test. Defaults to 10**(-8).</li>
+<li>tmax: maximum of iterations for Richardson extrapolation. Defaults to 15.</li>
+<li>round_to: precision of the results printed. Defaults to 3.</li>
+</ul>
+<p><strong>Prints to screen or file:</strong></p>
+<ul>
+<li><p class="first">Number of points used.</p>
+</li>
+<li><p class="first">Percentiles 0, 25, 50, 75 and 100 of the distribution of:</p>
+<blockquote>
+<div><ul class="simple">
+<li>Gradient norm.</li>
+<li>abs(dFx)_max/abs(dFx)_min: ratio of maximum to minimum absolute value of partial derivatives of the fitness function gradient.</li>
+<li>Hessian conditioning: ratio of maximum to minimum absolute value of eigenvalues of the fitness function hessian matrix.</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p class="first">Gradient sparsity: fraction of components of the gradient that are zero at every point.</p>
+</li>
+<li><p class="first">Fraction of points with Positive Definite hessian.</p>
+</li>
+<li><p class="first">Fraction of points with Positive Semi-Definite (and not Positive-Definite) hessian.</p>
+</li>
+</ul>
+<p><strong>Shows or saves to file:</strong></p>
+<ul class="simple">
+<li>Gradient/Jacobian sparsity plot.</li>
+<li>Gradient/Jacobian PCP with chromosome in X-axis.</li>
+<li>Gradient/Jacobian PCP with fitness in X-axis.</li>
+</ul>
+<p><strong>NOTE:</strong> this function calls analysis._get_gradient and analysis._get_hessian. Both these
+functions store a great number of properties as class attributes. See their respective
+entries for more information about these attributes.</p>
+</dd></dl>
+
+</div></blockquote>
+<hr class="docutils" />
+<blockquote>
+<div><dl class="method">
+<dt id="PyGMO.util.analysis.levelset">
+<tt class="descclassname">analysis.</tt><tt class="descname">levelset</tt><big>(</big><big>)</big><a class="headerlink" href="#PyGMO.util.analysis.levelset" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function performs binary classifications of the sample via SVM and assesses its precision.
+The classes are defined by a percentile threshold on a fitness function. Linear, quadratic and
+nonlinear (rbf) kernels can be used, and their misclassification errors as well as p-values of
+pairwise comparison can be evaluated as indicators for multi-modality. All results are presented
+per objective.</p>
+<p><strong>USAGE:</strong>
+analysis.levelset([threshold=[25,50], k_test=10,k_tune=3, linear=True, quadratic=False, nonlinear=True, round_to=3])</p>
+<ul class="simple">
+<li>threshold: percentile or list of percentiles that will serve as threshold for binary
+classification of the sample. Defaults to 50.</li>
+<li>k_tune: k used in k-fold crossvalidation to tune the model hyperparameters. Defaults to 3.</li>
+<li>k_test: k used in k-fold crossvalidation to assess the model properties. Defaults to 10.</li>
+<li>linear, quadratic, nonlinear: boolean values. If True, the corresponding test will be performed. All default to true.</li>
+<li>round_to: precision of the results printed. Defaults to 3.</li>
+</ul>
+<p><strong>Prints to screen or file:</strong>
+* K tune
+* K test
+* Percentile used as threshold.</p>
+<blockquote>
+<div><ul class="simple">
+<li>Mean misclassification error of each method used (linear, quadratic, nonlinear).</li>
+<li>One-sided p-values of each pairwise comparison (l/q, l/nl, q/nl)</li>
+</ul>
+</div></blockquote>
+</dd></dl>
+
+</div></blockquote>
+<hr class="docutils" />
+<blockquote>
+<div><dl class="method">
+<dt id="PyGMO.util.analysis.local_search">
+<tt class="descclassname">analysis.</tt><tt class="descname">local_search</tt><big>(</big><big>)</big><a class="headerlink" href="#PyGMO.util.analysis.local_search" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function selects points from the sample and launches local searches using them as initial
+points. Then it clusters the results and orders the clusters ascendently as regards fitness
+value of its centroid (after transformation for constraint problems and fitness decomposition
+for multi-objective problems). The clustering is conducted by means of the k-Means algorithm
+in the search-fitness space. Some parameters are also computed after the clustering to allow
+landscape analysis and provide insight into the basins of attraction that affect the algorithm
+deployed.</p>
+<p><strong>USAGE:</strong>
+analysis.local_search([clusters_to_show=10, plot_global_pcp=True, plot_separate_pcp=True, scatter_plot_dimensions=[], sample_size=0, algo=algorithm.(), decomposition_method=&#8217;tchebycheff&#8217;, weights=&#8217;uniform&#8217;, z=[],con2mo=&#8217;obj_cstrsvio&#8217;, variance_ratio=0.9, k=0,single_cluster_tolerance=0.001, kmax=0, round_to=3])</p>
+<ul>
+<li><p class="first">clusters_to_show: number of clusters whose parameters will be displayed. Option &#8216;all&#8217; will
+display all clusters obtained. Clusters will be ordered ascendently as regards mean fitness
+value (after applying problem.con2mo in the case of constrained problems and problem.decompose
+for multi-objective problems), and the best ones will be shown. This parameters also affects
+the plots.</p>
+</li>
+<li><p class="first">plot_global_pcp: if True, the local search cluster PCP will be generated, representing all
+clusters to show in the same graph. See plot_local_cluster_pcp for more information on this
+plot. Defaults to True.</p>
+</li>
+<li><p class="first">plot_separate_pcp: if True, as many PCPs as clusters_to_show will be generated, representing
+a cluster per graph. See plot_local_cluster_pcp for more information on this plot. Defaults to
+True.</p>
+</li>
+<li><p class="first">scatter_plot_dimensions: integer or list of up to 3 integers specifying the dimensions to
+consider for the local search cluster scatter plot. Option &#8216;all&#8217; will pick all dimensions.
+Option [] will not generate the scatter plot. Defaults to [].</p>
+</li>
+<li><p class="first">sample_size: number of initial points to launch local searches from. If set to 0, all
+points in sample are used, otherwise they are selected randomly in the initial set. Defaults to 0.</p>
+</li>
+<li><p class="first">algo: algorithm object used in searches. For purposes, it should be a local optimisation
+algorithm. Defaults to algorithm.cs().</p>
+</li>
+<li><p class="first">par: if True, an unconnected archipelago will be used for possible parallelization.</p>
+</li>
+<li><p class="first">decomposition_method: method used by problem.decompose in the case of multi-objective
+problems. Options are: &#8216;tchebycheff&#8217;, &#8216;weighted&#8217;, &#8216;bi&#8217; (boundary intersection).
+Defaults to &#8216;tchebycheff&#8217;.</p>
+</li>
+<li><p class="first">weights: weight vector used by problem.decompose in the case of multi-objective
+problems. Options are: &#8216;uniform&#8217;, &#8216;random&#8217; or any vector of length [fitness dimension]
+whose components sum to one with precision of 10**(-8). Defaults to &#8216;uniform&#8217;.</p>
+</li>
+<li><p class="first">z: ideal reference point used by &#8216;tchebycheff&#8217; and &#8216;bi&#8217; methods. If set to [] (empty
+vector), point [0,0,...,0] is used. Defaults to [].</p>
+</li>
+<li><p class="first">con2mo: way in which constraint problems will be transformed into multi-objective problems before decomposition. Defaults to &#8216;obj_cstrsvio&#8217;. Options are:</p>
+<blockquote>
+<div><ul class="simple">
+<li>&#8216;obj_cstrs&#8217;: f1=original objective, f2=number of violated constraints.</li>
+<li>&#8216;obj_cstrsvio&#8217;: f1=original objective, f2=norm of total constraint violation.</li>
+<li>&#8216;obj_eqvio_ineqvio&#8217;: f1=original objective, f2= norm of equality constraint violation, f3= norm of inequality constraint violation.</li>
+<li>None: in this case the function won&#8217;t try to transform the constraint problem via  meta-problem con2mo. Set to None when a local search algorithm that supports constraint optimization is input.</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p class="first">variance_ratio: target fraction of variance explained by the cluster centroids, when not
+clustering to a fixed number of clusters. Defaults to 0.9.</p>
+</li>
+<li><p class="first">k: number of clusters when clustering to fixed number of clusters. If k=0, the clustering
+will be performed for increasing value of k until the explained variance ratio is achieved.
+Defaults to 0.</p>
+</li>
+<li><p class="first">single_cluster_tolerance: if the radius of a single cluster is lower than this value
+times (search space dimension+fitness space dimension), k will be set to 1 when not clustering
+to a fixed number of clusters. Defaults to 0.0001.</p>
+</li>
+<li><p class="first">kmax: maximum number of clusters admissible. If set to 0, the limit is the number of local
+searches performed. Defaults to 0.</p>
+</li>
+<li><p class="first">round_to: precision of the results printed. Defaults to 3.</p>
+<p><strong>Prints to screen or file:</strong></p>
+</li>
+<li><p class="first">Number of local searches performed.</p>
+</li>
+<li><p class="first">Quartiles of CPU time per search: percentiles 0, 25, 50, 75 and 100 of the time elapsed per
+single local search.</p>
+</li>
+<li><p class="first">Cluster properties: the following parameters will be shown for the number of clusters specified via argument clusters_to_show:</p>
+<blockquote>
+<div><ul class="simple">
+<li>Size: size of the cluster, in number of points and as a percentage of the sample size.</li>
+<li>Cluster X_center: projection of the cluster centroid in the search space.</li>
+<li>Mean objective value: projection of the cluster centroid in the fitness space.</li>
+<li>F(X_center): fitness value of the X_center. If it differs abruptly from the cluster mean objective value, the odds are that the cluster spans through more than one mode of the fitness function.</li>
+<li>C(X_center): constraint function values of the X_center. Only for constrained problems.</li>
+<li>Cluster span in F: peak-to-peak values of the fitness values of the local search final points in the cluster.</li>
+<li>Cluster radius in X: euclidian distance from the furthest final local search point in the cluster to the cluster X-center.</li>
+<li>Radius of attraction: euclidian distance from the furthest initial local search point in the cluster to the cluster X-center.</li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+<p><strong>Shows or saves to file:</strong></p>
+<ul class="simple">
+<li>Global cluster PCP: PCP of the clusters of the local search results, all clusters to show on
+the same graph. See analysis.plot_local_cluster_pcp for more information on the plot.</li>
+<li>Separate cluster PCP: PCP of the clusters of the local search results, one graph per cluster.
+See analysis.plot_local_cluster_pcp for more information on the plot.</li>
+<li>Cluster scatter plot: scatter plot of the clusters of the local search results. See
+analysis.plot_local_cluster_scatter for more information on the plot.</li>
+</ul>
+<p><strong>NOTE:</strong> this function calls analysis._get_local_extrema and analysis._cluster_local_extrema. Both
+these functions store a great number of properties as class attributes. See ther respective
+entries for more information about these attributes.</p>
+</dd></dl>
+
+</div></blockquote>
+<hr class="docutils" />
+<blockquote>
+<div><dl class="method">
+<dt id="PyGMO.util.analysis.c_feasibility">
+<tt class="descclassname">analysis.</tt><tt class="descname">c_feasibility</tt><big>(</big><big>)</big><a class="headerlink" href="#PyGMO.util.analysis.c_feasibility" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function gives the user information about the effectivity and possible redundancy of
+the constraints of the problem.</p>
+<p><strong>USAGE:</strong>
+analysis.c_feasibility([tol=10**(-8), round_to=4])</p>
+<ul class="simple">
+<li>n_pairs: number of pairs of points used to test probability of linearity. If set to 0,
+it will use as many pairs of points as points there are in the sample. Defaults to 0.</li>
+<li>tol: tolerance considered in the assessment of equality. Defaults to 10**(-8).</li>
+<li>round_to: precision of the results printed. Defaults to 3.</li>
+</ul>
+<p>Prints to screen or file, for each of the constraints:</p>
+<ul>
+<li><p class="first">Constraint. g indicates inequality constraint of type &lt;=, h indicates equality constraint.</p>
+</li>
+<li><p class="first">Equality constraints:</p>
+<blockquote>
+<div><ul class="simple">
+<li>Effectiveness &gt;=0: fraction of the sampled points that satisfy this constraint or
+violate it superiorly.</li>
+<li>Effectiveness &lt;=0: fraction of the sampled points that satisfy this constraint or
+violate it inferiorly.</li>
+<li>Number of feasible points found.</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p class="first">Inequality constraints:</p>
+<blockquote>
+<div><ul class="simple">
+<li>Effectiveness &gt;0: fraction of the sampled points that violate this constraint.</li>
+<li>Redundancy wrt all other ic: if there is more than one inequality constraint, fraction
+of the points violating this inequality constraint that also violate any of the other.</li>
+<li>Number of feasible points found.</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p class="first">Pairwise redundancy of inequality constraints: table where R_ij is the redundancy of constraint
+g_i (row) with respect to g_j (column), this is the fraction of the points violating g_i that
+also violate g_j (column).</p>
+</li>
+</ul>
+</dd></dl>
+
+</div></blockquote>
+<hr class="docutils" />
+<blockquote>
+<div><dl class="method">
+<dt id="PyGMO.util.analysis.c_linearity">
+<tt class="descclassname">analysis.</tt><tt class="descname">c_linearity</tt><big>(</big><big>)</big><a class="headerlink" href="#PyGMO.util.analysis.c_linearity" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function gives the user information about the probability of linearity of the constraint
+function(s). See analysis._c_lin for a more thorough description of this test.</p>
+<p><strong>USAGE:</strong>
+analysis.c_linearity([n_pairs=1000, tolerance=10**(-8), round_to=4])</p>
+<ul class="simple">
+<li>n_pairs: number of pairs of points used in the test. If set to 0, it will use as many pairs
+of points as points there are in the sample. Defaults to 0.</li>
+<li>tol: tolerance considered to rate the function as linear between two points. Defaults to 10**(-8).</li>
+<li>round_to: precision of the results printed. Defaults to 3.</li>
+</ul>
+<p><strong>Prints to screen or file:</strong></p>
+<ul class="simple">
+<li>Number of pairs of points used in test.</li>
+<li>Probability of linearity [0,1] of each constraint.</li>
+</ul>
+<p><strong>NOTE:</strong> integer variable values are fixed during each of the tests and linearity or convexity
+is assessed as regards the continuous part of the chromosome.</p>
+</dd></dl>
+
+</div></blockquote>
+<hr class="docutils" />
+<blockquote>
+<div><dl class="method">
+<dt id="PyGMO.util.analysis.c_regression">
+<tt class="descclassname">analysis.</tt><tt class="descname">c_regression</tt><big>(</big><big>)</big><a class="headerlink" href="#PyGMO.util.analysis.c_regression" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function performs polynomial regressions on each constraint function and measures the
+precision of these regressions.</p>
+<p><strong>USAGE:</strong>
+analysis.c_regression(degree=[1,1,2] [, interaction=[False,True,False], pred=True, tol=10**(-8),round_to=4])</p>
+<ul class="simple">
+<li>degree: integer (or list of integers) specifying the degree of the regression(s) to perform.</li>
+<li>interaction: bool (or list of bools of same length as degree). If True, interaction products of
+first order will be added. These are all terms of order regression_degree+1 that involve at least 2
+variables. If a single boolean is input, this will be applied to all regressions performed. Defaults
+to False.</li>
+<li>pred: bool (or list of bools of same length as degree). If True, prediction propperties will also
+be evaluated (their process of evaluation involves performing one regression per point in the sample).
+These are the last 2 columns of the output table. If a single boolean is input, this will be applied
+to all regressions performed. Defaults to True.</li>
+<li>tol: tolerance to consider a coefficient of the regression model as zero. Defaults to 10**(-8).</li>
+<li>round_to: precision of the results printed. Defaults to 3.</li>
+</ul>
+<p><strong>Prints to screen or file:</strong></p>
+<ul class="simple">
+<li>Degree: Degree of the regression. (i) indicates the addition of interaction products.</li>
+<li>F: F-statistic value of the regression.</li>
+<li>R2: R-square coefficient.</li>
+<li>R2adj: adjusted R-square coefficient.</li>
+<li>RMSE: Root Mean Square Eror.</li>
+<li>R2pred: prediction R-square coefficient.</li>
+<li>PRESS-RMSE: prediction RMSE.</li>
+</ul>
+<p><strong>REF:</strong> <a class="reference external" href="http://www.cavs.msstate.edu/publications/docs/2005/01/741A%20comparative%20study.pdf">http://www.cavs.msstate.edu/publications/docs/2005/01/741A%20comparative%20study.pdf</a></p>
+</dd></dl>
+
+</div></blockquote>
+<hr class="docutils" />
+<blockquote>
+<div><dl class="method">
+<dt id="PyGMO.util.analysis.c_sensitivity">
+<tt class="descclassname">analysis.</tt><tt class="descname">c_sensitivity</tt><big>(</big><big>)</big><a class="headerlink" href="#PyGMO.util.analysis.c_sensitivity" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function evaluates the jacobian matrix of the constraint fucntions in a subset of the
+sample in order to extract information about sensitivity of the constraints with respect
+to the search variables. All results are presented per constraint.</p>
+<p><strong>USAGE:</strong>
+analysis.c_sensitivity([plot_gradient_sparsity=True, plot_pcp=True, plot_inverted_pcp=True, sample_size=0, h=0.01, conv_tol=10**(-6), zero_tol=10**(-8), tmax=15,round_to=3])</p>
+<ul class="simple">
+<li>plot_gradient_sparsity: if True, the Jacobian matrix sparsity plot will be generated.</li>
+<li>plot_pcp: if True, the c-gradient PCP (with chromosome in X-axis) will be generated. Defaults to True.</li>
+<li>plot_inverted_pcp: if True, the c-gradient PCP (with F in X-axis) will be generated. Defaults to True.</li>
+<li>sample_size: number of points to calculate the c-gradient at. If set to 0, all the sample will be picked. Defaults to 0.</li>
+<li>h: initial fraction of the search space span used as dx for evaluation of derivatives.</li>
+<li>conv_tol: convergence parameter for Richardson extrapolation method. Defaults to 10**(-6).</li>
+<li>zero_tol: tolerance for considering a component as nule during the sparsity test. Defaults to 10**(-8).</li>
+<li>tmax: maximum of iterations for Richardson extrapolation. Defaults to 15.</li>
+<li>round_to: precision of the results printed. Defaults to 3.</li>
+</ul>
+<p><strong>Prints to screen or file:</strong></p>
+<ul>
+<li><p class="first">Number of points used.</p>
+</li>
+<li><p class="first">Percentiles 0, 25, 50, 75 and 100 of the distribution of:</p>
+<blockquote>
+<div><ul class="simple">
+<li>C-Gradient norm.</li>
+<li>abs(dFx)_max/abs(dFx)_min: ratio of maximum to minimum absolute value of partial derivatives in that constraint function gradient.</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p class="first">C-Gradient sparsity: fraction of components of the c-gradient that are nule at every point.</p>
+</li>
+</ul>
+<p><strong>Shows or saves to file:</strong></p>
+<ul class="simple">
+<li>C-Gradient/Jacobian sparsity plot.</li>
+<li>C-Gradient/Jacobian PCP with chromosome in X-axis.</li>
+<li>C-Gradient/Jacobian PCP with fitness in X-axis.</li>
+</ul>
+<p><strong>NOTE:</strong> this function calls analysis._get_gradient, which stores a great number of properties
+as class attributes. See its entry for more information about these attributes.</p>
+</dd></dl>
+
+</div></blockquote>
+<hr class="docutils" />
+<blockquote>
+<div><dl class="method">
+<dt id="PyGMO.util.analysis._scale_sample">
+<tt class="descclassname">analysis.</tt><tt class="descname">_scale_sample</tt><big>(</big><big>)</big><a class="headerlink" href="#PyGMO.util.analysis._scale_sample" title="Permalink to this definition">¶</a></dt>
+<dd><p>Scales the sample in x and f after sampling, so all values are [0,1]. If constraints
+have been computed, it also scales c to [-k,1-k] for k in [0,1].</p>
+</dd></dl>
+
+</div></blockquote>
+<hr class="docutils" />
+<blockquote>
+<div><dl class="method">
+<dt id="PyGMO.util.analysis._skew">
+<tt class="descclassname">analysis.</tt><tt class="descname">_skew</tt><big>(</big><big>)</big><a class="headerlink" href="#PyGMO.util.analysis._skew" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>Returns</strong> the skew of the f-distributions in the form of a list [fitness dimension].</p>
+<p><strong>USAGE:</strong>
+analysis._skew()</p>
+</dd></dl>
+
+</div></blockquote>
+<hr class="docutils" />
+<blockquote>
+<div><dl class="method">
+<dt id="PyGMO.util.analysis._kurtosis">
+<tt class="descclassname">analysis.</tt><tt class="descname">_kurtosis</tt><big>(</big><big>)</big><a class="headerlink" href="#PyGMO.util.analysis._kurtosis" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>Returns</strong> the kurtosis of the f-distributions in the form of a list [fitness dimension].</p>
+<p><strong>USAGE:</strong>
+analysis._kurtosis()</p>
+</dd></dl>
+
+</div></blockquote>
+<hr class="docutils" />
+<blockquote>
+<div><dl class="method">
+<dt id="PyGMO.util.analysis._mean">
+<tt class="descclassname">analysis.</tt><tt class="descname">_mean</tt><big>(</big><big>)</big><a class="headerlink" href="#PyGMO.util.analysis._mean" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>Returns</strong> the mean values of the f-distributions in the form of a list [fitness dimension].</p>
+<p><strong>USAGE:</strong>
+analysis._mean()</p>
+</dd></dl>
+
+</div></blockquote>
+<hr class="docutils" />
+<blockquote>
+<div><dl class="method">
+<dt id="PyGMO.util.analysis._var">
+<tt class="descclassname">analysis.</tt><tt class="descname">_var</tt><big>(</big><big>)</big><a class="headerlink" href="#PyGMO.util.analysis._var" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>Returns</strong> the variances of the f-distributions in the form of a list [fitness dimension].</p>
+<p><strong>USAGE:</strong>
+analysis._var()</p>
+<p><strong>NOTE:</strong> not corrected, (averages with /N and not /(N-1))</p>
+</dd></dl>
+
+</div></blockquote>
+<hr class="docutils" />
+<blockquote>
+<div><dl class="method">
+<dt id="PyGMO.util.analysis._std">
+<tt class="descclassname">analysis.</tt><tt class="descname">_std</tt><big>(</big><big>)</big><a class="headerlink" href="#PyGMO.util.analysis._std" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>Returns</strong> the standard deviations of the f-distributions in the form of a list
+[fitness dimension].</p>
+<p><strong>USAGE:</strong>
+analysis._std()</p>
+<p><strong>NOTE:</strong> not corrected (averages with /N and not /(N-1))</p>
+</dd></dl>
+
+</div></blockquote>
+<hr class="docutils" />
+<blockquote>
+<div><dl class="method">
+<dt id="PyGMO.util.analysis._ptp">
+<tt class="descclassname">analysis.</tt><tt class="descname">_ptp</tt><big>(</big><big>)</big><a class="headerlink" href="#PyGMO.util.analysis._ptp" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>Returns</strong> the peak-to-peak range of the f-distributions in the form of a list [fitness dimension].</p>
+<p><strong>USAGE:</strong>
+analysis._ptp()</p>
+</dd></dl>
+
+</div></blockquote>
+<hr class="docutils" />
+<blockquote>
+<div><dl class="method">
+<dt id="PyGMO.util.analysis._percentile">
+<tt class="descclassname">analysis.</tt><tt class="descname">_percentile</tt><big>(</big><big>)</big><a class="headerlink" href="#PyGMO.util.analysis._percentile" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>Returns</strong> the percentile(s) of the f-distributions specified in p inthe form of a list
+[length p][fitness dimension].</p>
+<p><strong>USAGE:</strong>
+analysis._percentile(p=[0,10,25,50,75,100])</p>
+<ul class="simple">
+<li>p: percentile(s) to return. Can be a single int/float or a list.</li>
+</ul>
+</dd></dl>
+
+</div></blockquote>
+<hr class="docutils" />
+<blockquote>
+<div><dl class="method">
+<dt id="PyGMO.util.analysis.plot_f_distr">
+<tt class="descclassname">analysis.</tt><tt class="descname">plot_f_distr</tt><big>(</big><big>)</big><a class="headerlink" href="#PyGMO.util.analysis.plot_f_distr" title="Permalink to this definition">¶</a></dt>
+<dd><p>Routine that plots the f-distributions in terms of density of probability of a fitness value
+in the sample considered.</p>
+<p><strong>USAGE:</strong>
+analysis.plot_f_distr()</p>
+<p><strong>NOTE:</strong> the plot will be shown on screen or saved to file depending on the  option that was
+selected when instantiating the analysis class.</p>
+</dd></dl>
+
+</div></blockquote>
+<hr class="docutils" />
+<blockquote>
+<div><dl class="method">
+<dt id="PyGMO.util.analysis.plot_x_pcp">
+<tt class="descclassname">analysis.</tt><tt class="descname">plot_x_pcp</tt><big>(</big><big>)</big><a class="headerlink" href="#PyGMO.util.analysis.plot_x_pcp" title="Permalink to this definition">¶</a></dt>
+<dd><p>Routine that creates parallel coordinate plots of the chromosome of all points in the sample
+classified in ranges defined by the list of percentiles input. A plot per objective will be
+generated.</p>
+<p><strong>USAGE:</strong>
+analysis.plot_x_pcp(percentile=[5,10,25,50,75] [, percentile_values=[0.06,0.08,0.3,0.52,0.8]])</p>
+<ul class="simple">
+<li>percentile: the percentile or list of percentiles that will serve as limits
+to the intervals in which the f-values are classified.</li>
+<li>percentile_values: the f-values corresponding to the aforementioned percentiles.
+This argument is added for reusability, if set to [], they will be calculated.
+Defaults to [].</li>
+</ul>
+<p><strong>NOTE:</strong> the plot will be shown on screen or saved to file depending on the
+option that was selected when instantiating the analysis class.</p>
+</dd></dl>
+
+</div></blockquote>
+<hr class="docutils" />
+<blockquote>
+<div><dl class="method">
+<dt id="PyGMO.util.analysis._n_peaks_f">
+<tt class="descclassname">analysis.</tt><tt class="descname">_n_peaks_f</tt><big>(</big><big>)</big><a class="headerlink" href="#PyGMO.util.analysis._n_peaks_f" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>Returns</strong> the number of peaks of the f-distributions in the form of a list [fitness dimension].</p>
+<p><strong>USAGE:</strong>
+analysis._n_peaks_f([nf=100])</p>
+<ul class="simple">
+<li>nf: discretisation of the f-distributions used to find their peaks. Defaults to npoints-1.</li>
+</ul>
+</dd></dl>
+
+</div></blockquote>
+<hr class="docutils" />
+<blockquote>
+<div><dl class="method">
+<dt id="PyGMO.util.analysis._p_lin_conv">
+<tt class="descclassname">analysis.</tt><tt class="descname">_p_lin_conv</tt><big>(</big><big>)</big><a class="headerlink" href="#PyGMO.util.analysis._p_lin_conv" title="Permalink to this definition">¶</a></dt>
+<dd><p>Tests the probability of linearity and convexity and the mean deviation from linearity of
+the f-distributions obtained. A pair of points (X1,F1),(X2,F2) from the sample is selected
+per test and a random convex combination of them is taken (Xconv,Fconv). For each objective,
+if F(Xconv)=Fconv within tolerance, the function is considered linear there. Otherwise, if
+F(Xconv)&lt;Fconv, the function is considered convex. abs(F(Xconv)-Fconv) is the linear deviation.
+The average of all tests performed gives the overall result.</p>
+<p><strong>USAGE:</strong>
+analysis._p_lin_conv([n_pairs=100, threshold=10**(-10)])</p>
+<ul class="simple">
+<li>n_pairs: number of pairs of points used in the test. If set to 0, it will use as many pairs
+of points as points there are in the sample. Defaults to 0.</li>
+<li>threshold: tolerance considered to rate the function as linear or convex between two points.
+Defaults to 10**(-10).</li>
+</ul>
+<p><strong>Returns</strong> a tuple of length 3 containing:</p>
+<ul class="simple">
+<li>p_lin[fitness dimension]: probability of linearity [0,1].</li>
+<li>p_conv[fitness dimension]: probability of convexity [0,1].</li>
+<li>mean_dev[fitness dimension]: mean deviation from linearity as defined above (scaled with
+corresponding fitness scaling factor).</li>
+</ul>
+<p><strong>NOTE:</strong> integer variables values are fixed during each of the tests and linearity or convexity
+is evaluated as regards the continuous part of the chromosome.</p>
+</dd></dl>
+
+</div></blockquote>
+<hr class="docutils" />
+<blockquote>
+<div><dl class="method">
+<dt id="PyGMO.util.analysis._regression_coefficients">
+<tt class="descclassname">analysis.</tt><tt class="descname">_regression_coefficients</tt><big>(</big><big>)</big><a class="headerlink" href="#PyGMO.util.analysis._regression_coefficients" title="Permalink to this definition">¶</a></dt>
+<dd><p>Performs a polynomial regression on the sampled dataset and <strong>Returns</strong> the
+coefficients of the polynomial model.</p>
+<p><strong>USAGE:</strong>
+analysis._regression_coefficients(degree=2 [, interaction=True, mode=&#8217;f&#8217;])</p>
+<ul class="simple">
+<li>regression_degree: degree of polynomial regression.</li>
+<li>interaction: if True, interaction products of first order will be added. These
+are all terms of order regression_degree+1 that involve at least 2 variables.
+Defaults to False.</li>
+<li>mode: &#8216;f&#8217; to perform the regression on the fitness values dataset, &#8216;c&#8217; to
+perform it on the constraint function values dataset.</li>
+<li>A: matrix of polynomial terms as returned by _build_polynomial. This argument is
+added for reusability, if set to None, it will be calculated. Defaults to None.</li>
+</ul>
+<p><strong>Returns</strong>:</p>
+<ul class="simple">
+<li>w[fitness/constraint dimension][number of coefficients]: coefficients of the
+regression model, ordered as follows: highest order first, lexicographical.</li>
+</ul>
+</dd></dl>
+
+</div></blockquote>
+<hr class="docutils" />
+<blockquote>
+<div><dl class="method">
+<dt id="PyGMO.util.analysis._regression_properties">
+<tt class="descclassname">analysis.</tt><tt class="descname">_regression_properties</tt><big>(</big><big>)</big><a class="headerlink" href="#PyGMO.util.analysis._regression_properties" title="Permalink to this definition">¶</a></dt>
+<dd><p>Tests the precision and extracts the properties of a regression model fitting the dataset.</p>
+<p><strong>USAGE:</strong>
+analysis._regression_properties(degree=1 [ ,interaction=False,mode=&#8217;f&#8217;, pred=False, tol=10**(-8), w=None])</p>
+<ul class="simple">
+<li>degree: degree of regression.</li>
+<li>interaction: if True, interaction products of first order will be added. These are all terms
+of order regression_degree+1 that involve at least 2 variables. Defaults to False.</li>
+<li>mode: &#8216;f&#8217; for a regression model of the fitness values dataset, &#8216;c&#8217; for the constraint function
+values dataset. Defaults to &#8216;f&#8217;.</li>
+<li>pred: if True, prediction properties will also be evaluated by calling _regression_press.
+Evaluation of these properties involves fitting of as many regressions as points in the dataset.
+Defaults to True.</li>
+<li>tol: tolerance to consider a coefficient of the model as zero. Defaults to 10**(-8).</li>
+<li>w: coefficients of the regression model whose propperties one wants to assess. This argument
+is added for reusability, if set to None they will be calculated. Defaults to None.</li>
+</ul>
+<p><strong>Returns</strong> list of size [fitness/constraint dimension][6] containing, per fitness/constraint function:</p>
+<ul class="simple">
+<li>F: F-statistic value of the regression.</li>
+<li>R2: R-square coefficient.</li>
+<li>R2adj: adjusted R-square coefficient.</li>
+<li>RMSE: Root Mean Square Eror.</li>
+<li>R2pred: prediction R-square coefficient.</li>
+<li>PRESS-RMSE: prediction RMSE.</li>
+</ul>
+<p><strong>REF:</strong> <a class="reference external" href="http://www.cavs.msstate.edu/publications/docs/2005/01/741A%20comparative%20study.pdf">http://www.cavs.msstate.edu/publications/docs/2005/01/741A%20comparative%20study.pdf</a></p>
+</dd></dl>
+
+</div></blockquote>
+<hr class="docutils" />
+<blockquote>
+<div><dl class="method">
+<dt id="PyGMO.util.analysis._regression_press">
+<tt class="descclassname">analysis.</tt><tt class="descname">_regression_press</tt><big>(</big><big>)</big><a class="headerlink" href="#PyGMO.util.analysis._regression_press" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculates the PRESS of a regression model on the dataset. This involves fitting of as
+many models as points there are in the dataset.</p>
+<p><strong>USAGE:</strong>
+analysis._regression_press(degree=1 [,interaction=False, mode=&#8217;c&#8217;])</p>
+<ul class="simple">
+<li>degree: of the regression</li>
+<li>interaction: if True, interaction products of first order will be added. These are all terms
+of order regression_degree+1 that involve at least 2 variables. Defaults to False.</li>
+<li>mode: &#8216;f&#8217; for a regression model of the fitness values dataset, &#8216;c&#8217; for the constraint function
+values dataset. Defaults to &#8216;f&#8217;.</li>
+</ul>
+<p><strong>Returns</strong>:</p>
+<ul class="simple">
+<li>PRESS [fitness/constraint dimension].</li>
+</ul>
+</dd></dl>
+
+</div></blockquote>
+<hr class="docutils" />
+<blockquote>
+<div><dl class="method">
+<dt id="PyGMO.util.analysis._build_polynomial">
+<tt class="descclassname">analysis.</tt><tt class="descname">_build_polynomial</tt><big>(</big><big>)</big><a class="headerlink" href="#PyGMO.util.analysis._build_polynomial" title="Permalink to this definition">¶</a></dt>
+<dd><p>Builds the polynomial base necessary to fit or evaluate a regression model.</p>
+<p><strong>USAGE:</strong>
+analysis._build_polynomial(x=analysis.points, degree=2 [,interaction=True])</p>
+<ul class="simple">
+<li>x [number of points][dimension]: chromosome (or list of chromosomes) of the point (or points)
+whose polynomial is built.</li>
+<li>degree: degree of the polynomial.</li>
+<li>interaction: if True, interaction products of first order will be added. These are all terms
+of order regression_degree+1 that involve at least 2 variables. Defaults to False.</li>
+</ul>
+<p><strong>Returns</strong>:</p>
+<ul class="simple">
+<li>A[number of points][number of terms in the polynomial].</li>
+</ul>
+</dd></dl>
+
+</div></blockquote>
+<hr class="docutils" />
+<blockquote>
+<div><dl class="method">
+<dt id="PyGMO.util.analysis._regression_predict">
+<tt class="descclassname">analysis.</tt><tt class="descname">_regression_predict</tt><big>(</big><big>)</big><a class="headerlink" href="#PyGMO.util.analysis._regression_predict" title="Permalink to this definition">¶</a></dt>
+<dd><p>Routine that, given the coefficients of a regression model and a point, calculates the
+predicted value for that point.</p>
+<p><strong>USAGE:</strong>
+analysis._regression_predict(coefficients=[1,1,1,1], x=[[0,0,0],[1,1,1]], degree=1 [,interaction=False])</p>
+<ul class="simple">
+<li>coefficients[fitness/constraint dimension][number of coefficients]: of the regression model</li>
+<li>x[number of points][dimension]: chromosome of point to evaluate.</li>
+<li>degree: of the regression model.</li>
+<li>interaction: if True, interaction products of first order will be added. These are all terms
+of order regression_degree+1 that involve at least 2 variables. Defaults to False.</li>
+</ul>
+<p><strong>Returns</strong>:</p>
+<ul class="simple">
+<li>prediction[number of points][fitness/constraint dimension].</li>
+</ul>
+</dd></dl>
+
+</div></blockquote>
+<hr class="docutils" />
+<blockquote>
+<div><dl class="method">
+<dt id="PyGMO.util.analysis._f_correlation">
+<tt class="descclassname">analysis.</tt><tt class="descname">_f_correlation</tt><big>(</big><big>)</big><a class="headerlink" href="#PyGMO.util.analysis._f_correlation" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculates the objective correlation matrix and its eigenvalues and eigenvectors. Only for
+multi-objective problems.</p>
+<p><strong>USAGE:</strong>
+analysis._f_correlation()</p>
+<p><strong>Returns</strong> tuple of 3 containing:</p>
+<ul class="simple">
+<li>M[search dimension][search dimension]: correlation matrix.</li>
+<li>eval[search dimension]: its eigenvalues.</li>
+<li>evect[search dimension][search dimension]: its eigenvectors.</li>
+</ul>
+</dd></dl>
+
+</div></blockquote>
+<hr class="docutils" />
+<blockquote>
+<div><dl class="method">
+<dt id="PyGMO.util.analysis._perform_f_pca">
+<tt class="descclassname">analysis.</tt><tt class="descname">_perform_f_pca</tt><big>(</big><big>)</big><a class="headerlink" href="#PyGMO.util.analysis._perform_f_pca" title="Permalink to this definition">¶</a></dt>
+<dd><p>Performs first Objective Reduction using Principal Component Analysis on the objective
+correlation matrix as defined in the reference and <strong>Returns</strong> a list of the relevant objectives
+according to this procedure. Only for multi-objective problems.</p>
+<p><strong>USAGE:</strong> analysis._perform_f_pca([obj_corr=None, tc=0.95, tabs=0.1])
+* obj_corr: objective correlation matrix, its eigenvalues and eigenvectors, in the form of the output of analysis._f_correlation. This parameter is added for reusability (if None, these will be calculated). Defaults to None.
+* tc: threshold cut. When the cumulative contribution of the eigenvalues absolute value equals this fraction of its maximum value, the reduction algorithm stops. A higher threshold cut means less reduction (see reference). Defaults to 0.95.
+* tabs: absolute tolerance. A Principal Component is treated differently if the absolute value of its corresponding eigenvalue is lower than this value (see reference). Defaults to 0.1.</p>
+<p><strong>Returns</strong>:</p>
+<ul class="simple">
+<li>Keep: list of critical objectives or objectives to keep (zero-based).</li>
+</ul>
+<p><strong>REF:</strong> Deb K. and Saxena D.K, On Finding Pareto-Optimal Solutions Through Dimensionality
+Reduction for Certain Large-Dimensional Multi-Objective Optimization Problems, KanGAL Report
+No. 2005011, IIT Kanpur, 2005.</p>
+</dd></dl>
+
+</div></blockquote>
+<hr class="docutils" />
+<blockquote>
+<div><dl class="method">
+<dt id="PyGMO.util.analysis._get_gradient">
+<tt class="descclassname">analysis.</tt><tt class="descname">_get_gradient</tt><big>(</big><big>)</big><a class="headerlink" href="#PyGMO.util.analysis._get_gradient" title="Permalink to this definition">¶</a></dt>
+<dd><p>Routine that selects points from the sample and calculates the Jacobian matrix in them by
+calling richardson_gradient. Also computes its sparsity.</p>
+<p><strong>USAGE:</strong>
+analysis._get_gradient([sample_size=100, h=0.01, grad_tol=0.000001, zero_tol=0.000001])</p>
+<ul class="simple">
+<li>sample_size: number of points from sample to calculate gradient at. If set to 0, all points
+will be used. Defaults to 0.</li>
+<li>zero_tol: sparsity tolerance. For a position of the jacobian matrix to be considered a zero,
+its mean absolute value has to be &lt;=zero_tol.
+The rest of parameters are passed to _richardson_gradient.</li>
+</ul>
+<p><strong>The following parameters are stored as attributes:</strong></p>
+<ul class="simple">
+<li>analysis.grad_npoints: number of points where jacobian is computed.</li>
+<li>analysis.grad_points[grad_npoints]: indexes of these points in sample list.</li>
+<li>analysis.grad[grad_npoints][fitness dimension][continuous search dimension]:
+jacobian matrixes computed.</li>
+<li>analysis.average_abs_gradient[fitness dimension][continuous search dimension]: mean absolute
+value of the terms of each jacobian matrix computed.</li>
+<li>analysis.grad_sparsity: fraction of zeros in jacobian matrix (zero for all points).</li>
+</ul>
+<p><strong>NOTE:</strong> all integer variables are ignored for this test.</p>
+</dd></dl>
+
+</div></blockquote>
+<hr class="docutils" />
+<blockquote>
+<div><dl class="method">
+<dt id="PyGMO.util.analysis._richardson_gradient">
+<tt class="descclassname">analysis.</tt><tt class="descname">_richardson_gradient</tt><big>(</big><big>)</big><a class="headerlink" href="#PyGMO.util.analysis._richardson_gradient" title="Permalink to this definition">¶</a></dt>
+<dd><p>Evaluates jacobian matrix in point x of the search space by means of Richardson Extrapolation.</p>
+<p><strong>USAGE:</strong>
+analysis._richardson_gradient(x=(a point&#8217;s chromosome), h=0.01, grad_tol=0.000001 [, tmax=15])</p>
+<ul class="simple">
+<li>x: list or tuple containing the chromosome of a point in the search space, where the Jacobian
+Matrix will be evaluated.</li>
+<li>h: initial dx taken for evaluation of derivatives.</li>
+<li>grad_tol: tolerance for convergence.</li>
+<li>tmax: maximum of iterations. Defaults to 15.</li>
+</ul>
+<p><strong>Returns</strong> jacobian matrix at point x as a list [fitness dimension][continuous search dimension].</p>
+<p><strong>NOTE:</strong> all integer variables are ignored for this test.</p>
+</dd></dl>
+
+</div></blockquote>
+<hr class="docutils" />
+<blockquote>
+<div><dl class="method">
+<dt id="PyGMO.util.analysis._get_hessian">
+<tt class="descclassname">analysis.</tt><tt class="descname">_get_hessian</tt><big>(</big><big>)</big><a class="headerlink" href="#PyGMO.util.analysis._get_hessian" title="Permalink to this definition">¶</a></dt>
+<dd><p>Routine that selects points from the sample and calculates the Hessian 3rd-order tensor in
+them by calling richardson_hessian.</p>
+<p><strong>USAGE:</strong>
+analysis._get_hessian([sample_size=100, h=0.01, hess_tol=0.000001])</p>
+<ul class="simple">
+<li>sample_size: number of points from sample to calculate hessian at. If set to 0, all points
+will be used. Defaults to 0.</li>
+<li>The rest of parameters are passed to _richardson_hessian.</li>
+</ul>
+<p><strong>The following parameters are stored as attributes:</strong></p>
+<ul class="simple">
+<li>analysis.hess_npoints: number of points where hessian is computed.</li>
+<li>analysis.hess_points[hess_npoints]: indexes of these points in sample list.</li>
+<li>analysis.hess[hess_npoints][fitness dimension][continuous search dimension][continuous
+search dimension]: hessian 3rd-order tensors computed.</li>
+</ul>
+<p><strong>NOTE:</strong> all integer variables are ignored for this test.</p>
+</dd></dl>
+
+</div></blockquote>
+<hr class="docutils" />
+<blockquote>
+<div><dl class="method">
+<dt id="PyGMO.util.analysis._richardson_hessian">
+<tt class="descclassname">analysis.</tt><tt class="descname">_richardson_hessian</tt><big>(</big><big>)</big><a class="headerlink" href="#PyGMO.util.analysis._richardson_hessian" title="Permalink to this definition">¶</a></dt>
+<dd><p>Evaluates hessian 3rd-order tensor in point x of the search space by means of Richardson
+Extrapolation.</p>
+<p><strong>USAGE:</strong>
+analysis._richardson_hessian(x=(a point&#8217;s chromosome), h=0.01, hess_tol=0.000001 [, tmax=15])</p>
+<ul class="simple">
+<li>x: list or tuple containing the chromosome of a point in the search space, where the Hessian
+3rd-order tensor will be evaluated.</li>
+<li>h: initial dx taken for evaluation of derivatives.</li>
+<li>hess_tol: tolerance for convergence.</li>
+<li>tmax: maximum of iterations. Defaults to 15.</li>
+</ul>
+<p><strong>Returns</strong> hessian tensor at point x as a list [fitness dimension][continuous search dimension]
+[continuous search dimension].</p>
+<p><strong>NOTE:</strong> all integer variables are ignored for this test.</p>
+</dd></dl>
+
+</div></blockquote>
+<hr class="docutils" />
+<blockquote>
+<div><dl class="method">
+<dt id="PyGMO.util.analysis._grad_properties">
+<tt class="descclassname">analysis.</tt><tt class="descname">_grad_properties</tt><big>(</big><big>)</big><a class="headerlink" href="#PyGMO.util.analysis._grad_properties" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computes some properties of the gradient once it is stored as an attribute.</p>
+<p><strong>USAGE:</strong>
+analysis._grad_properties([tol=10**(-8), mode=&#8217;f&#8217;])</p>
+<ul class="simple">
+<li>tol: tolerance to consider a partial derivative value as zero. Defaults to 10**(-8).</li>
+<li>mode: &#8216;f&#8217;/&#8217;c&#8217; to act on fitness function/constraint function jacobian matrix.</li>
+</ul>
+<p><strong>Returns</strong> tuple of 2 containing:</p>
+<ul class="simple">
+<li>norm_quartiles[fitness/constraint dimension][5]: percentiles 0,25,50,75,100 of
+gradient norm (per fitness/constraint function)</li>
+<li>cond_quartiles[fitness/constraint dimension][5]: percentiles 0,25,50,75,100 of
+ratio of maximum to minimum absolute value of partial derivatives in that gradient
+(per fitness/constraint function).</li>
+</ul>
+</dd></dl>
+
+</div></blockquote>
+<hr class="docutils" />
+<blockquote>
+<div><dl class="method">
+<dt id="PyGMO.util.analysis._hess_properties">
+<tt class="descclassname">analysis.</tt><tt class="descname">_hess_properties</tt><big>(</big><big>)</big><a class="headerlink" href="#PyGMO.util.analysis._hess_properties" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computes some properties of the hessian once it is stored as an attribute.</p>
+<p><strong>USAGE:</strong>
+analysis._hess_properties([tol=10**(-8)])</p>
+<ul>
+<li><p class="first">tol: tolerance to consider an eigenvalue as zero. Defaults to 10**(-8).</p>
+<p><strong>Returns</strong> tuple of 3:</p>
+</li>
+<li><p class="first">cond_quartiles[fitness dimension][5]: percentiles 0,25,50,75,100 of ratio of maximum to
+minimum absolute value of eigenvalues in that hessian matrix (per fitness function).</p>
+</li>
+<li><p class="first">pd[fitness dimension]: fraction of points of sample with positive-definite hessian.</p>
+</li>
+<li><p class="first">psd[fitness dimension]: fraction of points of sample with positive-semidefinite
+(and not positive-definite) hessian matrix.</p>
+</li>
+</ul>
+</dd></dl>
+
+</div></blockquote>
+<hr class="docutils" />
+<blockquote>
+<div><dl class="method">
+<dt id="PyGMO.util.analysis.plot_gradient_sparsity">
+<tt class="descclassname">analysis.</tt><tt class="descname">plot_gradient_sparsity</tt><big>(</big><big>)</big><a class="headerlink" href="#PyGMO.util.analysis.plot_gradient_sparsity" title="Permalink to this definition">¶</a></dt>
+<dd><p>Plots sparsity of jacobian matrix. A position is considered a zero if its mean
+absolute value is lower than tolerance.</p>
+<p><strong>USAGE:</strong>
+analysis.plot_gradient_sparsity([zero_tol=10**(-10), mode=&#8217;c&#8217;])</p>
+<ul class="simple">
+<li>zero_tol: tolerance to consider a term as zero.</li>
+<li>mode: &#8216;f&#8217;/&#8217;c&#8217; to act on the fitness/constraint function jacobian matrix.</li>
+</ul>
+<p><strong>NOTE:</strong> the plot will be shown on screen or saved to file depending on the  option that was
+selected when instantiating the analysis class.</p>
+</dd></dl>
+
+</div></blockquote>
+<hr class="docutils" />
+<blockquote>
+<div><dl class="method">
+<dt id="PyGMO.util.analysis.plot_gradient_pcp">
+<tt class="descclassname">analysis.</tt><tt class="descname">plot_gradient_pcp</tt><big>(</big><big>)</big><a class="headerlink" href="#PyGMO.util.analysis.plot_gradient_pcp" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generates Parallel Coordinate Plot of Gradient: magnitude of (scaled) partial
+derivative dFi/dXj vs. X et F.</p>
+<p><strong>USAGE:</strong>
+analysis.plot_gradient_pcp([mode=&#8217;c&#8217;, invert=True])</p>
+<ul class="simple">
+<li>mode: &#8216;f&#8217;/&#8217;c&#8217; to use fitness/constraint jacobian matrix.</li>
+<li>invert: if True, parallel axes are objectives, colors are search variables (not suitable
+for single-objective problems).if False, parallel axes are search variables, colors are
+objectives (not suitable for univariate problems).</li>
+</ul>
+<p><strong>NOTE:</strong> the plot will be shown on screen or saved to file depending on the  option that was
+selected when instantiating the analysis class.</p>
+</dd></dl>
+
+</div></blockquote>
+<hr class="docutils" />
+<blockquote>
+<div><dl class="method">
+<dt id="PyGMO.util.analysis._get_local_extrema">
+<tt class="descclassname">analysis.</tt><tt class="descname">_get_local_extrema</tt><big>(</big><big>)</big><a class="headerlink" href="#PyGMO.util.analysis._get_local_extrema" title="Permalink to this definition">¶</a></dt>
+<dd><p>Selects points from the sample and launches local searches using them as initial points.</p>
+<p><strong>USAGE:</strong>
+analysis._get_local_extrema([sample_size=0, algo=algorithm.cs(), par=True, decomposition_method=&#8217;tchebycheff&#8217;, weights=&#8217;uniform&#8217;, z=[], con2mo=&#8217;obj_cstrsvio&#8217;, warning=True])</p>
+<ul>
+<li><p class="first">sample_size: number of initial points to launch local searches from. If set to 0, all
+points in sample are used. Defaults to 0.</p>
+</li>
+<li><p class="first">algo: algorithm object used in searches. For purposes, it should be a local
+optimisation algorithm. Defaults to algorithm.cs().</p>
+</li>
+<li><p class="first">par: if True, an unconnected archipelago will be used for possible parallelization.</p>
+</li>
+<li><p class="first">decomposition_method: method used by problem.decompose in the case of multi-objective
+problems. Options are: &#8216;tchebycheff&#8217;, &#8216;weighted&#8217;, &#8216;bi&#8217; (boundary intersection).
+Defaults to &#8216;tchebycheff&#8217;.</p>
+</li>
+<li><p class="first">weights: weight vector used by problem.decompose in the case of multi-objective
+problems. Options are: &#8216;uniform&#8217;, &#8216;random&#8217; or any vector of length [fitness dimension]
+whose components sum to one with precision of 10**(-8). Defaults to &#8216;uniform&#8217;.</p>
+</li>
+<li><p class="first">z: ideal reference point used by &#8216;tchebycheff&#8217; and &#8216;bi&#8217; methods. If set to [] (empty
+vector), point [0,0,...,0] is used. Defaults to [].</p>
+</li>
+<li><p class="first">con2mo: way in which constraint problems will be transformed into multi-objective problems before decomposition. Options are:</p>
+<blockquote>
+<div><ul class="simple">
+<li>&#8216;obj_cstrs&#8217;: f1=original objective, f2=number of violated constraints.</li>
+<li>&#8216;obj_cstrsvio&#8217;: f1=original objective, f2=norm of total constraint violation.</li>
+<li>&#8216;obj_eqvio_ineqvio&#8217;: f1=original objective, f2= norm of equality constraint violation, f3= norm of inequality constraint violation.</li>
+<li>None: in this case the function won&#8217;t try to transform the constraint problem via meta-problem con2mo. Set to None when using a local search algorithm that supports constraint optimization.</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p class="first">warning: if True, a warning showing transformation method will be shown when applying con2mo
+meta-problem, and another warning with the decomposition method and parameters will be shown
+when applying decompose meta-problem to a multi-objective problem.</p>
+</li>
+</ul>
+<p><strong>The following parameters are stored as attributes:</strong></p>
+<ul class="simple">
+<li>analysis.local_initial_npoints: number of initial points used for local searches (number
+of searches performed).</li>
+<li>analysis.local_initial_points[number of searches]: index of each initial point in the
+list of sampled points. If the whole sample is used, the list is sorted.</li>
+<li>analysis.local_search_time[number of searches]: time elapsed in each local search
+miliseconds).</li>
+<li>analysis.local_extrema [number of searches][search space dimension]: resulting point of
+each of the local searches.</li>
+<li>analysis.local_f [number of searches][fitness dimension]: real fitness value of each
+of the resulting points</li>
+<li>analysis.local_f_dec[number of searches]: fitness value of points after con2mo in constraint
+and decompose in multi-objective problems. Used to rate and order clusters.</li>
+</ul>
+</dd></dl>
+
+</div></blockquote>
+<hr class="docutils" />
+<blockquote>
+<div><dl class="method">
+<dt id="PyGMO.util.analysis._cluster_local_extrema">
+<tt class="descclassname">analysis.</tt><tt class="descname">_cluster_local_extrema</tt><big>(</big><big>)</big><a class="headerlink" href="#PyGMO.util.analysis._cluster_local_extrema" title="Permalink to this definition">¶</a></dt>
+<dd><p>Clusters the results of a set of local searches and orders the clusters ascendently as
+regards fitness value of its centroid (after transformation for constraint problems and
+fitness decomposition for multi-objective problems). The clustering is conducted by means of
+the k-Means algorithm in the search-fitness space. Some parameters are also computed after
+the clustering to allow landscape analysis and provide insight into the basins of attraction
+that affect the algorithm deployed.</p>
+<p><strong>USAGE:</strong>
+analysis._cluster_local_extrema([variance_ratio=0.95, k=0, single_cluster_tolerance=0.0001, kmax=0])</p>
+<ul class="simple">
+<li>variance_ratio: target fraction of variance explained by the cluster centroids, when not
+clustering to a fixed number of clusters.</li>
+<li>k: number of clusters when clustering to fixed number of clusters. If k=0, the clustering
+will be performed for increasing value of k until the explained variance ratio is achieved.
+Defaults to 0.</li>
+<li>single_cluster_tolerance: if the radius of a single cluster is lower than this value
+times (search space dimension+fitness space dimension), k will be set to 1 when not clustering
+to a fixed number of clusters. Defaults to 0.0001.</li>
+<li>kmax: maximum number of clusters admissible. If set to 0, the limit is the number of local
+searches performed. Defaults to 0.</li>
+</ul>
+<p><strong>The following parameters are stored as attributes:</strong></p>
+<ul class="simple">
+<li>analysis.local_nclusters: number of clusters obtained.</li>
+<li>analysis.local_cluster[number of searches]: cluster to which each point belongs.</li>
+<li>analysis.local_cluster_size[number of clusters]: size of each cluster.</li>
+<li>analysis.local_cluster_x_centers[number of clusters][search dimension]: projection of the cluster
+centroid on the search space.</li>
+<li>analysis.local_cluster_f_centers[number of clusters][fitness dimension]: projection of the cluster
+centroid on the fitness space, or mean fitness value in the cluster.</li>
+<li>analysis.local_cluster_f[number of clusters][fitness dimension]: fitness value of the cluster x-center.</li>
+<li>analysis.local_cluster_c[number of clusters][constraint dimension]: constraint function value
+of the cluster x-center.</li>
+<li>analysis.local_cluster_f_span[number of clusters][fitness dimension]: peak-to-peak value of
+each of the fitness functions inside the cluster.</li>
+<li>analysis.local_cluster_rx[number of clusters]: radius of each cluster in the search space,
+or euclidian distance from the furthest final local search point in the cluster to the cluster
+X-center.</li>
+<li>analysis.local_cluster_rx0[number of clusters]: radius of attraction, or euclidian distance
+from the furthest initial local search point in the cluster to the cluster X-center.</li>
+</ul>
+</dd></dl>
+
+</div></blockquote>
+<hr class="docutils" />
+<blockquote>
+<div><dl class="method">
+<dt id="PyGMO.util.analysis.plot_local_cluster_pcp">
+<tt class="descclassname">analysis.</tt><tt class="descname">plot_local_cluster_pcp</tt><big>(</big><big>)</big><a class="headerlink" href="#PyGMO.util.analysis.plot_local_cluster_pcp" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generates a Parallel Coordinate Plot of the clusters obtained on the local search results.
+The parallel axes represent the chromosome of the initial points of each local search and
+the colors are the clusters to which its local search resulting points belong.</p>
+<p><strong>USAGE:</strong>
+analysis.plot_local_cluster_pcp([together=True, clusters_to_plot=5])</p>
+<ul class="simple">
+<li>together: if True, a single plot will be generated. If False, each cluster will be presented
+in a separate plot. Defaults to True.</li>
+<li>clusters_to_plot: number of clusters to show. Option &#8216;all&#8217; will plot all the clusters obtained.
+Otherwise the best clusters will be shown. Clusters are rated by mean decomposed fitness value.
+Defaults to 10.</li>
+</ul>
+<p><strong>NOTE:</strong> the plot will be shown on screen or saved to file depending on the  option that was
+selected when instantiating the analysis class.</p>
+</dd></dl>
+
+</div></blockquote>
+<hr class="docutils" />
+<blockquote>
+<div><dl class="method">
+<dt id="PyGMO.util.analysis.plot_local_cluster_scatter">
+<tt class="descclassname">analysis.</tt><tt class="descname">plot_local_cluster_scatter</tt><big>(</big><big>)</big><a class="headerlink" href="#PyGMO.util.analysis.plot_local_cluster_scatter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generates a Scatter Plot of the clusters obtained for the local search results in the
+dimensions specified (up to 3). Points on the plot are local search initial points and
+colors are the cluster to which their corresponding final points belong. Cluster X-centers
+are also shown. These are computed as specified in analysis._cluster_local_extrema.</p>
+<p><strong>USAGE:</strong>
+analysis.plot_local_cluster_scatter([dimensions=[1,2], save_fig=False])</p>
+<ul class="simple">
+<li>dimensions: list of up to 3 dimensions in the search space that will be shown in the scatter
+plot (zero based). If set to &#8216;all&#8217;, the whole search space will be taken. An error will be
+raised when trying to plot more than 3 dimensions. Defaults to &#8216;all&#8217;.</li>
+<li>clusters_to_plot: number of clusters to show. The best clusters will be shown. Clusters
+are rated by mean decomposed fitness value. Defaults to 10.</li>
+</ul>
+<p><strong>NOTE:</strong> the plot will be shown on screen or saved to file depending on the  option that was
+selected when instantiating the analysis class.</p>
+</dd></dl>
+
+</div></blockquote>
+<hr class="docutils" />
+<blockquote>
+<div><dl class="method">
+<dt id="PyGMO.util.analysis._svm">
+<tt class="descclassname">analysis.</tt><tt class="descname">_svm</tt><big>(</big><big>)</big><a class="headerlink" href="#PyGMO.util.analysis._svm" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function performs binary classifications of the sample via SVM and assesses its precision.
+The classes are defined by a percentile threshold on a fitness function. The method is tuned by
+a grid search with ranges 2**[-5,16] for C and 2**[-15,4] for gamma and cross-validation for every
+combination, and the set of hyperparameters that leads to minimum mean misclassification error will
+be employed. Linear, quadratic and nonlinear (rbf) kernels can be used, and their misclassification
+errors can be evaluated by crossvalidation and returned as a distribution.</p>
+<p><strong>USAGE:</strong>
+analysis._svm([threshold=25, kernel=&#8217;rbf&#8217;, k_tune=3, k_test=10])</p>
+<ul class="simple">
+<li>threshold: percentile of the fitness function that will serve as threshold for binary
+classification of the sample. Defaults to 50.</li>
+<li>kernel: options are &#8216;linear&#8217;,&#8217;quadratic&#8217; and &#8216;rbf&#8217;. Defaults to &#8216;rbf&#8217;.</li>
+<li>k_tune: k used in k-fold crossvalidation to tune the model hyperparameters. Defaults to 3.</li>
+<li>k_test: k used in k-fold crossvalidation to assess the model misclassification error. Defaults
+to 10.</li>
+</ul>
+<p><strong>Returns</strong>:</p>
+<ul class="simple">
+<li>mce[fitness dimension][k_test]: misclassification errors obtained for each of the fitness functions.</li>
+</ul>
+</dd></dl>
+
+</div></blockquote>
+<hr class="docutils" />
+<blockquote>
+<div><dl class="method">
+<dt id="PyGMO.util.analysis._svm_p_values">
+<tt class="descclassname">analysis.</tt><tt class="descname">_svm_p_values</tt><big>(</big><big>)</big><a class="headerlink" href="#PyGMO.util.analysis._svm_p_values" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function calls analysis._svm several times with identical parameters (threshold, k_tune
+and k_test) but different kernels, and <strong>Returns</strong> the mean misclassification errors of each
+method deployed as well as the p-values of their pairwise comparison.</p>
+<p><strong>USAGE:</strong>
+analysis._svm_p_values([threshold=25, k_tune=3, k_test=10, l=True, q=False, nl=True])</p>
+<ul class="simple">
+<li>threshold: percentile of the fitness function that will serve as threshold for binary classification
+of the sample. Defaults to 50.</li>
+<li>k_tune: k used in k-fold crossvalidation to tune the model hyperparameters. Defaults to 3.</li>
+<li>k_test: k used in k-fold crossvalidation to assess the model misclassification error. Defaults
+to 10.</li>
+<li>l: if True, the linear kernel model will be included.</li>
+<li>q: if True, the quadratic kernel model will be included.</li>
+<li>n: if True, the non-linear (rbf) kernel model will be included.</li>
+</ul>
+<p><strong>Returns</strong> a tuple of length 6 containing:</p>
+<ul class="simple">
+<li>mmce_linear[fitness dimension]: mean misclassification error of linear kernel model.</li>
+<li>mmce_quadratic[fitness dimension]: mean misclassification error of quadratic kernel model.</li>
+<li>mmce_nonlinear[fitness dimension]: mean misclassification error of nonlinear (rbf) kernel model.</li>
+<li>l_q[fitness dimension]: p-value of the comparison between distributions of mce for linear and
+quadratic kernels.</li>
+<li>l_n[fitness dimension]: p-value of the comparison between distributions of mce for linear and
+nonlinear (rbf) kernels.</li>
+<li>q_n[fitness dimension]: p-value of the comparison between distributions of mce for quadratic
+and nonlinear (rbf) kernels.</li>
+</ul>
+<p><strong>NOTE:</strong> if any of the booleans (l,q,n) is set to False and the corresponding model is not fit, the
+function will return -1 for all the associated results.</p>
+</dd></dl>
+
+</div></blockquote>
+<hr class="docutils" />
+<blockquote>
+<div><dl class="method">
+<dt id="PyGMO.util.analysis._c_lin">
+<tt class="descclassname">analysis.</tt><tt class="descname">_c_lin</tt><big>(</big><big>)</big><a class="headerlink" href="#PyGMO.util.analysis._c_lin" title="Permalink to this definition">¶</a></dt>
+<dd><p>Tests the probability of linearity  of the constraint violation distributions obtained. A
+pair of points (X1,C1),(X2,C2) from the sample is selected per test and a random convex
+combination of them is taken (Xconv,Fconv). For each constraint, if C(Xconv)=Cconv within
+tolerance, the constraint is considered linear there. The average of all tests performed
+gives the overall result.</p>
+<p><strong>USAGE:</strong>
+analysis._c_lin([n_pairs=100, threshold=10**(-10)])</p>
+<ul class="simple">
+<li>n_pairs: number of pairs of points used in the test. If set to 0, it will use as many pairs
+of points as points there are in the sample. Defaults to 0.</li>
+<li>threshold: tolerance considered to rate the constraint as linear between two points.
+Defaults to 10**(-10).</li>
+</ul>
+<p><strong>Returns</strong>:</p>
+<ul class="simple">
+<li>p_lin[fitness dimension]: probability of linearity [0,1].</li>
+</ul>
+<p><strong>NOTE:</strong> integer variable values are fixed during each of the tests and linearity
+is evaluated as regards the continuous part of the chromosome.</p>
+</dd></dl>
+
+</div></blockquote>
+<hr class="docutils" />
+<blockquote>
+<div><dl class="method">
+<dt id="PyGMO.util.analysis._compute_constraints">
+<tt class="descclassname">analysis.</tt><tt class="descname">_compute_constraints</tt><big>(</big><big>)</big><a class="headerlink" href="#PyGMO.util.analysis._compute_constraints" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computes the constraint function values of the points in the sample.</p>
+<p><strong>USAGE:</strong>
+analysis._compute_constraints()</p>
+<p>Stores as attribute:</p>
+<ul class="simple">
+<li>analysis.c: unscaled constraint value distribution.</li>
+<li>analysis.c_span: scale factors for constraint function values.</li>
+</ul>
+<p><strong>NOTE:</strong> Never call this function after having scaled the dataset. _sample function calls it
+automatically if the problem is a constrained one, and then calls _scale_sample.</p>
+</dd></dl>
+
+</div></blockquote>
+<hr class="docutils" />
+<blockquote>
+<div><dl class="method">
+<dt id="PyGMO.util.analysis._c_effectiveness">
+<tt class="descclassname">analysis.</tt><tt class="descname">_c_effectiveness</tt><big>(</big><big>)</big><a class="headerlink" href="#PyGMO.util.analysis._c_effectiveness" title="Permalink to this definition">¶</a></dt>
+<dd><p>Evaluates constraint effectiveness for a constraint problem.</p>
+<p><strong>USAGE:</strong>
+analysis._c_effectiveness([tol=10**(-10)])</p>
+<ul class="simple">
+<li>tol: tolerance for assessment of equality.</li>
+</ul>
+<p><strong>Returns</strong>:</p>
+<ul>
+<li><p class="first">c[constraint dimension][2]:</p>
+<blockquote>
+<div><ul class="simple">
+<li>c[i][0] is the &lt;= effectiveness of the constraint i (fraction of sample &lt;=).</li>
+<li>c[i][1] is the == effectiveness of the constraint i (fraction of sample ==).</li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+</dd></dl>
+
+</div></blockquote>
+<hr class="docutils" />
+<blockquote>
+<div><dl class="method">
+<dt id="PyGMO.util.analysis._ic_redundancy">
+<tt class="descclassname">analysis.</tt><tt class="descname">_ic_redundancy</tt><big>(</big><big>)</big><a class="headerlink" href="#PyGMO.util.analysis._ic_redundancy" title="Permalink to this definition">¶</a></dt>
+<dd><p>Evaluates redundancy of inequality constraints, both of each constraint wrt all the rest and
+pairwise.</p>
+<p><strong>USAGE:</strong>
+analysis._ic_redundancy([tol=10**(-10)])</p>
+<ul class="simple">
+<li>tol: tolerance for assessment of equality.</li>
+</ul>
+<p><strong>Returns</strong> tuple of 2:
+* redundancy[inequality constraint dimension]: redundancy of each inequality constraint with respect to all other inequality constraints. redundancy[i] is the fraction of points violating constraint g_i that also violate any other inequality constraint.
+* m[inequality constraint dimension][inequality constraint dimension]: pairwise redundancy. m[i][j] is the fraction of points violating constraint g_i that also violate constraint g_j.</p>
+</dd></dl>
+
+</div></blockquote>
+</div>
+</div>
+
+
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="racing.html" class="btn btn-neutral" title="Racing"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2015, Dario Izzo and Francesco Biscani.
+    </p>
+  </div>
+
+  <a href="https://github.com/snide/sphinx_rtd_theme">Sphinx theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+</body>
+</html>

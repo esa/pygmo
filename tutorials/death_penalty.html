@@ -1,0 +1,389 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Death penalty &mdash; PyGMO 1.1.7dev documentation</title>
+  
+
+  
+  
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  
+  
+
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:'../',
+        VERSION:'1.1.7dev',
+        COLLAPSE_INDEX:false,
+        FILE_SUFFIX:'.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+    <script type="text/javascript">
+        jQuery(function () {
+            SphinxRtdTheme.StickyNav.enable();
+        });
+    </script>
+  
+
+  
+    <link rel="top" title="PyGMO 1.1.7dev documentation" href="../index.html"/>
+        <link rel="up" title="Dealing with constraints in PyGMO" href="dealing_with_constraints_in_PyGMO.html"/>
+        <link rel="next" title="Multi-objective transformation" href="multi_objective_transformation.html"/>
+        <link rel="prev" title="Dealing with constraints in PyGMO" href="dealing_with_constraints_in_PyGMO.html"/> 
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        <a href="../index.html" class="fa fa-home"> PyGMO</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        
+        
+            <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../install.html">Install PyGMO</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../install.html#preparing-your-system-to-compile-pygmo">Preparing your system to compile PyGMO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../install.html#download-pygmo-code">Download PyGMO code</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../install.html#compiling-and-installing-under-unix">Compiling and Installing under Unix</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../install.html#compiling-and-installing-under-windows">Compiling and Installing under Windows</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../quickstart.html">Quick Start</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../quickstart.html#on-one-cpu">On one CPU</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../quickstart.html#on-many-cpus">On many CPUs ...</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../quickstart.html#and-migrating-solutions">... and migrating solutions ...</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../quickstart.html#and-between-different-algorithms">... and between different algorithms ...</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Tutorials</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="adding_problems_and_algorithms_to_PyGMO.html">Adding new problems and algorithms to PyGMO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="meta_problems_meta_algorithms.html">Meta-problems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="multi_objective_optimization_with_PyGMO.html">Multi Objective Optimization with PyGMO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hypervolumes_in_PyGMO.html">Hypervolumes with PyGMO</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="dealing_with_constraints_in_PyGMO.html">Dealing with constraints in PyGMO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="racing.html">Racing in PyGMO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tsp.html">Traveling Salesman Problems with PyGMO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="landscape_analysis_with_DrPyGMO.html">Landscape Analysis using Dr. PyGMO</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/index.html">Examples</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../examples/example1.html">A study on Mixing Variants of Differential Evolution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples/example2.html">Monitoring the Information Flow in a large archipelago</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples/example3.html">Testing Algorithms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples/example4.html">Multi-objective optimization in the asynchronous island model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples/example5.html">Designing and optimizing interplanetary trajectories</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples/example6.html">Participating to the CEC2013 Competition (v 1.1.5)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples/example7.html">Travelling Salesman Problem for Active Space Debris Removal</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples/local_optimization.html">Third-party Non-linear optimizers in PyGMO</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../documentation/index.html">User Documentation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../documentation/individual.html">Individual and Champion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../documentation/population.html">Population</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../documentation/migration.html">Migration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../documentation/topology.html">Topology</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../documentation/island.html">Island and Archipelago</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../documentation/algorithms.html">Algorithms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../documentation/problems.html">Problems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../documentation/hypervolume.html">Hypervolume</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../documentation/racing.html">Racing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../documentation/analysis.html">Dr. PyGMO - Analysis Module</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference external" href="http://esa.github.io/pagmo/">PaGMO API</a></li>
+</ul>
+
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../index.html">PyGMO</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="index.html">Tutorials</a> &raquo;</li>
+      
+          <li><a href="dealing_with_constraints_in_PyGMO.html">Dealing with constraints in PyGMO</a> &raquo;</li>
+      
+    <li>Death penalty</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          <a href="../_sources/tutorials/death_penalty.txt" rel="nofollow"> View page source</a>
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            
+  <div class="section" id="death-penalty">
+<span id="id1"></span><h1>Death penalty<a class="headerlink" href="#death-penalty" title="Permalink to this headline">¶</a></h1>
+<p>Death penalty is a static penalty constraints handling technique:
+individuals that are not satisfying the constraints are penalized with
+a huge constraint value. The technique assumes minimization and it can be
+applyed to both single and multi-objective constrained problems.
+In this tutorial we will learn how to use this specific constraints
+handling technique using PaGMO/PyGMO.</p>
+<div class="section" id="method">
+<h2>Method<a class="headerlink" href="#method" title="Permalink to this headline">¶</a></h2>
+<p>The death penalty technique is implemented through a meta-problem.
+In our case, the meta-problem takes a constrained problem, removes
+its constraints and penalizes the original objective function value
+with a factor that is a measure of the point infeasibility.
+The derived meta-problem can then be solved by any optimization
+algorithm for unconstrained optimization.</p>
+<p>In PaGMO/PyGMO, two different death penalty techniques are implemented.
+The first one is the simple death penalty method where infeasibility is
+penalized assigning to the objective value the maximum machine-finite value
+[boost::numeric::bounds&lt;double&gt;::highest()].
+The second one is the Kuri technique where the same penalization value
+is applyed according to a rate of constraints satisfaction.</p>
+</div>
+<div class="section" id="application">
+<h2>Application<a class="headerlink" href="#application" title="Permalink to this headline">¶</a></h2>
+<p>The problem considered here is the problem g04 from the Congress on
+Evolutionary Computation 2006 (CEC2006). This problem has a quadratic
+objective function with six non linear inequality constraints.
+In the optimum two constraints are active.</p>
+<p>To solve this problem two heuristic techniques are used: the Differential
+Evolution (DE) and the Simple Genetic Algorithm (SGA). The population size
+is 70 and 5000 generations are performed, which gives a total number of
+functions evaluation equal to 350000. These parameters can be set as preferred in
+the constructor of problem and algorithms.
+To get statistical meaning 25 runs are performed per each algorithm and mean objective value,
+the best optimum found and the standard deviation are computed.</p>
+<p>The code is very explicit by itself. Copy it to a file named run.py
+in example, and run this file with python.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">PyGMO</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">numpy</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="n">n_trials</span> <span class="o">=</span> <span class="mi">25</span>
+<span class="n">pop_size</span> <span class="o">=</span> <span class="mi">70</span>
+<span class="n">n_gen</span> <span class="o">=</span> <span class="mi">5000</span>
+
+<span class="n">prob_cec</span> <span class="o">=</span> <span class="n">problem</span><span class="o">.</span><span class="n">cec2006</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+
+<span class="n">prob_list</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">prob_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">problem</span><span class="o">.</span><span class="n">death_penalty</span><span class="p">(</span><span class="n">prob_cec</span><span class="p">,</span><span class="n">problem</span><span class="o">.</span><span class="n">death_penalty</span><span class="o">.</span><span class="n">method</span><span class="o">.</span><span class="n">SIMPLE</span><span class="p">))</span>
+<span class="n">prob_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">problem</span><span class="o">.</span><span class="n">death_penalty</span><span class="p">(</span><span class="n">prob_cec</span><span class="p">,</span><span class="n">problem</span><span class="o">.</span><span class="n">death_penalty</span><span class="o">.</span><span class="n">method</span><span class="o">.</span><span class="n">KURI</span><span class="p">))</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s">&#39;</span><span class="se">\n</span><span class="s">-----------------------------&#39;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s">&#39;</span><span class="se">\n</span><span class="s">Original problem: &#39;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">prob_cec</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s">&#39;</span><span class="se">\n</span><span class="s">Meta-problem 0: &#39;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">prob_list</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="k">print</span><span class="p">(</span><span class="s">&#39;</span><span class="se">\n</span><span class="s">-----------------------------&#39;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s">&#39;</span><span class="se">\n</span><span class="s">Best decision vector: &#39;</span> <span class="o">+</span>  <span class="nb">str</span><span class="p">(</span><span class="n">prob_cec</span><span class="o">.</span><span class="n">best_x</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s">&#39;</span><span class="se">\n</span><span class="s">Best fitness: &#39;</span> <span class="o">+</span>  <span class="nb">str</span><span class="p">(</span><span class="n">prob_cec</span><span class="o">.</span><span class="n">best_f</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s">&#39;</span><span class="se">\n</span><span class="s">-----------------------------&#39;</span><span class="p">)</span>
+
+<span class="n">algo_list</span> <span class="o">=</span> <span class="p">[</span><span class="n">algorithm</span><span class="o">.</span><span class="n">de</span><span class="p">(</span><span class="n">gen</span> <span class="o">=</span> <span class="n">n_gen</span><span class="p">,</span> <span class="n">xtol</span><span class="o">=</span><span class="mf">1e-30</span><span class="p">,</span> <span class="n">ftol</span><span class="o">=</span><span class="mf">1e-30</span><span class="p">),</span> <span class="n">algorithm</span><span class="o">.</span><span class="n">sga</span><span class="p">(</span><span class="n">gen</span> <span class="o">=</span> <span class="n">n_gen</span><span class="p">)]</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s">&#39;</span><span class="se">\n</span><span class="s">Trials: &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">n_trials</span><span class="p">)</span> <span class="o">+</span> <span class="s">&#39; - Population size: &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">pop_size</span><span class="p">)</span> <span class="o">+</span> <span class="s">&#39; - Generations: &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">n_gen</span><span class="p">))</span>
+
+<span class="k">for</span> <span class="n">prob</span> <span class="ow">in</span> <span class="n">prob_list</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">&#39;</span><span class="se">\n</span><span class="s">-----------------------------&#39;</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">&#39;</span><span class="se">\n</span><span class="s">Testing problem: &#39;</span> <span class="o">+</span> <span class="n">prob</span><span class="o">.</span><span class="n">get_name</span><span class="p">()</span> <span class="o">+</span> <span class="s">&#39; with population size: &#39;</span> <span class="o">+</span>  <span class="nb">str</span><span class="p">(</span><span class="n">pop_size</span><span class="p">)</span> <span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">algo</span> <span class="ow">in</span> <span class="n">algo_list</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">&#39;</span><span class="se">\n</span><span class="s">&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">algo</span><span class="p">))</span>
+        <span class="n">best</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">best_x</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">n_trials</span><span class="p">):</span>
+            <span class="n">isl</span> <span class="o">=</span> <span class="n">island</span><span class="p">(</span><span class="n">algo</span><span class="p">,</span><span class="n">prob</span><span class="p">,</span><span class="n">pop_size</span><span class="p">)</span>
+            <span class="n">isl</span><span class="o">.</span><span class="n">evolve</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+            <span class="n">isl</span><span class="o">.</span><span class="n">join</span><span class="p">()</span>
+            <span class="k">if</span> <span class="n">prob_cec</span><span class="o">.</span><span class="n">feasibility_x</span><span class="p">(</span><span class="n">isl</span><span class="o">.</span><span class="n">population</span><span class="o">.</span><span class="n">champion</span><span class="o">.</span><span class="n">x</span><span class="p">):</span>
+                <span class="n">best</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">isl</span><span class="o">.</span><span class="n">population</span><span class="o">.</span><span class="n">champion</span><span class="o">.</span><span class="n">f</span><span class="p">)</span>
+                <span class="n">best_x</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">isl</span><span class="o">.</span><span class="n">population</span><span class="o">.</span><span class="n">champion</span><span class="o">.</span><span class="n">x</span><span class="p">)</span>
+
+        <span class="k">print</span><span class="p">(</span><span class="s">&#39; Best:</span><span class="se">\t</span><span class="s">&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="nb">min</span><span class="p">(</span><span class="n">best</span><span class="p">)[</span><span class="mi">0</span><span class="p">]))</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">&#39; Mean:</span><span class="se">\t</span><span class="s">&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">mean</span><span class="p">(</span><span class="n">best</span><span class="p">)))</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">&#39; Std:</span><span class="se">\t</span><span class="s">&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">std</span><span class="p">(</span><span class="n">best</span><span class="p">)))</span>
+
+        <span class="k">print</span><span class="p">(</span><span class="s">&#39; Example of found x:</span><span class="se">\t</span><span class="s">&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">best_x</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">&#39; Example of found constraints:</span><span class="se">\t</span><span class="s">&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">prob_cec</span><span class="o">.</span><span class="n">compute_constraints</span><span class="p">((</span><span class="n">best_x</span><span class="p">[</span><span class="mi">0</span><span class="p">]))))</span>
+</pre></div>
+</div>
+<p>In this example, we have used two different meta-problems one for each death
+penalty techniques, both contained in the prob_list variable. By looking at
+the output given by the original problem and the first meta problem,
+it is important to see that the original constrained problem output has 6
+constraints while the meta-problem doens&#8217;t have any as expected.</p>
+<p>If run directly into python, you would get the following output:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">Out</span><span class="p">[</span><span class="mi">1</span><span class="p">]:</span>
+<span class="o">-----------------------------</span>
+
+<span class="n">Original</span> <span class="n">problem</span><span class="p">:</span>
+<span class="n">Problem</span> <span class="n">name</span><span class="p">:</span> <span class="n">CEC2006</span> <span class="o">-</span> <span class="n">g4</span>
+     <span class="n">Global</span> <span class="n">dimension</span><span class="p">:</span>                       <span class="mi">5</span>
+     <span class="n">Integer</span> <span class="n">dimension</span><span class="p">:</span>                      <span class="mi">0</span>
+     <span class="n">Fitness</span> <span class="n">dimension</span><span class="p">:</span>                      <span class="mi">1</span>
+     <span class="n">Constraints</span> <span class="n">dimension</span><span class="p">:</span>                  <span class="mi">6</span>
+     <span class="n">Inequality</span> <span class="n">constraints</span> <span class="n">dimension</span><span class="p">:</span>       <span class="mi">6</span>
+     <span class="n">Lower</span> <span class="n">bounds</span><span class="p">:</span> <span class="p">[</span><span class="mi">78</span><span class="p">,</span> <span class="mi">33</span><span class="p">,</span> <span class="mi">27</span><span class="p">,</span> <span class="mi">27</span><span class="p">,</span> <span class="mi">27</span><span class="p">]</span>
+     <span class="n">Upper</span> <span class="n">bounds</span><span class="p">:</span> <span class="p">[</span><span class="mi">102</span><span class="p">,</span> <span class="mi">45</span><span class="p">,</span> <span class="mi">45</span><span class="p">,</span> <span class="mi">45</span><span class="p">,</span> <span class="mi">45</span><span class="p">]</span>
+     <span class="n">Constraints</span> <span class="n">tolerance</span><span class="p">:</span>                  <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
+
+
+<span class="n">Meta</span><span class="o">-</span><span class="n">problem</span><span class="p">:</span>
+<span class="n">Problem</span> <span class="n">name</span><span class="p">:</span> <span class="n">CEC2006</span> <span class="o">-</span> <span class="n">g4</span> <span class="p">[</span><span class="n">death_penalty</span><span class="p">,</span> <span class="n">method_SIMPLE</span> <span class="p">]</span>
+     <span class="n">Global</span> <span class="n">dimension</span><span class="p">:</span>                       <span class="mi">5</span>
+     <span class="n">Integer</span> <span class="n">dimension</span><span class="p">:</span>                      <span class="mi">0</span>
+     <span class="n">Fitness</span> <span class="n">dimension</span><span class="p">:</span>                      <span class="mi">1</span>
+     <span class="n">Constraints</span> <span class="n">dimension</span><span class="p">:</span>                  <span class="mi">0</span>
+     <span class="n">Inequality</span> <span class="n">constraints</span> <span class="n">dimension</span><span class="p">:</span>       <span class="mi">0</span>
+     <span class="n">Lower</span> <span class="n">bounds</span><span class="p">:</span> <span class="p">[</span><span class="mi">78</span><span class="p">,</span> <span class="mi">33</span><span class="p">,</span> <span class="mi">27</span><span class="p">,</span> <span class="mi">27</span><span class="p">,</span> <span class="mi">27</span><span class="p">]</span>
+     <span class="n">Upper</span> <span class="n">bounds</span><span class="p">:</span> <span class="p">[</span><span class="mi">102</span><span class="p">,</span> <span class="mi">45</span><span class="p">,</span> <span class="mi">45</span><span class="p">,</span> <span class="mi">45</span><span class="p">,</span> <span class="mi">45</span><span class="p">]</span>
+     <span class="n">Constraints</span> <span class="n">tolerance</span><span class="p">:</span>                  <span class="p">[]</span>
+
+
+     <span class="n">Constraints</span> <span class="n">handled</span> <span class="k">with</span> <span class="n">death</span> <span class="n">penalty</span><span class="p">,</span> <span class="n">method</span> <span class="n">SIMPLE</span>
+
+<span class="o">-----------------------------</span>
+
+<span class="n">Best</span> <span class="n">decision</span> <span class="n">vector</span><span class="p">:</span> <span class="p">(</span><span class="mf">78.0</span><span class="p">,</span> <span class="mf">33.0</span><span class="p">,</span> <span class="mf">29.9952560256816</span><span class="p">,</span> <span class="mf">45.0</span><span class="p">,</span> <span class="mf">36.77581290578821</span><span class="p">)</span>
+
+<span class="n">Best</span> <span class="n">fitness</span><span class="p">:</span> <span class="p">(</span><span class="o">-</span><span class="mf">30665.538671783317</span><span class="p">,)</span>
+
+<span class="o">-----------------------------</span>
+<span class="n">Trials</span><span class="p">:</span> <span class="mi">25</span> <span class="o">-</span> <span class="n">Population</span> <span class="n">size</span><span class="p">:</span> <span class="mi">70</span> <span class="o">-</span> <span class="n">Generations</span><span class="p">:</span> <span class="mi">3000</span>
+<span class="o">-----------------------------</span>
+
+<span class="n">Testing</span> <span class="n">problem</span><span class="p">:</span> <span class="n">CEC2006</span> <span class="o">-</span> <span class="n">g4</span> <span class="p">[</span><span class="n">death_penalty</span><span class="p">,</span> <span class="n">method_SIMPLE</span> <span class="p">]</span> <span class="k">with</span> <span class="n">population</span> <span class="n">size</span><span class="p">:</span> <span class="mi">70</span>
+
+<span class="n">Algorithm</span> <span class="n">name</span><span class="p">:</span> <span class="n">Differential</span> <span class="n">Evolution</span> <span class="o">-</span> <span class="n">gen</span><span class="p">:</span><span class="mi">3000</span> <span class="n">F</span><span class="p">:</span> <span class="mf">0.8</span> <span class="n">CR</span><span class="p">:</span> <span class="mf">0.9</span> <span class="n">variant</span><span class="p">:</span><span class="mi">2</span> <span class="n">ftol</span><span class="p">:</span><span class="mf">1e-30</span> <span class="n">xtol</span><span class="p">:</span><span class="mf">1e-30</span>
+ <span class="n">Best</span><span class="p">:</span>       <span class="o">-</span><span class="mf">30665.5386718</span>
+ <span class="n">Mean</span><span class="p">:</span>       <span class="o">-</span><span class="mf">30665.5386718</span>
+ <span class="n">Std</span><span class="p">:</span>        <span class="mf">3.8500748794e-12</span>
+ <span class="n">Example</span> <span class="n">of</span> <span class="n">found</span> <span class="n">x</span><span class="p">:</span> <span class="p">(</span><span class="mf">78.0</span><span class="p">,</span> <span class="mf">33.0</span><span class="p">,</span> <span class="mf">29.99525602568156</span><span class="p">,</span> <span class="mf">44.99999999999992</span><span class="p">,</span> <span class="mf">36.775812905788335</span><span class="p">)</span>
+ <span class="n">Example</span> <span class="n">of</span> <span class="n">found</span> <span class="n">constraints</span><span class="p">:</span>       <span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="o">-</span><span class="mf">92.0</span><span class="p">,</span> <span class="o">-</span><span class="mf">11.159499691073108</span><span class="p">,</span> <span class="o">-</span><span class="mf">8.840500308926892</span><span class="p">,</span> <span class="o">-</span><span class="mf">5.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)</span>
+
+<span class="n">Algorithm</span> <span class="n">name</span><span class="p">:</span> <span class="n">A</span> <span class="n">Simple</span> <span class="n">Genetic</span> <span class="n">Algorithm</span> <span class="o">-</span> <span class="n">gen</span><span class="p">:</span><span class="mi">3000</span> <span class="n">CR</span><span class="p">:</span><span class="mf">0.95</span> <span class="n">M</span><span class="p">:</span><span class="mf">0.02</span> <span class="n">elitism</span><span class="p">:</span><span class="mi">1</span> <span class="n">mutation</span><span class="p">:</span><span class="n">GAUSSIAN</span> <span class="p">(</span><span class="mf">0.1</span><span class="p">)</span> <span class="n">selection</span><span class="p">:</span><span class="n">ROULETTE</span> <span class="n">crossover</span><span class="p">:</span><span class="n">EXPONENTIAL</span>
+ <span class="n">Best</span><span class="p">:</span>       <span class="o">-</span><span class="mf">30645.1250077</span>
+ <span class="n">Mean</span><span class="p">:</span>       <span class="o">-</span><span class="mf">30602.5590724</span>
+ <span class="n">Std</span><span class="p">:</span>        <span class="mf">74.4327472986</span>
+ <span class="n">Example</span> <span class="n">of</span> <span class="n">found</span> <span class="n">x</span><span class="p">:</span> <span class="p">(</span><span class="mf">78.01739822664655</span><span class="p">,</span> <span class="mf">33.14346829880361</span><span class="p">,</span> <span class="mf">30.306842224157915</span><span class="p">,</span> <span class="mf">44.81436783797341</span><span class="p">,</span> <span class="mf">36.06696016578172</span><span class="p">)</span>
+ <span class="n">Example</span> <span class="n">of</span> <span class="n">found</span> <span class="n">constraints</span><span class="p">:</span>       <span class="p">(</span><span class="o">-</span><span class="mf">0.09005427354273365</span><span class="p">,</span> <span class="o">-</span><span class="mf">91.90994572645727</span><span class="p">,</span> <span class="o">-</span><span class="mf">11.213189038009048</span><span class="p">,</span> <span class="o">-</span><span class="mf">8.786810961990952</span><span class="p">,</span> <span class="o">-</span><span class="mf">4.999961858160862</span><span class="p">,</span> <span class="o">-</span><span class="mf">3.814183913775082e-05</span><span class="p">)</span>
+
+<span class="o">-----------------------------</span>
+
+<span class="n">Testing</span> <span class="n">problem</span><span class="p">:</span> <span class="n">CEC2006</span> <span class="o">-</span> <span class="n">g4</span> <span class="p">[</span><span class="n">death_penalty</span><span class="p">,</span> <span class="n">method_KURI</span> <span class="p">]</span> <span class="k">with</span> <span class="n">population</span> <span class="n">size</span><span class="p">:</span> <span class="mi">70</span>
+
+<span class="n">Algorithm</span> <span class="n">name</span><span class="p">:</span> <span class="n">Differential</span> <span class="n">Evolution</span> <span class="o">-</span> <span class="n">gen</span><span class="p">:</span><span class="mi">3000</span> <span class="n">F</span><span class="p">:</span> <span class="mf">0.8</span> <span class="n">CR</span><span class="p">:</span> <span class="mf">0.9</span> <span class="n">variant</span><span class="p">:</span><span class="mi">2</span> <span class="n">ftol</span><span class="p">:</span><span class="mf">1e-30</span> <span class="n">xtol</span><span class="p">:</span><span class="mf">1e-30</span>
+ <span class="n">Best</span><span class="p">:</span>       <span class="o">-</span><span class="mf">30665.5386718</span>
+ <span class="n">Mean</span><span class="p">:</span>       <span class="o">-</span><span class="mf">30665.5386718</span>
+ <span class="n">Std</span><span class="p">:</span>        <span class="mf">4.05108175097e-12</span>
+ <span class="n">Example</span> <span class="n">of</span> <span class="n">found</span> <span class="n">x</span><span class="p">:</span> <span class="p">(</span><span class="mf">78.0</span><span class="p">,</span> <span class="mf">33.0</span><span class="p">,</span> <span class="mf">29.99525602568155</span><span class="p">,</span> <span class="mf">44.99999999999988</span><span class="p">,</span> <span class="mf">36.77581290578837</span><span class="p">)</span>
+ <span class="n">Example</span> <span class="n">of</span> <span class="n">found</span> <span class="n">constraints</span><span class="p">:</span>       <span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="o">-</span><span class="mf">92.0</span><span class="p">,</span> <span class="o">-</span><span class="mf">11.15949969107308</span><span class="p">,</span> <span class="o">-</span><span class="mf">8.84050030892692</span><span class="p">,</span> <span class="o">-</span><span class="mf">5.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)</span>
+
+<span class="n">Algorithm</span> <span class="n">name</span><span class="p">:</span> <span class="n">A</span> <span class="n">Simple</span> <span class="n">Genetic</span> <span class="n">Algorithm</span> <span class="o">-</span> <span class="n">gen</span><span class="p">:</span><span class="mi">3000</span> <span class="n">CR</span><span class="p">:</span><span class="mf">0.95</span> <span class="n">M</span><span class="p">:</span><span class="mf">0.02</span> <span class="n">elitism</span><span class="p">:</span><span class="mi">1</span> <span class="n">mutation</span><span class="p">:</span><span class="n">GAUSSIAN</span> <span class="p">(</span><span class="mf">0.1</span><span class="p">)</span> <span class="n">selection</span><span class="p">:</span><span class="n">ROULETTE</span> <span class="n">crossover</span><span class="p">:</span><span class="n">EXPONENTIAL</span>
+ <span class="n">Best</span><span class="p">:</span>       <span class="o">-</span><span class="mf">30659.9680031</span>
+ <span class="n">Mean</span><span class="p">:</span>       <span class="o">-</span><span class="mf">30616.4063446</span>
+ <span class="n">Std</span><span class="p">:</span>        <span class="mf">28.812620113</span>
+ <span class="n">Example</span> <span class="n">of</span> <span class="n">found</span> <span class="n">x</span><span class="p">:</span> <span class="p">(</span><span class="mf">78.04964811877262</span><span class="p">,</span> <span class="mf">33.07572602463478</span><span class="p">,</span> <span class="mf">30.150381195899435</span><span class="p">,</span> <span class="mf">44.965160220602215</span><span class="p">,</span> <span class="mf">36.46285810358295</span><span class="p">)</span>
+ <span class="n">Example</span> <span class="n">of</span> <span class="n">found</span> <span class="n">constraints</span><span class="p">:</span>       <span class="p">(</span><span class="o">-</span><span class="mf">0.03509668936189314</span><span class="p">,</span> <span class="o">-</span><span class="mf">91.9649033106381</span><span class="p">,</span> <span class="o">-</span><span class="mf">11.170496308902116</span><span class="p">,</span> <span class="o">-</span><span class="mf">8.829503691097884</span><span class="p">,</span> <span class="o">-</span><span class="mf">4.989167173895257</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.010832826104742566</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>This example shows that the
+Differential Algorithm with both the simple and the Kuri death
+penalty methods converges to the best known decision vector.
+Furthermore, it is noticeable that on this case, the Differential
+Evolution algorithm outperforms the Simple Genetic Algorithm.</p>
+<p>Please note that, from the literature, it is stated that the death penalty constraints handling method is
+not well suited to solve highly constrained problems or problems
+with equality constraints. Indeed if at initialization no feasible individuals
+are present, all the individuals will have assigned the same penalty value and the
+algorithm will have no preferible direction to follow and will proceeds just with random tentatives.</p>
+</div>
+</div>
+
+
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="multi_objective_transformation.html" class="btn btn-neutral float-right" title="Multi-objective transformation"/>Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="dealing_with_constraints_in_PyGMO.html" class="btn btn-neutral" title="Dealing with constraints in PyGMO"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2015, Dario Izzo and Francesco Biscani.
+    </p>
+  </div>
+
+  <a href="https://github.com/snide/sphinx_rtd_theme">Sphinx theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+</body>
+</html>

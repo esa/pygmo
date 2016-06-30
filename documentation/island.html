@@ -1,0 +1,486 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Island and Archipelago &mdash; PyGMO 1.1.7dev documentation</title>
+  
+
+  
+  
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  
+  
+
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:'../',
+        VERSION:'1.1.7dev',
+        COLLAPSE_INDEX:false,
+        FILE_SUFFIX:'.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+    <script type="text/javascript">
+        jQuery(function () {
+            SphinxRtdTheme.StickyNav.enable();
+        });
+    </script>
+  
+
+  
+    <link rel="top" title="PyGMO 1.1.7dev documentation" href="../index.html"/>
+        <link rel="up" title="User Documentation" href="index.html"/>
+        <link rel="next" title="Algorithms" href="algorithms.html"/>
+        <link rel="prev" title="Topology" href="topology.html"/> 
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        <a href="../index.html" class="fa fa-home"> PyGMO</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        
+        
+            <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../install.html">Install PyGMO</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../install.html#preparing-your-system-to-compile-pygmo">Preparing your system to compile PyGMO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../install.html#download-pygmo-code">Download PyGMO code</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../install.html#compiling-and-installing-under-unix">Compiling and Installing under Unix</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../install.html#compiling-and-installing-under-windows">Compiling and Installing under Windows</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../quickstart.html">Quick Start</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../quickstart.html#on-one-cpu">On one CPU</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../quickstart.html#on-many-cpus">On many CPUs ...</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../quickstart.html#and-migrating-solutions">... and migrating solutions ...</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../quickstart.html#and-between-different-algorithms">... and between different algorithms ...</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/index.html">Tutorials</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/adding_problems_and_algorithms_to_PyGMO.html">Adding new problems and algorithms to PyGMO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/meta_problems_meta_algorithms.html">Meta-problems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/multi_objective_optimization_with_PyGMO.html">Multi Objective Optimization with PyGMO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/hypervolumes_in_PyGMO.html">Hypervolumes with PyGMO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/dealing_with_constraints_in_PyGMO.html">Dealing with constraints in PyGMO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/racing.html">Racing in PyGMO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/tsp.html">Traveling Salesman Problems with PyGMO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/landscape_analysis_with_DrPyGMO.html">Landscape Analysis using Dr. PyGMO</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/index.html">Examples</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../examples/example1.html">A study on Mixing Variants of Differential Evolution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples/example2.html">Monitoring the Information Flow in a large archipelago</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples/example3.html">Testing Algorithms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples/example4.html">Multi-objective optimization in the asynchronous island model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples/example5.html">Designing and optimizing interplanetary trajectories</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples/example6.html">Participating to the CEC2013 Competition (v 1.1.5)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples/example7.html">Travelling Salesman Problem for Active Space Debris Removal</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples/local_optimization.html">Third-party Non-linear optimizers in PyGMO</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">User Documentation</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="individual.html">Individual and Champion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="population.html">Population</a></li>
+<li class="toctree-l2"><a class="reference internal" href="migration.html">Migration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="topology.html">Topology</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="">Island and Archipelago</a></li>
+<li class="toctree-l2"><a class="reference internal" href="algorithms.html">Algorithms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="problems.html">Problems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hypervolume.html">Hypervolume</a></li>
+<li class="toctree-l2"><a class="reference internal" href="racing.html">Racing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="analysis.html">Dr. PyGMO - Analysis Module</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference external" href="http://esa.github.io/pagmo/">PaGMO API</a></li>
+</ul>
+
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../index.html">PyGMO</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="index.html">User Documentation</a> &raquo;</li>
+      
+    <li>Island and Archipelago</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          <a href="../_sources/documentation/island.txt" rel="nofollow"> View page source</a>
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            
+  <div class="section" id="island-and-archipelago">
+<h1>Island and Archipelago<a class="headerlink" href="#island-and-archipelago" title="Permalink to this headline">¶</a></h1>
+<p>NOTE: There are two different types of islands in PyGMO. The PyGMO.local_island and the PyGMO.py_island. The need for two different
+types of island is purely technical (it is necessary to give the user the possibility of implementing the problem or the algorithm in python directly)
+and the user needs not to know any details. We will thus here document only one class that we call
+island and that, in reality, is a helper function returning automatically the correct object type.</p>
+<dl class="class">
+<dt id="PyGMO.island">
+<em class="property">class </em><tt class="descclassname">PyGMO.</tt><tt class="descname">island</tt><a class="headerlink" href="#PyGMO.island" title="Permalink to this definition">¶</a></dt>
+<dd><p>At the core of the PyGMO implementation of the generalized asynchronous island model is this class: the <em>island</em>.
+An island, in PyGMO, contains a <a class="reference internal" href="population.html#PyGMO.population" title="PyGMO.population"><tt class="xref py py-class docutils literal"><span class="pre">PyGMO.population</span></tt></a> and a <tt class="xref py py-class docutils literal"><span class="pre">PyGMO.algorithm</span></tt> and is the object responsible
+to launch the thread that applies the <tt class="xref py py-class docutils literal"><span class="pre">PyGMO.algorithm</span></tt> to evolve the <a class="reference internal" href="population.html#PyGMO.population" title="PyGMO.population"><tt class="xref py py-class docutils literal"><span class="pre">PyGMO.population</span></tt></a></p>
+<dl class="method">
+<dt id="PyGMO.island.__init__">
+<tt class="descname">__init__</tt><big>(</big><em>(PyGMO.algorithm)algo</em>, <em>(PyGMO.population)pop</em><span class="optional">[</span>, <em>s_policy = best_s_policy(1)</em>, <em>r_policy=fair_r_policy(1)</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#PyGMO.island.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructs an island from a population. The population will be evolved by algo. Migration occurs
+at the end of each evolution if the <em>island</em> belongs to a <a class="reference internal" href="#PyGMO.archipelago" title="PyGMO.archipelago"><tt class="xref py py-class docutils literal"><span class="pre">PyGMO.archipelago</span></tt></a></p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">PyGMO</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="n">prob</span> <span class="o">=</span> <span class="n">problem</span><span class="o">.</span><span class="n">schwefel</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">algo</span> <span class="o">=</span> <span class="n">algorithm</span><span class="o">.</span><span class="n">de</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span> <span class="c">#instantiates differential evolution with default params and 10 generations</span>
+<span class="n">pop</span> <span class="o">=</span> <span class="n">population</span><span class="p">(</span><span class="n">prob</span><span class="p">,</span><span class="mi">20</span><span class="p">)</span>
+<span class="n">isl</span> <span class="o">=</span> <span class="n">island</span><span class="p">(</span><span class="n">algo</span><span class="p">,</span><span class="n">pop</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt>
+<tt class="descname">__init__</tt><big>(</big><em>(PyGMO.algorithm)algo</em>, <em>(PyGMO.problem)prob</em>, <em>(int)N=0</em><span class="optional">[</span>, <em>s_policy = best_s_policy(1)</em>, <em>r_policy=fair_r_policy(1)</em><span class="optional">]</span><big>)</big></dt>
+<dd><p>Constructs an island directly from a problem. The resulting population (of size N) will be evolved by algo.
+Migration occurs at the end of each evolution if the <em>island</em> belongs to an <a class="reference internal" href="#PyGMO.archipelago" title="PyGMO.archipelago"><tt class="xref py py-class docutils literal"><span class="pre">PyGMO.archipelago</span></tt></a></p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">PyGMO</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="n">prob</span> <span class="o">=</span> <span class="n">problem</span><span class="o">.</span><span class="n">schwefel</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">algo</span> <span class="o">=</span> <span class="n">algorithm</span><span class="o">.</span><span class="n">de</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span> <span class="c">#instantiates differential evolution with default params and 10 generations</span>
+<span class="n">isl</span> <span class="o">=</span> <span class="n">island</span><span class="p">(</span><span class="n">algo</span><span class="p">,</span><span class="n">prob</span><span class="p">,</span><span class="mi">20</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="PyGMO.island.evolve">
+<tt class="descname">evolve</tt><big>(</big><em>(int)n</em><big>)</big><a class="headerlink" href="#PyGMO.island.evolve" title="Permalink to this definition">¶</a></dt>
+<dd><p>Evolves the <a class="reference internal" href="population.html#PyGMO.population" title="PyGMO.population"><tt class="xref py py-class docutils literal"><span class="pre">PyGMO.population</span></tt></a> in the <em>island</em> performing n calls to <tt class="xref py py-class docutils literal"><span class="pre">PyGMO.algorithm</span></tt>.
+At the end of each call migration occurs if the <em>island</em>  belongs to a <a class="reference internal" href="#PyGMO.archipelago" title="PyGMO.archipelago"><tt class="xref py py-class docutils literal"><span class="pre">PyGMO.archipelago</span></tt></a>.
+Evolution happens in the background on a dedicated thread while the program flows continues.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">PyGMO</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="n">prob</span> <span class="o">=</span> <span class="n">problem</span><span class="o">.</span><span class="n">schwefel</span><span class="p">(</span><span class="mi">1500</span><span class="p">)</span>
+<span class="n">algo</span> <span class="o">=</span> <span class="n">algorithm</span><span class="o">.</span><span class="n">de</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>       <span class="c">#instantiates differential evolution with default params and 100 generations</span>
+<span class="n">pop</span> <span class="o">=</span> <span class="n">population</span><span class="p">(</span><span class="n">prob</span><span class="p">,</span><span class="mi">20</span><span class="p">)</span>
+<span class="n">isl</span> <span class="o">=</span> <span class="n">island</span><span class="p">(</span><span class="n">algo</span><span class="p">,</span><span class="n">pop</span><span class="p">)</span>
+<span class="n">isl</span><span class="o">.</span><span class="n">evolve</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>                  <span class="c">#calls algo to evolve pop. The program flow continues</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="PyGMO.island.join">
+<tt class="descname">join</tt><big>(</big><big>)</big><a class="headerlink" href="#PyGMO.island.join" title="Permalink to this definition">¶</a></dt>
+<dd><p>Joins the thread (if still present) started by the  <a class="reference internal" href="#PyGMO.island.evolve" title="PyGMO.island.evolve"><tt class="xref py py-class docutils literal"><span class="pre">PyGMO.island.evolve</span></tt></a> method. In other words it waits
+for <a class="reference internal" href="#PyGMO.island.evolve" title="PyGMO.island.evolve"><tt class="xref py py-class docutils literal"><span class="pre">PyGMO.island.evolve</span></tt></a> to have finished.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">PyGMO</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="n">prob</span> <span class="o">=</span> <span class="n">problem</span><span class="o">.</span><span class="n">schwefel</span><span class="p">(</span><span class="mi">1500</span><span class="p">)</span>
+<span class="n">algo</span> <span class="o">=</span> <span class="n">algorithm</span><span class="o">.</span><span class="n">de</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span> <span class="c">#instantiates differential evolution with default params and 100 generations</span>
+<span class="n">pop</span> <span class="o">=</span> <span class="n">population</span><span class="p">(</span><span class="n">prob</span><span class="p">,</span><span class="mi">20</span><span class="p">)</span>
+<span class="n">isl</span> <span class="o">=</span> <span class="n">island</span><span class="p">(</span><span class="n">algo</span><span class="p">,</span><span class="n">pop</span><span class="p">)</span>
+<span class="n">isl</span><span class="o">.</span><span class="n">evolve</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="c">#calls algo to evolve pop. The program flow continues</span>
+<span class="n">isl</span><span class="o">.</span><span class="n">join</span><span class="p">()</span> <span class="c">#Waits for the evolve to finish (i.e. waits for completion of the 100 generations of differential evolution)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="PyGMO.island.busy">
+<tt class="descname">busy</tt><big>(</big><big>)</big><a class="headerlink" href="#PyGMO.island.busy" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns True if evolution is ongoing in the <em>island</em>.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="PyGMO.island.set_x">
+<tt class="descname">set_x</tt><big>(</big><em>(int)idx</em>, <em>(list) x</em><big>)</big><a class="headerlink" href="#PyGMO.island.set_x" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets a new chromosome for the idx-th <a class="reference internal" href="individual.html#PyGMO.individual" title="PyGMO.individual"><tt class="xref py py-class docutils literal"><span class="pre">PyGMO.individual</span></tt></a> in the <a class="reference internal" href="population.html#PyGMO.population" title="PyGMO.population"><tt class="xref py py-class docutils literal"><span class="pre">PyGMO.population</span></tt></a>
+of the <em>island</em> to x.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">PyGMO</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="n">prob</span> <span class="o">=</span> <span class="n">problem</span><span class="o">.</span><span class="n">ackley</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">algo</span> <span class="o">=</span> <span class="n">algorithm</span><span class="o">.</span><span class="n">de</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>             <span class="c">#instantiates differential evolution with default params and 10 generations</span>
+<span class="n">isl</span> <span class="o">=</span> <span class="n">island</span><span class="p">(</span><span class="n">algo</span><span class="p">,</span><span class="n">prob</span><span class="p">,</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">isl</span><span class="o">.</span><span class="n">population</span><span class="o">.</span><span class="n">set_x</span><span class="p">(</span><span class="mi">0</span><span class="p">,[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">])</span> <span class="c"># This is completely uneffective</span>
+                                    <span class="c"># as the &#39;attribute&#39; population returns a copy</span>
+<span class="n">isl</span><span class="o">.</span><span class="n">set_x</span><span class="p">(</span><span class="mi">0</span><span class="p">,[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">])</span>            <span class="c"># This works!!</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="PyGMO.island.set_v">
+<tt class="descname">set_v</tt><big>(</big><em>(int)idx</em>, <em>(list) v</em><big>)</big><a class="headerlink" href="#PyGMO.island.set_v" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the velocity of the idx-th <a class="reference internal" href="individual.html#PyGMO.individual" title="PyGMO.individual"><tt class="xref py py-class docutils literal"><span class="pre">PyGMO.individual</span></tt></a> in the <a class="reference internal" href="population.html#PyGMO.population" title="PyGMO.population"><tt class="xref py py-class docutils literal"><span class="pre">PyGMO.population</span></tt></a>
+of the <em>island</em> to v.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">PyGMO</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="n">prob</span> <span class="o">=</span> <span class="n">problem</span><span class="o">.</span><span class="n">ackley</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">algo</span> <span class="o">=</span> <span class="n">algorithm</span><span class="o">.</span><span class="n">de</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span> <span class="c">#instantiates differential evolution with default params and 10 generations</span>
+<span class="n">isl</span> <span class="o">=</span> <span class="n">island</span><span class="p">(</span><span class="n">algo</span><span class="p">,</span><span class="n">prob</span><span class="p">,</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">isl</span><span class="o">.</span><span class="n">population</span><span class="o">.</span><span class="n">set_v</span><span class="p">(</span><span class="mi">0</span><span class="p">,[</span><span class="mf">0.02</span><span class="p">,</span><span class="mf">0.03</span><span class="p">,</span><span class="o">-</span><span class="mf">0.3</span><span class="p">,</span><span class="mf">0.12</span><span class="p">,</span><span class="mf">0.1</span><span class="p">])</span> <span class="c"># This is completely uneffective</span>
+                                                  <span class="c"># as the &#39;attribute&#39; population returns a copy</span>
+<span class="n">isl</span><span class="o">.</span><span class="n">set_v</span><span class="p">(</span><span class="mi">0</span><span class="p">,[</span><span class="mf">0.02</span><span class="p">,</span><span class="mf">0.03</span><span class="p">,</span><span class="o">-</span><span class="mf">0.3</span><span class="p">,</span><span class="mf">0.12</span><span class="p">,</span><span class="mf">0.1</span><span class="p">])</span>            <span class="c"># This works!!</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="PyGMO.island.get_evolution_time">
+<tt class="descname">get_evolution_time</tt><big>(</big><big>)</big><a class="headerlink" href="#PyGMO.island.get_evolution_time" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the time PyGMO has spent on evolving that island in milliseconds</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">PyGMO</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="n">prob</span> <span class="o">=</span> <span class="n">problem</span><span class="o">.</span><span class="n">ackley</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">algo</span> <span class="o">=</span> <span class="n">algorithm</span><span class="o">.</span><span class="n">de</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span> <span class="c">#instantiates differential evolution with default params and 10 generations</span>
+<span class="n">isl</span> <span class="o">=</span> <span class="n">island</span><span class="p">(</span><span class="n">algo</span><span class="p">,</span><span class="n">prob</span><span class="p">,</span><span class="mi">40</span><span class="p">)</span>
+<span class="n">isl</span><span class="o">.</span><span class="n">evolve</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+<span class="n">isl</span><span class="o">.</span><span class="n">get_evolution_time</span><span class="p">()</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="PyGMO.island.algorithm">
+<tt class="descname">algorithm</tt><a class="headerlink" href="#PyGMO.island.algorithm" title="Permalink to this definition">¶</a></dt>
+<dd><p>The <em>island</em> <tt class="xref py py-class docutils literal"><span class="pre">PyGMO.algorithm</span></tt>. Can be set, but not modified via its methods.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="PyGMO.island.population">
+<tt class="descname">population</tt><a class="headerlink" href="#PyGMO.island.population" title="Permalink to this definition">¶</a></dt>
+<dd><p>The <em>island</em> <a class="reference internal" href="population.html#PyGMO.population" title="PyGMO.population"><tt class="xref py py-class docutils literal"><span class="pre">PyGMO.population</span></tt></a>. Can be set, but not modified via its methods.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="PyGMO.island.problem">
+<tt class="descname">problem</tt><a class="headerlink" href="#PyGMO.island.problem" title="Permalink to this definition">¶</a></dt>
+<dd><p>A copy of the <tt class="xref py py-class docutils literal"><span class="pre">PyGMO.problem</span></tt> in the <a class="reference internal" href="population.html#PyGMO.population" title="PyGMO.population"><tt class="xref py py-class docutils literal"><span class="pre">PyGMO.population</span></tt></a>. Cannot be set or modified via its methods.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="PyGMO.archipelago">
+<em class="property">class </em><tt class="descclassname">PyGMO.</tt><tt class="descname">archipelago</tt><a class="headerlink" href="#PyGMO.archipelago" title="Permalink to this definition">¶</a></dt>
+<dd><p>Probably the most important object in all PyGMO. An <em>Archipelago</em> is a container of <a class="reference internal" href="#PyGMO.island" title="PyGMO.island"><tt class="xref py py-class docutils literal"><span class="pre">PyGMO.island</span></tt></a>
+and is responsible to start the asynchronous island model. The solutions exchange among <a class="reference internal" href="#PyGMO.island" title="PyGMO.island"><tt class="xref py py-class docutils literal"><span class="pre">PyGMO.island</span></tt></a> is done
+following the routes allowed by the underlying topology</p>
+<dl class="method">
+<dt id="PyGMO.archipelago.__init__">
+<tt class="descname">__init__</tt><big>(</big><span class="optional">[</span><em>topology = unconnected()</em>, <em>distribution_type = point_to_point</em>, <em>migration_direction = destination</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#PyGMO.archipelago.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructs an empty <em>archipelago</em> from a topology (defaults to <a class="reference internal" href="topology.html#PyGMO.topology.unconnected" title="PyGMO.topology.unconnected"><tt class="xref py py-class docutils literal"><span class="pre">PyGMO.topology.unconnected()</span></tt></a>)
+a distribution type (defaults to <a class="reference internal" href="migration.html#PyGMO.distribution_type.point_to_point" title="PyGMO.distribution_type.point_to_point"><tt class="xref py py-class docutils literal"><span class="pre">PyGMO.distribution_type.point_to_point</span></tt></a>) and a migration
+direction (defaults to <a class="reference internal" href="migration.html#PyGMO.migration_direction.destination" title="PyGMO.migration_direction.destination"><tt class="xref py py-class docutils literal"><span class="pre">PyGMO.migration_direction.destination</span></tt></a>)</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">PyGMO</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="n">archi</span> <span class="o">=</span> <span class="n">archipelago</span><span class="p">()</span>                            <span class="c">#constructs an empty archipelago with an unconnected topology</span>
+<span class="n">archi</span> <span class="o">=</span> <span class="n">archipelago</span><span class="p">(</span><span class="n">topology</span> <span class="o">=</span> <span class="n">topology</span><span class="o">.</span><span class="n">ring</span><span class="p">())</span>  <span class="c">#constructs an empty archipelago with a ring topology</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt>
+<tt class="descname">__init__</tt><big>(</big><em>(PyGMO.algorithm)algo</em>, <em>(PyGMO.problem)prob</em>, <em>(int)n_isl</em>, <em>(int)n_ind</em><span class="optional">[</span>, <em>topology = unconnected()</em>, <em>distribution_type = point_to_point</em>, <em>migration_direction = destination</em><span class="optional">]</span><big>)</big></dt>
+<dd><p>Constructs an empty <em>archipelago</em> from a topology (defaults to <a class="reference internal" href="topology.html#PyGMO.topology.unconnected" title="PyGMO.topology.unconnected"><tt class="xref py py-class docutils literal"><span class="pre">PyGMO.topology.unconnected()</span></tt></a>)
+a distribution type (defaults to <a class="reference internal" href="migration.html#PyGMO.distribution_type.point_to_point" title="PyGMO.distribution_type.point_to_point"><tt class="xref py py-class docutils literal"><span class="pre">PyGMO.distribution_type.point_to_point</span></tt></a>) and a migration
+direction (defaults to <a class="reference internal" href="migration.html#PyGMO.migration_direction.destination" title="PyGMO.migration_direction.destination"><tt class="xref py py-class docutils literal"><span class="pre">PyGMO.migration_direction.destination</span></tt></a>).
+It then pushes back into the archipelago n_isl <a class="reference internal" href="#PyGMO.island" title="PyGMO.island"><tt class="xref py py-class docutils literal"><span class="pre">PyGMO.island</span></tt></a> constructed using defaults values for the kwargs
+and (algo,prob,n_ind) as args.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">PyGMO</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="n">prob</span> <span class="o">=</span> <span class="n">problem</span><span class="o">.</span><span class="n">grewank</span><span class="p">(</span><span class="mi">30</span><span class="p">)</span>
+<span class="n">algo</span> <span class="o">=</span> <span class="n">algorithm</span><span class="o">.</span><span class="n">bee_colony</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span>
+<span class="n">archi</span> <span class="o">=</span> <span class="n">archipelago</span><span class="p">(</span><span class="n">algo</span><span class="p">,</span><span class="n">prob</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">20</span><span class="p">)</span>    <span class="c">#constructs an archipelago having 8 islands with populations</span>
+                                       <span class="c">#of 20 individuals. All islands have a copy of the bee_colony solver</span>
+                                       <span class="c">#and a copy of the griewank(30) problem</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="PyGMO.archipelago.evolve">
+<tt class="descname">evolve</tt><big>(</big><em>(int)n</em><big>)</big><a class="headerlink" href="#PyGMO.archipelago.evolve" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls the method <a class="reference internal" href="#PyGMO.island.evolve" title="PyGMO.island.evolve"><tt class="xref py py-class docutils literal"><span class="pre">PyGMO.island.evolve</span></tt></a> (n) on all the <a class="reference internal" href="#PyGMO.island" title="PyGMO.island"><tt class="xref py py-class docutils literal"><span class="pre">PyGMO.island</span></tt></a> of the <em>archipelago</em>.
+In other words, it starts the asynchronous generalized island model that is at the core of PyGMO.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">PyGMO</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="n">prob</span> <span class="o">=</span> <span class="n">problem</span><span class="o">.</span><span class="n">schwefel</span><span class="p">(</span><span class="mi">15</span><span class="p">)</span>
+<span class="n">algo</span> <span class="o">=</span> <span class="n">algorithm</span><span class="o">.</span><span class="n">de</span><span class="p">(</span><span class="mi">500</span><span class="p">)</span>                 <span class="c">#instantiates differential evolution with default</span>
+                                         <span class="c">#params and 100 generations</span>
+<span class="n">archi</span> <span class="o">=</span> <span class="n">archipelago</span><span class="p">(</span><span class="n">algo</span><span class="p">,</span><span class="n">prob</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">20</span><span class="p">)</span>
+<span class="n">archi</span><span class="o">.</span><span class="n">evolve</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>                         <span class="c">#starts the asynchronous generalized island model.</span>
+                                         <span class="c">#each of the 8 islands will call algo 10 times and try to migrate in between calls</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="PyGMO.archipelago.push_back">
+<tt class="descname">push_back</tt><big>(</big><em>(PyGMO.island) isl</em><big>)</big><a class="headerlink" href="#PyGMO.archipelago.push_back" title="Permalink to this definition">¶</a></dt>
+<dd><p>Pushes back isl in the archipelago taking also to also update the topological links between islands.
+This method also checks that the island inserted is compatible with the other islands present in the archipelago
+(i.e. it contains a :class`PyGMO.population` with a :class`PyGMO.problem that is compatible)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="PyGMO.archipelago.join">
+<tt class="descname">join</tt><big>(</big><big>)</big><a class="headerlink" href="#PyGMO.archipelago.join" title="Permalink to this definition">¶</a></dt>
+<dd><p>Joins all threads (if still present) started by the  <a class="reference internal" href="#PyGMO.archipelago" title="PyGMO.archipelago"><tt class="xref py py-class docutils literal"><span class="pre">PyGMO.archipelago</span></tt></a>. In other words it waits
+for evolution to have finished.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">PyGMO</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="n">prob</span> <span class="o">=</span> <span class="n">problem</span><span class="o">.</span><span class="n">schwefel</span><span class="p">(</span><span class="mi">15</span><span class="p">)</span>
+<span class="n">algo</span> <span class="o">=</span> <span class="n">algorithm</span><span class="o">.</span><span class="n">de</span><span class="p">(</span><span class="mi">500</span><span class="p">)</span>                 <span class="c">#instantiates differential evolution with default</span>
+                                         <span class="c">#params and 100 generations</span>
+<span class="n">archi</span> <span class="o">=</span> <span class="n">archipelago</span><span class="p">(</span><span class="n">algo</span><span class="p">,</span><span class="n">prob</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">20</span><span class="p">)</span>
+<span class="n">archi</span><span class="o">.</span><span class="n">evolve</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>                         <span class="c">#starts the asynchronous generalized island model.</span>
+<span class="n">archi</span><span class="o">.</span><span class="n">join</span><span class="p">()</span>                             <span class="c">#waits for it to finish</span>
+<span class="p">[</span><span class="n">isl</span><span class="o">.</span><span class="n">population</span><span class="o">.</span><span class="n">champion</span><span class="o">.</span><span class="n">f</span> <span class="k">for</span> <span class="n">isl</span> <span class="ow">in</span> <span class="n">archi</span><span class="p">]</span> <span class="c">#builds a list with the best fittnesses found</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="PyGMO.archipelago.busy">
+<tt class="descname">busy</tt><big>(</big><big>)</big><a class="headerlink" href="#PyGMO.archipelago.busy" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns True if evolution is ongoing in the <em>archipelago</em>.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="PyGMO.archipelago.interrupt">
+<tt class="descname">interrupt</tt><big>(</big><big>)</big><a class="headerlink" href="#PyGMO.archipelago.interrupt" title="Permalink to this definition">¶</a></dt>
+<dd><p>Halts evolution at the first occasion in all islands.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="PyGMO.PyGMO.archipelago.archipelago.draw">
+<tt class="descclassname">archipelago.</tt><tt class="descname">draw</tt><big>(</big><big>)</big><a class="headerlink" href="#PyGMO.PyGMO.archipelago.archipelago.draw" title="Permalink to this definition">¶</a></dt>
+<dd><p>Draw a visualization of the archipelago using networkx.</p>
+<p>USAGE: pos = archipelago.draw(layout = &#8216;spring&#8217;, color = &#8216;fitness&#8217;, n_size = 15, scale_by_degree = False, n_alpha = 0.5, e_alpha = 0.1, cmap = &#8216;default&#8217;, e_arrows=False)</p>
+<ul>
+<li><dl class="first docutils">
+<dt>layout: Network layout. Can be &#8216;spring&#8217; or &#8216;circular&#8217; or a list of values pos returned</dt>
+<dd><p class="first last">by a previous call of the method (so that positions of the islands can be kept fixed.</p>
+</dd>
+</dl>
+</li>
+<li><p class="first">n_color = Defines the color code for the nodes. Can be one of &#8216;fitness&#8217;, &#8216;links&#8217;, ... or the standard matplotlib &#8216;blue&#8217; .. etc.</p>
+</li>
+<li><p class="first">n_size: The size of nodes. Becomes scaling factor when scale_by_degree=True.</p>
+</li>
+<li><p class="first">n_alpha: Transparency of nodes. Takes value between 0 and 1.</p>
+</li>
+<li><p class="first">e_arrows: Plots arrows on the edges for directed graphs</p>
+</li>
+<li><p class="first">e_elpha: Transparency of edges. Takes value between 0 and 1.</p>
+</li>
+<li><p class="first">scale_by_degree: When True, nodes will be sized proportional to their degree.</p>
+</li>
+<li><p class="first">cmap: color map. one in matplotlib.pyplot.cm</p>
+</li>
+</ul>
+</dd></dl>
+
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">PyGMO</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="n">prob</span> <span class="o">=</span> <span class="n">problem</span><span class="o">.</span><span class="n">rosenbrock</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">algo</span> <span class="o">=</span> <span class="n">algorithm</span><span class="o">.</span><span class="n">cmaes</span><span class="p">(</span><span class="n">gen</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+<span class="n">archi</span> <span class="o">=</span> <span class="n">archipelago</span><span class="p">(</span><span class="n">algo</span><span class="p">,</span><span class="n">prob</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">20</span><span class="p">,</span><span class="n">topology</span> <span class="o">=</span> <span class="n">topology</span><span class="o">.</span><span class="n">ring</span><span class="p">())</span>
+<span class="n">archi</span><span class="o">.</span><span class="n">draw</span><span class="p">()</span>
+</pre></div>
+</div>
+<dl class="method">
+<dt id="PyGMO.archipelago.dump_migration_history">
+<tt class="descname">dump_migration_history</tt><big>(</big><big>)</big><a class="headerlink" href="#PyGMO.archipelago.dump_migration_history" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a temporal history of all the archipelago migrations in one string. Each entry is in the form
+(n,src_isl,dest_isl) and logs that n individuals, from the <em>island</em> having the index src_isl,
+successfully replaced n individuals in the <em>population</em> of the <em>island</em> having the index dest_isl.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="algorithms.html" class="btn btn-neutral float-right" title="Algorithms"/>Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="topology.html" class="btn btn-neutral" title="Topology"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2015, Dario Izzo and Francesco Biscani.
+    </p>
+  </div>
+
+  <a href="https://github.com/snide/sphinx_rtd_theme">Sphinx theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+</body>
+</html>

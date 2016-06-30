@@ -1,0 +1,475 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Advanced hypervolume computation and analysis &mdash; PyGMO 1.1.7dev documentation</title>
+  
+
+  
+  
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  
+  
+
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:'../',
+        VERSION:'1.1.7dev',
+        COLLAPSE_INDEX:false,
+        FILE_SUFFIX:'.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+    <script type="text/javascript">
+        jQuery(function () {
+            SphinxRtdTheme.StickyNav.enable();
+        });
+    </script>
+  
+
+  
+    <link rel="top" title="PyGMO 1.1.7dev documentation" href="../index.html"/>
+        <link rel="up" title="Hypervolumes with PyGMO" href="hypervolumes_in_PyGMO.html"/>
+        <link rel="next" title="Approximating the hypervolume" href="approximating_the_hypervolume.html"/>
+        <link rel="prev" title="Getting started with hypervolumes" href="getting_started_with_hyper_volumes.html"/> 
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        <a href="../index.html" class="fa fa-home"> PyGMO</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        
+        
+            <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../install.html">Install PyGMO</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../install.html#preparing-your-system-to-compile-pygmo">Preparing your system to compile PyGMO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../install.html#download-pygmo-code">Download PyGMO code</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../install.html#compiling-and-installing-under-unix">Compiling and Installing under Unix</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../install.html#compiling-and-installing-under-windows">Compiling and Installing under Windows</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../quickstart.html">Quick Start</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../quickstart.html#on-one-cpu">On one CPU</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../quickstart.html#on-many-cpus">On many CPUs ...</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../quickstart.html#and-migrating-solutions">... and migrating solutions ...</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../quickstart.html#and-between-different-algorithms">... and between different algorithms ...</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Tutorials</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="adding_problems_and_algorithms_to_PyGMO.html">Adding new problems and algorithms to PyGMO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="meta_problems_meta_algorithms.html">Meta-problems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="multi_objective_optimization_with_PyGMO.html">Multi Objective Optimization with PyGMO</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="hypervolumes_in_PyGMO.html">Hypervolumes with PyGMO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dealing_with_constraints_in_PyGMO.html">Dealing with constraints in PyGMO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="racing.html">Racing in PyGMO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tsp.html">Traveling Salesman Problems with PyGMO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="landscape_analysis_with_DrPyGMO.html">Landscape Analysis using Dr. PyGMO</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/index.html">Examples</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../examples/example1.html">A study on Mixing Variants of Differential Evolution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples/example2.html">Monitoring the Information Flow in a large archipelago</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples/example3.html">Testing Algorithms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples/example4.html">Multi-objective optimization in the asynchronous island model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples/example5.html">Designing and optimizing interplanetary trajectories</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples/example6.html">Participating to the CEC2013 Competition (v 1.1.5)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples/example7.html">Travelling Salesman Problem for Active Space Debris Removal</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples/local_optimization.html">Third-party Non-linear optimizers in PyGMO</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../documentation/index.html">User Documentation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../documentation/individual.html">Individual and Champion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../documentation/population.html">Population</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../documentation/migration.html">Migration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../documentation/topology.html">Topology</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../documentation/island.html">Island and Archipelago</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../documentation/algorithms.html">Algorithms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../documentation/problems.html">Problems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../documentation/hypervolume.html">Hypervolume</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../documentation/racing.html">Racing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../documentation/analysis.html">Dr. PyGMO - Analysis Module</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference external" href="http://esa.github.io/pagmo/">PaGMO API</a></li>
+</ul>
+
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../index.html">PyGMO</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="index.html">Tutorials</a> &raquo;</li>
+      
+          <li><a href="hypervolumes_in_PyGMO.html">Hypervolumes with PyGMO</a> &raquo;</li>
+      
+    <li>Advanced hypervolume computation and analysis</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          <a href="../_sources/tutorials/advanced_hypervolume_computation_and_analysis.txt" rel="nofollow"> View page source</a>
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            
+  <div class="section" id="advanced-hypervolume-computation-and-analysis">
+<span id="id1"></span><h1>Advanced hypervolume computation and analysis<a class="headerlink" href="#advanced-hypervolume-computation-and-analysis" title="Permalink to this headline">¶</a></h1>
+<p>In this tutorial we will cover some more advanced topics regarding hypervolume computation and explain details on the expected performance of the engine.</p>
+<div class="section" id="computing-hypervolume-using-a-specific-algorithm">
+<h2>Computing hypervolume using a specific algorithm<a class="headerlink" href="#computing-hypervolume-using-a-specific-algorithm" title="Permalink to this headline">¶</a></h2>
+<p>PyGMO uses different algorithms for computing the hypervolume indicator and the hypervolume contributions. By default
+it picks the algorithm which is <em>expected</em> to yield the fastest computation with respect to the dimensionality of the given point-set. This selection can be bypassed by using an explicit hv_algorithm object as a parameter of the corresponding method:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">PyGMO.util</span> <span class="kn">import</span> <span class="n">hypervolume</span><span class="p">,</span> <span class="n">hv_algorithm</span>
+<span class="n">hv</span> <span class="o">=</span> <span class="n">hypervolume</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">],[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">],[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">]])</span>
+<span class="n">hv</span><span class="o">.</span><span class="n">compute</span><span class="p">(</span><span class="n">r</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,)</span><span class="o">*</span><span class="mi">3</span><span class="p">,</span> <span class="n">algorithm</span><span class="o">=</span><span class="n">hv_algorithm</span><span class="o">.</span><span class="n">wfg</span><span class="p">())</span>
+</pre></div>
+</div>
+<p>The code above will compute the hypervolume indicator using the WFG algorithm, whereas</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">hv</span><span class="o">.</span><span class="n">compute</span><span class="p">(</span><span class="n">r</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,)</span><span class="o">*</span><span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>would use (by default) the hv3d algorithm, since it is expected to be faster for three dimensions.</p>
+<p>Notice that the two names visible in the global scope that relate to hypervolume computations are <em>hypervolume</em>, which is a class containing the easy user interface for computation, and the <em>hv_algorithm</em>, which contains specific implementations of various algorithms.
+The list of available algorithms can be easily obtained by executing the following in the <em>IPython</em> session:</p>
+<div class="highlight-python"><div class="highlight"><pre>In [1]: from PyGMO.util import *
+In [2]: hv_algorithm?  # Will reveal the extended doc string of this method
+</pre></div>
+</div>
+<p>As of yet, the list contains the following implementations:</p>
+<ol class="arabic simple">
+<li>hv2d</li>
+<li>hv3d</li>
+<li>hv4d</li>
+<li>wfg</li>
+<li>hoy</li>
+<li>bf_approx</li>
+<li>bf_fpras</li>
+</ol>
+<p>You can get more information on the implementation of specific algorithm, its reference, limitations and assumptions using the same &#8221;?&#8221; feature of <em>IPython</em>, or in the <a class="reference internal" href="../documentation/hypervolume.html#hypervolume"><em>Hypervolume</em></a> section of the documentation.</p>
+<div class="highlight-python"><div class="highlight"><pre>In [1]: from PyGMO.util import *
+In [2]: hv_algorithm.wfg?  # Will reveal extended doc string of this method
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Some algorithms may not provide certain functionalities, e.g.: <em>hv4d</em> algorithm which is designed for efficient computation of 4-dimensional hypervolumes, supports only the &#8220;compute&#8221; method.
+When the <cite>PyGMO.util.hypervolume</cite> object is initiated with 4-dimensional list of points, and the computation of any of the exclusive contribution features is requested, it is actually the <cite>PyGMO.util.hv_algorithm.wfg</cite> algorithm handles it. Under no circumstances <cite>PyGMO.util.hypervolume</cite> object will use any of the approximated algorithms, so the only way to use them is by the explicit request.</p>
+</div>
+<p>We will discuss the details on the approximated hypervolume in the tutorial <a class="reference internal" href="approximating_the_hypervolume.html#approximating-the-hypervolume"><em>Approximating the hypervolume</em></a>. This tutorial will focus only on the exact methods.</p>
+</div>
+<div class="section" id="runtime-analysis-of-the-hypervolume-computation">
+<h2>Runtime analysis of the hypervolume computation<a class="headerlink" href="#runtime-analysis-of-the-hypervolume-computation" title="Permalink to this headline">¶</a></h2>
+<p>We have gathered a wide range of algorithms to choose from when in need to compute hypervolumes.
+We utilize this fact to provide users with an efficient computation engine that will most likely pick the fastest algorithm on default. During the course of the experiment, we have measured the practical capabilities of our engine for fronts with varying <tt class="docutils literal"><span class="pre">Front</span> <span class="pre">size</span></tt> (number of points) and <tt class="docutils literal"><span class="pre">Dimension</span></tt>.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The obtained results are specific to the hardware and the architecture of the computer on which these experiments were executed. Main idea of the plots in this and the following tutorials is to present the relative scaling of the execution time for various settings of <tt class="docutils literal"><span class="pre">Front</span> <span class="pre">size</span></tt> and <tt class="docutils literal"><span class="pre">Dimension</span></tt>.</p>
+</div>
+<p>The results are shown below:</p>
+<a class="reference internal image-reference" href="../_images/hv_compute_runtime_plot.png"><img alt="../_images/hv_compute_runtime_plot.png" src="../_images/hv_compute_runtime_plot.png" style="width: 850px;" /></a>
+<a class="reference internal image-reference" href="../_images/hv_MAX_compute_runtime_plot.png"><img alt="../_images/hv_MAX_compute_runtime_plot.png" src="../_images/hv_MAX_compute_runtime_plot.png" style="width: 850px;" /></a>
+<p>The first plot above shows the running time (average of 10 fronts per given combination of <tt class="docutils literal"><span class="pre">Front</span> <span class="pre">size</span></tt> and <tt class="docutils literal"><span class="pre">Dimension</span></tt>) of computing the front of a DTLZ-2 problem.
+Plot below, the worst case scenario (maximal time of 10 runs for given <tt class="docutils literal"><span class="pre">Front</span> <span class="pre">size</span></tt> and <tt class="docutils literal"><span class="pre">Dimension</span></tt>).
+The Z axis as well as the color indicate the execution time in seconds.
+As you can see, computation of the hypervolume of 100 points and below is pretty fast, even when facing a 10-dimensional problem.
+When you&#8217;re designing your own experiment, be wary that the worst case complexity of hypervolume algorithms is exponential.</p>
+<p>Although the hypervolume indicator is a very common quality indicator for pareto fronts, many multiple-objective optimizers require a slightly different figure that evaluates the quality of a given individual within the population.
+This is resolved by computing the exclusive contribution of a given individual to the population, and in most cases boils down to eliminating the individual that contributes the least.
+For that reason, we would also want to make sure that the <tt class="docutils literal"><span class="pre">least_contributor</span></tt> method is efficient, which resulted in the following experiment:</p>
+<a class="reference internal image-reference" href="../_images/hv_lc_runtime_plot.png"><img alt="../_images/hv_lc_runtime_plot.png" src="../_images/hv_lc_runtime_plot.png" style="width: 850px;" /></a>
+<a class="reference internal image-reference" href="../_images/hv_MAX_lc_runtime_plot.png"><img alt="../_images/hv_MAX_lc_runtime_plot.png" src="../_images/hv_MAX_lc_runtime_plot.png" style="width: 850px;" /></a>
+<p>The increase in the execution time is progressing in a strikingly similar fashion, yet the Z axis is now scaled by a factor of 10.
+This data is especially crucial if you want to use the SMS-EMOA algorithm, which is based on iterative computations of the current least contributor.</p>
+</div>
+<div class="section" id="algorithm-comparison">
+<h2>Algorithm comparison<a class="headerlink" href="#algorithm-comparison" title="Permalink to this headline">¶</a></h2>
+<p>In this section we will present a quick comparison of the available algorithms, which will support our choice for the default set of algorithms.
+Since in many cases, multiple objective problems are either 2 or 3-dimensional, it was important to have a dedicated algorithm for each of these scenarios.
+At the moment, there are five exact algorithms in PyGMO, three of which are dedicated for certain dimensions:</p>
+<ol class="arabic simple">
+<li><cite>PyGMO.util.hv_algorithm.hv2d</cite></li>
+<li><cite>PyGMO.util.hv_algorithm.hv3d</cite></li>
+<li><cite>PyGMO.util.hv_algorithm.hv4d</cite></li>
+<li><cite>PyGMO.util.hv_algorithm.wfg</cite></li>
+<li><cite>PyGMO.util.hv_algorithm.hoy</cite></li>
+</ol>
+<p>As of yet, PyGMO contains two general purpose algorithms - WFG (by the Walking Fish Group) and HOY (Hypervolume by Overmars and Yap).
+We have measured the empirical effectiveness of both algorithms on multiple fronts, and we have noted a significant difference in the running time in favor of the WFG.
+For that reason, WFG is the default general purpose algorithm in PyGMO. Since HOY is a fairly known and tested algorithm, it was useful to keep it as a reference, but it is currently never used by default. Be aware that its performance, especially for 7 and more dimensions, is most likely far worse than that of WFG.</p>
+<p>Even though WFG is regarded one of the state of the art algorithms for hypervolume computation, several algorithms specific to lower dimensions have been derived as well.
+We will show that dedicated algorithms for 2, 3 and 4 dimensions do in fact perform better than the general purpose ones in terms of running time.
+Since current version of WFG progresses through dimension slicing, it stops once it obtains a 2-dimensional subproblem.
+In this case, WFG delegates the computation to the <cite>PyGMO.util.hv_algorithm.hv2d</cite> algorithm.
+For that reason it is pointless to measure its efficiency against direct execution of <cite>PyGMO.util.hv_algorithm.hv2d</cite>.
+As for the latter, certain measurements were done to obtain the following comparisons of WFG (also for the variant in which we slice back to 3-dimensional front) and the dedicated algorithms:</p>
+<a class="reference internal image-reference" href="../_images/hv_wfg_hv3d.png"><img alt="../_images/hv_wfg_hv3d.png" src="../_images/hv_wfg_hv3d.png" style="width: 650px;" /></a>
+<a class="reference internal image-reference" href="../_images/hv_wfg_hv4d.png"><img alt="../_images/hv_wfg_hv4d.png" src="../_images/hv_wfg_hv4d.png" style="width: 650px;" /></a>
+<p>It is clear that the dedicated algorithms for 3 and 4 dimensions perform better than WFG.</p>
+<div class="section" id="short-summary-of-algorithms">
+<h3>Short summary of algorithms<a class="headerlink" href="#short-summary-of-algorithms" title="Permalink to this headline">¶</a></h3>
+<p>We have used the kind of experiments above to derive the default interface of the hypervolume engine.
+For more information on which method is called by default, refer to the table below:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="52%" />
+<col width="9%" />
+<col width="9%" />
+<col width="9%" />
+<col width="20%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">hypervolume method</th>
+<th class="head">2D</th>
+<th class="head">3D</th>
+<th class="head">4D</th>
+<th class="head">5D and up</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><tt class="docutils literal"><span class="pre">compute</span></tt></td>
+<td>hv2d</td>
+<td>hv3d</td>
+<td>hv4d</td>
+<td>wfg</td>
+</tr>
+<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">contribution-based*</span></tt></td>
+<td>hv2d</td>
+<td>hv3d</td>
+<td>wfg</td>
+<td>wfg</td>
+</tr>
+</tbody>
+</table>
+<p><em>contribution-based*</em> - The following methods are considered contribution-based: <tt class="docutils literal"><span class="pre">exclusive</span></tt>, <tt class="docutils literal"><span class="pre">least_contributor</span></tt>, <tt class="docutils literal"><span class="pre">greatest_contributor</span></tt>, <tt class="docutils literal"><span class="pre">contributions</span></tt></p>
+<p>For the information on what method is supported by given hypervolume algorithm, refer to the table below:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="16%" />
+<col width="9%" />
+<col width="11%" />
+<col width="22%" />
+<col width="25%" />
+<col width="16%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">hv_algorithm</th>
+<th class="head">compute</th>
+<th class="head">exclusive</th>
+<th class="head">least_contributor</th>
+<th class="head">greatest_contributor</th>
+<th class="head">contributions</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><tt class="docutils literal"><span class="pre">hv2d</span></tt></td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+</tr>
+<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">hv3d</span></tt></td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+</tr>
+<tr class="row-even"><td><tt class="docutils literal"><span class="pre">hv4d</span></tt></td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">wfg</span></tt></td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+</tr>
+<tr class="row-even"><td><tt class="docutils literal"><span class="pre">hoy</span></tt></td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+</tr>
+<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">bf_approx</span></tt></td>
+<td>No</td>
+<td>No</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>No</td>
+</tr>
+<tr class="row-even"><td><tt class="docutils literal"><span class="pre">bf_fpras</span></tt></td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="pushing-efficiency-further">
+<h2>Pushing efficiency further<a class="headerlink" href="#pushing-efficiency-further" title="Permalink to this headline">¶</a></h2>
+<p>Since the computation of the hypervolume is a computationally expensive operation, we pay special attention
+to resolve this task as efficient as possible.
+By default, <cite>PyGMO.util.hypervolume</cite> object will verify the input data to make sure they meet the criteria pointed out at the beginning of this tutorial. Also, in order to preserve the internal representation of the points intact, before doing any computation a copy of the original set of points is made.
+These precautions are not always necessary.</p>
+<p>In order to turn off the verification of the input data, you can instantiate the hypervolume object in the following way:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="c"># Assuming that &#39;pop&#39; is an instance of the PyGMO.population</span>
+<span class="c"># Points created from the individuals will not be verified</span>
+<span class="c"># also, any further computation will bypass the verification of input (reference point)</span>
+<span class="n">hv</span> <span class="o">=</span> <span class="n">hypervolume</span><span class="p">(</span><span class="n">pop</span><span class="p">,</span> <span class="n">verify</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Additionally, a getter/setter is available as well:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="c"># Assuming that &#39;hv&#39; is an instance of the PyGMO.util.hypervolume</span>
+<span class="n">hv</span><span class="o">.</span><span class="n">set_verify</span><span class="p">(</span><span class="bp">False</span><span class="p">)</span>
+<span class="k">print</span> <span class="n">hv</span><span class="o">.</span><span class="n">get_verify</span><span class="p">()</span>
+<span class="n">ref_point</span> <span class="o">=</span> <span class="n">hv</span><span class="o">.</span><span class="n">get_nadir_point</span><span class="p">(</span><span class="mf">1.0</span><span class="p">)</span>
+<span class="k">print</span> <span class="n">hv</span><span class="o">.</span><span class="n">compute</span><span class="p">(</span><span class="n">r</span><span class="o">=</span><span class="n">ref_point</span><span class="p">)</span>  <span class="c"># Warning: Will not verify the ref_point!</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The only way to bypass the verification of the set of points is through the flag in the constructor.</p>
+</div>
+<p>Another feature that can be disabled to improve runtime is the copying of points. This is possible via the following set-method:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="c"># Assuming that &#39;hv&#39; is an instance of the PyGMO.util.hypervolume</span>
+<span class="n">hv</span><span class="o">.</span><span class="n">set_copy_points</span><span class="p">(</span><span class="bp">False</span><span class="p">)</span>
+<span class="k">print</span> <span class="n">hv</span><span class="o">.</span><span class="n">get_copy_points</span><span class="p">()</span>
+
+<span class="n">ref_point</span> <span class="o">=</span> <span class="n">hv</span><span class="o">.</span><span class="n">get_nadir_point</span><span class="p">(</span><span class="mf">1.0</span><span class="p">)</span>
+<span class="n">hv</span><span class="o">.</span><span class="n">compute</span><span class="p">(</span><span class="n">r</span><span class="o">=</span><span class="n">ref_point</span><span class="p">)</span>
+<span class="n">hv</span><span class="o">.</span><span class="n">compute</span><span class="p">(</span><span class="n">r</span><span class="o">=</span><span class="n">ref_point</span><span class="p">)</span>  <span class="c"># Warning: Unexpected behavior, internal representation of points might have been altered!</span>
+</pre></div>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">Bypassing the copying of points will most likely lead to the alteration of the internal representation of points.
+This has its benefits only when the hypervolume object is to be treated as a single use instance. We strongly discourage using the hypervolume object more than once when copying was disabled.</p>
+</div>
+<div class="section" id="bonus">
+<h3>Bonus<a class="headerlink" href="#bonus" title="Permalink to this headline">¶</a></h3>
+<p>An additional small trick you can employ for your own experiments is pulling only the first front from the population object, which will speed up the computation of the hypervolume indicator as long as there are dominated points in your input:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">PyGMO</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">PyGMO.util</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="n">prob</span> <span class="o">=</span> <span class="n">problem</span><span class="o">.</span><span class="n">dtlz</span><span class="p">(</span><span class="n">prob_id</span><span class="o">=</span><span class="mi">7</span><span class="p">,</span> <span class="n">fdim</span><span class="o">=</span><span class="mi">6</span><span class="p">)</span>
+<span class="n">pop</span> <span class="o">=</span> <span class="n">population</span><span class="p">(</span><span class="n">prob</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+
+<span class="n">hv</span> <span class="o">=</span> <span class="n">hypervolume</span><span class="p">(</span><span class="n">pop</span><span class="p">)</span>
+<span class="n">ref_point</span> <span class="o">=</span> <span class="n">hv</span><span class="o">.</span><span class="n">get_nadir_point</span><span class="p">(</span><span class="mf">1.0</span><span class="p">)</span>
+<span class="k">print</span> <span class="n">hv</span><span class="o">.</span><span class="n">compute</span><span class="p">(</span><span class="n">r</span><span class="o">=</span><span class="n">ref_point</span><span class="p">)</span>
+
+<span class="c"># Code below may yield the same result faster</span>
+<span class="n">hv2</span> <span class="o">=</span> <span class="n">hypervolume</span><span class="p">([</span><span class="n">pop</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">cur_f</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">pop</span><span class="o">.</span><span class="n">compute_pareto_fronts</span><span class="p">()[</span><span class="mi">0</span><span class="p">]])</span>
+<span class="k">print</span> <span class="n">hv2</span><span class="o">.</span><span class="n">compute</span><span class="p">(</span><span class="n">r</span><span class="o">=</span><span class="n">ref_point</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">Be cautious about employing this trick when computing any hypervolume contribution!
+In most cases, the dominated points are relevant to the exclusive contributions of the points from the first front. Also, the indexing of the points will not reflect the indices of the individuals anymore (unless you store them first).</p>
+</div>
+</div>
+</div>
+</div>
+
+
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="approximating_the_hypervolume.html" class="btn btn-neutral float-right" title="Approximating the hypervolume"/>Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="getting_started_with_hyper_volumes.html" class="btn btn-neutral" title="Getting started with hypervolumes"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2015, Dario Izzo and Francesco Biscani.
+    </p>
+  </div>
+
+  <a href="https://github.com/snide/sphinx_rtd_theme">Sphinx theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+</body>
+</html>

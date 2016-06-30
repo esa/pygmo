@@ -1,0 +1,323 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Instantiating a TSP problem &mdash; PyGMO 1.1.7dev documentation</title>
+  
+
+  
+  
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  
+  
+
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:'../',
+        VERSION:'1.1.7dev',
+        COLLAPSE_INDEX:false,
+        FILE_SUFFIX:'.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+    <script type="text/javascript">
+        jQuery(function () {
+            SphinxRtdTheme.StickyNav.enable();
+        });
+    </script>
+  
+
+  
+    <link rel="top" title="PyGMO 1.1.7dev documentation" href="../index.html"/>
+        <link rel="up" title="Traveling Salesman Problems with PyGMO" href="tsp.html"/>
+        <link rel="next" title="Solving a TSP" href="solve_tsp.html"/>
+        <link rel="prev" title="Introduction" href="introduction_tsp.html"/> 
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        <a href="../index.html" class="fa fa-home"> PyGMO</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        
+        
+            <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../install.html">Install PyGMO</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../install.html#preparing-your-system-to-compile-pygmo">Preparing your system to compile PyGMO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../install.html#download-pygmo-code">Download PyGMO code</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../install.html#compiling-and-installing-under-unix">Compiling and Installing under Unix</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../install.html#compiling-and-installing-under-windows">Compiling and Installing under Windows</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../quickstart.html">Quick Start</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../quickstart.html#on-one-cpu">On one CPU</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../quickstart.html#on-many-cpus">On many CPUs ...</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../quickstart.html#and-migrating-solutions">... and migrating solutions ...</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../quickstart.html#and-between-different-algorithms">... and between different algorithms ...</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Tutorials</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="adding_problems_and_algorithms_to_PyGMO.html">Adding new problems and algorithms to PyGMO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="meta_problems_meta_algorithms.html">Meta-problems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="multi_objective_optimization_with_PyGMO.html">Multi Objective Optimization with PyGMO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hypervolumes_in_PyGMO.html">Hypervolumes with PyGMO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dealing_with_constraints_in_PyGMO.html">Dealing with constraints in PyGMO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="racing.html">Racing in PyGMO</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="tsp.html">Traveling Salesman Problems with PyGMO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="landscape_analysis_with_DrPyGMO.html">Landscape Analysis using Dr. PyGMO</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/index.html">Examples</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../examples/example1.html">A study on Mixing Variants of Differential Evolution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples/example2.html">Monitoring the Information Flow in a large archipelago</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples/example3.html">Testing Algorithms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples/example4.html">Multi-objective optimization in the asynchronous island model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples/example5.html">Designing and optimizing interplanetary trajectories</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples/example6.html">Participating to the CEC2013 Competition (v 1.1.5)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples/example7.html">Travelling Salesman Problem for Active Space Debris Removal</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples/local_optimization.html">Third-party Non-linear optimizers in PyGMO</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../documentation/index.html">User Documentation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../documentation/individual.html">Individual and Champion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../documentation/population.html">Population</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../documentation/migration.html">Migration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../documentation/topology.html">Topology</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../documentation/island.html">Island and Archipelago</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../documentation/algorithms.html">Algorithms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../documentation/problems.html">Problems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../documentation/hypervolume.html">Hypervolume</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../documentation/racing.html">Racing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../documentation/analysis.html">Dr. PyGMO - Analysis Module</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference external" href="http://esa.github.io/pagmo/">PaGMO API</a></li>
+</ul>
+
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../index.html">PyGMO</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="index.html">Tutorials</a> &raquo;</li>
+      
+          <li><a href="tsp.html">Traveling Salesman Problems with PyGMO</a> &raquo;</li>
+      
+    <li>Instantiating a TSP problem</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          <a href="../_sources/tutorials/create_tsp.txt" rel="nofollow"> View page source</a>
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            
+  <div class="section" id="instantiating-a-tsp-problem">
+<span id="create-tsp"></span><h1>Instantiating a TSP problem<a class="headerlink" href="#instantiating-a-tsp-problem" title="Permalink to this headline">¶</a></h1>
+<p>Here we give two examples on how to instantiate a TSP problem from a weights matrix
+or a TSPLIB XML file <a class="reference external" href="http://www.iwr.uni-heidelberg.de/groups/comopt/software/TSPLIB95/">http://www.iwr.uni-heidelberg.de/groups/comopt/software/TSPLIB95/</a></p>
+<div class="section" id="from-weights">
+<h2>From weights<a class="headerlink" href="#from-weights" title="Permalink to this headline">¶</a></h2>
+<p>The weights matrix is a two dimensional vector of doubles, e.g.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">weights</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span> <span class="p">[</span><span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">0</span><span class="p">]]</span>
+</pre></div>
+</div>
+<p>PyGMO ignores main diagonal elements. Notice in the example that the diagonal elements are zero.</p>
+<p>In the first example we create a list of list (matrix)
+and print the instantiated tsp problem to console:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">PyGMO.problem</span> <span class="kn">import</span> <span class="n">tsp</span>
+
+<span class="c"># creating a list of lists</span>
+<span class="n">list2D</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span> <span class="p">[</span><span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">]]</span>
+
+<span class="c"># creating an instance of a TSP problem</span>
+<span class="n">tsp_instance</span> <span class="o">=</span> <span class="n">tsp</span><span class="p">(</span><span class="n">list2D</span><span class="p">)</span>
+
+<span class="c"># printing the TSP instance to console</span>
+<span class="k">print</span> <span class="n">tsp_instance</span>
+</pre></div>
+</div>
+<p>And the resulting TSP problem looks like this. Again, notice there are no
+connections between a vertex and itself, regardless of what we put in the main diagonal,
+in our case the values 0, 4 and 8 are ignored.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">Problem</span> <span class="n">name</span><span class="p">:</span> <span class="n">Traveling</span> <span class="n">Salesman</span> <span class="n">Problem</span>
+        <span class="n">Global</span> <span class="n">dimension</span><span class="p">:</span>                       <span class="mi">6</span>
+        <span class="n">Integer</span> <span class="n">dimension</span><span class="p">:</span>                      <span class="mi">6</span>
+        <span class="n">Fitness</span> <span class="n">dimension</span><span class="p">:</span>                      <span class="mi">1</span>
+        <span class="n">Constraints</span> <span class="n">dimension</span><span class="p">:</span>                  <span class="mi">8</span>
+        <span class="n">Inequality</span> <span class="n">constraints</span> <span class="n">dimension</span><span class="p">:</span>       <span class="mi">2</span>
+        <span class="n">Lower</span> <span class="n">bounds</span><span class="p">:</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
+        <span class="n">Upper</span> <span class="n">bounds</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+        <span class="n">Constraints</span> <span class="n">tolerance</span><span class="p">:</span> <span class="p">[]</span>
+<span class="n">The</span> <span class="n">Boost</span> <span class="n">Graph</span> <span class="p">(</span><span class="n">Adjacency</span> <span class="n">List</span><span class="p">):</span>
+<span class="n">Vertices</span> <span class="o">=</span> <span class="p">{</span> <span class="mi">0</span> <span class="mi">1</span> <span class="mi">2</span> <span class="p">}</span>
+<span class="n">Edges</span> <span class="p">(</span><span class="n">Source</span><span class="p">,</span> <span class="n">Target</span><span class="p">)</span> <span class="o">=</span> <span class="n">Weight</span> <span class="p">:</span>
+<span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="o">=</span> <span class="mi">6</span>
+<span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="o">=</span> <span class="mi">7</span>
+</pre></div>
+</div>
+<p>Now, if you didn&#8217;t read the wikipedia page and were wondering about the numbers, here&#8217;s whey they come from:</p>
+<p>Global dimension <span class="math">\(= n*n-n = n*(n-1) = 3 * 2 = 6\)</span></p>
+<p>Integer dimension <span class="math">\(= n*(n-1) = 3 * 2 = 6\)</span></p>
+<p>Fitness dimension (max) <span class="math">\(= 1 \in [0,1]\)</span></p>
+<p>Constraints dimension (global) = Equality + Inequality <span class="math">\(= 2*n + (n-1)*(n-2) = n*(n-1)+2 = 3 * 2 + 2 = 8\)</span></p>
+<p>Equality constraints dimension <span class="math">\(= 2*n\)</span></p>
+<p>Inequality constraints dimension <span class="math">\(= (n-1)*(n-2) = 2 * 1 = 2\)</span></p>
+</div>
+<div class="section" id="from-tsplib-xml">
+<h2>From TSPLIB XML<a class="headerlink" href="#from-tsplib-xml" title="Permalink to this headline">¶</a></h2>
+<p>In this second example we will be loading an TSPLIB XML file from the current folder (pwd in linux).</p>
+<p>In order to load an XML file, we use the utility function PyGMO.util.tsp.read_tsplib(&#8216;file.xml&#8217;)
+which returns a weights matrix (list of list) such as the one defined above.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">PyGMO.util</span> <span class="kn">import</span> <span class="n">tsp</span> <span class="k">as</span> <span class="n">tsputil</span>
+<span class="kn">from</span> <span class="nn">PyGMO.problem</span> <span class="kn">import</span> <span class="n">tsp</span>
+
+<span class="c"># importing the XML file</span>
+<span class="n">weights</span> <span class="o">=</span> <span class="n">tsputil</span><span class="o">.</span><span class="n">read_tsplib</span><span class="p">(</span><span class="s">&#39;burma14.xml&#39;</span><span class="p">)</span>
+
+<span class="c"># printing the weights matrix</span>
+<span class="n">tsputil</span><span class="o">.</span><span class="n">print_matrix</span><span class="p">(</span><span class="n">weights</span><span class="p">)</span>
+
+<span class="c"># creating a tsp problem from the imported weights matrix</span>
+<span class="n">tsp_instance</span> <span class="o">=</span> <span class="n">tsp</span><span class="p">(</span><span class="n">weights</span><span class="p">)</span>
+
+<span class="c"># printing the tsp problem details to console</span>
+<span class="k">print</span> <span class="n">tsp_instance</span>
+</pre></div>
+</div>
+<p>The imported matrix, notice it is symmetric.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">[[</span>    <span class="mf">0.</span>   <span class="mf">153.</span>   <span class="mf">510.</span>   <span class="mf">706.</span>   <span class="mf">966.</span>   <span class="mf">581.</span>   <span class="mf">455.</span>    <span class="mf">70.</span>   <span class="mf">160.</span>   <span class="mf">372.</span>   <span class="mf">157.</span>   <span class="mf">567.</span>   <span class="mf">342.</span>   <span class="mf">398.</span><span class="p">]</span>
+ <span class="p">[</span>  <span class="mf">153.</span>     <span class="mf">0.</span>   <span class="mf">422.</span>   <span class="mf">664.</span>   <span class="mf">997.</span>   <span class="mf">598.</span>   <span class="mf">507.</span>   <span class="mf">197.</span>   <span class="mf">311.</span>   <span class="mf">479.</span>   <span class="mf">310.</span>   <span class="mf">581.</span>   <span class="mf">417.</span>   <span class="mf">376.</span><span class="p">]</span>
+ <span class="p">[</span>  <span class="mf">510.</span>   <span class="mf">422.</span>     <span class="mf">0.</span>   <span class="mf">289.</span>   <span class="mf">744.</span>   <span class="mf">390.</span>   <span class="mf">437.</span>   <span class="mf">491.</span>   <span class="mf">645.</span>   <span class="mf">880.</span>   <span class="mf">618.</span>   <span class="mf">374.</span>   <span class="mf">455.</span>   <span class="mf">211.</span><span class="p">]</span>
+ <span class="p">[</span>  <span class="mf">706.</span>   <span class="mf">664.</span>   <span class="mf">289.</span>     <span class="mf">0.</span>   <span class="mf">491.</span>   <span class="mf">265.</span>   <span class="mf">410.</span>   <span class="mf">664.</span>   <span class="mf">804.</span>  <span class="mf">1070.</span>   <span class="mf">768.</span>   <span class="mf">259.</span>   <span class="mf">499.</span>   <span class="mf">310.</span><span class="p">]</span>
+ <span class="p">[</span>  <span class="mf">966.</span>   <span class="mf">997.</span>   <span class="mf">744.</span>   <span class="mf">491.</span>     <span class="mf">0.</span>   <span class="mf">400.</span>   <span class="mf">514.</span>   <span class="mf">902.</span>   <span class="mf">990.</span>  <span class="mf">1261.</span>   <span class="mf">947.</span>   <span class="mf">418.</span>   <span class="mf">635.</span>   <span class="mf">636.</span><span class="p">]</span>
+ <span class="p">[</span>  <span class="mf">581.</span>   <span class="mf">598.</span>   <span class="mf">390.</span>   <span class="mf">265.</span>   <span class="mf">400.</span>     <span class="mf">0.</span>   <span class="mf">168.</span>   <span class="mf">522.</span>   <span class="mf">634.</span>   <span class="mf">910.</span>   <span class="mf">593.</span>    <span class="mf">19.</span>   <span class="mf">284.</span>   <span class="mf">239.</span><span class="p">]</span>
+ <span class="p">[</span>  <span class="mf">455.</span>   <span class="mf">507.</span>   <span class="mf">437.</span>   <span class="mf">410.</span>   <span class="mf">514.</span>   <span class="mf">168.</span>     <span class="mf">0.</span>   <span class="mf">389.</span>   <span class="mf">482.</span>   <span class="mf">757.</span>   <span class="mf">439.</span>   <span class="mf">163.</span>   <span class="mf">124.</span>   <span class="mf">232.</span><span class="p">]</span>
+ <span class="p">[</span>   <span class="mf">70.</span>   <span class="mf">197.</span>   <span class="mf">491.</span>   <span class="mf">664.</span>   <span class="mf">902.</span>   <span class="mf">522.</span>   <span class="mf">389.</span>     <span class="mf">0.</span>   <span class="mf">154.</span>   <span class="mf">406.</span>   <span class="mf">133.</span>   <span class="mf">508.</span>   <span class="mf">273.</span>   <span class="mf">355.</span><span class="p">]</span>
+ <span class="p">[</span>  <span class="mf">160.</span>   <span class="mf">311.</span>   <span class="mf">645.</span>   <span class="mf">804.</span>   <span class="mf">990.</span>   <span class="mf">634.</span>   <span class="mf">482.</span>   <span class="mf">154.</span>     <span class="mf">0.</span>   <span class="mf">276.</span>    <span class="mf">43.</span>   <span class="mf">623.</span>   <span class="mf">358.</span>   <span class="mf">498.</span><span class="p">]</span>
+ <span class="p">[</span>  <span class="mf">372.</span>   <span class="mf">479.</span>   <span class="mf">880.</span>  <span class="mf">1070.</span>  <span class="mf">1261.</span>   <span class="mf">910.</span>   <span class="mf">757.</span>   <span class="mf">406.</span>   <span class="mf">276.</span>     <span class="mf">0.</span>   <span class="mf">318.</span>   <span class="mf">898.</span>   <span class="mf">633.</span>   <span class="mf">761.</span><span class="p">]</span>
+ <span class="p">[</span>  <span class="mf">157.</span>   <span class="mf">310.</span>   <span class="mf">618.</span>   <span class="mf">768.</span>   <span class="mf">947.</span>   <span class="mf">593.</span>   <span class="mf">439.</span>   <span class="mf">133.</span>    <span class="mf">43.</span>   <span class="mf">318.</span>     <span class="mf">0.</span>   <span class="mf">582.</span>   <span class="mf">315.</span>   <span class="mf">464.</span><span class="p">]</span>
+ <span class="p">[</span>  <span class="mf">567.</span>   <span class="mf">581.</span>   <span class="mf">374.</span>   <span class="mf">259.</span>   <span class="mf">418.</span>    <span class="mf">19.</span>   <span class="mf">163.</span>   <span class="mf">508.</span>   <span class="mf">623.</span>   <span class="mf">898.</span>   <span class="mf">582.</span>     <span class="mf">0.</span>   <span class="mf">275.</span>   <span class="mf">221.</span><span class="p">]</span>
+ <span class="p">[</span>  <span class="mf">342.</span>   <span class="mf">417.</span>   <span class="mf">455.</span>   <span class="mf">499.</span>   <span class="mf">635.</span>   <span class="mf">284.</span>   <span class="mf">124.</span>   <span class="mf">273.</span>   <span class="mf">358.</span>   <span class="mf">633.</span>   <span class="mf">315.</span>   <span class="mf">275.</span>     <span class="mf">0.</span>   <span class="mf">247.</span><span class="p">]</span>
+ <span class="p">[</span>  <span class="mf">398.</span>   <span class="mf">376.</span>   <span class="mf">211.</span>   <span class="mf">310.</span>   <span class="mf">636.</span>   <span class="mf">239.</span>   <span class="mf">232.</span>   <span class="mf">355.</span>   <span class="mf">498.</span>   <span class="mf">761.</span>   <span class="mf">464.</span>   <span class="mf">221.</span>   <span class="mf">247.</span>     <span class="mf">0.</span><span class="p">]]</span>
+</pre></div>
+</div>
+<p>And finally, the output for printing the TSP problem instance:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">Problem</span> <span class="n">name</span><span class="p">:</span> <span class="n">Traveling</span> <span class="n">Salesman</span> <span class="n">Problem</span>
+    <span class="n">Global</span> <span class="n">dimension</span><span class="p">:</span>                       <span class="mi">182</span>
+    <span class="n">Integer</span> <span class="n">dimension</span><span class="p">:</span>                      <span class="mi">182</span>
+    <span class="n">Fitness</span> <span class="n">dimension</span><span class="p">:</span>                      <span class="mi">1</span>
+    <span class="n">Constraints</span> <span class="n">dimension</span><span class="p">:</span>                  <span class="mi">184</span>
+    <span class="n">Inequality</span> <span class="n">constraints</span> <span class="n">dimension</span><span class="p">:</span>       <span class="mi">156</span>
+    <span class="n">Lower</span> <span class="n">bounds</span><span class="p">:</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">...</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
+    <span class="n">Upper</span> <span class="n">bounds</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="o">...</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+    <span class="n">Constraints</span> <span class="n">tolerance</span><span class="p">:</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">...</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
+
+    <span class="n">The</span> <span class="n">Boost</span> <span class="n">Graph</span> <span class="p">(</span><span class="n">Adjacency</span> <span class="n">List</span><span class="p">):</span>
+    <span class="n">Vertices</span> <span class="o">=</span> <span class="p">{</span> <span class="mi">0</span> <span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span> <span class="mi">4</span> <span class="mi">5</span> <span class="mi">6</span> <span class="mi">7</span> <span class="mi">8</span> <span class="mi">9</span> <span class="mi">10</span> <span class="mi">11</span> <span class="mi">12</span> <span class="mi">13</span> <span class="p">}</span>
+    <span class="n">Edges</span> <span class="p">(</span><span class="n">Source</span><span class="p">,</span> <span class="n">Target</span><span class="p">)</span> <span class="o">=</span> <span class="n">Weight</span> <span class="p">:</span>
+    <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="o">=</span> <span class="mf">153.0</span>
+    <span class="c"># [..snip..]</span>
+    <span class="p">(</span><span class="mi">13</span><span class="p">,</span> <span class="mi">12</span><span class="p">)</span> <span class="o">=</span> <span class="mf">247.0</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="solve_tsp.html" class="btn btn-neutral float-right" title="Solving a TSP"/>Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="introduction_tsp.html" class="btn btn-neutral" title="Introduction"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2015, Dario Izzo and Francesco Biscani.
+    </p>
+  </div>
+
+  <a href="https://github.com/snide/sphinx_rtd_theme">Sphinx theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+</body>
+</html>

@@ -1,0 +1,858 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Topology &mdash; PyGMO 1.1.7dev documentation</title>
+  
+
+  
+  
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  
+  
+
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:'../',
+        VERSION:'1.1.7dev',
+        COLLAPSE_INDEX:false,
+        FILE_SUFFIX:'.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+    <script type="text/javascript">
+        jQuery(function () {
+            SphinxRtdTheme.StickyNav.enable();
+        });
+    </script>
+  
+
+  
+    <link rel="top" title="PyGMO 1.1.7dev documentation" href="../index.html"/>
+        <link rel="up" title="User Documentation" href="index.html"/>
+        <link rel="next" title="Island and Archipelago" href="island.html"/>
+        <link rel="prev" title="Migration" href="migration.html"/> 
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        <a href="../index.html" class="fa fa-home"> PyGMO</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        
+        
+            <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../install.html">Install PyGMO</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../install.html#preparing-your-system-to-compile-pygmo">Preparing your system to compile PyGMO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../install.html#download-pygmo-code">Download PyGMO code</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../install.html#compiling-and-installing-under-unix">Compiling and Installing under Unix</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../install.html#compiling-and-installing-under-windows">Compiling and Installing under Windows</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../quickstart.html">Quick Start</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../quickstart.html#on-one-cpu">On one CPU</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../quickstart.html#on-many-cpus">On many CPUs ...</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../quickstart.html#and-migrating-solutions">... and migrating solutions ...</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../quickstart.html#and-between-different-algorithms">... and between different algorithms ...</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/index.html">Tutorials</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/adding_problems_and_algorithms_to_PyGMO.html">Adding new problems and algorithms to PyGMO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/meta_problems_meta_algorithms.html">Meta-problems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/multi_objective_optimization_with_PyGMO.html">Multi Objective Optimization with PyGMO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/hypervolumes_in_PyGMO.html">Hypervolumes with PyGMO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/dealing_with_constraints_in_PyGMO.html">Dealing with constraints in PyGMO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/racing.html">Racing in PyGMO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/tsp.html">Traveling Salesman Problems with PyGMO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/landscape_analysis_with_DrPyGMO.html">Landscape Analysis using Dr. PyGMO</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/index.html">Examples</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../examples/example1.html">A study on Mixing Variants of Differential Evolution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples/example2.html">Monitoring the Information Flow in a large archipelago</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples/example3.html">Testing Algorithms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples/example4.html">Multi-objective optimization in the asynchronous island model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples/example5.html">Designing and optimizing interplanetary trajectories</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples/example6.html">Participating to the CEC2013 Competition (v 1.1.5)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples/example7.html">Travelling Salesman Problem for Active Space Debris Removal</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples/local_optimization.html">Third-party Non-linear optimizers in PyGMO</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">User Documentation</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="individual.html">Individual and Champion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="population.html">Population</a></li>
+<li class="toctree-l2"><a class="reference internal" href="migration.html">Migration</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="">Topology</a></li>
+<li class="toctree-l2"><a class="reference internal" href="island.html">Island and Archipelago</a></li>
+<li class="toctree-l2"><a class="reference internal" href="algorithms.html">Algorithms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="problems.html">Problems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hypervolume.html">Hypervolume</a></li>
+<li class="toctree-l2"><a class="reference internal" href="racing.html">Racing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="analysis.html">Dr. PyGMO - Analysis Module</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference external" href="http://esa.github.io/pagmo/">PaGMO API</a></li>
+</ul>
+
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../index.html">PyGMO</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="index.html">User Documentation</a> &raquo;</li>
+      
+    <li>Topology</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          <a href="../_sources/documentation/topology.txt" rel="nofollow"> View page source</a>
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            
+  <div class="section" id="topology">
+<h1>Topology<a class="headerlink" href="#topology" title="Permalink to this headline">¶</a></h1>
+<p>The classes of this submodule are all instances of the same base class used to define the migration paths in the
+<a class="reference internal" href="island.html#PyGMO.archipelago" title="PyGMO.archipelago"><tt class="xref py py-class docutils literal"><span class="pre">PyGMO.archipelago</span></tt></a>. When a new <a class="reference internal" href="island.html#PyGMO.island" title="PyGMO.island"><tt class="xref py py-class docutils literal"><span class="pre">PyGMO.island</span></tt></a> is pushed back into
+the <a class="reference internal" href="island.html#PyGMO.archipelago" title="PyGMO.archipelago"><tt class="xref py py-class docutils literal"><span class="pre">PyGMO.archipelago</span></tt></a> the various connections are rewired as to respect the topological properties defined
+by these  classes.</p>
+<p>The user will mainly use these classes in the following way:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">PyGMO</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="n">prob</span> <span class="o">=</span> <span class="n">problem</span><span class="o">.</span><span class="n">lennard_jones</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">algo</span> <span class="o">=</span> <span class="n">algorithm</span><span class="o">.</span><span class="n">bee_colony</span><span class="p">(</span><span class="n">gen</span> <span class="o">=</span> <span class="mi">10</span><span class="p">)</span> <span class="c">#instantiates artificial bee colony setting 10 generations for each algorithmic call</span>
+<span class="n">topo</span> <span class="o">=</span> <span class="n">topology</span><span class="o">.</span><span class="n">ring</span><span class="p">()</span> <span class="c">#defines an empty ring topology</span>
+<span class="n">archi</span> <span class="o">=</span> <span class="n">archipelago</span><span class="p">(</span><span class="n">algo</span><span class="p">,</span><span class="n">prob</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">20</span><span class="p">,</span><span class="n">topology</span><span class="o">=</span><span class="n">topo</span><span class="p">)</span> <span class="c">#connects 8 islands in a ring topology</span>
+<span class="n">archi</span><span class="o">.</span><span class="n">topology</span><span class="o">.</span><span class="n">draw</span><span class="p">()</span> <span class="c">#requires networkx to be installed</span>
+</pre></div>
+</div>
+<div class="section" id="migration-probability">
+<h2>Migration Probability<a class="headerlink" href="#migration-probability" title="Permalink to this headline">¶</a></h2>
+<p>When defining the migration paths (edges of the DAG in the topology), one of the parameters is the migration probability, by default equal to 1. It is possible to change it globally for all edges:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">PyGMO</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="n">topo</span> <span class="o">=</span> <span class="n">topology</span><span class="o">.</span><span class="n">fully_connected</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span> <span class="c"># Defines a 5-vertex ring topology</span>
+<span class="n">topo</span><span class="o">.</span><span class="n">set_weight</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span>  <span class="c"># Changing the migration probability to 0.5 for all edges</span>
+</pre></div>
+</div>
+<p>specify a custom migration probability for all out-going edges of a node:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">PyGMO</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="n">topo</span> <span class="o">=</span> <span class="n">topology</span><span class="o">.</span><span class="n">fully_connected</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>  <span class="c"># Defines a 5-vertex ring topology</span>
+<span class="n">topo</span><span class="o">.</span><span class="n">set_weight</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span>  <span class="c"># Change the migration probability to 0.5 for all edges</span>
+<span class="n">topo</span><span class="o">.</span><span class="n">set_weight</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">)</span>  <span class="c"># Probability 0.1 for all out-going edges from island 0</span>
+<span class="n">topo</span><span class="o">.</span><span class="n">set_weight</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)</span>  <span class="c"># Probability 0.0 for all out-going edges from island 2 (effectively invalidating the migration path)</span>
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="../_images/topo_prob_fully_connected.png"><img alt="../_images/topo_prob_fully_connected.png" src="../_images/topo_prob_fully_connected.png" style="width: 220px;" /></a>
+<p>or specify a custom migration probability for individual edges:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">PyGMO</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="n">topo</span> <span class="o">=</span> <span class="n">topology</span><span class="o">.</span><span class="n">one_way_ring</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>  <span class="c"># Defines a 5-vertex ring topology</span>
+<span class="n">topo</span><span class="o">.</span><span class="n">set_weight</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">)</span>  <span class="c"># Changing the migration probability to 0.5 for edge 1 -&gt; 2</span>
+<span class="n">topo</span><span class="o">.</span><span class="n">set_weight</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">)</span>  <span class="c"># Changing the migration probability to 0.2 for edge 2 -&gt; 3</span>
+<span class="n">topo</span><span class="o">.</span><span class="n">set_weight</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">)</span>  <span class="c"># Changing the migration probability to 0.1 for edge 3 -&gt; 4</span>
+<span class="n">topo</span><span class="o">.</span><span class="n">set_weight</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">)</span>  <span class="c"># Changing the migration probability to 0.05 for edge 4 -&gt; 0</span>
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="../_images/topo_prob_one_way_ring.png"><img alt="../_images/topo_prob_one_way_ring.png" src="../_images/topo_prob_one_way_ring.png" style="width: 220px;" /></a>
+<div class="section" id="the-classes">
+<h3>The Classes<a class="headerlink" href="#the-classes" title="Permalink to this headline">¶</a></h3>
+<dl class="class">
+<dt id="PyGMO.topology.base">
+<em class="property">class </em><tt class="descclassname">PyGMO.topology.</tt><tt class="descname">base</tt><a class="headerlink" href="#PyGMO.topology.base" title="Permalink to this definition">¶</a></dt>
+<dd><p>Methods of the topology base class, shared by all topology objects.</p>
+<dl class="method">
+<dt id="PyGMO.topology.base.set_weight">
+<tt class="descname">set_weight</tt><big>(</big><em>(float)w</em><big>)</big><a class="headerlink" href="#PyGMO.topology.base.set_weight" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the weight for each edge in the topology.</p>
+</dd></dl>
+
+<dl class="method">
+<dt>
+<tt class="descname">set_weight</tt><big>(</big><em>(int)id</em>, <em>(float)w</em><big>)</big></dt>
+<dd><p>Sets the weight for each edge outgoing from the vertex id</p>
+</dd></dl>
+
+<dl class="method">
+<dt>
+<tt class="descname">set_weight</tt><big>(</big><em>(int)id1</em>, <em>(int)id2</em>, <em>(float)w</em><big>)</big></dt>
+<dd><p>Sets the weight for the edge between the vertices id1 and id2</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="PyGMO.topology.unconnected">
+<em class="property">class </em><tt class="descclassname">PyGMO.topology.</tt><tt class="descname">unconnected</tt><a class="headerlink" href="#PyGMO.topology.unconnected" title="Permalink to this definition">¶</a></dt>
+<dd><p>Unconnected topology (this corresponds to do parallel independent runs of the algorithms)</p>
+<dl class="method">
+<dt id="PyGMO.topology.PyGMO.topology.unconnected.unconnected.__init__">
+<tt class="descclassname">unconnected.</tt><tt class="descname">__init__</tt><big>(</big><em>nodes=0</em><big>)</big><a class="headerlink" href="#PyGMO.topology.PyGMO.topology.unconnected.unconnected.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructs an unconnected topology</p>
+<p>USAGE: topology.unconnected(nodes = 0)</p>
+<ul class="simple">
+<li>nodes: number of nodes</li>
+</ul>
+</dd></dl>
+
+<dl class="method">
+<dt id="PyGMO.topology.PyGMO.topology.unconnected.unconnected.draw">
+<tt class="descclassname">unconnected.</tt><tt class="descname">draw</tt><big>(</big><big>)</big><a class="headerlink" href="#PyGMO.topology.PyGMO.topology.unconnected.unconnected.draw" title="Permalink to this definition">¶</a></dt>
+<dd><p>Draw topology using the draw() command from networkx.</p>
+<p>USAGE: topology.draw(layout = &#8220;spring&#8221;, n_size = 15, scale_by_degree = False, n_color = &#8216;blue&#8217;, n_alpha = 0.5, e_alpha = 0.1, e_arrows=False)</p>
+<ul class="simple">
+<li>layout: Network layout. Can be &#8216;spring&#8217; or &#8216;circular&#8217;.</li>
+<li>n_size: The size of nodes. Becomes scaling factor when scale_by_degree=True.</li>
+<li>scale_by_degree: When True, nodes will be sized proportional to their degree.</li>
+<li>n_color: Node color.</li>
+<li>n_alpha: Transparency of nodes. Takes value between 0 and 1.</li>
+<li>e_elpha: Transparency of edges. Takes value between 0 and 1.</li>
+<li>e_arrows: Plots arrows on the edges for directed graphs</li>
+<li>scale_by_degree: When True, nodes will be sized proportional to their degree.</li>
+</ul>
+</dd></dl>
+
+<img alt="../_images/unconnected.png" src="../_images/unconnected.png" />
+<p>The above image is produced by the code:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">PyGMO</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="n">topo</span> <span class="o">=</span> <span class="n">topology</span><span class="o">.</span><span class="n">unconnected</span><span class="p">(</span><span class="n">nodes</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+<span class="n">topo</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">layout</span><span class="o">=</span><span class="s">&#39;spring&#39;</span><span class="p">,</span> <span class="n">n_size</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span> <span class="n">e_arrows</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="class">
+<dt id="PyGMO.topology.ring">
+<em class="property">class </em><tt class="descclassname">PyGMO.topology.</tt><tt class="descname">ring</tt><a class="headerlink" href="#PyGMO.topology.ring" title="Permalink to this definition">¶</a></dt>
+<dd><p>Ring topology (links go in both directions)</p>
+<dl class="method">
+<dt id="PyGMO.topology.PyGMO.topology.ring.ring.__init__">
+<tt class="descclassname">ring.</tt><tt class="descname">__init__</tt><big>(</big><em>nodes=0</em><big>)</big><a class="headerlink" href="#PyGMO.topology.PyGMO.topology.ring.ring.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructs a ring topology</p>
+<p>USAGE: topology.ring(nodes = 0)</p>
+<ul class="simple">
+<li>nodes: number of nodes</li>
+</ul>
+</dd></dl>
+
+<dl class="method">
+<dt id="PyGMO.topology.PyGMO.topology.ring.ring.draw">
+<tt class="descclassname">ring.</tt><tt class="descname">draw</tt><big>(</big><big>)</big><a class="headerlink" href="#PyGMO.topology.PyGMO.topology.ring.ring.draw" title="Permalink to this definition">¶</a></dt>
+<dd><p>Draw topology using the draw() command from networkx.</p>
+<p>USAGE: topology.draw(layout = &#8220;spring&#8221;, n_size = 15, scale_by_degree = False, n_color = &#8216;blue&#8217;, n_alpha = 0.5, e_alpha = 0.1, e_arrows=False)</p>
+<ul class="simple">
+<li>layout: Network layout. Can be &#8216;spring&#8217; or &#8216;circular&#8217;.</li>
+<li>n_size: The size of nodes. Becomes scaling factor when scale_by_degree=True.</li>
+<li>scale_by_degree: When True, nodes will be sized proportional to their degree.</li>
+<li>n_color: Node color.</li>
+<li>n_alpha: Transparency of nodes. Takes value between 0 and 1.</li>
+<li>e_elpha: Transparency of edges. Takes value between 0 and 1.</li>
+<li>e_arrows: Plots arrows on the edges for directed graphs</li>
+<li>scale_by_degree: When True, nodes will be sized proportional to their degree.</li>
+</ul>
+</dd></dl>
+
+<img alt="../_images/ring.png" src="../_images/ring.png" />
+<p>The above image is produced by the code:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">PyGMO</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="n">topo</span> <span class="o">=</span> <span class="n">topology</span><span class="o">.</span><span class="n">ring</span><span class="p">(</span><span class="n">nodes</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
+<span class="n">topo</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">layout</span><span class="o">=</span><span class="s">&#39;circular&#39;</span><span class="p">,</span> <span class="n">n_size</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">e_arrows</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">e_alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="class">
+<dt id="PyGMO.topology.one_way_ring">
+<em class="property">class </em><tt class="descclassname">PyGMO.topology.</tt><tt class="descname">one_way_ring</tt><a class="headerlink" href="#PyGMO.topology.one_way_ring" title="Permalink to this definition">¶</a></dt>
+<dd><p>Ring topology (links go only in one direction)</p>
+<dl class="method">
+<dt id="PyGMO.topology.PyGMO.topology.one_way_ring.one_way_ring.__init__">
+<tt class="descclassname">one_way_ring.</tt><tt class="descname">__init__</tt><big>(</big><em>nodes=0</em><big>)</big><a class="headerlink" href="#PyGMO.topology.PyGMO.topology.one_way_ring.one_way_ring.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructs a one_way_ring topology:</p>
+<p>USAGE: topology.one_way_ring(nodes = 0)</p>
+<ul class="simple">
+<li>nodes: number of nodes</li>
+</ul>
+</dd></dl>
+
+<dl class="method">
+<dt id="PyGMO.topology.PyGMO.topology.one_way_ring.one_way_ring.draw">
+<tt class="descclassname">one_way_ring.</tt><tt class="descname">draw</tt><big>(</big><big>)</big><a class="headerlink" href="#PyGMO.topology.PyGMO.topology.one_way_ring.one_way_ring.draw" title="Permalink to this definition">¶</a></dt>
+<dd><p>Draw topology using the draw() command from networkx.</p>
+<p>USAGE: topology.draw(layout = &#8220;spring&#8221;, n_size = 15, scale_by_degree = False, n_color = &#8216;blue&#8217;, n_alpha = 0.5, e_alpha = 0.1, e_arrows=False)</p>
+<ul class="simple">
+<li>layout: Network layout. Can be &#8216;spring&#8217; or &#8216;circular&#8217;.</li>
+<li>n_size: The size of nodes. Becomes scaling factor when scale_by_degree=True.</li>
+<li>scale_by_degree: When True, nodes will be sized proportional to their degree.</li>
+<li>n_color: Node color.</li>
+<li>n_alpha: Transparency of nodes. Takes value between 0 and 1.</li>
+<li>e_elpha: Transparency of edges. Takes value between 0 and 1.</li>
+<li>e_arrows: Plots arrows on the edges for directed graphs</li>
+<li>scale_by_degree: When True, nodes will be sized proportional to their degree.</li>
+</ul>
+</dd></dl>
+
+<img alt="../_images/one_way_ring.png" src="../_images/one_way_ring.png" />
+<p>The above image is produced by the code:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">PyGMO</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="n">topo</span> <span class="o">=</span> <span class="n">topology</span><span class="o">.</span><span class="n">one_way_ring</span><span class="p">(</span><span class="n">nodes</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
+<span class="n">topo</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">layout</span><span class="o">=</span><span class="s">&#39;circular&#39;</span><span class="p">,</span> <span class="n">n_size</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">e_arrows</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">e_alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="class">
+<dt id="PyGMO.topology.fully_connected">
+<em class="property">class </em><tt class="descclassname">PyGMO.topology.</tt><tt class="descname">fully_connected</tt><a class="headerlink" href="#PyGMO.topology.fully_connected" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fully connected topology (i.e. all islands are connected bi-directionally)</p>
+<dl class="method">
+<dt id="PyGMO.topology.PyGMO.topology.fully_connected.fully_connected.__init__">
+<tt class="descclassname">fully_connected.</tt><tt class="descname">__init__</tt><big>(</big><em>nodes=0</em><big>)</big><a class="headerlink" href="#PyGMO.topology.PyGMO.topology.fully_connected.fully_connected.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructs a fully connected topology:</p>
+<p>USAGE: topology.fully_connected(nodes = 0)</p>
+<ul class="simple">
+<li>nodes: number of nodes</li>
+</ul>
+</dd></dl>
+
+<dl class="method">
+<dt id="PyGMO.topology.PyGMO.topology.fully_connected.fully_connected.draw">
+<tt class="descclassname">fully_connected.</tt><tt class="descname">draw</tt><big>(</big><big>)</big><a class="headerlink" href="#PyGMO.topology.PyGMO.topology.fully_connected.fully_connected.draw" title="Permalink to this definition">¶</a></dt>
+<dd><p>Draw topology using the draw() command from networkx.</p>
+<p>USAGE: topology.draw(layout = &#8220;spring&#8221;, n_size = 15, scale_by_degree = False, n_color = &#8216;blue&#8217;, n_alpha = 0.5, e_alpha = 0.1, e_arrows=False)</p>
+<ul class="simple">
+<li>layout: Network layout. Can be &#8216;spring&#8217; or &#8216;circular&#8217;.</li>
+<li>n_size: The size of nodes. Becomes scaling factor when scale_by_degree=True.</li>
+<li>scale_by_degree: When True, nodes will be sized proportional to their degree.</li>
+<li>n_color: Node color.</li>
+<li>n_alpha: Transparency of nodes. Takes value between 0 and 1.</li>
+<li>e_elpha: Transparency of edges. Takes value between 0 and 1.</li>
+<li>e_arrows: Plots arrows on the edges for directed graphs</li>
+<li>scale_by_degree: When True, nodes will be sized proportional to their degree.</li>
+</ul>
+</dd></dl>
+
+<img alt="../_images/fully_connected.png" src="../_images/fully_connected.png" />
+<p>The above image is produced by the code:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">PyGMO</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="n">topo</span> <span class="o">=</span> <span class="n">topology</span><span class="o">.</span><span class="n">fully_connected</span><span class="p">(</span><span class="n">nodes</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
+<span class="n">topo</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">layout</span><span class="o">=</span><span class="s">&#39;circular&#39;</span><span class="p">,</span> <span class="n">n_size</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">e_arrows</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">e_alpha</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="class">
+<dt id="PyGMO.topology.pan">
+<em class="property">class </em><tt class="descclassname">PyGMO.topology.</tt><tt class="descname">pan</tt><a class="headerlink" href="#PyGMO.topology.pan" title="Permalink to this definition">¶</a></dt>
+<dd><p>Islands are connected in a ring, except the island with id 0 that is connected to the ring only receiving migrants. This
+topology was first conceived to have global optimization happening on the outer ring while using a local optimizer
+in the island 0 to refine the solution (also seen as a memetic approach)</p>
+<dl class="method">
+<dt id="PyGMO.topology.PyGMO.topology.pan.pan.__init__">
+<tt class="descclassname">pan.</tt><tt class="descname">__init__</tt><big>(</big><em>nodes=0</em><big>)</big><a class="headerlink" href="#PyGMO.topology.PyGMO.topology.pan.pan.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructs a pan topology: this is, essentially, a ring with a sink node. This topology was &#8216;invented&#8217; to support a local
+optimization algorithm in the sink node</p>
+<p>USAGE: topology.pan(nodes = 0)</p>
+<ul class="simple">
+<li>nodes: number of nodes</li>
+</ul>
+</dd></dl>
+
+<dl class="method">
+<dt id="PyGMO.topology.PyGMO.topology.pan.pan.draw">
+<tt class="descclassname">pan.</tt><tt class="descname">draw</tt><big>(</big><big>)</big><a class="headerlink" href="#PyGMO.topology.PyGMO.topology.pan.pan.draw" title="Permalink to this definition">¶</a></dt>
+<dd><p>Draw topology using the draw() command from networkx.</p>
+<p>USAGE: topology.draw(layout = &#8220;spring&#8221;, n_size = 15, scale_by_degree = False, n_color = &#8216;blue&#8217;, n_alpha = 0.5, e_alpha = 0.1, e_arrows=False)</p>
+<ul class="simple">
+<li>layout: Network layout. Can be &#8216;spring&#8217; or &#8216;circular&#8217;.</li>
+<li>n_size: The size of nodes. Becomes scaling factor when scale_by_degree=True.</li>
+<li>scale_by_degree: When True, nodes will be sized proportional to their degree.</li>
+<li>n_color: Node color.</li>
+<li>n_alpha: Transparency of nodes. Takes value between 0 and 1.</li>
+<li>e_elpha: Transparency of edges. Takes value between 0 and 1.</li>
+<li>e_arrows: Plots arrows on the edges for directed graphs</li>
+<li>scale_by_degree: When True, nodes will be sized proportional to their degree.</li>
+</ul>
+</dd></dl>
+
+<img alt="../_images/pan.png" src="../_images/pan.png" />
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">PyGMO</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="n">topo</span> <span class="o">=</span> <span class="n">topology</span><span class="o">.</span><span class="n">pan</span><span class="p">(</span><span class="n">nodes</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">topo</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">layout</span><span class="o">=</span><span class="s">&#39;spring&#39;</span><span class="p">,</span> <span class="n">n_size</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">e_arrows</span> <span class="o">=</span> <span class="bp">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="class">
+<dt id="PyGMO.topology.rim">
+<em class="property">class </em><tt class="descclassname">PyGMO.topology.</tt><tt class="descname">rim</tt><a class="headerlink" href="#PyGMO.topology.rim" title="Permalink to this definition">¶</a></dt>
+<dd><p>Islands are connected in a ring and they all are also connected to the No.0 island.</p>
+<dl class="method">
+<dt id="PyGMO.topology.PyGMO.topology.rim.rim.__init__">
+<tt class="descclassname">rim.</tt><tt class="descname">__init__</tt><big>(</big><em>nodes=0</em><big>)</big><a class="headerlink" href="#PyGMO.topology.PyGMO.topology.rim.rim.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructs a rim topology: this is, essentially, a ring + one node that connects all ring nodes bi-directionally</p>
+<p>USAGE: topology.rim(nodes = 0)</p>
+<ul class="simple">
+<li>nodes: number of nodes</li>
+</ul>
+</dd></dl>
+
+<dl class="method">
+<dt id="PyGMO.topology.PyGMO.topology.rim.rim.draw">
+<tt class="descclassname">rim.</tt><tt class="descname">draw</tt><big>(</big><big>)</big><a class="headerlink" href="#PyGMO.topology.PyGMO.topology.rim.rim.draw" title="Permalink to this definition">¶</a></dt>
+<dd><p>Draw topology using the draw() command from networkx.</p>
+<p>USAGE: topology.draw(layout = &#8220;spring&#8221;, n_size = 15, scale_by_degree = False, n_color = &#8216;blue&#8217;, n_alpha = 0.5, e_alpha = 0.1, e_arrows=False)</p>
+<ul class="simple">
+<li>layout: Network layout. Can be &#8216;spring&#8217; or &#8216;circular&#8217;.</li>
+<li>n_size: The size of nodes. Becomes scaling factor when scale_by_degree=True.</li>
+<li>scale_by_degree: When True, nodes will be sized proportional to their degree.</li>
+<li>n_color: Node color.</li>
+<li>n_alpha: Transparency of nodes. Takes value between 0 and 1.</li>
+<li>e_elpha: Transparency of edges. Takes value between 0 and 1.</li>
+<li>e_arrows: Plots arrows on the edges for directed graphs</li>
+<li>scale_by_degree: When True, nodes will be sized proportional to their degree.</li>
+</ul>
+</dd></dl>
+
+<img alt="../_images/rim.png" src="../_images/rim.png" />
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">PyGMO</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="n">topo</span> <span class="o">=</span> <span class="n">topology</span><span class="o">.</span><span class="n">rim</span><span class="p">(</span><span class="n">nodes</span><span class="o">=</span><span class="mi">90</span><span class="p">)</span>
+<span class="n">topo</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">layout</span><span class="o">=</span><span class="s">&#39;circular&#39;</span><span class="p">,</span> <span class="n">n_size</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="class">
+<dt id="PyGMO.topology.hypercube">
+<em class="property">class </em><tt class="descclassname">PyGMO.topology.</tt><tt class="descname">hypercube</tt><a class="headerlink" href="#PyGMO.topology.hypercube" title="Permalink to this definition">¶</a></dt>
+<dd><p>Hypercube topology</p>
+<dl class="method">
+<dt id="PyGMO.topology.PyGMO.topology.hypercube.hypercube.__init__">
+<tt class="descclassname">hypercube.</tt><tt class="descname">__init__</tt><big>(</big><em>nodes=0</em><big>)</big><a class="headerlink" href="#PyGMO.topology.PyGMO.topology.hypercube.hypercube.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructs a hypercube topology:</p>
+<p>USAGE: topology.hypercube(nodes = 0)</p>
+<ul class="simple">
+<li>nodes: number of nodes</li>
+</ul>
+</dd></dl>
+
+<dl class="method">
+<dt id="PyGMO.topology.PyGMO.topology.hypercube.hypercube.draw">
+<tt class="descclassname">hypercube.</tt><tt class="descname">draw</tt><big>(</big><big>)</big><a class="headerlink" href="#PyGMO.topology.PyGMO.topology.hypercube.hypercube.draw" title="Permalink to this definition">¶</a></dt>
+<dd><p>Draw topology using the draw() command from networkx.</p>
+<p>USAGE: topology.draw(layout = &#8220;spring&#8221;, n_size = 15, scale_by_degree = False, n_color = &#8216;blue&#8217;, n_alpha = 0.5, e_alpha = 0.1, e_arrows=False)</p>
+<ul class="simple">
+<li>layout: Network layout. Can be &#8216;spring&#8217; or &#8216;circular&#8217;.</li>
+<li>n_size: The size of nodes. Becomes scaling factor when scale_by_degree=True.</li>
+<li>scale_by_degree: When True, nodes will be sized proportional to their degree.</li>
+<li>n_color: Node color.</li>
+<li>n_alpha: Transparency of nodes. Takes value between 0 and 1.</li>
+<li>e_elpha: Transparency of edges. Takes value between 0 and 1.</li>
+<li>e_arrows: Plots arrows on the edges for directed graphs</li>
+<li>scale_by_degree: When True, nodes will be sized proportional to their degree.</li>
+</ul>
+</dd></dl>
+
+<img alt="../_images/hypercube.png" src="../_images/hypercube.png" />
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">PyGMO</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="n">topo</span> <span class="o">=</span> <span class="n">topology</span><span class="o">.</span><span class="n">hypercube</span><span class="p">(</span><span class="n">nodes</span><span class="o">=</span><span class="mi">32</span><span class="p">)</span>
+<span class="n">topo</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">layout</span><span class="o">=</span><span class="s">&#39;spring&#39;</span><span class="p">,</span> <span class="n">n_size</span><span class="o">=</span><span class="mi">90</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="class">
+<dt id="PyGMO.topology.watts_strogatz">
+<em class="property">class </em><tt class="descclassname">PyGMO.topology.</tt><tt class="descname">watts_strogatz</tt><a class="headerlink" href="#PyGMO.topology.watts_strogatz" title="Permalink to this definition">¶</a></dt>
+<dd><p>The Watts-Strogatz topology is a ring lattice network in which forward
+edges are rewired with random probability. Such a network has small-world properties,
+including short average path
+lengths and high clustering. When the push_back method is used all the connections
+are rewired (all links are bidirectional).</p>
+<p><a class="reference external" href="http://en.wikipedia.org/wiki/Watts_and_Strogatz_model">Watts-Strogatz topology in wikipedia</a></p>
+<dl class="method">
+<dt id="PyGMO.topology.PyGMO.topology.watts_strogatz.watts_strogatz.__init__">
+<tt class="descclassname">watts_strogatz.</tt><tt class="descname">__init__</tt><big>(</big><em>k=10</em>, <em>p=0.1</em>, <em>nodes=0</em><big>)</big><a class="headerlink" href="#PyGMO.topology.PyGMO.topology.watts_strogatz.watts_strogatz.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructs Watts-Strogatz Topology:</p>
+<p>USAGE: topology.watts-strogatz(k = 10, p = 0.1, nodes=0)</p>
+<ul class="simple">
+<li>k: number of neighbours</li>
+<li>p: rewiring probability [0,1]</li>
+<li>nodes: number of nodes</li>
+</ul>
+</dd></dl>
+
+<dl class="method">
+<dt id="PyGMO.topology.PyGMO.topology.watts_strogatz.watts_strogatz.draw">
+<tt class="descclassname">watts_strogatz.</tt><tt class="descname">draw</tt><big>(</big><big>)</big><a class="headerlink" href="#PyGMO.topology.PyGMO.topology.watts_strogatz.watts_strogatz.draw" title="Permalink to this definition">¶</a></dt>
+<dd><p>Draw topology using the draw() command from networkx.</p>
+<p>USAGE: topology.draw(layout = &#8220;spring&#8221;, n_size = 15, scale_by_degree = False, n_color = &#8216;blue&#8217;, n_alpha = 0.5, e_alpha = 0.1, e_arrows=False)</p>
+<ul class="simple">
+<li>layout: Network layout. Can be &#8216;spring&#8217; or &#8216;circular&#8217;.</li>
+<li>n_size: The size of nodes. Becomes scaling factor when scale_by_degree=True.</li>
+<li>scale_by_degree: When True, nodes will be sized proportional to their degree.</li>
+<li>n_color: Node color.</li>
+<li>n_alpha: Transparency of nodes. Takes value between 0 and 1.</li>
+<li>e_elpha: Transparency of edges. Takes value between 0 and 1.</li>
+<li>e_arrows: Plots arrows on the edges for directed graphs</li>
+<li>scale_by_degree: When True, nodes will be sized proportional to their degree.</li>
+</ul>
+</dd></dl>
+
+<img alt="../_images/watts_strogatz.png" src="../_images/watts_strogatz.png" />
+<p>The above image is produced by the code:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">PyGMO</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="n">topo</span> <span class="o">=</span> <span class="n">topology</span><span class="o">.</span><span class="n">watts_strogatz</span><span class="p">(</span><span class="n">nodes</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>
+<span class="n">topo</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">layout</span><span class="o">=</span><span class="s">&#39;circular&#39;</span><span class="p">,</span> <span class="n">n_size</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">scale_by_degree</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="class">
+<dt id="PyGMO.topology.erdos_renyi">
+<em class="property">class </em><tt class="descclassname">PyGMO.topology.</tt><tt class="descname">erdos_renyi</tt><a class="headerlink" href="#PyGMO.topology.erdos_renyi" title="Permalink to this definition">¶</a></dt>
+<dd><p>A random graph (all links are bidirectional)</p>
+<dl class="method">
+<dt id="PyGMO.topology.PyGMO.topology.erdos_renyi.erdos_renyi.__init__">
+<tt class="descclassname">erdos_renyi.</tt><tt class="descname">__init__</tt><big>(</big><em>p=0.1</em>, <em>nodes=0</em><big>)</big><a class="headerlink" href="#PyGMO.topology.PyGMO.topology.erdos_renyi.erdos_renyi.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructs an Erdos-Renyi (random) topology:</p>
+<p>USAGE: topology.erdos_renyi(p = 0.1, nodes=0)</p>
+<ul class="simple">
+<li>p: wiring probability [0,1]</li>
+<li>nodes: number of nodes</li>
+</ul>
+</dd></dl>
+
+<dl class="method">
+<dt id="PyGMO.topology.PyGMO.topology.erdos_renyi.erdos_renyi.draw">
+<tt class="descclassname">erdos_renyi.</tt><tt class="descname">draw</tt><big>(</big><big>)</big><a class="headerlink" href="#PyGMO.topology.PyGMO.topology.erdos_renyi.erdos_renyi.draw" title="Permalink to this definition">¶</a></dt>
+<dd><p>Draw topology using the draw() command from networkx.</p>
+<p>USAGE: topology.draw(layout = &#8220;spring&#8221;, n_size = 15, scale_by_degree = False, n_color = &#8216;blue&#8217;, n_alpha = 0.5, e_alpha = 0.1, e_arrows=False)</p>
+<ul class="simple">
+<li>layout: Network layout. Can be &#8216;spring&#8217; or &#8216;circular&#8217;.</li>
+<li>n_size: The size of nodes. Becomes scaling factor when scale_by_degree=True.</li>
+<li>scale_by_degree: When True, nodes will be sized proportional to their degree.</li>
+<li>n_color: Node color.</li>
+<li>n_alpha: Transparency of nodes. Takes value between 0 and 1.</li>
+<li>e_elpha: Transparency of edges. Takes value between 0 and 1.</li>
+<li>e_arrows: Plots arrows on the edges for directed graphs</li>
+<li>scale_by_degree: When True, nodes will be sized proportional to their degree.</li>
+</ul>
+</dd></dl>
+
+<img alt="../_images/random.png" src="../_images/random.png" />
+<p>The above image is produced by the code:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">PyGMO</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="n">topo</span> <span class="o">=</span> <span class="n">topology</span><span class="o">.</span><span class="n">erdos_renyi</span><span class="p">(</span><span class="n">nodes</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="mf">0.03</span><span class="p">)</span>
+<span class="n">topo</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">layout</span><span class="o">=</span><span class="s">&#39;spring&#39;</span><span class="p">,</span> <span class="n">n_size</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">scale_by_degree</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="class">
+<dt id="PyGMO.topology.barabasi_albert">
+<em class="property">class </em><tt class="descclassname">PyGMO.topology.</tt><tt class="descname">barabasi_albert</tt><a class="headerlink" href="#PyGMO.topology.barabasi_albert" title="Permalink to this definition">¶</a></dt>
+<dd><p>Topology based on the Barabási-Albert (BA) model. (all links are bidirectional)</p>
+<p>The network is grown in two phases:</p>
+<blockquote>
+<div><ul class="simple">
+<li>The first m0 elements added to the network constitute a kernel of nodes connected to each other
+with high probability;</li>
+<li>After the kernel is built, the next elements added to the network
+are connected randomly to m of the existing nodes; the probability of connection
+is biased linearly towards the most connected nodes.</li>
+</ul>
+</div></blockquote>
+<dl class="method">
+<dt id="PyGMO.topology.PyGMO.topology.barabasi_albert.barabasi_albert.__init__">
+<tt class="descclassname">barabasi_albert.</tt><tt class="descname">__init__</tt><big>(</big><em>m0=3</em>, <em>m=3</em>, <em>nodes=0</em><big>)</big><a class="headerlink" href="#PyGMO.topology.PyGMO.topology.barabasi_albert.barabasi_albert.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructs an Barabasi-Albert topology:</p>
+<p>USAGE: topology.barabasi_albert(m0 = 3, m = 3, nodes = 0)</p>
+<ul class="simple">
+<li>m0: kernel size</li>
+<li>m: number of random connections to be established when a new node is added.</li>
+<li>nodes: number of nodes</li>
+</ul>
+</dd></dl>
+
+<dl class="method">
+<dt id="PyGMO.topology.PyGMO.topology.barabasi_albert.barabasi_albert.draw">
+<tt class="descclassname">barabasi_albert.</tt><tt class="descname">draw</tt><big>(</big><big>)</big><a class="headerlink" href="#PyGMO.topology.PyGMO.topology.barabasi_albert.barabasi_albert.draw" title="Permalink to this definition">¶</a></dt>
+<dd><p>Draw topology using the draw() command from networkx.</p>
+<p>USAGE: topology.draw(layout = &#8220;spring&#8221;, n_size = 15, scale_by_degree = False, n_color = &#8216;blue&#8217;, n_alpha = 0.5, e_alpha = 0.1, e_arrows=False)</p>
+<ul class="simple">
+<li>layout: Network layout. Can be &#8216;spring&#8217; or &#8216;circular&#8217;.</li>
+<li>n_size: The size of nodes. Becomes scaling factor when scale_by_degree=True.</li>
+<li>scale_by_degree: When True, nodes will be sized proportional to their degree.</li>
+<li>n_color: Node color.</li>
+<li>n_alpha: Transparency of nodes. Takes value between 0 and 1.</li>
+<li>e_elpha: Transparency of edges. Takes value between 0 and 1.</li>
+<li>e_arrows: Plots arrows on the edges for directed graphs</li>
+<li>scale_by_degree: When True, nodes will be sized proportional to their degree.</li>
+</ul>
+</dd></dl>
+
+<img alt="../_images/ba.png" src="../_images/ba.png" />
+<p>The above image is produced by the code:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">PyGMO</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="n">topo</span> <span class="o">=</span> <span class="n">topology</span><span class="o">.</span><span class="n">barabasi_albert</span><span class="p">(</span><span class="n">m0</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">m</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">nodes</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span>
+<span class="n">topo</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">layout</span><span class="o">=</span><span class="s">&#39;spring&#39;</span><span class="p">,</span> <span class="n">n_size</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">scale_by_degree</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span><span class="n">e_alpha</span><span class="o">=</span><span class="mf">0.03</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="class">
+<dt id="PyGMO.topology.clustered_ba">
+<em class="property">class </em><tt class="descclassname">PyGMO.topology.</tt><tt class="descname">clustered_ba</tt><a class="headerlink" href="#PyGMO.topology.clustered_ba" title="Permalink to this definition">¶</a></dt>
+<dd><p>Topology based on the Clustered Barabási-Albert (BA) model. (all links are bidirectional)</p>
+<p>The network is grown in two phases:</p>
+<blockquote>
+<div><ul class="simple">
+<li>The first m0 elements added to the network constitute a kernel of nodes connected to each other
+with high probability;</li>
+<li>After the kernel is built, the next elements added to the network
+are connected randomly to m of the existing nodes; the probability of connection
+is biased linearly towards the most connected nodes. <em>A link is established also between
+the m nodes with probability p</em></li>
+</ul>
+</div></blockquote>
+<dl class="method">
+<dt id="PyGMO.topology.PyGMO.topology.clustered_ba.clustered_ba.__init__">
+<tt class="descclassname">clustered_ba.</tt><tt class="descname">__init__</tt><big>(</big><em>m0=3</em>, <em>m=3</em>, <em>p=0.5</em>, <em>nodes=0</em><big>)</big><a class="headerlink" href="#PyGMO.topology.PyGMO.topology.clustered_ba.clustered_ba.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructs a Clustered Barabasi-Albert topology:</p>
+<p>USAGE: topology.clustered_ba(mm0 = 3, m=3, p=0.5, nodes = 0)</p>
+<ul class="simple">
+<li>m0: kernel size</li>
+<li>m: nnumber of random connections to be established when a new node is added</li>
+<li>p: probability that a connection is established between two nodes that are adjacent to a new node</li>
+<li>nodes: number of nodes</li>
+</ul>
+</dd></dl>
+
+<dl class="method">
+<dt id="PyGMO.topology.PyGMO.topology.clustered_ba.clustered_ba.draw">
+<tt class="descclassname">clustered_ba.</tt><tt class="descname">draw</tt><big>(</big><big>)</big><a class="headerlink" href="#PyGMO.topology.PyGMO.topology.clustered_ba.clustered_ba.draw" title="Permalink to this definition">¶</a></dt>
+<dd><p>Draw topology using the draw() command from networkx.</p>
+<p>USAGE: topology.draw(layout = &#8220;spring&#8221;, n_size = 15, scale_by_degree = False, n_color = &#8216;blue&#8217;, n_alpha = 0.5, e_alpha = 0.1, e_arrows=False)</p>
+<ul class="simple">
+<li>layout: Network layout. Can be &#8216;spring&#8217; or &#8216;circular&#8217;.</li>
+<li>n_size: The size of nodes. Becomes scaling factor when scale_by_degree=True.</li>
+<li>scale_by_degree: When True, nodes will be sized proportional to their degree.</li>
+<li>n_color: Node color.</li>
+<li>n_alpha: Transparency of nodes. Takes value between 0 and 1.</li>
+<li>e_elpha: Transparency of edges. Takes value between 0 and 1.</li>
+<li>e_arrows: Plots arrows on the edges for directed graphs</li>
+<li>scale_by_degree: When True, nodes will be sized proportional to their degree.</li>
+</ul>
+</dd></dl>
+
+<img alt="../_images/clustered_ba.png" src="../_images/clustered_ba.png" />
+<p>The above image is produced by the code:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">PyGMO</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="n">topo</span> <span class="o">=</span> <span class="n">topology</span><span class="o">.</span><span class="n">clustered_ba</span><span class="p">(</span><span class="n">m0</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">m</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span><span class="n">nodes</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span>
+<span class="n">topo</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">layout</span><span class="o">=</span><span class="s">&#39;spring&#39;</span><span class="p">,</span> <span class="n">n_size</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">scale_by_degree</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span><span class="n">e_alpha</span><span class="o">=</span><span class="mf">0.03</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="class">
+<dt id="PyGMO.topology.ageing_clustered_ba">
+<em class="property">class </em><tt class="descclassname">PyGMO.topology.</tt><tt class="descname">ageing_clustered_ba</tt><a class="headerlink" href="#PyGMO.topology.ageing_clustered_ba" title="Permalink to this definition">¶</a></dt>
+<dd><p>Topology based on the Ageing Clustered Barabási-Albert (BA) model. (all links are bidirectional)</p>
+<p>The network is grown in two phases:</p>
+<blockquote>
+<div><ul class="simple">
+<li>The first m0 elements added to the network constitute a kernel of nodes connected to each other
+with high probability;</li>
+<li>After the kernel is built, the next elements added to the network
+are connected randomly to m of the existing nodes <em>not older than a</em>; the probability of connection
+is biased linearly towards the most connected nodes. A link is established also between
+the m nodes with probability p</li>
+</ul>
+</div></blockquote>
+<dl class="method">
+<dt id="PyGMO.topology.PyGMO.topology.ageing_clustered_ba.ageing_clustered_ba.__init__">
+<tt class="descclassname">ageing_clustered_ba.</tt><tt class="descname">__init__</tt><big>(</big><em>m0=3</em>, <em>m=3</em>, <em>p=0.5</em>, <em>a=1000</em>, <em>nodes=0</em><big>)</big><a class="headerlink" href="#PyGMO.topology.PyGMO.topology.ageing_clustered_ba.ageing_clustered_ba.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructs a Clustered Barabási-Albert with Ageing vertices graph topology.:</p>
+<p>USAGE: topology.clustered_ba(m0 = 3, m=3, p=0.5, a=1000, nodes = 0)</p>
+<ul class="simple">
+<li>m0: kernel size</li>
+<li>m: number of random connections to be established when a new node is added</li>
+<li>p: probability that a connection is established between two nodes that are adjacent to a new node</li>
+<li>a: &#8216;age&#8217; at which a node ceases to make new connections.</li>
+<li>nodes: number of nodes</li>
+</ul>
+</dd></dl>
+
+<dl class="method">
+<dt id="PyGMO.topology.PyGMO.topology.ageing_clustered_ba.ageing_clustered_ba.draw">
+<tt class="descclassname">ageing_clustered_ba.</tt><tt class="descname">draw</tt><big>(</big><big>)</big><a class="headerlink" href="#PyGMO.topology.PyGMO.topology.ageing_clustered_ba.ageing_clustered_ba.draw" title="Permalink to this definition">¶</a></dt>
+<dd><p>Draw topology using the draw() command from networkx.</p>
+<p>USAGE: topology.draw(layout = &#8220;spring&#8221;, n_size = 15, scale_by_degree = False, n_color = &#8216;blue&#8217;, n_alpha = 0.5, e_alpha = 0.1, e_arrows=False)</p>
+<ul class="simple">
+<li>layout: Network layout. Can be &#8216;spring&#8217; or &#8216;circular&#8217;.</li>
+<li>n_size: The size of nodes. Becomes scaling factor when scale_by_degree=True.</li>
+<li>scale_by_degree: When True, nodes will be sized proportional to their degree.</li>
+<li>n_color: Node color.</li>
+<li>n_alpha: Transparency of nodes. Takes value between 0 and 1.</li>
+<li>e_elpha: Transparency of edges. Takes value between 0 and 1.</li>
+<li>e_arrows: Plots arrows on the edges for directed graphs</li>
+<li>scale_by_degree: When True, nodes will be sized proportional to their degree.</li>
+</ul>
+</dd></dl>
+
+<img alt="../_images/ageing_clustered_ba.png" src="../_images/ageing_clustered_ba.png" />
+<p>The above image is produced by the code:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">PyGMO</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="n">topo</span> <span class="o">=</span> <span class="n">topology</span><span class="o">.</span><span class="n">ageing_clustered_ba</span><span class="p">(</span><span class="n">m0</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">m</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span><span class="n">a</span><span class="o">=</span><span class="mi">150</span><span class="p">,</span><span class="n">nodes</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span>
+<span class="n">topo</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">layout</span><span class="o">=</span><span class="s">&#39;spring&#39;</span><span class="p">,</span> <span class="n">n_size</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">scale_by_degree</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span><span class="n">e_alpha</span><span class="o">=</span><span class="mf">0.03</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="class">
+<dt id="PyGMO.topology.custom">
+<em class="property">class </em><tt class="descclassname">PyGMO.topology.</tt><tt class="descname">custom</tt><a class="headerlink" href="#PyGMO.topology.custom" title="Permalink to this definition">¶</a></dt>
+<dd><p>A custom topology. Allows for the construction of any topology via its unique methods.</p>
+<dl class="method">
+<dt id="PyGMO.topology.custom.push_back">
+<tt class="descname">push_back</tt><big>(</big><big>)</big><a class="headerlink" href="#PyGMO.topology.custom.push_back" title="Permalink to this definition">¶</a></dt>
+<dd><p>Adds a vertex</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="PyGMO.topology.custom.add_edge">
+<tt class="descname">add_edge</tt><big>(</big><em>(int)id1</em>, <em>(int)id2</em>, <em>(float)w</em><big>)</big><a class="headerlink" href="#PyGMO.topology.custom.add_edge" title="Permalink to this definition">¶</a></dt>
+<dd><p>Adds a directed adge from vertex id1 to vertex id2, with an optional weight &#8216;w&#8217; between id1 and id2 (by default 1.0)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="PyGMO.topology.custom.remove_edge">
+<tt class="descname">remove_edge</tt><big>(</big><em>(int)id1</em>, <em>(int)id2</em><big>)</big><a class="headerlink" href="#PyGMO.topology.custom.remove_edge" title="Permalink to this definition">¶</a></dt>
+<dd><p>Removes the directed adge from vertex id1 to vertex id2</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="PyGMO.topology.custom.remove_all_edges">
+<tt class="descname">remove_all_edges</tt><big>(</big><big>)</big><a class="headerlink" href="#PyGMO.topology.custom.remove_all_edges" title="Permalink to this definition">¶</a></dt>
+<dd><p>Removes all_edges</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="PyGMO.topology.custom.draw">
+<tt class="descname">draw</tt><big>(</big><big>)</big><a class="headerlink" href="#PyGMO.topology.custom.draw" title="Permalink to this definition">¶</a></dt>
+<dd><p>Uses Python networx module to draw the topology in a graphic window</p>
+</dd></dl>
+
+<p>Example:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">PyGMO</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="n">prob</span> <span class="o">=</span> <span class="n">problem</span><span class="o">.</span><span class="n">lennard_jones</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">algo</span> <span class="o">=</span> <span class="n">algorithm</span><span class="o">.</span><span class="n">de</span><span class="p">(</span><span class="n">gen</span> <span class="o">=</span> <span class="mi">10</span><span class="p">)</span>     <span class="c">#instantiates artificial bee colony with default params and 10 generations</span>
+<span class="n">topo</span> <span class="o">=</span> <span class="n">topology</span><span class="o">.</span><span class="n">custom</span><span class="p">()</span>    <span class="c">#builds a custom topology</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">30</span><span class="p">):</span>
+     <span class="n">topo</span><span class="o">.</span><span class="n">push_back</span><span class="p">()</span>       <span class="c">#Now we have an unconnected topology of 30 vertices</span>
+<span class="n">topo</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+<span class="o">....</span>
+<span class="n">topo</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="mi">22</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">archi</span> <span class="o">=</span> <span class="n">archipelago</span><span class="p">(</span><span class="n">algo</span><span class="p">,</span><span class="n">prob</span><span class="p">,</span><span class="mi">30</span><span class="p">,</span><span class="mi">20</span><span class="p">)</span> <span class="c">#constructs an archipelago (we cannot assign here directly topo</span>
+                                     <span class="c">#to the kwarg topology as the archipelago constructor only takes empty topologies</span>
+<span class="n">archi</span><span class="o">.</span><span class="n">topology</span> <span class="o">=</span> <span class="n">topo</span>                <span class="c">#sets the topology to the customly constructed one</span>
+<span class="n">archi</span><span class="o">.</span><span class="n">topology</span><span class="o">.</span><span class="n">draw</span><span class="p">()</span>                <span class="c">#Draws the topology (this requires networkx to be installed)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+</div>
+</div>
+
+
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="island.html" class="btn btn-neutral float-right" title="Island and Archipelago"/>Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="migration.html" class="btn btn-neutral" title="Migration"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2015, Dario Izzo and Francesco Biscani.
+    </p>
+  </div>
+
+  <a href="https://github.com/snide/sphinx_rtd_theme">Sphinx theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+</body>
+</html>

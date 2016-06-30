@@ -1,0 +1,1955 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Problems &mdash; PyGMO 1.1.7dev documentation</title>
+  
+
+  
+  
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  
+  
+
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:'../',
+        VERSION:'1.1.7dev',
+        COLLAPSE_INDEX:false,
+        FILE_SUFFIX:'.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+    <script type="text/javascript">
+        jQuery(function () {
+            SphinxRtdTheme.StickyNav.enable();
+        });
+    </script>
+  
+
+  
+    <link rel="top" title="PyGMO 1.1.7dev documentation" href="../index.html"/>
+        <link rel="up" title="User Documentation" href="index.html"/>
+        <link rel="next" title="Hypervolume" href="hypervolume.html"/>
+        <link rel="prev" title="Algorithms" href="algorithms.html"/> 
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        <a href="../index.html" class="fa fa-home"> PyGMO</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        
+        
+            <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../install.html">Install PyGMO</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../install.html#preparing-your-system-to-compile-pygmo">Preparing your system to compile PyGMO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../install.html#download-pygmo-code">Download PyGMO code</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../install.html#compiling-and-installing-under-unix">Compiling and Installing under Unix</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../install.html#compiling-and-installing-under-windows">Compiling and Installing under Windows</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../quickstart.html">Quick Start</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../quickstart.html#on-one-cpu">On one CPU</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../quickstart.html#on-many-cpus">On many CPUs ...</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../quickstart.html#and-migrating-solutions">... and migrating solutions ...</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../quickstart.html#and-between-different-algorithms">... and between different algorithms ...</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/index.html">Tutorials</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/adding_problems_and_algorithms_to_PyGMO.html">Adding new problems and algorithms to PyGMO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/meta_problems_meta_algorithms.html">Meta-problems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/multi_objective_optimization_with_PyGMO.html">Multi Objective Optimization with PyGMO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/hypervolumes_in_PyGMO.html">Hypervolumes with PyGMO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/dealing_with_constraints_in_PyGMO.html">Dealing with constraints in PyGMO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/racing.html">Racing in PyGMO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/tsp.html">Traveling Salesman Problems with PyGMO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/landscape_analysis_with_DrPyGMO.html">Landscape Analysis using Dr. PyGMO</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/index.html">Examples</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../examples/example1.html">A study on Mixing Variants of Differential Evolution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples/example2.html">Monitoring the Information Flow in a large archipelago</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples/example3.html">Testing Algorithms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples/example4.html">Multi-objective optimization in the asynchronous island model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples/example5.html">Designing and optimizing interplanetary trajectories</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples/example6.html">Participating to the CEC2013 Competition (v 1.1.5)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples/example7.html">Travelling Salesman Problem for Active Space Debris Removal</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples/local_optimization.html">Third-party Non-linear optimizers in PyGMO</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">User Documentation</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="individual.html">Individual and Champion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="population.html">Population</a></li>
+<li class="toctree-l2"><a class="reference internal" href="migration.html">Migration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="topology.html">Topology</a></li>
+<li class="toctree-l2"><a class="reference internal" href="island.html">Island and Archipelago</a></li>
+<li class="toctree-l2"><a class="reference internal" href="algorithms.html">Algorithms</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="">Problems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hypervolume.html">Hypervolume</a></li>
+<li class="toctree-l2"><a class="reference internal" href="racing.html">Racing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="analysis.html">Dr. PyGMO - Analysis Module</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference external" href="http://esa.github.io/pagmo/">PaGMO API</a></li>
+</ul>
+
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../index.html">PyGMO</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="index.html">User Documentation</a> &raquo;</li>
+      
+    <li>Problems</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          <a href="../_sources/documentation/problems.txt" rel="nofollow"> View page source</a>
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            
+  <div class="section" id="problems">
+<h1>Problems<a class="headerlink" href="#problems" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="a-quick-look">
+<h2>A Quick Look<a class="headerlink" href="#a-quick-look" title="Permalink to this headline">¶</a></h2>
+<p>Problems in PyGMO are objects, first constructed and then used in conjunction to an algorithm.
+The user can implement its own problem directly in Python, in which case he needs to inherit from
+<a class="reference internal" href="#PyGMO.problem.base" title="PyGMO.problem.base"><tt class="xref py py-class docutils literal"><span class="pre">PyGMO.problem.base</span></tt></a> or <tt class="xref py py-class docutils literal"><span class="pre">PyGMO.problem.base_stochastic</span></tt> class. You may see
+<em class="xref std std-ref">adding_a_new_optimization_problem</em> or <a class="reference internal" href="../tutorials/adding_a_new_stochastic_optimization_problem.html#adding-a-new-stochastic-optimization-problem"><em>Adding a new stochastic optimization problem</em></a></p>
+<div class="section" id="meta-problems">
+<h3>Meta-problems<a class="headerlink" href="#meta-problems" title="Permalink to this headline">¶</a></h3>
+<table border="1" class="docutils">
+<colgroup>
+<col width="29%" />
+<col width="35%" />
+<col width="36%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Common Name</th>
+<th class="head">Name in PyGMO</th>
+<th class="head">Comments</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Rotated</td>
+<td><a class="reference internal" href="#PyGMO.problem.rotated" title="PyGMO.problem.rotated"><tt class="xref py py-class docutils literal"><span class="pre">PyGMO.problem.rotated</span></tt></a></td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>Shifted</td>
+<td><a class="reference internal" href="#PyGMO.problem.shifted" title="PyGMO.problem.shifted"><tt class="xref py py-class docutils literal"><span class="pre">PyGMO.problem.shifted</span></tt></a></td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td>Normalized</td>
+<td><a class="reference internal" href="#PyGMO.problem.normalized" title="PyGMO.problem.normalized"><tt class="xref py py-class docutils literal"><span class="pre">PyGMO.problem.normalized</span></tt></a></td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>Noisy</td>
+<td><a class="reference internal" href="#PyGMO.problem.noisy" title="PyGMO.problem.noisy"><tt class="xref py py-class docutils literal"><span class="pre">PyGMO.problem.noisy</span></tt></a></td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td>Decompose</td>
+<td><a class="reference internal" href="#PyGMO.problem.decompose" title="PyGMO.problem.decompose"><tt class="xref py py-class docutils literal"><span class="pre">PyGMO.problem.decompose</span></tt></a></td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>Death-penalty</td>
+<td><a class="reference internal" href="#PyGMO.problem.death_penalty" title="PyGMO.problem.death_penalty"><tt class="xref py py-class docutils literal"><span class="pre">PyGMO.problem.death_penalty</span></tt></a></td>
+<td>Minimization assumed.</td>
+</tr>
+<tr class="row-even"><td>Constrained to MO</td>
+<td><a class="reference internal" href="#PyGMO.problem.con2mo" title="PyGMO.problem.con2mo"><tt class="xref py py-class docutils literal"><span class="pre">PyGMO.problem.con2mo</span></tt></a></td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>Constrained to Unconstrained</td>
+<td><a class="reference internal" href="#PyGMO.problem.con2uncon" title="PyGMO.problem.con2uncon"><tt class="xref py py-class docutils literal"><span class="pre">PyGMO.problem.con2uncon</span></tt></a></td>
+<td>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="box-constrained-continuous-single-objective">
+<h3>Box-Constrained Continuous Single-Objective<a class="headerlink" href="#box-constrained-continuous-single-objective" title="Permalink to this headline">¶</a></h3>
+<table border="1" class="docutils">
+<colgroup>
+<col width="29%" />
+<col width="35%" />
+<col width="36%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Common Name</th>
+<th class="head">Name in PyGMO</th>
+<th class="head">Comments</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Ackley</td>
+<td><a class="reference internal" href="#PyGMO.problem.ackley" title="PyGMO.problem.ackley"><tt class="xref py py-class docutils literal"><span class="pre">PyGMO.problem.ackley</span></tt></a></td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>Bukin F6</td>
+<td><a class="reference internal" href="#PyGMO.problem.bukin" title="PyGMO.problem.bukin"><tt class="xref py py-class docutils literal"><span class="pre">PyGMO.problem.bukin</span></tt></a></td>
+<td>A difficult bi-dimensional problem</td>
+</tr>
+<tr class="row-even"><td>Branin</td>
+<td><a class="reference internal" href="#PyGMO.problem.branin" title="PyGMO.problem.branin"><tt class="xref py py-class docutils literal"><span class="pre">PyGMO.problem.branin</span></tt></a></td>
+<td>Bi-dimensional problem</td>
+</tr>
+<tr class="row-odd"><td>CEC2013</td>
+<td><a class="reference internal" href="#PyGMO.problem.cec2013" title="PyGMO.problem.cec2013"><tt class="xref py py-class docutils literal"><span class="pre">PyGMO.problem.cec2013</span></tt></a></td>
+<td>28 problems part of CEC2013 Competition</td>
+</tr>
+<tr class="row-even"><td>De Jong</td>
+<td><a class="reference internal" href="#PyGMO.problem.dejong" title="PyGMO.problem.dejong"><tt class="xref py py-class docutils literal"><span class="pre">PyGMO.problem.dejong</span></tt></a></td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>De Jong</td>
+<td><a class="reference internal" href="#PyGMO.problem.py_example" title="PyGMO.problem.py_example"><tt class="xref py py-class docutils literal"><span class="pre">PyGMO.problem.py_example</span></tt></a></td>
+<td>Implemented directly in Python</td>
+</tr>
+<tr class="row-even"><td>Griewank</td>
+<td><a class="reference internal" href="#PyGMO.problem.griewank" title="PyGMO.problem.griewank"><tt class="xref py py-class docutils literal"><span class="pre">PyGMO.problem.griewank</span></tt></a></td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>Himmelblau</td>
+<td><a class="reference internal" href="#PyGMO.problem.himmelblau" title="PyGMO.problem.himmelblau"><tt class="xref py py-class docutils literal"><span class="pre">PyGMO.problem.himmelblau</span></tt></a></td>
+<td>Bi-dimensional problem</td>
+</tr>
+<tr class="row-even"><td>Lennard-Jones</td>
+<td><a class="reference internal" href="#PyGMO.problem.lennard_jones" title="PyGMO.problem.lennard_jones"><tt class="xref py py-class docutils literal"><span class="pre">PyGMO.problem.lennard_jones</span></tt></a></td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>Michalewicz</td>
+<td><a class="reference internal" href="#PyGMO.problem.michalewicz" title="PyGMO.problem.michalewicz"><tt class="xref py py-class docutils literal"><span class="pre">PyGMO.problem.michalewicz</span></tt></a></td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td>Rosenbrock</td>
+<td><a class="reference internal" href="#PyGMO.problem.rosenbrock" title="PyGMO.problem.rosenbrock"><tt class="xref py py-class docutils literal"><span class="pre">PyGMO.problem.rosenbrock</span></tt></a></td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>Rastrigin</td>
+<td><a class="reference internal" href="#PyGMO.problem.rastrigin" title="PyGMO.problem.rastrigin"><tt class="xref py py-class docutils literal"><span class="pre">PyGMO.problem.rastrigin</span></tt></a></td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td>Schwefel</td>
+<td><a class="reference internal" href="#PyGMO.problem.schwefel" title="PyGMO.problem.schwefel"><tt class="xref py py-class docutils literal"><span class="pre">PyGMO.problem.schwefel</span></tt></a></td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>MGA-1DSM (tof encoding)</td>
+<td><a class="reference internal" href="#PyGMO.problem.mga_1dsm_tof" title="PyGMO.problem.mga_1dsm_tof"><tt class="xref py py-class docutils literal"><span class="pre">PyGMO.problem.mga_1dsm_tof</span></tt></a></td>
+<td>Requires the GTOP database option active</td>
+</tr>
+<tr class="row-even"><td>MGA-1DSM (alpha encoding)</td>
+<td><a class="reference internal" href="#PyGMO.problem.mga_1dsm_alpha" title="PyGMO.problem.mga_1dsm_alpha"><tt class="xref py py-class docutils literal"><span class="pre">PyGMO.problem.mga_1dsm_alpha</span></tt></a></td>
+<td>Requires the GTOP database option active</td>
+</tr>
+<tr class="row-odd"><td>Cassini 1</td>
+<td><a class="reference internal" href="#PyGMO.problem.cassini_1" title="PyGMO.problem.cassini_1"><tt class="xref py py-class docutils literal"><span class="pre">PyGMO.problem.cassini_1</span></tt></a></td>
+<td>Requires the GTOP database option active</td>
+</tr>
+<tr class="row-even"><td>Cassini 2</td>
+<td><a class="reference internal" href="#PyGMO.problem.cassini_2" title="PyGMO.problem.cassini_2"><tt class="xref py py-class docutils literal"><span class="pre">PyGMO.problem.cassini_2</span></tt></a></td>
+<td>Requires the GTOP database option active</td>
+</tr>
+<tr class="row-odd"><td>Rosetta</td>
+<td><a class="reference internal" href="#PyGMO.problem.rosetta" title="PyGMO.problem.rosetta"><tt class="xref py py-class docutils literal"><span class="pre">PyGMO.problem.rosetta</span></tt></a></td>
+<td>Requires the GTOP database option active</td>
+</tr>
+<tr class="row-even"><td>Tandem</td>
+<td><a class="reference internal" href="#PyGMO.problem.tandem" title="PyGMO.problem.tandem"><tt class="xref py py-class docutils literal"><span class="pre">PyGMO.problem.tandem</span></tt></a></td>
+<td>Requires the GTOP database option active</td>
+</tr>
+<tr class="row-odd"><td>Laplace</td>
+<td><a class="reference internal" href="#PyGMO.problem.tandem" title="PyGMO.problem.tandem"><tt class="xref py py-class docutils literal"><span class="pre">PyGMO.problem.tandem</span></tt></a></td>
+<td>Requires the GTOP database option active</td>
+</tr>
+<tr class="row-even"><td>Messenger (Full Problem)</td>
+<td><a class="reference internal" href="#PyGMO.problem.messenger_full" title="PyGMO.problem.messenger_full"><tt class="xref py py-class docutils literal"><span class="pre">PyGMO.problem.messenger_full</span></tt></a></td>
+<td>Requires the GTOP database option active</td>
+</tr>
+<tr class="row-odd"><td>GTOC1</td>
+<td><a class="reference internal" href="#PyGMO.problem.gtoc_1" title="PyGMO.problem.gtoc_1"><tt class="xref py py-class docutils literal"><span class="pre">PyGMO.problem.gtoc_1</span></tt></a></td>
+<td>Requires the GTOP database option active</td>
+</tr>
+<tr class="row-even"><td>Sagas</td>
+<td><a class="reference internal" href="#PyGMO.problem.sagas" title="PyGMO.problem.sagas"><tt class="xref py py-class docutils literal"><span class="pre">PyGMO.problem.sagas</span></tt></a></td>
+<td>Requires the GTOP database option active</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="box-constrained-continuous-multi-objective">
+<h3>Box-Constrained Continuous Multi-Objective<a class="headerlink" href="#box-constrained-continuous-multi-objective" title="Permalink to this headline">¶</a></h3>
+<table border="1" class="docutils">
+<colgroup>
+<col width="29%" />
+<col width="35%" />
+<col width="36%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Common Name</th>
+<th class="head">Name in PyGMO</th>
+<th class="head">Comments</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Kursawe&#8217;s study</td>
+<td><a class="reference internal" href="#PyGMO.problem.kur" title="PyGMO.problem.kur"><tt class="xref py py-class docutils literal"><span class="pre">PyGMO.problem.kur</span></tt></a></td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>Fonseca and Fleming&#8217;s study</td>
+<td><a class="reference internal" href="#PyGMO.problem.fon" title="PyGMO.problem.fon"><tt class="xref py py-class docutils literal"><span class="pre">PyGMO.problem.fon</span></tt></a></td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td>Poloni&#8217;s study</td>
+<td><a class="reference internal" href="#PyGMO.problem.pol" title="PyGMO.problem.pol"><tt class="xref py py-class docutils literal"><span class="pre">PyGMO.problem.pol</span></tt></a></td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>Shaffer&#8217;s study</td>
+<td><a class="reference internal" href="#PyGMO.problem.sch" title="PyGMO.problem.sch"><tt class="xref py py-class docutils literal"><span class="pre">PyGMO.problem.sch</span></tt></a></td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td>ZDT</td>
+<td><a class="reference internal" href="#PyGMO.problem.zdt" title="PyGMO.problem.zdt"><tt class="xref py py-class docutils literal"><span class="pre">PyGMO.problem.zdt</span></tt></a></td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>DTLZ</td>
+<td><a class="reference internal" href="#PyGMO.problem.dtlz" title="PyGMO.problem.dtlz"><tt class="xref py py-class docutils literal"><span class="pre">PyGMO.problem.dtlz</span></tt></a></td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td>CEC2009 (UF1-UF10)</td>
+<td><a class="reference internal" href="#PyGMO.problem.cec2009" title="PyGMO.problem.cec2009"><tt class="xref py py-class docutils literal"><span class="pre">PyGMO.problem.cec2009</span></tt></a></td>
+<td>UF problems from CEC2009 Competition.</td>
+</tr>
+<tr class="row-odd"><td>MGA-1DSM (tof encoding)</td>
+<td><a class="reference internal" href="#PyGMO.problem.mga_1dsm_tof" title="PyGMO.problem.mga_1dsm_tof"><tt class="xref py py-class docutils literal"><span class="pre">PyGMO.problem.mga_1dsm_tof</span></tt></a></td>
+<td>Requires the GTOP database option active</td>
+</tr>
+<tr class="row-even"><td>MGA-1DSM (alpha encoding)</td>
+<td><a class="reference internal" href="#PyGMO.problem.mga_1dsm_alpha" title="PyGMO.problem.mga_1dsm_alpha"><tt class="xref py py-class docutils literal"><span class="pre">PyGMO.problem.mga_1dsm_alpha</span></tt></a></td>
+<td>Requires the GTOP database option active</td>
+</tr>
+<tr class="row-odd"><td>Cassini 1</td>
+<td><a class="reference internal" href="#PyGMO.problem.cassini_1" title="PyGMO.problem.cassini_1"><tt class="xref py py-class docutils literal"><span class="pre">PyGMO.problem.cassini_1</span></tt></a></td>
+<td>Requires the GTOP database option active</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="constrained-continuous-single-objective">
+<h3>Constrained Continuous Single-Objective<a class="headerlink" href="#constrained-continuous-single-objective" title="Permalink to this headline">¶</a></h3>
+<table border="1" class="docutils">
+<colgroup>
+<col width="29%" />
+<col width="35%" />
+<col width="36%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Common Name</th>
+<th class="head">Name in PyGMO</th>
+<th class="head">Comments</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>CEC2006</td>
+<td><a class="reference internal" href="#PyGMO.problem.cec2006" title="PyGMO.problem.cec2006"><tt class="xref py py-class docutils literal"><span class="pre">PyGMO.problem.cec2006</span></tt></a></td>
+<td>24 problems part of CEC2006 Competition</td>
+</tr>
+<tr class="row-odd"><td>Pressure vessel design</td>
+<td><a class="reference internal" href="#PyGMO.problem.pressure_vessel" title="PyGMO.problem.pressure_vessel"><tt class="xref py py-class docutils literal"><span class="pre">PyGMO.problem.pressure_vessel</span></tt></a></td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td>Welded beam design</td>
+<td><a class="reference internal" href="#PyGMO.problem.welded_beam" title="PyGMO.problem.welded_beam"><tt class="xref py py-class docutils literal"><span class="pre">PyGMO.problem.welded_beam</span></tt></a></td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>Tension compression string design</td>
+<td><a class="reference internal" href="#PyGMO.problem.tens_comp_string" title="PyGMO.problem.tens_comp_string"><tt class="xref py py-class docutils literal"><span class="pre">PyGMO.problem.tens_comp_string</span></tt></a></td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td>Luksan Vlcek 1</td>
+<td><a class="reference internal" href="#PyGMO.problem.luksan_vlcek_1" title="PyGMO.problem.luksan_vlcek_1"><tt class="xref py py-class docutils literal"><span class="pre">PyGMO.problem.luksan_vlcek_1</span></tt></a></td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>Luksan Vlcek 2</td>
+<td><a class="reference internal" href="#PyGMO.problem.luksan_vlcek_2" title="PyGMO.problem.luksan_vlcek_2"><tt class="xref py py-class docutils literal"><span class="pre">PyGMO.problem.luksan_vlcek_2</span></tt></a></td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td>Luksan Vlcek 3</td>
+<td><a class="reference internal" href="#PyGMO.problem.luksan_vlcek_3" title="PyGMO.problem.luksan_vlcek_3"><tt class="xref py py-class docutils literal"><span class="pre">PyGMO.problem.luksan_vlcek_3</span></tt></a></td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>Planet to Planet LT Transfer</td>
+<td><a class="reference internal" href="#PyGMO.problem.py_pl2pl" title="PyGMO.problem.py_pl2pl"><tt class="xref py py-class docutils literal"><span class="pre">PyGMO.problem.py_pl2pl</span></tt></a></td>
+<td>Requires PyKEP. Implemented in Python</td>
+</tr>
+<tr class="row-even"><td>SNOPT Toy-Problem</td>
+<td><a class="reference internal" href="#PyGMO.problem.snopt_toyprob" title="PyGMO.problem.snopt_toyprob"><tt class="xref py py-class docutils literal"><span class="pre">PyGMO.problem.snopt_toyprob</span></tt></a></td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>GTOC2 (Full Problem)</td>
+<td><a class="reference internal" href="#PyGMO.problem.gtoc_2" title="PyGMO.problem.gtoc_2"><tt class="xref py py-class docutils literal"><span class="pre">PyGMO.problem.gtoc_2</span></tt></a></td>
+<td>Requires the GTOP database option active</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="constrained-continuous-multi-objective">
+<h3>Constrained Continuous Multi-Objective<a class="headerlink" href="#constrained-continuous-multi-objective" title="Permalink to this headline">¶</a></h3>
+<table border="1" class="docutils">
+<colgroup>
+<col width="29%" />
+<col width="35%" />
+<col width="36%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Common Name</th>
+<th class="head">Name in PyGMO</th>
+<th class="head">Comments</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>CEC2009 (CF1-CF10)</td>
+<td><a class="reference internal" href="#PyGMO.problem.cec2009" title="PyGMO.problem.cec2009"><tt class="xref py py-class docutils literal"><span class="pre">PyGMO.problem.cec2009</span></tt></a></td>
+<td>CF problems from CEC2009 Competition.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="box-constrained-integer-single-objective">
+<h3>Box-Constrained Integer Single-Objective<a class="headerlink" href="#box-constrained-integer-single-objective" title="Permalink to this headline">¶</a></h3>
+<table border="1" class="docutils">
+<colgroup>
+<col width="29%" />
+<col width="35%" />
+<col width="36%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Common Name</th>
+<th class="head">Name in PyGMO</th>
+<th class="head">Comments</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>String Match</td>
+<td><a class="reference internal" href="#PyGMO.problem.string_match" title="PyGMO.problem.string_match"><tt class="xref py py-class docutils literal"><span class="pre">PyGMO.problem.string_match</span></tt></a></td>
+<td>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="constrained-integer-single-objective">
+<h3>Constrained Integer Single-Objective<a class="headerlink" href="#constrained-integer-single-objective" title="Permalink to this headline">¶</a></h3>
+<table border="1" class="docutils">
+<colgroup>
+<col width="29%" />
+<col width="35%" />
+<col width="36%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Common Name</th>
+<th class="head">Name in PyGMO</th>
+<th class="head">Comments</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Golomb Ruler</td>
+<td><a class="reference internal" href="#PyGMO.problem.golomb_ruler" title="PyGMO.problem.golomb_ruler"><tt class="xref py py-class docutils literal"><span class="pre">PyGMO.problem.golomb_ruler</span></tt></a></td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>Traveling Salesman</td>
+<td><a class="reference internal" href="#PyGMO.problem.tsp" title="PyGMO.problem.tsp"><tt class="xref py py-class docutils literal"><span class="pre">PyGMO.problem.tsp</span></tt></a></td>
+<td>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="stochastic-objective-function">
+<h3>Stochastic Objective Function<a class="headerlink" href="#stochastic-objective-function" title="Permalink to this headline">¶</a></h3>
+<table border="1" class="docutils">
+<colgroup>
+<col width="27%" />
+<col width="38%" />
+<col width="35%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Common Name</th>
+<th class="head">Name in PyGMO</th>
+<th class="head">Comments</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Inventory Problem</td>
+<td><a class="reference internal" href="#PyGMO.problem.inventory" title="PyGMO.problem.inventory"><tt class="xref py py-class docutils literal"><span class="pre">PyGMO.problem.inventory</span></tt></a></td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>MIT SPHERES</td>
+<td><a class="reference internal" href="#PyGMO.problem.mit_spheres" title="PyGMO.problem.mit_spheres"><tt class="xref py py-class docutils literal"><span class="pre">PyGMO.problem.mit_spheres</span></tt></a></td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td>Noisy De Jong</td>
+<td><a class="reference internal" href="#PyGMO.problem.py_example_stochastic" title="PyGMO.problem.py_example_stochastic"><tt class="xref py py-class docutils literal"><span class="pre">PyGMO.problem.py_example_stochastic</span></tt></a></td>
+<td>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="detailed-documentation">
+<h2>Detailed Documentation<a class="headerlink" href="#detailed-documentation" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="PyGMO.problem.base">
+<em class="property">class </em><tt class="descclassname">PyGMO.problem.</tt><tt class="descname">base</tt><a class="headerlink" href="#PyGMO.problem.base" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="PyGMO.problem.PyGMO.problem.base.base.__init__">
+<tt class="descclassname">base.</tt><tt class="descname">__init__</tt><big>(</big><em>*args</em><big>)</big><a class="headerlink" href="#PyGMO.problem.PyGMO.problem.base.base.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Base problem constructor. It must be called from within the derived class constructor __init__()</p>
+<p>USAGE: super(derived_class_name,self).__init__(dim, i_dim, n_obj, c_dim, c_ineq_dim, c_tol)</p>
+<ul class="simple">
+<li>dim: Total dimension of the decision vector</li>
+<li>i_dim: dimension of the integer part of decision vector (the integer part is placed at the end of the decision vector). Defaults to 0</li>
+<li>n_obj: number of objectives. Defaults to 1</li>
+<li>c_dim: total dimension of the constraint vector. dDefaults to 0</li>
+<li>c_ineq_dim: dimension of the inequality part of the constraint vector (inequality const. are placed at the end of the decision vector). Defaults to 0</li>
+<li>c_tol: constraint tolerance. When comparing individuals, this tolerance is used to decide whether a constraint is considered satisfied.</li>
+</ul>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="PyGMO.problem.PyGMO.problem.base.base.best_x">
+<tt class="descclassname">base.</tt><tt class="descname">best_x</tt><a class="headerlink" href="#PyGMO.problem.PyGMO.problem.base.base.best_x" title="Permalink to this definition">¶</a></dt>
+<dd><p>Best known decision vector(s).</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="PyGMO.problem.PyGMO.problem.base.base.best_f">
+<tt class="descclassname">base.</tt><tt class="descname">best_f</tt><a class="headerlink" href="#PyGMO.problem.PyGMO.problem.base.base.best_f" title="Permalink to this definition">¶</a></dt>
+<dd><p>Best known fitness vector(s).</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="PyGMO.problem.PyGMO.problem.base.base.best_c">
+<tt class="descclassname">base.</tt><tt class="descname">best_c</tt><a class="headerlink" href="#PyGMO.problem.PyGMO.problem.base.base.best_c" title="Permalink to this definition">¶</a></dt>
+<dd><p>Best known constraints vector(s).</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="PyGMO.problem.PyGMO.problem.base.base.dimension">
+<tt class="descclassname">base.</tt><tt class="descname">dimension</tt><a class="headerlink" href="#PyGMO.problem.PyGMO.problem.base.base.dimension" title="Permalink to this definition">¶</a></dt>
+<dd><p>Global dimension.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="PyGMO.problem.PyGMO.problem.base.base.f_dimension">
+<tt class="descclassname">base.</tt><tt class="descname">f_dimension</tt><a class="headerlink" href="#PyGMO.problem.PyGMO.problem.base.base.f_dimension" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fitness dimension.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="PyGMO.problem.PyGMO.problem.base.base.i_dimension">
+<tt class="descclassname">base.</tt><tt class="descname">i_dimension</tt><a class="headerlink" href="#PyGMO.problem.PyGMO.problem.base.base.i_dimension" title="Permalink to this definition">¶</a></dt>
+<dd><p>Integer dimension.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="PyGMO.problem.PyGMO.problem.base.base.c_dimension">
+<tt class="descclassname">base.</tt><tt class="descname">c_dimension</tt><a class="headerlink" href="#PyGMO.problem.PyGMO.problem.base.base.c_dimension" title="Permalink to this definition">¶</a></dt>
+<dd><p>Global constraints dimension.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="PyGMO.problem.PyGMO.problem.base.base.ic_dimension">
+<tt class="descclassname">base.</tt><tt class="descname">ic_dimension</tt><a class="headerlink" href="#PyGMO.problem.PyGMO.problem.base.base.ic_dimension" title="Permalink to this definition">¶</a></dt>
+<dd><p>Inequality constraints dimension.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="PyGMO.problem.PyGMO.problem.base.base.c_tol">
+<tt class="descclassname">base.</tt><tt class="descname">c_tol</tt><a class="headerlink" href="#PyGMO.problem.PyGMO.problem.base.base.c_tol" title="Permalink to this definition">¶</a></dt>
+<dd><p>Tolerance used in constraints analysis.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="PyGMO.problem.base._objfun_impl">
+<tt class="descname">_objfun_impl</tt><big>(</big><em>self</em>, <em>x</em><big>)</big><a class="headerlink" href="#PyGMO.problem.base._objfun_impl" title="Permalink to this definition">¶</a></dt>
+<dd><p>This is a virtual function tham must be re-implemented in the derived class and must
+return a tuple packing as many numbers as the problem objectives (n_obj)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="PyGMO.problem.base._compute_constraints_impl">
+<tt class="descname">_compute_constraints_impl</tt><big>(</big><em>self</em>, <em>x</em><big>)</big><a class="headerlink" href="#PyGMO.problem.base._compute_constraints_impl" title="Permalink to this definition">¶</a></dt>
+<dd><p>This is a virtual function that can be re-implemented in the derived class (if c_dim&gt;0) and must return a tuple
+packing as many numbers as the declared dimension of the problem constraints (c_dim).
+Inequality constarints need to be packed at last.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="PyGMO.problem.base._compare_fitness_impl">
+<tt class="descname">_compare_fitness_impl</tt><big>(</big><em>self</em>, <em>f1</em>, <em>f2</em><big>)</big><a class="headerlink" href="#PyGMO.problem.base._compare_fitness_impl" title="Permalink to this definition">¶</a></dt>
+<dd><p>This is a virtual function that can be re-implemented in the derived class and must return a boolean value.
+Return true if f1 Pareto dominate f2, false otherwise. The default implementation will
+assume minimisation for each one of the f components i.e., each pair of corresponding elements
+in f1 and f2 is compared: if all elements in f1 are less or equal to the corresponding element in f2 (and
+at least one is less), true will be returned. Otherwise, false will be returned.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="PyGMO.problem.base._compare_constraints_impl">
+<tt class="descname">_compare_constraints_impl</tt><big>(</big><em>self</em>, <em>c1</em>, <em>c2</em><big>)</big><a class="headerlink" href="#PyGMO.problem.base._compare_constraints_impl" title="Permalink to this definition">¶</a></dt>
+<dd><p>This is a virtual function tham can be re-implemented in the derived class (if c_dim&gt;0) and must return a boolean value.
+Return true if c1 is a strictly better constraint vector than c2, false otherwise.
+Default implementation will return true under the following conditions, tested in order: c1 satisfies more constraints than c2,
+c1 and c2 satisfy the same number of constraints and the L2 norm of the constraint mismatches for c1 is smaller than for c2.
+Otherwise, false will be returned.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="PyGMO.problem.base._compare_fc_impl">
+<tt class="descname">_compare_fc_impl</tt><big>(</big><em>self</em>, <em>f1</em>, <em>c1</em>, <em>f2</em>, <em>c2</em><big>)</big><a class="headerlink" href="#PyGMO.problem.base._compare_fc_impl" title="Permalink to this definition">¶</a></dt>
+<dd><p>This is a virtual function that can be re-implemented in the derived class (if c_dim&gt;0) and must return a boolean value.
+By default, the function will perform sanity checks on the input arguments and will
+then call _compare_constraints_impl() if the constraint dimensions is not null, _compare_fitness_impl() otherwise.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="PyGMO.problem.PyGMO.problem.base.base.reset_caches">
+<tt class="descclassname">base.</tt><tt class="descname">reset_caches</tt><big>(</big><em>(_base)arg1</em><big>)</big> &rarr; None :<a class="headerlink" href="#PyGMO.problem.PyGMO.problem.base.base.reset_caches" title="Permalink to this definition">¶</a></dt>
+<dd><p>Resets the internal caching system of PyGMO that stores previos calls to the objective function/ constraint function. This method should be called whenever a problem object is changed and the change affects the objective function.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="PyGMO.problem.PyGMO.problem.base.base.set_bounds">
+<tt class="descclassname">base.</tt><tt class="descname">set_bounds</tt><big>(</big><em>(_base)arg1</em>, <em>(float)arg2</em>, <em>(float)arg3</em><big>)</big> &rarr; None :<a class="headerlink" href="#PyGMO.problem.PyGMO.problem.base.base.set_bounds" title="Permalink to this definition">¶</a></dt>
+<dd><blockquote>
+<div>Set all bounds to the input values.</div></blockquote>
+<dl class="docutils">
+<dt>set_bounds( (_base)arg1, (object)arg2, (object)arg3) -&gt; None :</dt>
+<dd>Set bounds to the input vectors.</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="PyGMO.problem.PyGMO.problem.base.base.feasibility_x">
+<tt class="descclassname">base.</tt><tt class="descname">feasibility_x</tt><big>(</big><em>(_base)arg1</em>, <em>(object)arg2</em><big>)</big> &rarr; bool :<a class="headerlink" href="#PyGMO.problem.PyGMO.problem.base.base.feasibility_x" title="Permalink to this definition">¶</a></dt>
+<dd><p>Determine feasibility of decision vector.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="PyGMO.problem.PyGMO.problem.base.base.feasibility_c">
+<tt class="descclassname">base.</tt><tt class="descname">feasibility_c</tt><big>(</big><em>(_base)arg1</em>, <em>(object)arg2</em><big>)</big> &rarr; bool :<a class="headerlink" href="#PyGMO.problem.PyGMO.problem.base.base.feasibility_c" title="Permalink to this definition">¶</a></dt>
+<dd><p>Determine feasibility of constraint vector.</p>
+</dd></dl>
+
+</dd></dl>
+
+<hr class="docutils" />
+<dl class="class">
+<dt id="PyGMO.problem.death_penalty">
+<em class="property">class </em><tt class="descclassname">PyGMO.problem.</tt><tt class="descname">death_penalty</tt><a class="headerlink" href="#PyGMO.problem.death_penalty" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="PyGMO.problem.PyGMO.problem.death_penalty.death_penalty.__init__">
+<tt class="descclassname">death_penalty.</tt><tt class="descname">__init__</tt><big>(</big><em>problem=None</em>, <em>method=None</em>, <em>penalty_factors=None</em><big>)</big><a class="headerlink" href="#PyGMO.problem.PyGMO.problem.death_penalty.death_penalty.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Implements a meta-problem class that wraps some other constrained problems, resulting in death penalty constraints handling.
+Three implementations of the death penalty are available. The first one is the most common simple death penalty. The second one is the death
+penalty defined by Angel Kuri Morales et al. (Kuri Morales, A. and Quezada, C.C. A Universal eclectic genetic algorithm for constrained optimization, Proceedings 6th European Congress on Intelligent Techniques &amp; Soft Computing, EUFIT&#8216;98, 518-522, 1998.)
+Simple death penalty penalizes the fitness function with a high value, Kuri method penalizes the
+fitness function according to the rate of satisfied constraints. The third one is a weighted static penalization.
+It penalizes the objective with the sum of the constraints violation, each one penalized with a given factor.</p>
+<p>USAGE: problem.death_penalty(problem=PyGMO.cec2006(4), method=death_penalty.method.SIMPLE)</p>
+<ul class="simple">
+<li>problem: PyGMO constrained problem one wants to treat with a death penalty approach</li>
+<li>method: Simple death method set with SIMPLE, Kuri method set with KURI, weighted static penalization with WEIGHTED</li>
+</ul>
+</dd></dl>
+
+</dd></dl>
+
+<hr class="docutils" />
+<dl class="class">
+<dt id="PyGMO.problem.con2mo">
+<em class="property">class </em><tt class="descclassname">PyGMO.problem.</tt><tt class="descname">con2mo</tt><a class="headerlink" href="#PyGMO.problem.con2mo" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="PyGMO.problem.PyGMO.problem.con2mo.con2mo.__init__">
+<tt class="descclassname">con2mo.</tt><tt class="descname">__init__</tt><big>(</big><em>problem=None</em>, <em>method='obj_cstrsvio'</em><big>)</big><a class="headerlink" href="#PyGMO.problem.PyGMO.problem.con2mo.con2mo.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Transforms a constrained problem into a multi-objective problem</p>
+<p>Three implementations of the constrained to multi-objective are available.
+1) &#8216;obj_cstrs&#8217;: The multi-objective problem is created with two objectives. The first
+objective is the same as that of the input problem, the second is the number of constraint violated
+2) &#8216;obj_cstrsvio&#8217;: The multi-objective problem is created with two objectives. The first
+objective is the same as that of the input problem, the second is the norm of the total constraint violation
+3) &#8216;obj_eqvio_ineqvio&#8217;:     2) &#8216;obj_cstrsvio&#8217;: The multi-objective problem is created with three objectives. The first
+objective is the same as that of the input problem, the second is the norm of the total equality constraint violation,
+the third is the norm of the total inequality constraint violation.</p>
+<p>USAGE: problem.con2mo(problem=PyGMO.cec2006(4), method=&#8217;obj_cstrsvio&#8217;)</p>
+<ul class="simple">
+<li>problem: original PyGMO constrained problem</li>
+<li>method: one of &#8216;obj_cstrsvio&#8217;, &#8216;obj_eqvio_ineqvio&#8217;, &#8216;obj_cstrs&#8217;</li>
+</ul>
+</dd></dl>
+
+</dd></dl>
+
+<hr class="docutils" />
+<dl class="class">
+<dt id="PyGMO.problem.con2uncon">
+<em class="property">class </em><tt class="descclassname">PyGMO.problem.</tt><tt class="descname">con2uncon</tt><a class="headerlink" href="#PyGMO.problem.con2uncon" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt>
+<tt class="descname">con2uncon.__init__(problem=Problem name: CEC2006 - g4</tt></dt>
+<dt>
+<tt class="descname">Global dimension:			5</tt></dt>
+<dt>
+<tt class="descname">Integer dimension:			0</tt></dt>
+<dt>
+<tt class="descname">Fitness dimension:			1</tt></dt>
+<dt>
+<tt class="descname">Constraints dimension:			6</tt></dt>
+<dt>
+<tt class="descname">Inequality constraints dimension:	6</tt></dt>
+<dt>
+<tt class="descname">Lower bounds: [78, 33, 27, 27, 27,  ... ]</tt></dt>
+<dt>
+<tt class="descname">Upper bounds: [102, 45, 45, 45, 45,  ... ]</tt></dt>
+<dt>
+<tt class="descname">Constraints tolerance: [0, 0, 0, 0, 0,  ... ]</tt></dt>
+<dt>
+<tt class="descname">, method='optimality')</tt></dt>
+<dd><p>Implements a meta-problem class that wraps constrained problems,
+resulting in an unconstrained problem. Two methods
+are available for definig the objective function of the meta-problem: &#8216;optimality&#8217; and &#8216;feasibility&#8217;.
+The &#8216;optimality&#8217; uses as objective function the original objective function, it basically removes the constraints from the original problem. The
+&#8216;feasibility&#8217; uses as objective function the sum of the violation of the constraints, the meta-problem hence optimize just the level of infeasibility.</p>
+<p>Implements a meta-problem class that wraps some other constrained problems,
+resulting in multi-objective problem.</p>
+<p>USAGE: problem.con2uncon(problem=PyGMO.cec2006(4), method=&#8217;optimality&#8217;)</p>
+<ul class="simple">
+<li>problem: original PyGMO constrained problem</li>
+<li>method: one of &#8216;optimality&#8217;, &#8216;feasibility&#8217;.</li>
+</ul>
+</dd></dl>
+
+</dd></dl>
+
+<hr class="docutils" />
+<dl class="class">
+<dt id="PyGMO.problem.shifted">
+<em class="property">class </em><tt class="descclassname">PyGMO.problem.</tt><tt class="descname">shifted</tt><a class="headerlink" href="#PyGMO.problem.shifted" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="PyGMO.problem.PyGMO.problem.shifted.shifted.__init__">
+<tt class="descclassname">shifted.</tt><tt class="descname">__init__</tt><big>(</big><em>problem=None</em>, <em>shift=None</em><big>)</big><a class="headerlink" href="#PyGMO.problem.PyGMO.problem.shifted.shifted.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Shifts a problem.</p>
+<dl class="docutils">
+<dt>NOTE: this meta-problem constructs a new problem where the objective function will be f(x+b),</dt>
+<dd>where b is the shift (bounds are also chaged accordingly)</dd>
+</dl>
+<p>USAGE: problem.shifted(problem=PyGMO.ackley(1), shift = a random vector)</p>
+<ul class="simple">
+<li>problem: PyGMO problem one wants to shift</li>
+<li>shift: a value or a list containing the shifts. By default, a radnom shift is created within the problem bounds</li>
+</ul>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="PyGMO.problem.shifted.shift_vector">
+<tt class="descname">shift_vector</tt><a class="headerlink" href="#PyGMO.problem.shifted.shift_vector" title="Permalink to this definition">¶</a></dt>
+<dd><p>The shift vector defining the new problem</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="PyGMO.problem.shifted.deshift">
+<tt class="descname">deshift</tt><big>(</big><em>(tuple) x</em><big>)</big><a class="headerlink" href="#PyGMO.problem.shifted.deshift" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the de-shifted decision vector</p>
+</dd></dl>
+
+</dd></dl>
+
+<hr class="docutils" />
+<dl class="class">
+<dt id="PyGMO.problem.rotated">
+<em class="property">class </em><tt class="descclassname">PyGMO.problem.</tt><tt class="descname">rotated</tt><a class="headerlink" href="#PyGMO.problem.rotated" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="PyGMO.problem.PyGMO.problem.rotated.rotated.__init__">
+<tt class="descclassname">rotated.</tt><tt class="descname">__init__</tt><big>(</big><em>problem=None</em>, <em>rotation=None</em><big>)</big><a class="headerlink" href="#PyGMO.problem.PyGMO.problem.rotated.rotated.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Rotates a problem. (also reflections are possible)
+The new objective function will be f(Rx_{normal}), where R is an orthogonal matrix and x_{normal}
+is the decision vector normailized to [-1,1]</p>
+<p>NOTE: To ensure all of the original space is included in the new box-constrained search space, bounds
+of the normalized variables are expanded to [-sqrt(2),sqrt(2)]. It is still guaranteed theat the original
+objective function will not be called outside of the original bounds by projecting points outside the original
+space onto the boundary</p>
+<p>USAGE: problem.rotated(problem=PyGMO.ackley(1), rotation = a random orthogonal matrix)</p>
+<ul class="simple">
+<li>problem: PyGMO problem one wants to rotate</li>
+<li>rotation: a list of lists (matrix). If not specified, a random orthogonal matrix is used.</li>
+</ul>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="PyGMO.problem.rotated.rotation">
+<tt class="descname">rotation</tt><a class="headerlink" href="#PyGMO.problem.rotated.rotation" title="Permalink to this definition">¶</a></dt>
+<dd><p>The rotation matrix defining the new problem</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="PyGMO.problem.rotated.derotate">
+<tt class="descname">derotate</tt><big>(</big><em>(tuple) x</em><big>)</big><a class="headerlink" href="#PyGMO.problem.rotated.derotate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the de-rotated decision vector</p>
+</dd></dl>
+
+</dd></dl>
+
+<hr class="docutils" />
+<dl class="class">
+<dt id="PyGMO.problem.noisy">
+<em class="property">class </em><tt class="descclassname">PyGMO.problem.</tt><tt class="descname">noisy</tt><a class="headerlink" href="#PyGMO.problem.noisy" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="PyGMO.problem.PyGMO.problem.noisy.noisy.__init__">
+<tt class="descclassname">noisy.</tt><tt class="descname">__init__</tt><big>(</big><em>problem=None</em>, <em>trials=1</em>, <em>param_first=0.0</em>, <em>param_second=1.0</em>, <em>noise_type=PyGMO.problem._problem_meta._noise_distribution.NORMAL</em>, <em>seed=0</em><big>)</big><a class="headerlink" href="#PyGMO.problem.PyGMO.problem.noisy.noisy.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Inject noise to a problem.
+The new objective function will become stochastic, influence by a normally distributed noise.</p>
+<p>USAGE: problem.noisy(problem=PyGMO.ackley(1), trials = 1, param_first=0.0, param_second=1.0, noise_type = problem.noisy.noise_distribution.NORMAL, seed=0)</p>
+<ul class="simple">
+<li>problem: PyGMO problem on which one wants to add noises</li>
+<li>trials: number of trials to average around</li>
+<li>param_first: Mean of the Gaussian noise / Lower bound of the uniform noise</li>
+<li>param_second: Standard deviation of the Gaussian noise / Upper bound of the uniform noise</li>
+<li>noise_type: Whether to inject a normally distributed noise or uniformly distributed noise</li>
+<li>seed: Seed for the underlying RNG</li>
+</ul>
+</dd></dl>
+
+</dd></dl>
+
+<hr class="docutils" />
+<dl class="class">
+<dt id="PyGMO.problem.normalized">
+<em class="property">class </em><tt class="descclassname">PyGMO.problem.</tt><tt class="descname">normalized</tt><a class="headerlink" href="#PyGMO.problem.normalized" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="PyGMO.problem.PyGMO.problem.normalized.normalized.__init__">
+<tt class="descclassname">normalized.</tt><tt class="descname">__init__</tt><big>(</big><em>problem=None</em><big>)</big><a class="headerlink" href="#PyGMO.problem.PyGMO.problem.normalized.normalized.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Normalizes a problem (e.g. maps all variables to [-1,1])</p>
+<p>NOTE: this meta-problem constructs a new problem having normalized bounds/variables</p>
+<p>USAGE: problem.normalized(problem=PyGMO.ackley(1))</p>
+<ul class="simple">
+<li>problem: PyGMO problem one wants to normalize</li>
+</ul>
+</dd></dl>
+
+<dl class="method">
+<dt id="PyGMO.problem.normalized.denormalize">
+<tt class="descname">denormalize</tt><big>(</big><em>(tuple) x</em><big>)</big><a class="headerlink" href="#PyGMO.problem.normalized.denormalize" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the de-normalized decision vector</p>
+</dd></dl>
+
+</dd></dl>
+
+<hr class="docutils" />
+<dl class="class">
+<dt id="PyGMO.problem.decompose">
+<em class="property">class </em><tt class="descclassname">PyGMO.problem.</tt><tt class="descname">decompose</tt><a class="headerlink" href="#PyGMO.problem.decompose" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="PyGMO.problem.PyGMO.problem.decompose.decompose.__init__">
+<tt class="descclassname">decompose.</tt><tt class="descname">__init__</tt><big>(</big><em>problem=None</em>, <em>method='tchebycheff'</em>, <em>weights=</em>, <span class="optional">[</span><span class="optional">]</span><em>z=</em><span class="optional">[</span><span class="optional">]</span><big>)</big><a class="headerlink" href="#PyGMO.problem.PyGMO.problem.decompose.decompose.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Implements a meta-problem class resulting in a decomposed version
+of the multi-objective input problem, i.e. a single-objective problem
+having as fitness function some kind of combination of the original fitness functions.</p>
+<p>NOTE: this meta-problem constructs a new single-objective problem</p>
+<p>USAGE: problem.decompose(problem=PyGMO.zdt(1, 2), method = &#8216;tchebycheff&#8217;, weights=a random vector (summing to one), z= a zero vector)</p>
+<ul class="simple">
+<li>problem: PyGMO problem one wants to decompose</li>
+<li>method: the decomposition method to use (&#8216;weighted&#8217;, &#8216;tchebycheff&#8217; or &#8216;bi&#8217;)</li>
+<li>weights: the weight vector to build the new fitness function</li>
+<li>z: the reference point (used in TCHEBYCHEFF and BI methods)</li>
+</ul>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="PyGMO.problem.decompose.weights">
+<tt class="descname">weights</tt><a class="headerlink" href="#PyGMO.problem.decompose.weights" title="Permalink to this definition">¶</a></dt>
+<dd><p>The weights vector</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="PyGMO.problem.decompose.WEIGHTED">
+<tt class="descname">WEIGHTED</tt><a class="headerlink" href="#PyGMO.problem.decompose.WEIGHTED" title="Permalink to this definition">¶</a></dt>
+<dd><p>Weighted decomposition method</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="PyGMO.problem.decompose.TCHEBYCHEFF">
+<tt class="descname">TCHEBYCHEFF</tt><a class="headerlink" href="#PyGMO.problem.decompose.TCHEBYCHEFF" title="Permalink to this definition">¶</a></dt>
+<dd><p>Tchebycheff decomposition method</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="PyGMO.problem.decompose.BI">
+<tt class="descname">BI</tt><a class="headerlink" href="#PyGMO.problem.decompose.BI" title="Permalink to this definition">¶</a></dt>
+<dd><p>Boundary Intersection decomposition method</p>
+</dd></dl>
+
+</dd></dl>
+
+<hr class="docutils" />
+<dl class="class">
+<dt id="PyGMO.problem.ackley">
+<em class="property">class </em><tt class="descclassname">PyGMO.problem.</tt><tt class="descname">ackley</tt><a class="headerlink" href="#PyGMO.problem.ackley" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="PyGMO.problem.PyGMO.problem.ackley.ackley.__init__">
+<tt class="descclassname">ackley.</tt><tt class="descname">__init__</tt><big>(</big><em>dim=10</em><big>)</big><a class="headerlink" href="#PyGMO.problem.PyGMO.problem.ackley.ackley.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructs a Ackley problem (Box-Constrained Continuous Single-Objective)</p>
+<p>USAGE: problem.ackley(dim=10)</p>
+<ul class="simple">
+<li>dim: problem dimension</li>
+</ul>
+</dd></dl>
+
+</dd></dl>
+
+<hr class="docutils" />
+<dl class="class">
+<dt id="PyGMO.problem.bukin">
+<em class="property">class </em><tt class="descclassname">PyGMO.problem.</tt><tt class="descname">bukin</tt><a class="headerlink" href="#PyGMO.problem.bukin" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="PyGMO.problem.PyGMO.problem.bukin.bukin.__init__">
+<tt class="descclassname">bukin.</tt><tt class="descname">__init__</tt><big>(</big><big>)</big><a class="headerlink" href="#PyGMO.problem.PyGMO.problem.bukin.bukin.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructs a Bukin&#8217;s f6 problem (Box-Constrained Continuous Single-Objective)</p>
+<p>USAGE: problem.bukin()</p>
+</dd></dl>
+
+</dd></dl>
+
+<hr class="docutils" />
+<dl class="class">
+<dt id="PyGMO.problem.cec2006">
+<em class="property">class </em><tt class="descclassname">PyGMO.problem.</tt><tt class="descname">cec2006</tt><a class="headerlink" href="#PyGMO.problem.cec2006" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="PyGMO.problem.PyGMO.problem.cec2006.cec2006.__init__">
+<tt class="descclassname">cec2006.</tt><tt class="descname">__init__</tt><big>(</big><em>prob_id=1</em><big>)</big><a class="headerlink" href="#PyGMO.problem.PyGMO.problem.cec2006.cec2006.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructs one of the 24 CEC2006 Competition Problems (Constrained Continuous Single-Objective)</p>
+<p>USAGE: problem.cec2006(prob_id=1)</p>
+<ul class="simple">
+<li>prob_id: Problem number, one of [1,2,...24]</li>
+</ul>
+</dd></dl>
+
+</dd></dl>
+
+<hr class="docutils" />
+<dl class="class">
+<dt id="PyGMO.problem.pressure_vessel">
+<em class="property">class </em><tt class="descclassname">PyGMO.problem.</tt><tt class="descname">pressure_vessel</tt><a class="headerlink" href="#PyGMO.problem.pressure_vessel" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="PyGMO.problem.PyGMO.problem.pressure_vessel.pressure_vessel.__init__">
+<tt class="descclassname">pressure_vessel.</tt><tt class="descname">__init__</tt><big>(</big><big>)</big><a class="headerlink" href="#PyGMO.problem.PyGMO.problem.pressure_vessel.pressure_vessel.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructs a pressure vessel design problem (Constrained Continuous Single-Objective)</p>
+<p>USAGE: problem.pressure_vessel()</p>
+</dd></dl>
+
+</dd></dl>
+
+<hr class="docutils" />
+<dl class="class">
+<dt id="PyGMO.problem.welded_beam">
+<em class="property">class </em><tt class="descclassname">PyGMO.problem.</tt><tt class="descname">welded_beam</tt><a class="headerlink" href="#PyGMO.problem.welded_beam" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="PyGMO.problem.PyGMO.problem.welded_beam.welded_beam.__init__">
+<tt class="descclassname">welded_beam.</tt><tt class="descname">__init__</tt><big>(</big><big>)</big><a class="headerlink" href="#PyGMO.problem.PyGMO.problem.welded_beam.welded_beam.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructs a welded beam design problem (Constrained Continuous Single-Objective)</p>
+<p>USAGE: problem.welded_beam()</p>
+</dd></dl>
+
+</dd></dl>
+
+<hr class="docutils" />
+<dl class="class">
+<dt id="PyGMO.problem.tens_comp_string">
+<em class="property">class </em><tt class="descclassname">PyGMO.problem.</tt><tt class="descname">tens_comp_string</tt><a class="headerlink" href="#PyGMO.problem.tens_comp_string" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="PyGMO.problem.PyGMO.problem.tens_comp_string.tens_comp_string.__init__">
+<tt class="descclassname">tens_comp_string.</tt><tt class="descname">__init__</tt><big>(</big><big>)</big><a class="headerlink" href="#PyGMO.problem.PyGMO.problem.tens_comp_string.tens_comp_string.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructs a tension compression string design problem (Constrained Continuous Single-Objective)</p>
+<p>USAGE: problem.tens_comp_string()</p>
+</dd></dl>
+
+</dd></dl>
+
+<hr class="docutils" />
+<dl class="class">
+<dt id="PyGMO.problem.cec2009">
+<em class="property">class </em><tt class="descclassname">PyGMO.problem.</tt><tt class="descname">cec2009</tt><a class="headerlink" href="#PyGMO.problem.cec2009" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="PyGMO.problem.PyGMO.problem.cec2009.cec2009.__init__">
+<tt class="descclassname">cec2009.</tt><tt class="descname">__init__</tt><big>(</big><em>prob_id=1</em>, <em>dim=30</em>, <em>is_constrained=False</em><big>)</big><a class="headerlink" href="#PyGMO.problem.PyGMO.problem.cec2009.cec2009.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructs one of the 20 CEC2009 Competition Problems (Constrained / Unconstrained Multi-Objective)</p>
+<p>USAGE: problem.cec2009(prob_id=1, dim=30, is_constrained=False)</p>
+<ul class="simple">
+<li>prob_id: Problem number, one of [1,2,...10]</li>
+<li>dim: Problem&#8217;s dimension (default is 30, corresponding to the competition set-up)</li>
+<li>is_constrained: if True constructs the CF problems, otherwise the UF (constrained/unconstrained)</li>
+</ul>
+</dd></dl>
+
+</dd></dl>
+
+<hr class="docutils" />
+<dl class="class">
+<dt id="PyGMO.problem.cec2013">
+<em class="property">class </em><tt class="descclassname">PyGMO.problem.</tt><tt class="descname">cec2013</tt><a class="headerlink" href="#PyGMO.problem.cec2013" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="PyGMO.problem.PyGMO.problem.cec2013.cec2013.__init__">
+<tt class="descclassname">cec2013.</tt><tt class="descname">__init__</tt><big>(</big><em>prob_id=1</em>, <em>dim=10</em>, <em>path='input_data/'</em><big>)</big><a class="headerlink" href="#PyGMO.problem.PyGMO.problem.cec2013.cec2013.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructs one of the 28 CEC2013 Competition Problems (Box-Constrained Continuous Single-Objective)</p>
+<p>NOTE: this problem requires two files to be put in the path indicated: &#8220;M_Dxx.txt&#8221; and &#8220;shift_data.txt&#8221;.
+These files can be downloaded from the CEC2013 competition site: <a class="reference external" href="http://web.mysites.ntu.edu.sg/epnsugan/PublicSite/Shared%20Documents/CEC2013/cec13-c-code.zip">http://web.mysites.ntu.edu.sg/epnsugan/PublicSite/Shared%20Documents/CEC2013/cec13-c-code.zip</a></p>
+<p>USAGE: problem.cec2013(dim = 10, prob_id=1, path=&#8221;input_data/&#8221;)</p>
+<ul class="simple">
+<li>prob_id: Problem number, one of [1,2,...10]</li>
+<li>dim: Problem&#8217;s dimension (default is 10)</li>
+<li>path: Whether the problem is constrained or unconstrained</li>
+</ul>
+</dd></dl>
+
+</dd></dl>
+
+<hr class="docutils" />
+<dl class="class">
+<dt id="PyGMO.problem.rosenbrock">
+<em class="property">class </em><tt class="descclassname">PyGMO.problem.</tt><tt class="descname">rosenbrock</tt><a class="headerlink" href="#PyGMO.problem.rosenbrock" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="PyGMO.problem.PyGMO.problem.rosenbrock.rosenbrock.__init__">
+<tt class="descclassname">rosenbrock.</tt><tt class="descname">__init__</tt><big>(</big><em>dim=10</em><big>)</big><a class="headerlink" href="#PyGMO.problem.PyGMO.problem.rosenbrock.rosenbrock.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructs a Rosenbrock problem (Box-Constrained Continuous Single-Objective)</p>
+<p>USAGE: problem.rosenbrock(dim=10)</p>
+<ul class="simple">
+<li>dim: problem dimension</li>
+</ul>
+</dd></dl>
+
+</dd></dl>
+
+<hr class="docutils" />
+<dl class="class">
+<dt id="PyGMO.problem.string_match">
+<em class="property">class </em><tt class="descclassname">PyGMO.problem.</tt><tt class="descname">string_match</tt><a class="headerlink" href="#PyGMO.problem.string_match" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="PyGMO.problem.PyGMO.problem.string_match.string_match.__init__">
+<tt class="descclassname">string_match.</tt><tt class="descname">__init__</tt><big>(</big><em>string='Can we use it for space?'</em><big>)</big><a class="headerlink" href="#PyGMO.problem.PyGMO.problem.string_match.string_match.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructs a string-match problem (Box-Constrained Integer Single-Objective)</p>
+<p>NOTE: This is the problem of matching a string. Transcribed as an optimization problem</p>
+<p>USAGE: problem.string_match(string = &#8220;mah&#8221;)</p>
+<ul class="simple">
+<li>string: string to match</li>
+</ul>
+</dd></dl>
+
+<dl class="method">
+<dt id="PyGMO.problem.string_match.PyGMO.problem.pretty">
+<tt class="descclassname">PyGMO.problem.</tt><tt class="descname">pretty</tt><big>(</big><em>x</em><big>)</big><a class="headerlink" href="#PyGMO.problem.string_match.PyGMO.problem.pretty" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a string decoding the chromosome</p>
+</dd></dl>
+
+</dd></dl>
+
+<hr class="docutils" />
+<dl class="class">
+<dt id="PyGMO.problem.rastrigin">
+<em class="property">class </em><tt class="descclassname">PyGMO.problem.</tt><tt class="descname">rastrigin</tt><a class="headerlink" href="#PyGMO.problem.rastrigin" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="PyGMO.problem.PyGMO.problem.rastrigin.rastrigin.__init__">
+<tt class="descclassname">rastrigin.</tt><tt class="descname">__init__</tt><big>(</big><em>dim=10</em><big>)</big><a class="headerlink" href="#PyGMO.problem.PyGMO.problem.rastrigin.rastrigin.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructs a Rastrigin problem (Box-Constrained Continuous Single-Objective)</p>
+<p>USAGE: problem.rastrigin(dim=10)</p>
+<ul class="simple">
+<li>dim: problem dimension</li>
+</ul>
+</dd></dl>
+
+</dd></dl>
+
+<hr class="docutils" />
+<dl class="class">
+<dt id="PyGMO.problem.schwefel">
+<em class="property">class </em><tt class="descclassname">PyGMO.problem.</tt><tt class="descname">schwefel</tt><a class="headerlink" href="#PyGMO.problem.schwefel" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="PyGMO.problem.PyGMO.problem.schwefel.schwefel.__init__">
+<tt class="descclassname">schwefel.</tt><tt class="descname">__init__</tt><big>(</big><em>dim=10</em><big>)</big><a class="headerlink" href="#PyGMO.problem.PyGMO.problem.schwefel.schwefel.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructs a Schwefel problem (Box-Constrained Continuous Single-Objective)</p>
+<p>USAGE: problem.schwefel(dim=10)</p>
+<ul class="simple">
+<li>dim: problem dimension</li>
+</ul>
+</dd></dl>
+
+</dd></dl>
+
+<hr class="docutils" />
+<dl class="class">
+<dt id="PyGMO.problem.dejong">
+<em class="property">class </em><tt class="descclassname">PyGMO.problem.</tt><tt class="descname">dejong</tt><a class="headerlink" href="#PyGMO.problem.dejong" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="PyGMO.problem.PyGMO.problem.dejong.dejong.__init__">
+<tt class="descclassname">dejong.</tt><tt class="descname">__init__</tt><big>(</big><em>dim=10</em><big>)</big><a class="headerlink" href="#PyGMO.problem.PyGMO.problem.dejong.dejong.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructs a De Jong problem (Box-Constrained Continuous Single-Objective)</p>
+<p>USAGE: problem.dejong(dim=10)</p>
+<ul class="simple">
+<li>dim: problem dimension</li>
+</ul>
+</dd></dl>
+
+</dd></dl>
+
+<hr class="docutils" />
+<dl class="class">
+<dt id="PyGMO.problem.py_example">
+<em class="property">class </em><tt class="descclassname">PyGMO.problem.</tt><tt class="descname">py_example</tt><a class="headerlink" href="#PyGMO.problem.py_example" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="PyGMO.problem.PyGMO.problem.py_example.py_example.__init__">
+<tt class="descclassname">py_example.</tt><tt class="descname">__init__</tt><big>(</big><em>dim=10</em><big>)</big><a class="headerlink" href="#PyGMO.problem.PyGMO.problem.py_example.py_example.__init__" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<hr class="docutils" />
+<dl class="class">
+<dt id="PyGMO.problem.griewank">
+<em class="property">class </em><tt class="descclassname">PyGMO.problem.</tt><tt class="descname">griewank</tt><a class="headerlink" href="#PyGMO.problem.griewank" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="PyGMO.problem.PyGMO.problem.griewank.griewank.__init__">
+<tt class="descclassname">griewank.</tt><tt class="descname">__init__</tt><big>(</big><em>dim=10</em><big>)</big><a class="headerlink" href="#PyGMO.problem.PyGMO.problem.griewank.griewank.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructs a De Jong problem (Box-Constrained Continuous Single-Objective)</p>
+<p>USAGE: problem.dejong(dim=10)</p>
+<ul class="simple">
+<li>dim: problem dimension</li>
+</ul>
+</dd></dl>
+
+</dd></dl>
+
+<hr class="docutils" />
+<dl class="class">
+<dt id="PyGMO.problem.lennard_jones">
+<em class="property">class </em><tt class="descclassname">PyGMO.problem.</tt><tt class="descname">lennard_jones</tt><a class="headerlink" href="#PyGMO.problem.lennard_jones" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="PyGMO.problem.PyGMO.problem.lennard_jones.lennard_jones.__init__">
+<tt class="descclassname">lennard_jones.</tt><tt class="descname">__init__</tt><big>(</big><em>n_atoms=4</em><big>)</big><a class="headerlink" href="#PyGMO.problem.PyGMO.problem.lennard_jones.lennard_jones.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructs a Lennard-Jones problem (Box-Constrained Continuous Single-Objective)</p>
+<p>USAGE: problem.lennard_jones(n_atoms=4)</p>
+<ul class="simple">
+<li>n_atoms: number of atoms</li>
+</ul>
+</dd></dl>
+
+</dd></dl>
+
+<hr class="docutils" />
+<dl class="class">
+<dt id="PyGMO.problem.branin">
+<em class="property">class </em><tt class="descclassname">PyGMO.problem.</tt><tt class="descname">branin</tt><a class="headerlink" href="#PyGMO.problem.branin" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="PyGMO.problem.PyGMO.problem.branin.branin.__init__">
+<tt class="descclassname">branin.</tt><tt class="descname">__init__</tt><big>(</big><big>)</big><a class="headerlink" href="#PyGMO.problem.PyGMO.problem.branin.branin.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructs a Branin problem (Box-Constrained Continuous Single-Objective)</p>
+<p>USAGE: problem.branin()</p>
+</dd></dl>
+
+</dd></dl>
+
+<hr class="docutils" />
+<dl class="class">
+<dt id="PyGMO.problem.himmelblau">
+<em class="property">class </em><tt class="descclassname">PyGMO.problem.</tt><tt class="descname">himmelblau</tt><a class="headerlink" href="#PyGMO.problem.himmelblau" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="PyGMO.problem.PyGMO.problem.himmelblau.himmelblau.__init__">
+<tt class="descclassname">himmelblau.</tt><tt class="descname">__init__</tt><big>(</big><big>)</big><a class="headerlink" href="#PyGMO.problem.PyGMO.problem.himmelblau.himmelblau.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructs a Himmelblau problem (Box-Constrained Continuous Single-Objective)</p>
+<p>USAGE: problem.himmelblau()</p>
+</dd></dl>
+
+</dd></dl>
+
+<hr class="docutils" />
+<dl class="class">
+<dt id="PyGMO.problem.michalewicz">
+<em class="property">class </em><tt class="descclassname">PyGMO.problem.</tt><tt class="descname">michalewicz</tt><a class="headerlink" href="#PyGMO.problem.michalewicz" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="PyGMO.problem.PyGMO.problem.michalewicz.michalewicz.__init__">
+<tt class="descclassname">michalewicz.</tt><tt class="descname">__init__</tt><big>(</big><em>dim=10</em><big>)</big><a class="headerlink" href="#PyGMO.problem.PyGMO.problem.michalewicz.michalewicz.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructs a Michalewicz problem (Box-Constrained Continuous Single-Objective)</p>
+<p>USAGE: problem.michalewicz(dim=5)</p>
+<p>NOTE: Minimum is -4.687 for dim=5 and -9.66 for dim = 10</p>
+<ul class="simple">
+<li>dim: problem dimension</li>
+</ul>
+</dd></dl>
+
+</dd></dl>
+
+<hr class="docutils" />
+<dl class="class">
+<dt id="PyGMO.problem.kur">
+<em class="property">class </em><tt class="descclassname">PyGMO.problem.</tt><tt class="descname">kur</tt><a class="headerlink" href="#PyGMO.problem.kur" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="PyGMO.problem.PyGMO.problem.kur.kur.__init__">
+<tt class="descclassname">kur.</tt><tt class="descname">__init__</tt><big>(</big><em>dim=10</em><big>)</big><a class="headerlink" href="#PyGMO.problem.PyGMO.problem.kur.kur.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructs a Kursawe&#8217;s study problem (Box-Constrained Continuous Multi-Objective)</p>
+<p>NOTE: K Deb, A Pratap, S Agarwal: A fast and elitist multiobjective genetic algorithm: NSGA-II, IEEE Transactions on, 2002</p>
+<p>USAGE: problem.kur(dim = 10)</p>
+<ul class="simple">
+<li>dim: problem dimension</li>
+</ul>
+</dd></dl>
+
+</dd></dl>
+
+<hr class="docutils" />
+<dl class="class">
+<dt id="PyGMO.problem.fon">
+<em class="property">class </em><tt class="descclassname">PyGMO.problem.</tt><tt class="descname">fon</tt><a class="headerlink" href="#PyGMO.problem.fon" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="PyGMO.problem.PyGMO.problem.fon.fon.__init__">
+<tt class="descclassname">fon.</tt><tt class="descname">__init__</tt><big>(</big><big>)</big><a class="headerlink" href="#PyGMO.problem.PyGMO.problem.fon.fon.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructs a Fonseca and Fleming&#8217;s study problem (Box-Constrained Continuous Multi-Objective)</p>
+<p>NOTE: K Deb, A Pratap, S Agarwal: A fast and elitist multiobjective genetic algorithm: NSGA-II, IEEE Transactions on, 2002</p>
+<p>USAGE: problem.fon()</p>
+</dd></dl>
+
+</dd></dl>
+
+<hr class="docutils" />
+<dl class="class">
+<dt id="PyGMO.problem.pol">
+<em class="property">class </em><tt class="descclassname">PyGMO.problem.</tt><tt class="descname">pol</tt><a class="headerlink" href="#PyGMO.problem.pol" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="PyGMO.problem.PyGMO.problem.pol.pol.__init__">
+<tt class="descclassname">pol.</tt><tt class="descname">__init__</tt><big>(</big><big>)</big><a class="headerlink" href="#PyGMO.problem.PyGMO.problem.pol.pol.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructs a Poloni&#8217;s study study problem (Box-Constrained Continuous Multi-Objective)</p>
+<p>NOTE: K Deb, A Pratap, S Agarwal: A fast and elitist multiobjective genetic algorithm: NSGA-II, IEEE Transactions on, 2002</p>
+<p>USAGE: problem.pol()</p>
+</dd></dl>
+
+</dd></dl>
+
+<hr class="docutils" />
+<dl class="class">
+<dt id="PyGMO.problem.sch">
+<em class="property">class </em><tt class="descclassname">PyGMO.problem.</tt><tt class="descname">sch</tt><a class="headerlink" href="#PyGMO.problem.sch" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="PyGMO.problem.PyGMO.problem.sch.sch.__init__">
+<tt class="descclassname">sch.</tt><tt class="descname">__init__</tt><big>(</big><big>)</big><a class="headerlink" href="#PyGMO.problem.PyGMO.problem.sch.sch.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructs a Schaffer&#8217;s study problem (Box-Constrained Continuous Multi-Objective)</p>
+<p>NOTE: K Deb, A Pratap, S Agarwal: A fast and elitist multiobjective genetic algorithm: NSGA-II, IEEE Transactions on, 2002</p>
+<p>USAGE: problem.sch()</p>
+</dd></dl>
+
+</dd></dl>
+
+<hr class="docutils" />
+<dl class="class">
+<dt id="PyGMO.problem.zdt">
+<em class="property">class </em><tt class="descclassname">PyGMO.problem.</tt><tt class="descname">zdt</tt><a class="headerlink" href="#PyGMO.problem.zdt" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="PyGMO.problem.PyGMO.problem.zdt.zdt.__init__">
+<tt class="descclassname">zdt.</tt><tt class="descname">__init__</tt><big>(</big><em>prob_id=1</em>, <em>param_1=None</em><big>)</big><a class="headerlink" href="#PyGMO.problem.PyGMO.problem.zdt.zdt.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructs a multi-objective box-constrained problem from the ZDT testsuite</p>
+<p>NOTE: K Deb, A Pratap, S Agarwal: A fast and elitist multiobjective genetic algorithm: NSGA-II, IEEE Transactions on, 2002</p>
+<p>USAGE: problem.zdt(prob_id = 1, param_1 = 30)</p>
+<ul class="simple">
+<li>prob_id: Problem number, one of [1,2,...6]</li>
+<li>param_1: problem dimension for all ZDT problems except ZDT5 (here it is the number of binary strings used)</li>
+</ul>
+</dd></dl>
+
+<dl class="method">
+<dt id="PyGMO.problem.PyGMO.problem.zdt.zdt.p_distance">
+<tt class="descclassname">zdt.</tt><tt class="descname">p_distance</tt><big>(</big><em>(zdt)arg1</em>, <em>(object)arg2</em><big>)</big> &rarr; float :<a class="headerlink" href="#PyGMO.problem.PyGMO.problem.zdt.zdt.p_distance" title="Permalink to this definition">¶</a></dt>
+<dd><blockquote>
+<div><p>The p distance is a convergence metric measuring the distance of a population or individual from the pareto front.
+It is typically 0.0 if the individuals lie on the Pareto-front.</p>
+<blockquote>
+<div><p>USAGE: x = prob.p_distance(pop)
+USAGE: x = prob.p_distance(x)</p>
+<ul class="simple">
+<li>pop: population to evaluate</li>
+<li>x: chromosome to evaluate</li>
+</ul>
+</div></blockquote>
+</div></blockquote>
+<p>p_distance( (zdt)arg1, (population)arg2) -&gt; float</p>
+</dd></dl>
+
+</dd></dl>
+
+<hr class="docutils" />
+<dl class="class">
+<dt id="PyGMO.problem.dtlz">
+<em class="property">class </em><tt class="descclassname">PyGMO.problem.</tt><tt class="descname">dtlz</tt><a class="headerlink" href="#PyGMO.problem.dtlz" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="PyGMO.problem.PyGMO.problem.dtlz.dtlz.__init__">
+<tt class="descclassname">dtlz.</tt><tt class="descname">__init__</tt><big>(</big><em>prob_id=1</em>, <em>k=None</em>, <em>fdim=3</em>, <em>alpha=100</em><big>)</big><a class="headerlink" href="#PyGMO.problem.PyGMO.problem.dtlz.dtlz.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><blockquote>
+<div>Constructs a multi-objective box-constrained problem from the DTLZ testsuite</div></blockquote>
+<p>NOTE: K Deb, L Thiele, M Laumanns, E Zitzler, Scalable test problems for evolutionary multiobjective optimization</p>
+<blockquote>
+<div><p>USAGE: problem.dtlz(prob_id = 1, k = 20, fdim = 4)</p>
+<ul class="simple">
+<li>prob_id: Problem number, one of [1,2,...7]</li>
+<li>k: paramter defining integer dimension of the problem: k + fdim - 1</li>
+<li>fdim: number of objectives</li>
+<li>alpha: controls density of solutions (just used for prob_id = 4)</li>
+</ul>
+</div></blockquote>
+</dd></dl>
+
+<dl class="method">
+<dt id="PyGMO.problem.PyGMO.problem.dtlz.dtlz.p_distance">
+<tt class="descclassname">dtlz.</tt><tt class="descname">p_distance</tt><big>(</big><em>(dtlz)arg1</em>, <em>(object)arg2</em><big>)</big> &rarr; float :<a class="headerlink" href="#PyGMO.problem.PyGMO.problem.dtlz.dtlz.p_distance" title="Permalink to this definition">¶</a></dt>
+<dd><blockquote>
+<div><p>The p distance is a convergence metric measuring the distance of a population or individual from the pareto front.
+It is typically 0.0 if the individuals lie on the Pareto-front.</p>
+<blockquote>
+<div><p>USAGE: x = prob.p_distance(pop)
+USAGE: x = prob.p_distance(x)</p>
+<ul class="simple">
+<li>pop: population to evaluate</li>
+<li>x: chromosome to evaluate</li>
+</ul>
+</div></blockquote>
+</div></blockquote>
+<p>p_distance( (dtlz)arg1, (population)arg2) -&gt; float</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="PyGMO.problem.PyGMO.problem.dtlz.dtlz.plot">
+<tt class="descclassname">dtlz.</tt><tt class="descname">plot</tt><big>(</big><em>pop, a=40, comp=[0, 1, 2]</em><big>)</big><a class="headerlink" href="#PyGMO.problem.PyGMO.problem.dtlz.dtlz.plot" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generic plot-method for multi-objective optimization problems with more then 2 objectives</p>
+<p>USAGE: prob.plot(pop, comp[0,2,3])
+* pop: population of solutions to the problem
+* a: angle of view on which the 3d-plot is created
+* comp: indexes the fitness dimension for x,y and z axis in that order</p>
+</dd></dl>
+
+</dd></dl>
+
+<hr class="docutils" />
+<dl class="class">
+<dt id="PyGMO.problem.tsp">
+<em class="property">class </em><tt class="descclassname">PyGMO.problem.</tt><tt class="descname">tsp</tt><a class="headerlink" href="#PyGMO.problem.tsp" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="PyGMO.problem.PyGMO.problem.tsp.tsp.__init__">
+<tt class="descclassname">tsp.</tt><tt class="descname">__init__</tt><big>(</big><em>weights=[[0, 1, 2], [1, 0, 5], [2, 5, 0]], type='cities'</em><big>)</big><a class="headerlink" href="#PyGMO.problem.PyGMO.problem.tsp.tsp.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructs Travelling Salesman Problem (TSP or ATSP)
+The problem encoding can be of three different types as
+selected by the type kwarg</p>
+<p>1-&#8220;cities&#8221;
+This encoding represents the ids of the cities visited
+directly in the chromosome. It will
+thus create a constrained problem as only permutation of the
+cities ids are valid (e.g. [0,2,1,5,0] is not
+a valid chromosome)</p>
+<p>2-&#8220;randomkeys&#8221;
+This encoding, first introduced in the paper
+Bean, J. C. (1994). Genetic algorithms and random keys for
+sequencing and optimization. ORSA journal on computing, 6(2), 154-160.
+It creates a box constrained problem without any constraint.
+It essentially represents the tour as a sequence of doubles bounded
+in [0,1]. The tour is reconstructed by the argsort of the sequence.
+(e.g. [0.34,0.12,0.76,0.03] -&gt; [3,1,0,2])</p>
+<p>3-&#8220;full&#8221;
+In the full encoding the TSP is represented as a integer linear
+programming problem. The details can be found in
+<a class="reference external" href="http://en.wikipedia.org/wiki/Travelling_salesman_problem">http://en.wikipedia.org/wiki/Travelling_salesman_problem</a>
+Constructs a Travelling Salesman problem
+(Constrained Integer Single-Objective)</p>
+<p>USAGE: problem.tsp(weights = [0,1,2],[1,0,5],[2,5,0], type=&#8221;randomkeys&#8221;)</p>
+<blockquote>
+<div><ul class="simple">
+<li>weights: Square matrix with zero diagonal entries containing the cities distances.</li>
+<li>type: encoding type. One of &#8220;cities&#8221;,&#8221;randomkeys&#8221;,&#8221;full&#8221;</li>
+</ul>
+</div></blockquote>
+</dd></dl>
+
+</dd></dl>
+
+<hr class="docutils" />
+<dl class="class">
+<dt id="PyGMO.problem.golomb_ruler">
+<em class="property">class </em><tt class="descclassname">PyGMO.problem.</tt><tt class="descname">golomb_ruler</tt><a class="headerlink" href="#PyGMO.problem.golomb_ruler" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="PyGMO.problem.PyGMO.problem.golomb_ruler.golomb_ruler.__init__">
+<tt class="descclassname">golomb_ruler.</tt><tt class="descname">__init__</tt><big>(</big><em>order=5</em>, <em>length=10</em><big>)</big><a class="headerlink" href="#PyGMO.problem.PyGMO.problem.golomb_ruler.golomb_ruler.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructs a Golomb Ruler problem (Constrained Integer Single-Objective)</p>
+<p>NOTE: see <a class="reference external" href="http://en.wikipedia.org/wiki/Golomb_ruler">http://en.wikipedia.org/wiki/Golomb_ruler</a></p>
+<p>USAGE: problem.golomb_ruler(order = 5, length=10)</p>
+<ul class="simple">
+<li>order: order of the Golomb ruler</li>
+<li>length: length of the Golomb ruler</li>
+</ul>
+</dd></dl>
+
+</dd></dl>
+
+<hr class="docutils" />
+<dl class="class">
+<dt id="PyGMO.problem.luksan_vlcek_1">
+<em class="property">class </em><tt class="descclassname">PyGMO.problem.</tt><tt class="descname">luksan_vlcek_1</tt><a class="headerlink" href="#PyGMO.problem.luksan_vlcek_1" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="PyGMO.problem.PyGMO.problem.luksan_vlcek_1.luksan_vlcek_1.__init__">
+<tt class="descclassname">luksan_vlcek_1.</tt><tt class="descname">__init__</tt><big>(</big><em>dim=3</em><big>)</big><a class="headerlink" href="#PyGMO.problem.PyGMO.problem.luksan_vlcek_1.luksan_vlcek_1.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructs the first Luksan Vlcek problem (Constrained Continuous Single-Objective)</p>
+<p>NOTE: L. Luksan and J. Vlcek, &#8220;Sparse and Parially Separable Test Problems for Unconstrained and Equality Constrained Optimization&#8221;</p>
+<p>USAGE: problem.luksan_vlcek_1(dim=3)</p>
+<ul class="simple">
+<li>dim: problem dimension</li>
+</ul>
+</dd></dl>
+
+</dd></dl>
+
+<hr class="docutils" />
+<dl class="class">
+<dt id="PyGMO.problem.luksan_vlcek_2">
+<em class="property">class </em><tt class="descclassname">PyGMO.problem.</tt><tt class="descname">luksan_vlcek_2</tt><a class="headerlink" href="#PyGMO.problem.luksan_vlcek_2" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="PyGMO.problem.PyGMO.problem.luksan_vlcek_2.luksan_vlcek_2.__init__">
+<tt class="descclassname">luksan_vlcek_2.</tt><tt class="descname">__init__</tt><big>(</big><em>dim=16</em><big>)</big><a class="headerlink" href="#PyGMO.problem.PyGMO.problem.luksan_vlcek_2.luksan_vlcek_2.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructs the second Luksan Vlcek problem (Constrained Continuous Single-Objective)</p>
+<p>NOTE: L. Luksan and J. Vlcek, &#8220;Sparse and Parially Separable Test Problems for Unconstrained and Equality Constrained Optimization&#8221;</p>
+<p>USAGE: problem.luksan_vlcek_2(dim=16)</p>
+<ul class="simple">
+<li>dim: problem dimension</li>
+</ul>
+</dd></dl>
+
+</dd></dl>
+
+<hr class="docutils" />
+<dl class="class">
+<dt id="PyGMO.problem.luksan_vlcek_3">
+<em class="property">class </em><tt class="descclassname">PyGMO.problem.</tt><tt class="descname">luksan_vlcek_3</tt><a class="headerlink" href="#PyGMO.problem.luksan_vlcek_3" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="PyGMO.problem.PyGMO.problem.luksan_vlcek_3.luksan_vlcek_3.__init__">
+<tt class="descclassname">luksan_vlcek_3.</tt><tt class="descname">__init__</tt><big>(</big><em>dim=8</em><big>)</big><a class="headerlink" href="#PyGMO.problem.PyGMO.problem.luksan_vlcek_3.luksan_vlcek_3.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructs the third Luksan Vlcek problem (Constrained Continuous Single-Objective)</p>
+<p>NOTE: L. Luksan and J. Vlcek, &#8220;Sparse and Parially Separable Test Problems for Unconstrained and Equality Constrained Optimization&#8221;</p>
+<p>USAGE: problem.luksan_vlcek_3(dim=8)</p>
+<ul class="simple">
+<li>dim: problem dimension</li>
+</ul>
+</dd></dl>
+
+</dd></dl>
+
+<hr class="docutils" />
+<dl class="class">
+<dt id="PyGMO.problem.snopt_toyprob">
+<em class="property">class </em><tt class="descclassname">PyGMO.problem.</tt><tt class="descname">snopt_toyprob</tt><a class="headerlink" href="#PyGMO.problem.snopt_toyprob" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="PyGMO.problem.PyGMO.problem.snopt_toyprob.snopt_toyprob.__init__">
+<tt class="descclassname">snopt_toyprob.</tt><tt class="descname">__init__</tt><big>(</big><big>)</big><a class="headerlink" href="#PyGMO.problem.PyGMO.problem.snopt_toyprob.snopt_toyprob.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructs SNOPT toy-problem (Box-Constrained Continuous Multi-Objective)</p>
+<p>USAGE: problem.snopt_toyprob()</p>
+</dd></dl>
+
+</dd></dl>
+
+<hr class="docutils" />
+<dl class="class">
+<dt id="PyGMO.problem.inventory">
+<em class="property">class </em><tt class="descclassname">PyGMO.problem.</tt><tt class="descname">inventory</tt><a class="headerlink" href="#PyGMO.problem.inventory" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="PyGMO.problem.PyGMO.problem.inventory.inventory.__init__">
+<tt class="descclassname">inventory.</tt><tt class="descname">__init__</tt><big>(</big><em>weeks=4</em>, <em>sample_size=10</em>, <em>seed=0</em><big>)</big><a class="headerlink" href="#PyGMO.problem.PyGMO.problem.inventory.inventory.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructs an Inventory Problem (Stochastic Objective Function)</p>
+<p>NOTE: see www2.isye.gatech.edu/people/faculty/Alex_Shapiro/SPbook.pdf</p>
+<p>USAGE: problem.inventory(weeks = 4, sample_size = 10, seed = 0):</p>
+<ul>
+<li><dl class="first docutils">
+<dt>week: dimension of the problem corresponding to the numer of weeks</dt>
+<dd><p class="first last">to plan the inventory for.</p>
+</dd>
+</dl>
+</li>
+<li><p class="first">sample_size: dimension of the sample used to approximate the expected value</p>
+</li>
+<li><dl class="first docutils">
+<dt>seed: integer used as starting random seed to build the</dt>
+<dd><p class="first last">pseudorandom sequences used to generate the sample</p>
+</dd>
+</dl>
+</li>
+</ul>
+</dd></dl>
+
+</dd></dl>
+
+<hr class="docutils" />
+<dl class="class">
+<dt id="PyGMO.problem.py_example_stochastic">
+<em class="property">class </em><tt class="descclassname">PyGMO.problem.</tt><tt class="descname">py_example_stochastic</tt><a class="headerlink" href="#PyGMO.problem.py_example_stochastic" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="PyGMO.problem.PyGMO.problem.py_example_stochastic.py_example_stochastic.__init__">
+<tt class="descclassname">py_example_stochastic.</tt><tt class="descname">__init__</tt><big>(</big><em>dim=10</em>, <em>seed=0</em><big>)</big><a class="headerlink" href="#PyGMO.problem.PyGMO.problem.py_example_stochastic.py_example_stochastic.__init__" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<hr class="docutils" />
+<dl class="class">
+<dt id="PyGMO.problem.mit_spheres">
+<em class="property">class </em><tt class="descclassname">PyGMO.problem.</tt><tt class="descname">mit_spheres</tt><a class="headerlink" href="#PyGMO.problem.mit_spheres" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="PyGMO.problem.PyGMO.problem.mit_spheres.mit_spheres.__init__">
+<tt class="descclassname">mit_spheres.</tt><tt class="descname">__init__</tt><big>(</big><em>sample_size=10, n_hidden=10, ode_prec=0.001, seed=0, symmetric=False, simulation_time=50.0, sides=[0.6, 0.7, 0.8]</em><big>)</big><a class="headerlink" href="#PyGMO.problem.PyGMO.problem.mit_spheres.mit_spheres.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Construct a Neurocontroller Evolution problem that seeks to drive three point masses to form a triangle
+This problem was used to design a contorller for the MIT SPHERES test bed on boear the ISS</p>
+<p>USAGE: problem.mit_spheres(sample_size = 10, n_hidden = 10, ode_prec = 1E-3, seed = 0, symmetric = False, simulation_time = 50.0):</p>
+<ul class="simple">
+<li>sample_size: number of initial conditions the neurocontroller is tested from</li>
+<li>n_hidden: number of hidden  for the feed-forward neural network</li>
+<li>ode_prec: relative numerical precision of neurons the ODE integrator</li>
+<li>seed: integer used as starting random seed to build the pseudorandom sequences used to generate the sample</li>
+<li>symmetric: when True activates a Neural Network having symmetric weights (i.e. purely homogeneuos agents)</li>
+<li>simulation_time: when True activates a Neural Network having symmetric weights (i.e. purely homogeneuos agents)</li>
+<li>sides: sides of the triangle</li>
+</ul>
+</dd></dl>
+
+<dl class="method">
+<dt id="PyGMO.problem.mit_spheres.post_evaluate">
+<tt class="descname">post_evaluate</tt><big>(</big><em>(tuple) x</em>, <em>(int) N</em>, <em>(int) seed</em><big>)</big> &rarr; (tuple) out<a class="headerlink" href="#PyGMO.problem.mit_spheres.post_evaluate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a tuple with the N post evaluation results of chromosome x w.r.t. conditions generated by seed.
+The returned tuple has the structure [ic, fit] and is sorted by fit. Where ic are the initial conditions and fit the
+Evaluated fitness.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="PyGMO.problem.mit_spheres.simulate">
+<tt class="descname">simulate</tt><big>(</big><em>(tuple) x</em>, <em>(tuple) ic</em>, <em>(int) N</em><big>)</big> &rarr; (tuple) world_states<a class="headerlink" href="#PyGMO.problem.mit_spheres.simulate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the SPHERES coordinates as evaluated in one simulation with initial conditions ic and in
+N points</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="PyGMO.problem.mit_spheres.visualize">
+<tt class="descname">visualize</tt><big>(</big><em>(tuple) world_states</em><big>)</big><a class="headerlink" href="#PyGMO.problem.mit_spheres.visualize" title="Permalink to this definition">¶</a></dt>
+<dd><p>Requires VPython installed. It opens a graphical display and animate the motion of the three SPHERES
+as desribed by the world_state tuple (output from the simulate method)</p>
+</dd></dl>
+
+</dd></dl>
+
+<hr class="docutils" />
+<dl class="class">
+<dt id="PyGMO.problem.mga_1dsm_tof">
+<em class="property">class </em><tt class="descclassname">PyGMO.problem.</tt><tt class="descname">mga_1dsm_tof</tt><a class="headerlink" href="#PyGMO.problem.mga_1dsm_tof" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="PyGMO.problem.mga_1dsm_tof.__init__">
+<tt class="descname">__init__</tt><big>(</big><em>seq</em>, <em>t0</em>, <em>tof</em>, <em>vinf</em>, <em>multi_objective=False</em>, <em>add_vinf_dep=False</em>, <em>add_vinf_arr=True</em><big>)</big><a class="headerlink" href="#PyGMO.problem.mga_1dsm_tof.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructs an mga_1dsm problem (tof-encoding)</p>
+<ul class="simple">
+<li>seq: list of PyKEP planets defining the encounter sequence, including the starting planet (default: earth venus earth)</li>
+<li>t0: list of two epochs defining the launch window (default: 2000-Jan-01 00:00:00 to 2002-Sep-27 00:00:00)</li>
+<li>tof: list of intervals defining the times of flight in days (default: [[50,900],[50,900]])</li>
+<li>vinf: list of two floats defining the minimum and maximum allowed initial hyperbolic velocity at launch in km/sec (default: [0.5, 2.5])</li>
+<li>multi_objective: when True constructs a multiobjective problem (dv, T)</li>
+<li>add_vinf_dep: when True the computed Dv includes the initial hyperbolic velocity (at launch)</li>
+<li>add_vinf_arr: when True the computed Dv includes the final hyperbolic velocity (at arrival)</li>
+</ul>
+<p>USAGE: problem.mga_1dsm(seq = [planet_ss(&#8216;earth&#8217;),planet_ss(&#8216;venus&#8217;),planet_ss(&#8216;earth&#8217;)], t0 = [epoch(0),epoch(1000)], tof = [ [200, 700], [200, 700] ], vinf = [0.5, 2.5], multi_objective = False, add_vinf_dep = False, add_vinf_arr = True)</p>
+<dl class="method">
+<dt id="PyGMO.problem.PyGMO.problem.mga_1dsm_tof.mga_1dsm_tof.plot">
+<tt class="descclassname">mga_1dsm_tof.</tt><tt class="descname">plot</tt><big>(</big><em>x</em><big>)</big><a class="headerlink" href="#PyGMO.problem.PyGMO.problem.mga_1dsm_tof.mga_1dsm_tof.plot" title="Permalink to this definition">¶</a></dt>
+<dd><p>Plots the trajectory represented by the decision vector x</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="PyGMO.problem.mga_1dsm_tof.set_tof">
+<tt class="descname">set_tof</tt><big>(</big><em>tof</em><big>)</big><a class="headerlink" href="#PyGMO.problem.mga_1dsm_tof.set_tof" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>Resets the tof-bounds by the provided list of epochs. Needs a list consisting of lower/upper bound tuples.</p>
+<dl class="method">
+<dt id="PyGMO.problem.mga_1dsm_tof.set_launch_window">
+<tt class="descname">set_launch_window</tt><big>(</big><em>(tuple) t0</em><big>)</big><a class="headerlink" href="#PyGMO.problem.mga_1dsm_tof.set_launch_window" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>Resets the launch windows to the lower and upper bounds given by tuple t0. Bounds need to be epochs.</p>
+<dl class="method">
+<dt id="PyGMO.problem.mga_1dsm_tof.set_vinf">
+<tt class="descname">set_vinf</tt><big>(</big><em>(double) vinf_u</em><big>)</big><a class="headerlink" href="#PyGMO.problem.mga_1dsm_tof.set_vinf" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>Sets the upper bound for vinf to vinf_u</p>
+<dl class="method">
+<dt id="PyGMO.problem.mga_1dsm_tof.pretty">
+<tt class="descname">pretty</tt><big>(</big><em>(tuple) x</em><big>)</big> &rarr; (string) out<a class="headerlink" href="#PyGMO.problem.mga_1dsm_tof.pretty" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>Returns a string with informations about tour encoded by x</p>
+</dd></dl>
+
+</dd></dl>
+
+<hr class="docutils" />
+<dl class="class">
+<dt id="PyGMO.problem.mga_1dsm_alpha">
+<em class="property">class </em><tt class="descclassname">PyGMO.problem.</tt><tt class="descname">mga_1dsm_alpha</tt><a class="headerlink" href="#PyGMO.problem.mga_1dsm_alpha" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="PyGMO.problem.mga_1dsm_alpha.__init__">
+<tt class="descname">__init__</tt><big>(</big><em>seq</em>, <em>t0</em>, <em>tof</em>, <em>vinf</em>, <em>multi_objective=False</em>, <em>add_vinf_dep=False</em>, <em>add_vinf_arr=True</em><big>)</big><a class="headerlink" href="#PyGMO.problem.mga_1dsm_alpha.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructs an mga_1dsm problem (alpha-encoding)</p>
+<ul class="simple">
+<li>seq: list of PyKEP planets defining the encounter sequence, including the starting planet (default: earth venus earth)</li>
+<li>t0: list of two epochs defining the launch window (default: 2000-Jan-01 00:00:00 to 2002-Sep-27 00:00:00)</li>
+<li>tof: list of two floats defining the minimum and maximum allowed mission length in days (default: [365.25, 1826.35])</li>
+<li>vinf: list of two floats defining the minimum and maximum allowed initial hyperbolic velocity at launch in km/sec (default: [0.5, 2.5])</li>
+<li>multi_objective: when True constructs a multiobjective problem (dv, T)</li>
+<li>add_vinf_dep: when True the computed Dv includes the initial hyperbolic velocity (at launch)</li>
+<li>add_vinf_arr: when True the computed Dv includes the final hyperbolic velocity (at arrival)</li>
+</ul>
+<p>USAGE: problem.mga_1dsm(seq = [planet_ss(&#8216;earth&#8217;),planet_ss(&#8216;venus&#8217;),planet_ss(&#8216;earth&#8217;)], t0 = [epoch(0),epoch(1000)], tof = [ [200, 700], [200, 700] ], vinf = [0.5, 2.5], multi_objective = False, add_vinf_dep = False, add_vinf_arr = True)</p>
+<dl class="method">
+<dt id="PyGMO.problem.PyGMO.problem.mga_1dsm_alpha.mga_1dsm_alpha.plot">
+<tt class="descclassname">mga_1dsm_alpha.</tt><tt class="descname">plot</tt><big>(</big><em>x</em><big>)</big><a class="headerlink" href="#PyGMO.problem.PyGMO.problem.mga_1dsm_alpha.mga_1dsm_alpha.plot" title="Permalink to this definition">¶</a></dt>
+<dd><p>Plots the trajectory represented by the decision vector x</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="PyGMO.problem.mga_1dsm_alpha.set_tof">
+<tt class="descname">set_tof</tt><big>(</big><em>(tuple) tof</em><big>)</big><a class="headerlink" href="#PyGMO.problem.mga_1dsm_alpha.set_tof" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>Resets the tof-bounds by the provided tuple of epochs.</p>
+<dl class="method">
+<dt id="PyGMO.problem.mga_1dsm_alpha.set_launch_window">
+<tt class="descname">set_launch_window</tt><big>(</big><em>(tuple) t0</em><big>)</big><a class="headerlink" href="#PyGMO.problem.mga_1dsm_alpha.set_launch_window" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>Resets the launch windows to the lower and upper bounds given by tuple t0. Bounds need to be epochs.</p>
+<dl class="method">
+<dt id="PyGMO.problem.mga_1dsm_alpha.set_vinf">
+<tt class="descname">set_vinf</tt><big>(</big><em>(double) vinf_u</em><big>)</big><a class="headerlink" href="#PyGMO.problem.mga_1dsm_alpha.set_vinf" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>Sets the upper bound for vinf to vinf_u</p>
+<dl class="method">
+<dt id="PyGMO.problem.mga_1dsm_alpha.pretty">
+<tt class="descname">pretty</tt><big>(</big><em>(tuple) x</em><big>)</big> &rarr; (string) out<a class="headerlink" href="#PyGMO.problem.mga_1dsm_alpha.pretty" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>Returns a string with informations about tour encoded by x</p>
+</dd></dl>
+
+</dd></dl>
+
+<hr class="docutils" />
+<dl class="class">
+<dt id="PyGMO.problem.cassini_1">
+<em class="property">class </em><tt class="descclassname">PyGMO.problem.</tt><tt class="descname">cassini_1</tt><a class="headerlink" href="#PyGMO.problem.cassini_1" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="PyGMO.problem.PyGMO.problem.cassini_1.cassini_1.__init__">
+<tt class="descclassname">cassini_1.</tt><tt class="descname">__init__</tt><big>(</big><em>objectives=1</em><big>)</big><a class="headerlink" href="#PyGMO.problem.PyGMO.problem.cassini_1.cassini_1.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructs a Cassini 1 Problem (Box-Constrained Continuous Single-Objective)</p>
+<dl class="docutils">
+<dt>NOTE: This problem (MGA) belongs to the GTOP database [<a class="reference external" href="http://www.esa.int/gsp/ACT/inf/op/globopt.htm">http://www.esa.int/gsp/ACT/inf/op/globopt.htm</a>]</dt>
+<dd>Its single objective version has a global minimum at 4.9307 [km/s],
+and it is a deceptive problem with a larger minimum at 5.303 [km/s]</dd>
+</dl>
+<p>USAGE: problem.cassini_1(objectives = 1)</p>
+<ul class="simple">
+<li>objectives: number of objectives. 1=DV, 2=DV,DT</li>
+</ul>
+</dd></dl>
+
+</dd></dl>
+
+<hr class="docutils" />
+<dl class="class">
+<dt id="PyGMO.problem.cassini_2">
+<em class="property">class </em><tt class="descclassname">PyGMO.problem.</tt><tt class="descname">cassini_2</tt><a class="headerlink" href="#PyGMO.problem.cassini_2" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="PyGMO.problem.PyGMO.problem.cassini_2.cassini_2.__init__">
+<tt class="descclassname">cassini_2.</tt><tt class="descname">__init__</tt><big>(</big><big>)</big><a class="headerlink" href="#PyGMO.problem.PyGMO.problem.cassini_2.cassini_2.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructs a Cassini 2 Problem (Box-Constrained Continuous Single-Objective)</p>
+<dl class="docutils">
+<dt>NOTE: This problem (MGA-1DSM) belongs to the GTOP database [<a class="reference external" href="http://www.esa.int/gsp/ACT/inf/op/globopt.htm">http://www.esa.int/gsp/ACT/inf/op/globopt.htm</a>]</dt>
+<dd><p class="first">It models the same interplanetary trajectory as the cassini_1 problem, but
+in a more accurate fashion, allowing deep space manouvres</p>
+<p class="last">Best known global minimum is at 8.383 [km/s]</p>
+</dd>
+</dl>
+<p>USAGE: problem.cassini_2()</p>
+</dd></dl>
+
+</dd></dl>
+
+<hr class="docutils" />
+<dl class="class">
+<dt id="PyGMO.problem.messenger_full">
+<em class="property">class </em><tt class="descclassname">PyGMO.problem.</tt><tt class="descname">messenger_full</tt><a class="headerlink" href="#PyGMO.problem.messenger_full" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="PyGMO.problem.PyGMO.problem.messenger_full.messenger_full.__init__">
+<tt class="descclassname">messenger_full.</tt><tt class="descname">__init__</tt><big>(</big><big>)</big><a class="headerlink" href="#PyGMO.problem.PyGMO.problem.messenger_full.messenger_full.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructs a Mesenger Full Problem (Box-Constrained Continuous Single-Objective)</p>
+<p>NOTE: This problem (MGA-1DSM) belongs to the GTOP database [<a class="reference external" href="http://www.esa.int/gsp/ACT/inf/op/globopt.htm">http://www.esa.int/gsp/ACT/inf/op/globopt.htm</a>]</p>
+<blockquote>
+<div>Best known global minimum is at 2.113</div></blockquote>
+<p>USAGE: problem.messenger_full()</p>
+</dd></dl>
+
+</dd></dl>
+
+<hr class="docutils" />
+<dl class="class">
+<dt id="PyGMO.problem.rosetta">
+<em class="property">class </em><tt class="descclassname">PyGMO.problem.</tt><tt class="descname">rosetta</tt><a class="headerlink" href="#PyGMO.problem.rosetta" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="PyGMO.problem.PyGMO.problem.rosetta.rosetta.__init__">
+<tt class="descclassname">rosetta.</tt><tt class="descname">__init__</tt><big>(</big><big>)</big><a class="headerlink" href="#PyGMO.problem.PyGMO.problem.rosetta.rosetta.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructs a Rosetta Problem (Box-Constrained Continuous Single-Objective)</p>
+<p>NOTE: This problem (MGA-1DSM) belongs to the GTOP database [<a class="reference external" href="http://www.esa.int/gsp/ACT/inf/op/globopt.htm">http://www.esa.int/gsp/ACT/inf/op/globopt.htm</a>]</p>
+<blockquote>
+<div>Best known global minimum is at 1.343 [km/s]</div></blockquote>
+<p>USAGE: problem.rosetta()</p>
+</dd></dl>
+
+</dd></dl>
+
+<hr class="docutils" />
+<dl class="class">
+<dt id="PyGMO.problem.laplace">
+<em class="property">class </em><tt class="descclassname">PyGMO.problem.</tt><tt class="descname">laplace</tt><a class="headerlink" href="#PyGMO.problem.laplace" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="PyGMO.problem.PyGMO.problem.laplace.laplace.__init__">
+<tt class="descclassname">laplace.</tt><tt class="descname">__init__</tt><big>(</big><em>seq=[3, 2, 3, 3, 5]</em><big>)</big><a class="headerlink" href="#PyGMO.problem.PyGMO.problem.laplace.laplace.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructs a EJSM-Laplace Problem (Box-Constrained Continuous Single-Objective)</p>
+<dl class="docutils">
+<dt>NOTE: This problem (MGA-1DSM) is similar to TandEM, but targets Jupiter and the user</dt>
+<dd>can specify explicitly the planetary fly-by sequence</dd>
+</dl>
+<p>USAGE: problem.laplace(seq = [3,2,3,3,5])</p>
+<ul>
+<li><dl class="first docutils">
+<dt>seq: The planetary sequence. This is a list of ints that represent the planets to visit</dt>
+<dd><p class="first last">1 - Mercury, 2 - Venus, 3 - Earth, 4 - Mars, 5 - Jupiter, 6 - Saturn. It must start from 3 (Earth)
+and end with 5 (Jupiter)</p>
+</dd>
+</dl>
+</li>
+</ul>
+</dd></dl>
+
+</dd></dl>
+
+<hr class="docutils" />
+<dl class="class">
+<dt id="PyGMO.problem.tandem">
+<em class="property">class </em><tt class="descclassname">PyGMO.problem.</tt><tt class="descname">tandem</tt><a class="headerlink" href="#PyGMO.problem.tandem" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="PyGMO.problem.PyGMO.problem.tandem.tandem.__init__">
+<tt class="descclassname">tandem.</tt><tt class="descname">__init__</tt><big>(</big><em>prob_id=7</em>, <em>max_tof=-1</em><big>)</big><a class="headerlink" href="#PyGMO.problem.PyGMO.problem.tandem.tandem.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructs a TandEM Problem (Box-Constrained Continuous Single-Objective)</p>
+<p>NOTE: This problem (MGA-1DSM) belongs to the GTOP database [<a class="reference external" href="http://www.esa.int/gsp/ACT/inf/op/globopt.htm">http://www.esa.int/gsp/ACT/inf/op/globopt.htm</a>]. The objective function is -log(m_final).</p>
+<p>USAGE: problem.tandem(prob_id = 7, max_tof = -1)</p>
+<ul class="simple">
+<li>prob_id: Selects the problem variant (one of 1..25). All problems differ from the fly-by sequence</li>
+<li>max_tof = Activates a constriants on the maximum time of flight allowed (in years)</li>
+</ul>
+</dd></dl>
+
+</dd></dl>
+
+<hr class="docutils" />
+<dl class="class">
+<dt id="PyGMO.problem.gtoc_1">
+<em class="property">class </em><tt class="descclassname">PyGMO.problem.</tt><tt class="descname">gtoc_1</tt><a class="headerlink" href="#PyGMO.problem.gtoc_1" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="PyGMO.problem.PyGMO.problem.gtoc_1.gtoc_1.__init__">
+<tt class="descclassname">gtoc_1.</tt><tt class="descname">__init__</tt><big>(</big><big>)</big><a class="headerlink" href="#PyGMO.problem.PyGMO.problem.gtoc_1.gtoc_1.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructs a GTOC 1 Problem (Box-Constrained Continuous Single-Objective)</p>
+<p>NOTE: This problem (MGA) belongs to the GTOP database [<a class="reference external" href="http://www.esa.int/gsp/ACT/inf/op/globopt.htm">http://www.esa.int/gsp/ACT/inf/op/globopt.htm</a>]</p>
+<blockquote>
+<div>Best known global minima is at -1,581,950</div></blockquote>
+<p>USAGE: problem.gtoc_1()</p>
+</dd></dl>
+
+</dd></dl>
+
+<hr class="docutils" />
+<dl class="class">
+<dt id="PyGMO.problem.gtoc_2">
+<em class="property">class </em><tt class="descclassname">PyGMO.problem.</tt><tt class="descname">gtoc_2</tt><a class="headerlink" href="#PyGMO.problem.gtoc_2" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="PyGMO.problem.PyGMO.problem.gtoc_2.gtoc_2.__init__">
+<tt class="descclassname">gtoc_2.</tt><tt class="descname">__init__</tt><big>(</big><em>ast1=815</em>, <em>ast2=300</em>, <em>ast3=110</em>, <em>ast4=47</em>, <em>n_seg=10</em>, <em>objective=PyGMO.problem._problem_space._gtoc_2_objective.MASS_TIME</em><big>)</big><a class="headerlink" href="#PyGMO.problem.PyGMO.problem.gtoc_2.gtoc_2.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructs a GTOC 2 Problem (Constrained Continuous Single-Objective)</p>
+<dl class="docutils">
+<dt>NOTE: This problem is a quite faithful transcription of the problem used during the GTOC2 competition</dt>
+<dd><dl class="first last docutils">
+<dt>It Transcribe the whole OCP resulting from the low-thrust dynamics into an NLP. As such it is very</dt>
+<dd>difficult to find feasible solutions. Note that by default the asteroid sequence is the winning one
+from Turin University.</dd>
+</dl>
+</dd>
+</dl>
+<p>USAGE: problem.gtoc_2(ast1 = 815, ast2 = 300, ast3 = 110, ast4 = 47, n_seg = 10, objective = gtoc_2.obj.MASS_TIME)</p>
+<ul class="simple">
+<li>ast1 id of the first asteroid to visit (Group 1:   0 - 95)</li>
+<li>ast2 id of the second asteroid to visit (Group 2:  96 - 271)</li>
+<li>ast3 id of the third asteroid to visit (Group 3: 272 - 571)</li>
+<li>ast4 id of the fourth asteroid to visit (Group 4: 572 - 909)</li>
+<li>n_seg number of segments to be used per leg</li>
+<li>obj objective function in the enum {MASS,TIME,MASS_TIME}</li>
+</ul>
+</dd></dl>
+
+</dd></dl>
+
+<hr class="docutils" />
+<dl class="class">
+<dt id="PyGMO.problem.py_pl2pl">
+<em class="property">class </em><tt class="descclassname">PyGMO.problem.</tt><tt class="descname">py_pl2pl</tt><a class="headerlink" href="#PyGMO.problem.py_pl2pl" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="PyGMO.problem.PyGMO.problem.py_pl2pl.py_pl2pl.__init__">
+<tt class="descclassname">py_pl2pl.</tt><tt class="descname">__init__</tt><big>(</big><em>mass=1000</em>, <em>Tmax=0.05</em>, <em>Isp=2500</em>, <em>Vinf_0=3</em>, <em>Vinf_f=1e-12</em>, <em>nseg=10</em>, <em>departure=None</em>, <em>target=None</em>, <em>optimise4mass=False</em><big>)</big><a class="headerlink" href="#PyGMO.problem.PyGMO.problem.py_pl2pl.py_pl2pl.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructs a low-thrust transfer between a departure planet and a target planet (Constrained Continuous Single-Objective)</p>
+<p>NOTE: An impulsive transcription is used to transform into an NLP the Optimal Control Problem</p>
+<p>USAGE: problem.py_pl2pl(self,mass=1000,Tmax=0.05,Isp=2500,Vinf_0=3,Vinf_f=0,nseg=10,departure = PyKEP.planet_ss(&#8216;earth&#8217;), target = PyKEP.planet_ss(&#8216;mars&#8217;))</p>
+<ul>
+<li><p class="first">mass: spacecraft mass at departure [kg]</p>
+</li>
+<li><p class="first">Tmax: maximum allowed thrust [N]</p>
+</li>
+<li><p class="first">Isp: spacecarft engine specific impulse [Isp]</p>
+</li>
+<li><p class="first">Vinf_0: allowed maximum starting velocity [km/s]</p>
+</li>
+<li><dl class="first docutils">
+<dt>Vinf_f: allowed maximum arrival velocity [km/s]</dt>
+<dd><p class="first last">(if negative it is interpreted as a minimum arrival velocity)</p>
+</dd>
+</dl>
+</li>
+<li><p class="first">nseg: number of segments used for the impulsive transcription</p>
+</li>
+<li><p class="first">departure: departure planet (a PyKEP planet)</p>
+</li>
+<li><p class="first">target: arrival planet (a PyKEP planet)</p>
+</li>
+</ul>
+</dd></dl>
+
+</dd></dl>
+
+<hr class="docutils" />
+<dl class="class">
+<dt id="PyGMO.problem.sagas">
+<em class="property">class </em><tt class="descclassname">PyGMO.problem.</tt><tt class="descname">sagas</tt><a class="headerlink" href="#PyGMO.problem.sagas" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="PyGMO.problem.PyGMO.problem.sagas.sagas.__init__">
+<tt class="descclassname">sagas.</tt><tt class="descname">__init__</tt><big>(</big><big>)</big><a class="headerlink" href="#PyGMO.problem.PyGMO.problem.sagas.sagas.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructs a SAGAS Problem (Box-Constrained Continuous Single-Objective)</p>
+<p>NOTE: This problem (MGA-1DSM) belongs to the GTOP database [<a class="reference external" href="http://www.esa.int/gsp/ACT/inf/op/globopt.htm">http://www.esa.int/gsp/ACT/inf/op/globopt.htm</a>]</p>
+<p>USAGE: problem.sagas()</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+</div>
+
+
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="hypervolume.html" class="btn btn-neutral float-right" title="Hypervolume"/>Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="algorithms.html" class="btn btn-neutral" title="Algorithms"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2015, Dario Izzo and Francesco Biscani.
+    </p>
+  </div>
+
+  <a href="https://github.com/snide/sphinx_rtd_theme">Sphinx theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+</body>
+</html>

@@ -1,0 +1,2120 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Algorithms &mdash; PyGMO 1.1.7dev documentation</title>
+  
+
+  
+  
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  
+  
+
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:'../',
+        VERSION:'1.1.7dev',
+        COLLAPSE_INDEX:false,
+        FILE_SUFFIX:'.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+    <script type="text/javascript">
+        jQuery(function () {
+            SphinxRtdTheme.StickyNav.enable();
+        });
+    </script>
+  
+
+  
+    <link rel="top" title="PyGMO 1.1.7dev documentation" href="../index.html"/>
+        <link rel="up" title="User Documentation" href="index.html"/>
+        <link rel="next" title="Problems" href="problems.html"/>
+        <link rel="prev" title="Island and Archipelago" href="island.html"/> 
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        <a href="../index.html" class="fa fa-home"> PyGMO</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        
+        
+            <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../install.html">Install PyGMO</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../install.html#preparing-your-system-to-compile-pygmo">Preparing your system to compile PyGMO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../install.html#download-pygmo-code">Download PyGMO code</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../install.html#compiling-and-installing-under-unix">Compiling and Installing under Unix</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../install.html#compiling-and-installing-under-windows">Compiling and Installing under Windows</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../quickstart.html">Quick Start</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../quickstart.html#on-one-cpu">On one CPU</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../quickstart.html#on-many-cpus">On many CPUs ...</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../quickstart.html#and-migrating-solutions">... and migrating solutions ...</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../quickstart.html#and-between-different-algorithms">... and between different algorithms ...</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/index.html">Tutorials</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/adding_problems_and_algorithms_to_PyGMO.html">Adding new problems and algorithms to PyGMO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/meta_problems_meta_algorithms.html">Meta-problems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/multi_objective_optimization_with_PyGMO.html">Multi Objective Optimization with PyGMO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/hypervolumes_in_PyGMO.html">Hypervolumes with PyGMO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/dealing_with_constraints_in_PyGMO.html">Dealing with constraints in PyGMO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/racing.html">Racing in PyGMO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/tsp.html">Traveling Salesman Problems with PyGMO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/landscape_analysis_with_DrPyGMO.html">Landscape Analysis using Dr. PyGMO</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/index.html">Examples</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../examples/example1.html">A study on Mixing Variants of Differential Evolution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples/example2.html">Monitoring the Information Flow in a large archipelago</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples/example3.html">Testing Algorithms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples/example4.html">Multi-objective optimization in the asynchronous island model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples/example5.html">Designing and optimizing interplanetary trajectories</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples/example6.html">Participating to the CEC2013 Competition (v 1.1.5)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples/example7.html">Travelling Salesman Problem for Active Space Debris Removal</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples/local_optimization.html">Third-party Non-linear optimizers in PyGMO</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">User Documentation</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="individual.html">Individual and Champion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="population.html">Population</a></li>
+<li class="toctree-l2"><a class="reference internal" href="migration.html">Migration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="topology.html">Topology</a></li>
+<li class="toctree-l2"><a class="reference internal" href="island.html">Island and Archipelago</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="">Algorithms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="problems.html">Problems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hypervolume.html">Hypervolume</a></li>
+<li class="toctree-l2"><a class="reference internal" href="racing.html">Racing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="analysis.html">Dr. PyGMO - Analysis Module</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference external" href="http://esa.github.io/pagmo/">PaGMO API</a></li>
+</ul>
+
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../index.html">PyGMO</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="index.html">User Documentation</a> &raquo;</li>
+      
+    <li>Algorithms</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          <a href="../_sources/documentation/algorithms.txt" rel="nofollow"> View page source</a>
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            
+  <div class="section" id="algorithms">
+<span id="id1"></span><h1>Algorithms<a class="headerlink" href="#algorithms" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="a-quick-look">
+<h2>A Quick Look<a class="headerlink" href="#a-quick-look" title="Permalink to this headline">¶</a></h2>
+<p>Algorithms in PyGMO are objects, constructed and then used to optimize a problem via their evolve method.
+The user can implement his own algorithm in Python (in which case they need to derive from
+<a class="reference internal" href="#PyGMO.algorithm.base" title="PyGMO.algorithm.base"><tt class="xref py py-class docutils literal"><span class="pre">PyGMO.algorithm.base</span></tt></a>). You may follow the <a class="reference internal" href="../tutorials/adding_a_new_algorithm.html#adding-a-new-algorithm"><em>Adding a new algorithm</em></a> tutorial.
+We also provide a number of algorithms that are considered useful for general purposes.
+Each algorithm can be associated only to problems of certain types:
+(Continuous, Integer or Mixed Integer)-(Constrained, Unconstrained)-(Single, Multi-objective).</p>
+<div class="section" id="heuristic-optimization">
+<h3>Heuristic Optimization<a class="headerlink" href="#heuristic-optimization" title="Permalink to this headline">¶</a></h3>
+<table border="1" class="docutils">
+<colgroup>
+<col width="25%" />
+<col width="25%" />
+<col width="9%" />
+<col width="41%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Common Name</th>
+<th class="head">Name in PyGMO</th>
+<th class="head">Type</th>
+<th class="head">Comments</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Differential Evolution (DE)</td>
+<td><a class="reference internal" href="#PyGMO.algorithm.de" title="PyGMO.algorithm.de"><tt class="xref py py-class docutils literal"><span class="pre">PyGMO.algorithm.de</span></tt></a></td>
+<td>C-U-S</td>
+<td>The original algorithm</td>
+</tr>
+<tr class="row-odd"><td>Self-adaptive DE (jDE)</td>
+<td><a class="reference internal" href="#PyGMO.algorithm.jde" title="PyGMO.algorithm.jde"><tt class="xref py py-class docutils literal"><span class="pre">PyGMO.algorithm.jde</span></tt></a></td>
+<td>C-U-S</td>
+<td>Self-adaptive F, CR</td>
+</tr>
+<tr class="row-even"><td>DE with p-best crossover (mde_pbx)</td>
+<td><a class="reference internal" href="#PyGMO.algorithm.mde_pbx" title="PyGMO.algorithm.mde_pbx"><tt class="xref py py-class docutils literal"><span class="pre">PyGMO.algorithm.mde_pbx</span></tt></a></td>
+<td>C-U-S</td>
+<td>Self-adaptive F, CR</td>
+</tr>
+<tr class="row-odd"><td>Differential Evolution (DE)</td>
+<td><a class="reference internal" href="#PyGMO.algorithm.de_1220" title="PyGMO.algorithm.de_1220"><tt class="xref py py-class docutils literal"><span class="pre">PyGMO.algorithm.de_1220</span></tt></a></td>
+<td>C-U-S</td>
+<td>Our own brew. self adaptive F, CR and variants</td>
+</tr>
+<tr class="row-even"><td>Particle Swarm Optimization (PSO)</td>
+<td><a class="reference internal" href="#PyGMO.algorithm.pso" title="PyGMO.algorithm.pso"><tt class="xref py py-class docutils literal"><span class="pre">PyGMO.algorithm.pso</span></tt></a></td>
+<td>C-U-S</td>
+<td>The PSO algorithm (canonical, with constriction factor, FIPS, etc.)</td>
+</tr>
+<tr class="row-odd"><td>Particle Swarm Optimization (PSO)</td>
+<td><a class="reference internal" href="#PyGMO.algorithm.pso_gen" title="PyGMO.algorithm.pso_gen"><tt class="xref py py-class docutils literal"><span class="pre">PyGMO.algorithm.pso_gen</span></tt></a></td>
+<td>C-U-S</td>
+<td>Generational (also problems deriving from base_stochastic)</td>
+</tr>
+<tr class="row-even"><td>Simple Genetic Algorithm GRAY (SGA_GRAY)</td>
+<td><a class="reference internal" href="#PyGMO.algorithm.sga_gray" title="PyGMO.algorithm.sga_gray"><tt class="xref py py-class docutils literal"><span class="pre">PyGMO.algorithm.sga_gray</span></tt></a></td>
+<td>C-U-S</td>
+<td>Simple genetic algorithm with gray binary encoding</td>
+</tr>
+<tr class="row-odd"><td>Simple Genetic Algorithm (SGA)</td>
+<td><a class="reference internal" href="#PyGMO.algorithm.sga" title="PyGMO.algorithm.sga"><tt class="xref py py-class docutils literal"><span class="pre">PyGMO.algorithm.sga</span></tt></a></td>
+<td>MI-U-S</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td>Vector Evaluated Genetic Algorithm (VEGA)</td>
+<td><a class="reference internal" href="#PyGMO.algorithm.vega" title="PyGMO.algorithm.vega"><tt class="xref py py-class docutils literal"><span class="pre">PyGMO.algorithm.vega</span></tt></a></td>
+<td>MI-U-M</td>
+<td>VEGA algorithm, multi-objective extension of SGA</td>
+</tr>
+<tr class="row-odd"><td>(N+1)-EA Evol. Algorithm (SEA)</td>
+<td><a class="reference internal" href="#PyGMO.algorithm.sea" title="PyGMO.algorithm.sea"><tt class="xref py py-class docutils literal"><span class="pre">PyGMO.algorithm.sea</span></tt></a></td>
+<td>I-U-M</td>
+<td>The multiobjective extension uses crowding distance operator</td>
+</tr>
+<tr class="row-even"><td>Non-dominated Sorting GA (NSGA2)</td>
+<td><a class="reference internal" href="#PyGMO.algorithm.nsga_II" title="PyGMO.algorithm.nsga_II"><tt class="xref py py-class docutils literal"><span class="pre">PyGMO.algorithm.nsga_II</span></tt></a></td>
+<td>C-U-M</td>
+<td>NSGA-II</td>
+</tr>
+<tr class="row-odd"><td>S-Metric Selection EMOA (SMS-EMOA)</td>
+<td><a class="reference internal" href="#PyGMO.algorithm.sms_emoa" title="PyGMO.algorithm.sms_emoa"><tt class="xref py py-class docutils literal"><span class="pre">PyGMO.algorithm.sms_emoa</span></tt></a></td>
+<td>C-U-M</td>
+<td>Relies on the hypervolume computation.</td>
+</tr>
+<tr class="row-even"><td>Corana&#8217;s Simulated Annealing (SA)</td>
+<td><a class="reference internal" href="#PyGMO.algorithm.sa_corana" title="PyGMO.algorithm.sa_corana"><tt class="xref py py-class docutils literal"><span class="pre">PyGMO.algorithm.sa_corana</span></tt></a></td>
+<td>C-U-S</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>Parallel Decomposition (PADE)</td>
+<td><a class="reference internal" href="#PyGMO.algorithm.pade" title="PyGMO.algorithm.pade"><tt class="xref py py-class docutils literal"><span class="pre">PyGMO.algorithm.pade</span></tt></a></td>
+<td>C-U-M</td>
+<td>Parallel Decomposition (based on the MOEA/D framework)</td>
+</tr>
+<tr class="row-even"><td>Non-dominated Sorting PSO (NSPSO)</td>
+<td><a class="reference internal" href="#PyGMO.algorithm.nspso" title="PyGMO.algorithm.nspso"><tt class="xref py py-class docutils literal"><span class="pre">PyGMO.algorithm.nspso</span></tt></a></td>
+<td>C-U-M</td>
+<td>Multi-Objective PSO</td>
+</tr>
+<tr class="row-odd"><td>Strength Pareto EA 2 (SPEA2)</td>
+<td><a class="reference internal" href="#PyGMO.algorithm.spea2" title="PyGMO.algorithm.spea2"><tt class="xref py py-class docutils literal"><span class="pre">PyGMO.algorithm.spea2</span></tt></a></td>
+<td>C-U-M</td>
+<td>Strength Pareto Evolutionary Algorithm 2</td>
+</tr>
+<tr class="row-even"><td>Artificial Bee Colony (ABC)</td>
+<td><a class="reference internal" href="#PyGMO.algorithm.bee_colony" title="PyGMO.algorithm.bee_colony"><tt class="xref py py-class docutils literal"><span class="pre">PyGMO.algorithm.bee_colony</span></tt></a></td>
+<td>C-U-S</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>Improved Harmony Search (IHS)</td>
+<td><a class="reference internal" href="#PyGMO.algorithm.ihs" title="PyGMO.algorithm.ihs"><tt class="xref py py-class docutils literal"><span class="pre">PyGMO.algorithm.ihs</span></tt></a></td>
+<td>MI-U-M</td>
+<td>Integer and Multiobjetive not tested yet</td>
+</tr>
+<tr class="row-even"><td>Monte Carlo Search (MC)</td>
+<td><a class="reference internal" href="#PyGMO.algorithm.monte_carlo" title="PyGMO.algorithm.monte_carlo"><tt class="xref py py-class docutils literal"><span class="pre">PyGMO.algorithm.monte_carlo</span></tt></a></td>
+<td>MI-C-S</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>Monte Carlo Search (MC)</td>
+<td><a class="reference internal" href="#PyGMO.algorithm.py_example" title="PyGMO.algorithm.py_example"><tt class="xref py py-class docutils literal"><span class="pre">PyGMO.algorithm.py_example</span></tt></a></td>
+<td>MI-C-S</td>
+<td>Written directly in Python</td>
+</tr>
+<tr class="row-even"><td>Covariance Matrix Adaptation-ES</td>
+<td><a class="reference internal" href="#PyGMO.algorithm.py_cmaes" title="PyGMO.algorithm.py_cmaes"><tt class="xref py py-class docutils literal"><span class="pre">PyGMO.algorithm.py_cmaes</span></tt></a></td>
+<td>C-U-S</td>
+<td>Written directly in Python</td>
+</tr>
+<tr class="row-odd"><td>Covariance Matrix Adaptation-ES</td>
+<td><a class="reference internal" href="#PyGMO.algorithm.cmaes" title="PyGMO.algorithm.cmaes"><tt class="xref py py-class docutils literal"><span class="pre">PyGMO.algorithm.cmaes</span></tt></a></td>
+<td>C-U-S</td>
+<td>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="meta-algorithms">
+<h3>Meta-algorithms<a class="headerlink" href="#meta-algorithms" title="Permalink to this headline">¶</a></h3>
+<table border="1" class="docutils">
+<colgroup>
+<col width="21%" />
+<col width="27%" />
+<col width="9%" />
+<col width="43%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Common Name</th>
+<th class="head">Name in PyGMO</th>
+<th class="head">Type</th>
+<th class="head">Comments</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Monotonic Basin Hopping (MBH)</td>
+<td><a class="reference internal" href="#PyGMO.algorithm.mbh" title="PyGMO.algorithm.mbh"><tt class="xref py py-class docutils literal"><span class="pre">PyGMO.algorithm.mbh</span></tt></a></td>
+<td>N/A</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>Multistart (MS)</td>
+<td><a class="reference internal" href="#PyGMO.algorithm.ms" title="PyGMO.algorithm.ms"><tt class="xref py py-class docutils literal"><span class="pre">PyGMO.algorithm.ms</span></tt></a></td>
+<td>N/A</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td>Augmented Lagrangian (AL)</td>
+<td><a class="reference internal" href="#PyGMO.algorithm.nlopt_auglag" title="PyGMO.algorithm.nlopt_auglag"><tt class="xref py py-class docutils literal"><span class="pre">PyGMO.algorithm.nlopt_auglag</span></tt></a></td>
+<td>C-C-S</td>
+<td>Requires PyGMO to be compiled with nlopt option. Minimization assumed</td>
+</tr>
+<tr class="row-odd"><td>Augmented Lagrangian (AL)</td>
+<td><a class="reference internal" href="#PyGMO.algorithm.nlopt_auglag_eq" title="PyGMO.algorithm.nlopt_auglag_eq"><tt class="xref py py-class docutils literal"><span class="pre">PyGMO.algorithm.nlopt_auglag_eq</span></tt></a></td>
+<td>C-C-S</td>
+<td>Requires PyGMO to be compiled with nlopt option. Minimization assumed</td>
+</tr>
+<tr class="row-even"><td>Cstrs co-evolution</td>
+<td><a class="reference internal" href="#PyGMO.algorithm.cstrs_co_evolution" title="PyGMO.algorithm.cstrs_co_evolution"><tt class="xref py py-class docutils literal"><span class="pre">PyGMO.algorithm.cstrs_co_evolution</span></tt></a></td>
+<td>C-C-S</td>
+<td>Minimization assumed</td>
+</tr>
+<tr class="row-odd"><td>Cstrs Self-Adaptive</td>
+<td><a class="reference internal" href="#PyGMO.algorithm.cstrs_self_adaptive" title="PyGMO.algorithm.cstrs_self_adaptive"><tt class="xref py py-class docutils literal"><span class="pre">PyGMO.algorithm.cstrs_self_adaptive</span></tt></a></td>
+<td>C-C-S</td>
+<td>Minimization assumed</td>
+</tr>
+<tr class="row-even"><td>Cstrs Immune System</td>
+<td><a class="reference internal" href="#PyGMO.algorithm.cstrs_immune_system" title="PyGMO.algorithm.cstrs_immune_system"><tt class="xref py py-class docutils literal"><span class="pre">PyGMO.algorithm.cstrs_immune_system</span></tt></a></td>
+<td>C-C-S</td>
+<td>Immune system constraints handling technique</td>
+</tr>
+<tr class="row-odd"><td>Cstrs CORE</td>
+<td><a class="reference internal" href="#PyGMO.algorithm.cstrs_core" title="PyGMO.algorithm.cstrs_core"><tt class="xref py py-class docutils literal"><span class="pre">PyGMO.algorithm.cstrs_core</span></tt></a></td>
+<td>C-C-S</td>
+<td>CORE constraints handling technique (repairing technique)</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="local-optimization">
+<h3>Local optimization<a class="headerlink" href="#local-optimization" title="Permalink to this headline">¶</a></h3>
+<table border="1" class="docutils">
+<colgroup>
+<col width="21%" />
+<col width="26%" />
+<col width="9%" />
+<col width="43%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Common Name</th>
+<th class="head">Name in PyGMO</th>
+<th class="head">Type</th>
+<th class="head">Comments</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Compass Search (CS)</td>
+<td><a class="reference internal" href="#PyGMO.algorithm.cs" title="PyGMO.algorithm.cs"><tt class="xref py py-class docutils literal"><span class="pre">PyGMO.algorithm.cs</span></tt></a></td>
+<td>C-U-S</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>Nelder-Mead simplex</td>
+<td><a class="reference internal" href="#PyGMO.algorithm.scipy_fmin" title="PyGMO.algorithm.scipy_fmin"><tt class="xref py py-class docutils literal"><span class="pre">PyGMO.algorithm.scipy_fmin</span></tt></a></td>
+<td>C-U-S</td>
+<td>SciPy required. Minimization assumed</td>
+</tr>
+<tr class="row-even"><td>Nelder-Mead simplex</td>
+<td><a class="reference internal" href="#PyGMO.algorithm.gsl_nm" title="PyGMO.algorithm.gsl_nm"><tt class="xref py py-class docutils literal"><span class="pre">PyGMO.algorithm.gsl_nm</span></tt></a></td>
+<td>C-U-S</td>
+<td>Requires PyGMO to be compiled with GSL option. Minimization assumed</td>
+</tr>
+<tr class="row-odd"><td>Nelder-Mead simplex variant 2</td>
+<td><a class="reference internal" href="#PyGMO.algorithm.gsl_nm2" title="PyGMO.algorithm.gsl_nm2"><tt class="xref py py-class docutils literal"><span class="pre">PyGMO.algorithm.gsl_nm2</span></tt></a></td>
+<td>C-U-S</td>
+<td>Requires PyGMO to be compiled with GSL option. Minimization assumed</td>
+</tr>
+<tr class="row-even"><td>Nelder-Mead simplex variant 2r</td>
+<td><a class="reference internal" href="#PyGMO.algorithm.gsl_nm2rand" title="PyGMO.algorithm.gsl_nm2rand"><tt class="xref py py-class docutils literal"><span class="pre">PyGMO.algorithm.gsl_nm2rand</span></tt></a></td>
+<td>C-U-S</td>
+<td>Requires PyGMO to be compiled with GSL option. Minimization assumed</td>
+</tr>
+<tr class="row-odd"><td>Subplex (a Nelder-Mead variant)</td>
+<td><a class="reference internal" href="#PyGMO.algorithm.nlopt_sbplx" title="PyGMO.algorithm.nlopt_sbplx"><tt class="xref py py-class docutils literal"><span class="pre">PyGMO.algorithm.nlopt_sbplx</span></tt></a></td>
+<td>C-C-S</td>
+<td>Requires PyGMO to be compiled with nlopt option. Minimization assumed</td>
+</tr>
+<tr class="row-even"><td>L-BFGS-B</td>
+<td><a class="reference internal" href="#PyGMO.algorithm.scipy_l_bfgs_b" title="PyGMO.algorithm.scipy_l_bfgs_b"><tt class="xref py py-class docutils literal"><span class="pre">PyGMO.algorithm.scipy_l_bfgs_b</span></tt></a></td>
+<td>C-U-S</td>
+<td>SciPy required. Minimization assumed</td>
+</tr>
+<tr class="row-odd"><td>BFGS</td>
+<td><a class="reference internal" href="#PyGMO.algorithm.gsl_bfgs2" title="PyGMO.algorithm.gsl_bfgs2"><tt class="xref py py-class docutils literal"><span class="pre">PyGMO.algorithm.gsl_bfgs2</span></tt></a></td>
+<td>C-U-S</td>
+<td>Requires PyGMO to be compiled with GSL option. Minimization assumed</td>
+</tr>
+<tr class="row-even"><td>BFGS 2</td>
+<td><a class="reference internal" href="#PyGMO.algorithm.gsl_bfgs" title="PyGMO.algorithm.gsl_bfgs"><tt class="xref py py-class docutils literal"><span class="pre">PyGMO.algorithm.gsl_bfgs</span></tt></a></td>
+<td>C-U-S</td>
+<td>Requires PyGMO to be compiled with GSL option. Minimization assumed</td>
+</tr>
+<tr class="row-odd"><td>Sequential Least SQuares Prog.</td>
+<td><a class="reference internal" href="#PyGMO.algorithm.scipy_slsqp" title="PyGMO.algorithm.scipy_slsqp"><tt class="xref py py-class docutils literal"><span class="pre">PyGMO.algorithm.scipy_slsqp</span></tt></a></td>
+<td>C-C-S</td>
+<td>SciPy required. Minimization assumed</td>
+</tr>
+<tr class="row-even"><td>Sequential Least SQuares Prog.</td>
+<td><a class="reference internal" href="#PyGMO.algorithm.nlopt_slsqp" title="PyGMO.algorithm.nlopt_slsqp"><tt class="xref py py-class docutils literal"><span class="pre">PyGMO.algorithm.nlopt_slsqp</span></tt></a></td>
+<td>C-C-S</td>
+<td>Requires PyGMO to be compiled with nlopt option. Minimization assumed</td>
+</tr>
+<tr class="row-odd"><td>Truncated Newton Method</td>
+<td><a class="reference internal" href="#PyGMO.algorithm.scipy_tnc" title="PyGMO.algorithm.scipy_tnc"><tt class="xref py py-class docutils literal"><span class="pre">PyGMO.algorithm.scipy_tnc</span></tt></a></td>
+<td>C-U-S</td>
+<td>SciPy required. Minimization assumed</td>
+</tr>
+<tr class="row-even"><td>Conjugate Gradient (fr)</td>
+<td><a class="reference internal" href="#PyGMO.algorithm.gsl_fr" title="PyGMO.algorithm.gsl_fr"><tt class="xref py py-class docutils literal"><span class="pre">PyGMO.algorithm.gsl_fr</span></tt></a></td>
+<td>C-U-S</td>
+<td>Requires PyGMO to be compiled with GSL option. Minimization assumed</td>
+</tr>
+<tr class="row-odd"><td>Conjugate Gradient (pr)</td>
+<td><a class="reference internal" href="#PyGMO.algorithm.gsl_pr" title="PyGMO.algorithm.gsl_pr"><tt class="xref py py-class docutils literal"><span class="pre">PyGMO.algorithm.gsl_pr</span></tt></a></td>
+<td>C-U-S</td>
+<td>Requires PyGMO to be compiled with GSL option. Minimization assumed</td>
+</tr>
+<tr class="row-even"><td>COBYLA</td>
+<td><a class="reference internal" href="#PyGMO.algorithm.scipy_cobyla" title="PyGMO.algorithm.scipy_cobyla"><tt class="xref py py-class docutils literal"><span class="pre">PyGMO.algorithm.scipy_cobyla</span></tt></a></td>
+<td>C-C-S</td>
+<td>SciPy required. Minimization assumed</td>
+</tr>
+<tr class="row-odd"><td>COBYLA</td>
+<td><a class="reference internal" href="#PyGMO.algorithm.nlopt_cobyla" title="PyGMO.algorithm.nlopt_cobyla"><tt class="xref py py-class docutils literal"><span class="pre">PyGMO.algorithm.nlopt_cobyla</span></tt></a></td>
+<td>C-C-S</td>
+<td>Requires PyGMO to be compiled with nlopt option. Minimization assumed</td>
+</tr>
+<tr class="row-even"><td>BOBYQA</td>
+<td><a class="reference internal" href="#PyGMO.algorithm.nlopt_bobyqa" title="PyGMO.algorithm.nlopt_bobyqa"><tt class="xref py py-class docutils literal"><span class="pre">PyGMO.algorithm.nlopt_bobyqa</span></tt></a></td>
+<td>C-C-S</td>
+<td>Requires PyGMO to be compiled with nlopt option. Minimization assumed</td>
+</tr>
+<tr class="row-odd"><td>Method of Moving Asymptotes</td>
+<td><a class="reference internal" href="#PyGMO.algorithm.nlopt_mma" title="PyGMO.algorithm.nlopt_mma"><tt class="xref py py-class docutils literal"><span class="pre">PyGMO.algorithm.nlopt_mma</span></tt></a></td>
+<td>C-C-S</td>
+<td>Requires PyGMO to be compiled with nlopt option. Minimization assumed</td>
+</tr>
+<tr class="row-even"><td>SNOPT</td>
+<td><a class="reference internal" href="#PyGMO.algorithm.snopt" title="PyGMO.algorithm.snopt"><tt class="xref py py-class docutils literal"><span class="pre">PyGMO.algorithm.snopt</span></tt></a></td>
+<td>C-C-S</td>
+<td>Requires PyGMO to be compiled with snopt option. Minimization assumed</td>
+</tr>
+<tr class="row-odd"><td>IPOPT</td>
+<td><a class="reference internal" href="#PyGMO.algorithm.ipopt" title="PyGMO.algorithm.ipopt"><tt class="xref py py-class docutils literal"><span class="pre">PyGMO.algorithm.ipopt</span></tt></a></td>
+<td>C-C-S</td>
+<td>Requires PyGMO to be compiled with ipopt option. Minimization assumed</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="detailed-documentation">
+<h2>Detailed Documentation<a class="headerlink" href="#detailed-documentation" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="PyGMO.algorithm.base">
+<em class="property">class </em><tt class="descclassname">PyGMO.algorithm.</tt><tt class="descname">base</tt><a class="headerlink" href="#PyGMO.algorithm.base" title="Permalink to this definition">¶</a></dt>
+<dd><p>All PyGMO algorithms derive from this class</p>
+<dl class="method">
+<dt id="PyGMO.algorithm.PyGMO.algorithm.base.base.evolve">
+<tt class="descclassname">base.</tt><tt class="descname">evolve</tt><big>(</big><em>(_base)arg1</em>, <em>(population)arg2</em><big>)</big> &rarr; population :<a class="headerlink" href="#PyGMO.algorithm.PyGMO.algorithm.base.base.evolve" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the evolved population</p>
+</dd></dl>
+
+</dd></dl>
+
+<hr class="docutils" />
+<dl class="class">
+<dt id="PyGMO.algorithm.de">
+<em class="property">class </em><tt class="descclassname">PyGMO.algorithm.</tt><tt class="descname">de</tt><a class="headerlink" href="#PyGMO.algorithm.de" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="PyGMO.algorithm.PyGMO.algorithm.de.de.__init__">
+<tt class="descclassname">de.</tt><tt class="descname">__init__</tt><big>(</big><em>gen=100</em>, <em>f=0.8</em>, <em>cr=0.9</em>, <em>variant=2</em>, <em>ftol=1e-06</em>, <em>xtol=1e-06</em>, <em>screen_output=False</em><big>)</big><a class="headerlink" href="#PyGMO.algorithm.PyGMO.algorithm.de.de.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructs a Differential Evolution algorithm:</p>
+<p>USAGE: algorithm.de(gen=1, f=0.5, cr=0.9, variant=2, ftol=1e-6, xtol=1e-6, screen_output = False)</p>
+<ul>
+<li><p class="first">gen: number of generations</p>
+</li>
+<li><p class="first">f: weighting factor in [0,1] (if -1 self-adptation is used)</p>
+</li>
+<li><p class="first">cr: crossover in [0,1] (if -1 self-adptation is used)</p>
+</li>
+<li><dl class="first docutils">
+<dt>variant: algoritmic variant to use (one of [1 .. 10])</dt>
+<dd><ol class="first last arabic simple">
+<li>DE/best/1/exp</li>
+<li>DE/rand/1/exp</li>
+<li>DE/rand-to-best/1/exp</li>
+<li>DE/best/2/exp</li>
+<li>DE/rand/2/exp</li>
+<li>DE/best/1/bin</li>
+<li>DE/rand/1/bin</li>
+<li>DE/rand-to-best/1/bin</li>
+<li>DE/best/2/bin</li>
+<li>DE/rand/2/bin</li>
+</ol>
+</dd>
+</dl>
+</li>
+<li><p class="first">ftol stop criteria on f</p>
+</li>
+<li><p class="first">xtol stop criteria on x</p>
+</li>
+</ul>
+</dd></dl>
+
+</dd></dl>
+
+<hr class="docutils" />
+<dl class="class">
+<dt id="PyGMO.algorithm.jde">
+<em class="property">class </em><tt class="descclassname">PyGMO.algorithm.</tt><tt class="descname">jde</tt><a class="headerlink" href="#PyGMO.algorithm.jde" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="PyGMO.algorithm.PyGMO.algorithm.jde.jde.__init__">
+<tt class="descclassname">jde.</tt><tt class="descname">__init__</tt><big>(</big><em>gen=100</em>, <em>variant=2</em>, <em>variant_adptv=1</em>, <em>ftol=1e-06</em>, <em>xtol=1e-06</em>, <em>memory=False</em>, <em>screen_output=False</em><big>)</big><a class="headerlink" href="#PyGMO.algorithm.PyGMO.algorithm.jde.jde.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructs a jDE algorithm (self-adaptive DE)</p>
+<p>REF: &#8220;Self-adaptive differential evolution algorithm in constrained real-parameter optimization&#8221;
+J Brest, V Zumer, MS Maucec - Evolutionary Computation, 2006.
+<a class="reference external" href="http://dsp.szu.edu.cn/DSP2006/research/publication/yan/WebEdit/UploadFile/Self-adaptive%20Differential%20Evolution%20Algorithm%20for%20Constrained%20Real-Parameter%20Optimization.pdf">http://dsp.szu.edu.cn/DSP2006/research/publication/yan/WebEdit/UploadFile/Self-adaptive%20Differential%20Evolution%20Algorithm%20for%20Constrained%20Real-Parameter%20Optimization.pdf</a></p>
+<p>USAGE: algorithm.jde(gen=100, variant=2, variant_adptv=1, ftol=1e-6, xtol=1e-6, memory = False, screen_output = False)</p>
+<ul>
+<li><p class="first">gen: number of generations</p>
+</li>
+<li><dl class="first docutils">
+<dt>variant: algoritmic variant to use (one of [1 .. 18])</dt>
+<dd><p class="first last">1. best/1/exp                               2. rand/1/exp
+3. rand-to-best/1/exp               4. best/2/exp
+5. rand/2/exp                               6. best/1/bin
+7. rand/1/bin                               8. rand-to-best/1/bin
+9. best/2/bin                               10. rand/2/bin
+11. best/3/exp                              12. best/3/bin
+13. rand/3/exp                              14. rand/3/bin
+15. rand-to-current/2/exp           16. rand-to-current/2/bin
+17. rand-to-best-and-current/2/exp  18. rand-to-best-and-current/2/bin</p>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>variant_adptv: adaptive scheme to use (one of [1..2])</dt>
+<dd><ol class="first last arabic simple">
+<li>random param mutation            2. param mutation follows rand/3 scheme</li>
+</ol>
+</dd>
+</dl>
+</li>
+<li><p class="first">ftol: stop criteria on f</p>
+</li>
+<li><p class="first">xtol: stop criteria on x</p>
+</li>
+<li><p class="first">memory: if True the algorithm internal state is saved and used for the next call</p>
+</li>
+<li><p class="first">screen_output: activates screen output of the algorithm (do not use in archipealgo, otherwise the screen will be flooded with</p>
+</li>
+<li><p class="first">different island outputs)</p>
+</li>
+</ul>
+</dd></dl>
+
+</dd></dl>
+
+<hr class="docutils" />
+<dl class="class">
+<dt id="PyGMO.algorithm.mde_pbx">
+<em class="property">class </em><tt class="descclassname">PyGMO.algorithm.</tt><tt class="descname">mde_pbx</tt><a class="headerlink" href="#PyGMO.algorithm.mde_pbx" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="PyGMO.algorithm.PyGMO.algorithm.mde_pbx.mde_pbx.__init__">
+<tt class="descclassname">mde_pbx.</tt><tt class="descname">__init__</tt><big>(</big><em>gen=100</em>, <em>qperc=0.15</em>, <em>nexp=1.5</em>, <em>ftol=1e-06</em>, <em>xtol=1e-06</em>, <em>screen_output=False</em><big>)</big><a class="headerlink" href="#PyGMO.algorithm.PyGMO.algorithm.mde_pbx.mde_pbx.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructs a mde_pbx algorithm (self-adaptive DE)</p>
+<p>REF: &#8220;An Adaptive Differential Evolution Algorithm With Novel Mutation and Crossover
+Strategies for Global Numerical Optimization&#8221; - IEEE TRANSACTIONS ON SYSTEMS, MAN, AND CYBERNETICS?PART B: CYBERNETICS, VOL. 42, NO. 2, APRIL 20</p>
+<p>USAGE: algorithm.mde_pbx(gen=100, qperc=0.15, nexp=1.5, ftol=1e-6, xtol=1e-6, screen_output = False)</p>
+<ul class="simple">
+<li>gen: number of generations</li>
+<li>qperc: percentage of population to choose the best vector</li>
+<li>nexp: exponent for the powermean</li>
+<li>ftol: stop criteria on f</li>
+<li>xtol: stop criteria on x</li>
+<li>screen_output: activates screen output of the algorithm (do not use in archipealgo, otherwise the screen will be flooded with</li>
+<li>different island outputs)</li>
+</ul>
+</dd></dl>
+
+</dd></dl>
+
+<hr class="docutils" />
+<dl class="class">
+<dt id="PyGMO.algorithm.de_1220">
+<em class="property">class </em><tt class="descclassname">PyGMO.algorithm.</tt><tt class="descname">de_1220</tt><a class="headerlink" href="#PyGMO.algorithm.de_1220" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="PyGMO.algorithm.PyGMO.algorithm.de_1220.de_1220.__init__">
+<tt class="descclassname">de_1220.</tt><tt class="descname">__init__</tt><big>(</big><em>gen=100, variant_adptv=1, allowed_variants=[1, 2, 3, 4, 5, 6, 7, 8, 9, 10], memory=False, ftol=1e-06, xtol=1e-06, screen_output=False</em><big>)</big><a class="headerlink" href="#PyGMO.algorithm.PyGMO.algorithm.de_1220.de_1220.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructs a Differential Evolution algorithm (our own brew). Self adaptation on F, CR and mutation variant.:</p>
+<p>USAGE: algorithm.de_1220(gen=100, variant_adptv=1, allowed_variants = [i for i in range(1,19)], memory = False, ftol=1e-6, xtol=1e-6, screen_output = False)</p>
+<ul>
+<li><p class="first">gen: number of generations</p>
+</li>
+<li><dl class="first docutils">
+<dt>variant_adptv: adaptiv scheme to use (one of [1..2])</dt>
+<dd><ol class="first last arabic simple">
+<li>random param mutation            2. param mutation follows relative DE scheme</li>
+</ol>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>allowed_variants <span class="classifier-delimiter">:</span> <span class="classifier">a list of the algoritmic variants to mix and self-adapt. Allowed variants are ...</span></dt>
+<dd><p class="first last">1. best/1/exp                               2. rand/1/exp
+3. rand-to-best/1/exp                       4. best/2/exp
+5. rand/2/exp                               6. best/1/bin
+7. rand/1/bin                               8. rand-to-best/1/bin
+9. best/2/bin                               10. rand/2/bin
+11. best/3/exp                              12. best/3/bin
+13. rand/3/exp                              14. rand/3/bin
+15. rand-to-current/2/exp           16. rand-to-current/2/bin
+17. rand-to-best-and-current/2/exp  18. rand-to-best-and-current/2/bin</p>
+</dd>
+</dl>
+</li>
+<li><p class="first">ftol: stop criteria on f</p>
+</li>
+<li><p class="first">xtol: stop criteria on x</p>
+</li>
+<li><p class="first">memory: if True the algorithm internal state is saved and used for the next call</p>
+</li>
+</ul>
+</dd></dl>
+
+</dd></dl>
+
+<hr class="docutils" />
+<dl class="class">
+<dt id="PyGMO.algorithm.pso">
+<em class="property">class </em><tt class="descclassname">PyGMO.algorithm.</tt><tt class="descname">pso</tt><a class="headerlink" href="#PyGMO.algorithm.pso" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="PyGMO.algorithm.PyGMO.algorithm.pso.pso.__init__">
+<tt class="descclassname">pso.</tt><tt class="descname">__init__</tt><big>(</big><em>gen=1</em>, <em>omega=0.7298</em>, <em>eta1=2.05</em>, <em>eta2=2.05</em>, <em>vcoeff=0.5</em>, <em>variant=5</em>, <em>neighb_type=2</em>, <em>neighb_param=4</em><big>)</big><a class="headerlink" href="#PyGMO.algorithm.PyGMO.algorithm.pso.pso.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructs a Particle Swarm Optimization (steady-state). The position update is applied
+immediately after the velocity update</p>
+<p>REF (for variants 5-6): <a class="reference external" href="http://cswww.essex.ac.uk/staff/rpoli/papers/PoliKennedyBlackwellSI2007.pdf">http://cswww.essex.ac.uk/staff/rpoli/papers/PoliKennedyBlackwellSI2007.pdf</a></p>
+<p>REF (for variants 1-4): Kennedy, J.; Eberhart, R. (1995). &#8220;Particle Swarm Optimization&#8221;. Proceedings of IEEE International Conference on Neural Networks. IV. pp. 1942?1948.</p>
+<p>USAGE: algorithm.pso(gen=1, omega = 0.7298, eta1 = 2.05, eta2 = 2.05, vcoeff = 0.5, variant = 5, neighb_type = 2, neighb_param = 4)</p>
+<ul>
+<li><p class="first">gen: number of generations</p>
+</li>
+<li><p class="first">omega: constriction factor (or particle inertia weight) in [0,1]</p>
+</li>
+<li><p class="first">eta1: Cognitive component in [0,4]</p>
+</li>
+<li><p class="first">eta2: Social component in [0,4]</p>
+</li>
+<li><p class="first">vcoeff: Maximum velocity coefficient (w.r.t. the box-bounds width) in [0,1]</p>
+</li>
+<li><dl class="first docutils">
+<dt>variant: algoritmic variant to use (one of  [1 .. 6])</dt>
+<dd><ol class="first last arabic">
+<li><p class="first">PSO canonical (with inertia weight)</p>
+</li>
+<li><dl class="first docutils">
+<dt>PSO canonical (with inertia weight</dt>
+<dd><p class="first last">and equal random weights of social and cognitive components)</p>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>PSO variant (with inertia weight</dt>
+<dd><p class="first last">same random number for all components.)</p>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>PSO variant (with inertia weight</dt>
+<dd><p class="first last">same random number for all components
+and equal weights of social and cognitive components)</p>
+</dd>
+</dl>
+</li>
+<li><p class="first">PSO canonical (with constriction factor)</p>
+</li>
+<li><p class="first">Fully Informed Particle Swarm (FIPS)</p>
+</li>
+</ol>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>neighb_type: defines the particle neighbourhood (used for the social component)</dt>
+<dd><ol class="first last arabic simple">
+<li>gbest neighbourhood topology (fully connected)</li>
+<li>lbest neighbourhood topology (ring)</li>
+<li>Von-Neumann neighbourhood topology (square lattice)</li>
+<li>Randomly-varying neighbourhood topology</li>
+</ol>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>neighb_param: if the lbest topology is selected, it represents each particle&#8217;s indegree</dt>
+<dd><p class="first last">(also outdegree) in the swarm topology. Particles have neighbours up
+to a radius of k = neighb_param / 2 in the ring. If the Randomly-varying neighbourhood topology
+is selected, neighb_param represents each particle&#8217;s maximum outdegree in the swarm topology.
+The minimum outdegree is 1 (the particle always connects back to itself).</p>
+</dd>
+</dl>
+</li>
+</ul>
+</dd></dl>
+
+</dd></dl>
+
+<hr class="docutils" />
+<dl class="class">
+<dt id="PyGMO.algorithm.pso_gen">
+<em class="property">class </em><tt class="descclassname">PyGMO.algorithm.</tt><tt class="descname">pso_gen</tt><a class="headerlink" href="#PyGMO.algorithm.pso_gen" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="PyGMO.algorithm.PyGMO.algorithm.pso_gen.pso_gen.__init__">
+<tt class="descclassname">pso_gen.</tt><tt class="descname">__init__</tt><big>(</big><em>gen=1</em>, <em>omega=0.7298</em>, <em>eta1=2.05</em>, <em>eta2=2.05</em>, <em>vcoeff=0.5</em>, <em>variant=5</em>, <em>neighb_type=2</em>, <em>neighb_param=4</em><big>)</big><a class="headerlink" href="#PyGMO.algorithm.PyGMO.algorithm.pso_gen.pso_gen.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructs a Particle Swarm Optimization (generational). The position update is applied
+only at the end of an entire loop over the population (swarm). Use this version for stochastic problems.</p>
+<p>USAGE: algorithm.pso_gen(gen=1, omega = 0.7298, eta1 = 2.05, eta2 = 2.05, vcoeff = 0.5, variant = 5, neighb_type = 2, neighb_param = 4)</p>
+<ul>
+<li><p class="first">gen: number of generations</p>
+</li>
+<li><p class="first">omega: constriction factor (or particle inertia weight) in [0,1]</p>
+</li>
+<li><p class="first">eta1: Cognitive component in [0,4]</p>
+</li>
+<li><p class="first">eta2: Social component in [0,4]</p>
+</li>
+<li><p class="first">vcoeff: Maximum velocity coefficient (w.r.t. the box-bounds width) in [0,1]</p>
+</li>
+<li><dl class="first docutils">
+<dt>variant: algoritmic variant to use (one of  [1 .. 6])</dt>
+<dd><ol class="first last arabic">
+<li><p class="first">PSO canonical (with inertia weight)</p>
+</li>
+<li><dl class="first docutils">
+<dt>PSO canonical (with inertia weight</dt>
+<dd><p class="first last">and equal random weights of social and cognitive components)</p>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>PSO variant (with inertia weight</dt>
+<dd><p class="first last">same random number for all components.)</p>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>PSO variant (with inertia weight</dt>
+<dd><p class="first last">same random number for all components
+and equal weights of social and cognitive components)</p>
+</dd>
+</dl>
+</li>
+<li><p class="first">PSO canonical (with constriction factor)</p>
+</li>
+<li><p class="first">Fully Informed Particle Swarm (FIPS)</p>
+</li>
+</ol>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>neighb_type: defines the particle neighbourhood (used for the social component)</dt>
+<dd><ol class="first last arabic simple">
+<li>gbest neighbourhood topology (fully connected)</li>
+<li>lbest neighbourhood topology (ring)</li>
+<li>Von-Neumann neighbourhood topology (square lattice)</li>
+<li>Randomly-varying neighbourhood topology</li>
+</ol>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>neighb_param: if the lbest topology is selected, it represents each particle&#8217;s indegree</dt>
+<dd><p class="first last">(also outdegree) in the swarm topology. Particles have neighbours up
+to a radius of k = neighb_param / 2 in the ring. If the Randomly-varying neighbourhood topology
+is selected, neighb_param represents each particle&#8217;s maximum outdegree in the swarm topology.
+The minimum outdegree is 1 (the particle always connects back to itself).</p>
+</dd>
+</dl>
+</li>
+</ul>
+</dd></dl>
+
+</dd></dl>
+
+<hr class="docutils" />
+<dl class="class">
+<dt id="PyGMO.algorithm.sea">
+<em class="property">class </em><tt class="descclassname">PyGMO.algorithm.</tt><tt class="descname">sea</tt><a class="headerlink" href="#PyGMO.algorithm.sea" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="PyGMO.algorithm.PyGMO.algorithm.sea.sea.__init__">
+<tt class="descclassname">sea.</tt><tt class="descname">__init__</tt><big>(</big><em>gen=100</em>, <em>limit=20</em><big>)</big><a class="headerlink" href="#PyGMO.algorithm.PyGMO.algorithm.sea.sea.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructs a simple (N+1)-EA: A Simple Evolutionary Algorithm</p>
+<p>USAGE: algorithm.ea(gen = 1)
+SEE : Oliveto, Pietro S., Jun He, and Xin Yao.
+&#8220;Time complexity of evolutionary algorithms for combinatorial optimization: A decade of results.&#8221;
+International Journal of Automation and Computing 4.3 (2007): 281-293.</p>
+<ul class="simple">
+<li>gen: number of &#8216;generations&#8217; (each generation is one function evaluation)</li>
+</ul>
+</dd></dl>
+
+</dd></dl>
+
+<hr class="docutils" />
+<dl class="class">
+<dt id="PyGMO.algorithm.sga">
+<em class="property">class </em><tt class="descclassname">PyGMO.algorithm.</tt><tt class="descname">sga</tt><a class="headerlink" href="#PyGMO.algorithm.sga" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="PyGMO.algorithm.PyGMO.algorithm.sga.sga.__init__">
+<tt class="descclassname">sga.</tt><tt class="descname">__init__</tt><big>(</big><em>gen=1</em>, <em>cr=0.95</em>, <em>m=0.02</em>, <em>elitism=1</em>, <em>mutation=PyGMO.algorithm._algorithm._sga_mutation_type.GAUSSIAN</em>, <em>width=0.1</em>, <em>selection=PyGMO.algorithm._algorithm._sga_selection_type.ROULETTE</em>, <em>crossover=PyGMO.algorithm._algorithm._sga_crossover_type.EXPONENTIAL</em><big>)</big><a class="headerlink" href="#PyGMO.algorithm.PyGMO.algorithm.sga.sga.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructs a Simple Genetic Algorithm (generational)</p>
+<p>USAGE: algorithm.sga(self, gen=1, cr=.95, m=.02, elitism=1, mutation=sga.mutation.GAUSSIAN, width = 0.1, selection=sga.selection.ROULETTE, crossover=sga.crossover.EXPONENTIAL)</p>
+<ul>
+<li><p class="first">gen: number of generations</p>
+</li>
+<li><p class="first">cr: crossover factor in [0,1]</p>
+</li>
+<li><p class="first">m: mutation probability (for each component) [0,1]</p>
+</li>
+<li><p class="first">elitism: number of generation after which the best is reinserted</p>
+</li>
+<li><p class="first">mutation: mutation type (one of [RANDOM, GAUSSIAN])</p>
+</li>
+<li><dl class="first docutils">
+<dt>width: the mutation width (in case of a GAUSSIAN bell</dt>
+<dd><p class="first last">this is the std normalized with the width)</p>
+</dd>
+</dl>
+</li>
+<li><p class="first">selection: selection startegy (one of [ROULETTE, BEST20])</p>
+</li>
+<li><p class="first">crossover: crossover strategy (one of [BINOMIAL, EXPONENTIAL])</p>
+</li>
+</ul>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="PyGMO.algorithm.sga.mutation.RANDOM">
+<tt class="descclassname">mutation.</tt><tt class="descname">RANDOM</tt><a class="headerlink" href="#PyGMO.algorithm.sga.mutation.RANDOM" title="Permalink to this definition">¶</a></dt>
+<dd><p>Random mutation (width is set by the width argument in <a class="reference internal" href="#PyGMO.algorithm.sga" title="PyGMO.algorithm.sga"><tt class="xref py py-class docutils literal"><span class="pre">PyGMO.algorithm.sga</span></tt></a>)</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="PyGMO.algorithm.sga.mutation.GAUSSIAN">
+<tt class="descclassname">mutation.</tt><tt class="descname">GAUSSIAN</tt><a class="headerlink" href="#PyGMO.algorithm.sga.mutation.GAUSSIAN" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gaussian mutation (bell shape standard deviation is set by the width argument in <a class="reference internal" href="#PyGMO.algorithm.sga" title="PyGMO.algorithm.sga"><tt class="xref py py-class docutils literal"><span class="pre">PyGMO.algorithm.sga</span></tt></a> multiplied by the box-bounds width)</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="PyGMO.algorithm.sga.selection.ROULETTE">
+<tt class="descclassname">selection.</tt><tt class="descname">ROULETTE</tt><a class="headerlink" href="#PyGMO.algorithm.sga.selection.ROULETTE" title="Permalink to this definition">¶</a></dt>
+<dd><p>Roulette selection mechanism</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="PyGMO.algorithm.sga.selection.BEST20">
+<tt class="descclassname">selection.</tt><tt class="descname">BEST20</tt><a class="headerlink" href="#PyGMO.algorithm.sga.selection.BEST20" title="Permalink to this definition">¶</a></dt>
+<dd><p>Best 20% individuals are inserted over and over again</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="PyGMO.algorithm.sga.crossover.BINOMIAL">
+<tt class="descclassname">crossover.</tt><tt class="descname">BINOMIAL</tt><a class="headerlink" href="#PyGMO.algorithm.sga.crossover.BINOMIAL" title="Permalink to this definition">¶</a></dt>
+<dd><p>Binomial crossover</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="PyGMO.algorithm.sga.crossover.EXPONENTIAL">
+<tt class="descclassname">crossover.</tt><tt class="descname">EXPONENTIAL</tt><a class="headerlink" href="#PyGMO.algorithm.sga.crossover.EXPONENTIAL" title="Permalink to this definition">¶</a></dt>
+<dd><p>Exponential crossover</p>
+</dd></dl>
+
+</dd></dl>
+
+<hr class="docutils" />
+<dl class="class">
+<dt id="PyGMO.algorithm.vega">
+<em class="property">class </em><tt class="descclassname">PyGMO.algorithm.</tt><tt class="descname">vega</tt><a class="headerlink" href="#PyGMO.algorithm.vega" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="PyGMO.algorithm.PyGMO.algorithm.vega.vega.__init__">
+<tt class="descclassname">vega.</tt><tt class="descname">__init__</tt><big>(</big><em>gen=1</em>, <em>cr=0.95</em>, <em>m=0.02</em>, <em>elitism=1</em>, <em>mutation=PyGMO.algorithm._algorithm._vega_mutation_type.GAUSSIAN</em>, <em>width=0.1</em>, <em>crossover=PyGMO.algorithm._algorithm._vega_crossover_type.EXPONENTIAL</em><big>)</big><a class="headerlink" href="#PyGMO.algorithm.PyGMO.algorithm.vega.vega.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructs a Vector evaluated genetic algorithm</p>
+<p>USAGE: algorithm.vega(self, gen=1, cr=.95, m=.02, elitism=1, mutation=vega.mutation.GAUSSIAN, width = 0.1, crossover=vega.crossover.EXPONENTIAL)</p>
+<ul>
+<li><p class="first">gen: number of generations</p>
+</li>
+<li><p class="first">cr: crossover factor in [0,1]</p>
+</li>
+<li><p class="first">m: mutation probability (for each component) [0,1]</p>
+</li>
+<li><p class="first">elitism: number of generation after which the best is reinserted</p>
+</li>
+<li><p class="first">mutation: mutation type (one of [RANDOM, GAUSSIAN])</p>
+</li>
+<li><dl class="first docutils">
+<dt>width: the mutation width (in case of a GAUSSIAN bell</dt>
+<dd><p class="first last">this is the std normalized with the width)</p>
+</dd>
+</dl>
+</li>
+<li><p class="first">crossover: crossover strategy (one of [BINOMIAL, EXPONENTIAL])</p>
+</li>
+</ul>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="PyGMO.algorithm.vega.mutation.RANDOM">
+<tt class="descclassname">mutation.</tt><tt class="descname">RANDOM</tt><a class="headerlink" href="#PyGMO.algorithm.vega.mutation.RANDOM" title="Permalink to this definition">¶</a></dt>
+<dd><p>Random mutation (width is set by the width argument in <a class="reference internal" href="#PyGMO.algorithm.vega" title="PyGMO.algorithm.vega"><tt class="xref py py-class docutils literal"><span class="pre">PyGMO.algorithm.vega</span></tt></a>)</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="PyGMO.algorithm.vega.mutation.GAUSSIAN">
+<tt class="descclassname">mutation.</tt><tt class="descname">GAUSSIAN</tt><a class="headerlink" href="#PyGMO.algorithm.vega.mutation.GAUSSIAN" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gaussian mutation (bell shape standard deviation is set by the width argument in <a class="reference internal" href="#PyGMO.algorithm.vega" title="PyGMO.algorithm.vega"><tt class="xref py py-class docutils literal"><span class="pre">PyGMO.algorithm.vega</span></tt></a> multiplied by the box-bounds width)</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="PyGMO.algorithm.vega.crossover.BINOMIAL">
+<tt class="descclassname">crossover.</tt><tt class="descname">BINOMIAL</tt><a class="headerlink" href="#PyGMO.algorithm.vega.crossover.BINOMIAL" title="Permalink to this definition">¶</a></dt>
+<dd><p>Binomial crossover</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="PyGMO.algorithm.vega.crossover.EXPONENTIAL">
+<tt class="descclassname">crossover.</tt><tt class="descname">EXPONENTIAL</tt><a class="headerlink" href="#PyGMO.algorithm.vega.crossover.EXPONENTIAL" title="Permalink to this definition">¶</a></dt>
+<dd><p>Exponential crossover</p>
+</dd></dl>
+
+</dd></dl>
+
+<hr class="docutils" />
+<dl class="class">
+<dt id="PyGMO.algorithm.sga_gray">
+<em class="property">class </em><tt class="descclassname">PyGMO.algorithm.</tt><tt class="descname">sga_gray</tt><a class="headerlink" href="#PyGMO.algorithm.sga_gray" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="PyGMO.algorithm.PyGMO.algorithm.sga_gray.sga_gray.__init__">
+<tt class="descclassname">sga_gray.</tt><tt class="descname">__init__</tt><big>(</big><em>gen=1</em>, <em>cr=0.95</em>, <em>m=0.02</em>, <em>elitism=1</em>, <em>mutation=PyGMO.algorithm._algorithm._gray_mutation_type.UNIFORM</em>, <em>selection=PyGMO.algorithm._algorithm._gray_selection_type.ROULETTE</em>, <em>crossover=PyGMO.algorithm._algorithm._gray_crossover_type.SINGLE_POINT</em><big>)</big><a class="headerlink" href="#PyGMO.algorithm.PyGMO.algorithm.sga_gray.sga_gray.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructs a Simple Genetic Algorithm with gray binary encoding (generational)</p>
+<p>USAGE: algorithm.sga_gray(self, gen=1, cr=.95, m=.02, elitism=1, mutation=sga.mutation.UNIFORM, selection=sga.selection.ROULETTE, crossover=sga.crossover.SINGLE_POINT)</p>
+<ul class="simple">
+<li>gen: Number of generations to evolve.</li>
+<li>cr: crossover factor in [0,1]</li>
+<li>m: mutation probability (of each encoded bit) [0,1]</li>
+<li>elitism: number of generation after which the best is reinserted</li>
+<li>mut: mutation type (one of [UNIFORM])</li>
+<li>sel: selection strategy (one of [ROULETTE, BEST20])</li>
+<li>cro: crossover strategy (one of [SINGLE_POINT])</li>
+</ul>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="PyGMO.algorithm.sga_gray.mutation.UNIFORM">
+<tt class="descclassname">mutation.</tt><tt class="descname">UNIFORM</tt><a class="headerlink" href="#PyGMO.algorithm.sga_gray.mutation.UNIFORM" title="Permalink to this definition">¶</a></dt>
+<dd><p>Uniform mutation</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="PyGMO.algorithm.sga_gray.selection.ROULETTE">
+<tt class="descclassname">selection.</tt><tt class="descname">ROULETTE</tt><a class="headerlink" href="#PyGMO.algorithm.sga_gray.selection.ROULETTE" title="Permalink to this definition">¶</a></dt>
+<dd><p>Roulette selection mechanism</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="PyGMO.algorithm.sga_gray.selection.BEST20">
+<tt class="descclassname">selection.</tt><tt class="descname">BEST20</tt><a class="headerlink" href="#PyGMO.algorithm.sga_gray.selection.BEST20" title="Permalink to this definition">¶</a></dt>
+<dd><p>Best 20% individuals are inserted over and over again</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="PyGMO.algorithm.sga_gray.crossover.SINGLE_POINT">
+<tt class="descclassname">crossover.</tt><tt class="descname">SINGLE_POINT</tt><a class="headerlink" href="#PyGMO.algorithm.sga_gray.crossover.SINGLE_POINT" title="Permalink to this definition">¶</a></dt>
+<dd><p>Single point crossover</p>
+</dd></dl>
+
+</dd></dl>
+
+<hr class="docutils" />
+<dl class="class">
+<dt id="PyGMO.algorithm.nsga_II">
+<em class="property">class </em><tt class="descclassname">PyGMO.algorithm.</tt><tt class="descname">nsga_II</tt><a class="headerlink" href="#PyGMO.algorithm.nsga_II" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="PyGMO.algorithm.PyGMO.algorithm.nsga_II.nsga_II.__init__">
+<tt class="descclassname">nsga_II.</tt><tt class="descname">__init__</tt><big>(</big><em>gen=100</em>, <em>cr=0.95</em>, <em>eta_c=10</em>, <em>m=0.01</em>, <em>eta_m=10</em><big>)</big><a class="headerlink" href="#PyGMO.algorithm.PyGMO.algorithm.nsga_II.nsga_II.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructs a Non-dominated Sorting Genetic Algorithm (NSGA_II)</p>
+<p>USAGE: algorithm.nsga_II(self, gen=100, cr = 0.95, eta_c = 10, m = 0.01, eta_m = 10)</p>
+<ul class="simple">
+<li>gen: number of generations</li>
+<li>cr: crossover factor [0,1[</li>
+<li>eta_c: Distribution index for crossover</li>
+<li>m: mutation probability [0,1]</li>
+<li>eta_m: Distribution index for mutation</li>
+</ul>
+</dd></dl>
+
+</dd></dl>
+
+<hr class="docutils" />
+<dl class="class">
+<dt id="PyGMO.algorithm.sms_emoa">
+<em class="property">class </em><tt class="descclassname">PyGMO.algorithm.</tt><tt class="descname">sms_emoa</tt><a class="headerlink" href="#PyGMO.algorithm.sms_emoa" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="PyGMO.algorithm.PyGMO.algorithm.sms_emoa.sms_emoa.__init__">
+<tt class="descclassname">sms_emoa.</tt><tt class="descname">__init__</tt><big>(</big><em>hv_algorithm=None</em>, <em>gen=100</em>, <em>sel_m=2</em>, <em>cr=0.95</em>, <em>eta_c=10</em>, <em>m=0.01</em>, <em>eta_m=10</em><big>)</big><a class="headerlink" href="#PyGMO.algorithm.PyGMO.algorithm.sms_emoa.sms_emoa.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructs a S-Metric Selection Evolutionary Multiobjective Optimiser Algorithm (SMS-EMOA)</p>
+<p>USAGE: algorithm.sms_emoa(self, gen=100, sel_m = 2, cr = 0.95, eta_c = 10, m = 0.01, eta_m = 10)</p>
+<ul class="simple">
+<li>hv_algorithm: hypervolume algorithm object used for the computation of the hypervolume. By default its chosen dynamically</li>
+<li>gen: number of generations</li>
+<li>sel_m: selection method for points in dominated fronts. 1 - always use least contributor, 2 - use domination count for fronts &gt; 1</li>
+<li>cr: crossover factor [0,1]</li>
+<li>eta_c: Distribution index for crossover</li>
+<li>m: mutation probability [0,1]</li>
+<li>eta_m: Distribution index for mutation</li>
+</ul>
+</dd></dl>
+
+</dd></dl>
+
+<hr class="docutils" />
+<dl class="class">
+<dt id="PyGMO.algorithm.pade">
+<em class="property">class </em><tt class="descclassname">PyGMO.algorithm.</tt><tt class="descname">pade</tt><a class="headerlink" href="#PyGMO.algorithm.pade" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="PyGMO.algorithm.PyGMO.algorithm.pade.pade.__init__">
+<tt class="descclassname">pade.</tt><tt class="descname">__init__</tt><big>(</big><em>gen=10</em>, <em>decomposition='tchebycheff'</em>, <em>weights='grid'</em>, <em>solver=None</em>, <em>threads=8</em>, <em>T=8</em>, <em>z=</em><span class="optional">[</span><span class="optional">]</span><big>)</big><a class="headerlink" href="#PyGMO.algorithm.PyGMO.algorithm.pade.pade.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructs a Parallel Decomposition Algorithm (PaDe).</p>
+<p>For each element of the population a different single objective problem is generated using a decomposition method.
+Those single-objective problems are thus solved in an island model.
+At the end of the evolution the population is set as the best individual in each single-objective island.
+This algorithm, original with PaGMO, builds upon the MOEA/D framework</p>
+<p>USAGE: algorithm.pade(self, gen=10, , decomposition = &#8216;tchebycheff&#8217;, weights = &#8216;grid&#8217;, solver = None, threads = 8, T = 8, z = [])</p>
+<ul class="simple">
+<li>gen: number of generations</li>
+<li>threads: the maximum number of single-objective problems to solve at the same time</li>
+<li>solver: the algorithm to use to solve the single-objective problems</li>
+<li>T: the size of the population on each subproblem (must be an even number)</li>
+<li>decomposition = the decomposition method to use, on of  (&#8216;weighted&#8217;, &#8216;tchebycheff&#8217; or &#8216;bi&#8217;)</li>
+<li>weights: weight generation method, one of (&#8216;grid&#8217;, &#8216;low_discrepancy&#8217;, &#8216;random&#8217;)</li>
+<li>z: the reference point (used with Tchebycheff and BI decomposition methods)</li>
+</ul>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="PyGMO.algorithm.pade.RANDOM">
+<tt class="descname">RANDOM</tt><a class="headerlink" href="#PyGMO.algorithm.pade.RANDOM" title="Permalink to this definition">¶</a></dt>
+<dd><p>Random generation of the weight vector</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="PyGMO.algorithm.pade.GRID">
+<tt class="descname">GRID</tt><a class="headerlink" href="#PyGMO.algorithm.pade.GRID" title="Permalink to this definition">¶</a></dt>
+<dd><p>Weight vectors are generated to equally divide the search space (requires a particular population size)</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="PyGMO.algorithm.pade.LOW_DISCREPANCY">
+<tt class="descname">LOW_DISCREPANCY</tt><a class="headerlink" href="#PyGMO.algorithm.pade.LOW_DISCREPANCY" title="Permalink to this definition">¶</a></dt>
+<dd><p>Weight vector are generated using a low discrepancy sequence</p>
+</dd></dl>
+
+</dd></dl>
+
+<hr class="docutils" />
+<dl class="class">
+<dt id="PyGMO.algorithm.nspso">
+<em class="property">class </em><tt class="descclassname">PyGMO.algorithm.</tt><tt class="descname">nspso</tt><a class="headerlink" href="#PyGMO.algorithm.nspso" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="PyGMO.algorithm.PyGMO.algorithm.nspso.nspso.__init__">
+<tt class="descclassname">nspso.</tt><tt class="descname">__init__</tt><big>(</big><em>gen=100</em>, <em>minW=0.4</em>, <em>maxW=1.0</em>, <em>C1=2.0</em>, <em>C2=2.0</em>, <em>CHI=1.0</em>, <em>v_coeff=0.5</em>, <em>leader_selection_range=5</em>, <em>diversity_mechanism='crowding distance'</em><big>)</big><a class="headerlink" href="#PyGMO.algorithm.PyGMO.algorithm.nspso.nspso.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructs a Multi Objective PSO</p>
+<dl class="docutils">
+<dt>USAGE: algorithm.nspso(self, gen=10, minW = 0.4, maxW = 1.0, C1 = 2.0, C2 = 2.0,</dt>
+<dd>CHI = 1.0, v_coeff = 0.5, leader_selection = 5, diversity_mechanism = &#8216;crowding_distance&#8217;):</dd>
+</dl>
+<ul class="simple">
+<li>gen: number of generations</li>
+<li>minW: minimum particles&#8217; inertia weight (the inertia weight is decreased troughout the run between maxW and minW)</li>
+<li>maxW: maximum particles&#8217; inertia weight (the inertia weight is decreased troughout the run between maxW and minW)</li>
+<li>C1: magnitude of the force, applied to the particle&#8217;s velocity, in the direction of its previous best position</li>
+<li>C2: magnitude of the force, applied to the particle&#8217;s velocity, in the direction of its global best (leader)</li>
+<li>CHI: velocity scaling factor</li>
+<li>v_coeff: velocity coefficient (determining the maximum allowed particle velocity)</li>
+<li>leader_selection_range the leader of each particle is selected among the best leader_selection_range% individuals</li>
+<li>diversity_mechanism one of &#8216;crowding distance&#8217;, &#8216;niche count&#8217; or &#8216;maxmin&#8217;. Defines the diversity mechanism used</li>
+</ul>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="PyGMO.algorithm.nspso.CROWDING_DISTANCE">
+<tt class="descname">CROWDING_DISTANCE</tt><a class="headerlink" href="#PyGMO.algorithm.nspso.CROWDING_DISTANCE" title="Permalink to this definition">¶</a></dt>
+<dd><p>Individual with better crowding distance are prefered</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="PyGMO.algorithm.nspso.NICHE_COUNT">
+<tt class="descname">NICHE_COUNT</tt><a class="headerlink" href="#PyGMO.algorithm.nspso.NICHE_COUNT" title="Permalink to this definition">¶</a></dt>
+<dd><p>Individuals with better niche count are prefered</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="PyGMO.algorithm.nspso.MAXMIN">
+<tt class="descname">MAXMIN</tt><a class="headerlink" href="#PyGMO.algorithm.nspso.MAXMIN" title="Permalink to this definition">¶</a></dt>
+<dd><p>The MaxMin method is used to obtain the non-dominated set and to mantain diversity</p>
+</dd></dl>
+
+</dd></dl>
+
+<hr class="docutils" />
+<dl class="class">
+<dt id="PyGMO.algorithm.spea2">
+<em class="property">class </em><tt class="descclassname">PyGMO.algorithm.</tt><tt class="descname">spea2</tt><a class="headerlink" href="#PyGMO.algorithm.spea2" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="PyGMO.algorithm.PyGMO.algorithm.spea2.spea2.__init__">
+<tt class="descclassname">spea2.</tt><tt class="descname">__init__</tt><big>(</big><em>gen=100</em>, <em>cr=0.95</em>, <em>eta_c=10</em>, <em>m=0.01</em>, <em>eta_m=50</em>, <em>archive_size=0</em><big>)</big><a class="headerlink" href="#PyGMO.algorithm.PyGMO.algorithm.spea2.spea2.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructs a Strenght Pareto Evolutionary Algorithm 2</p>
+<p>USAGE: algorithm.spea2(gen=100, cr = 0.95, eta_c = 10, m = 0.01, eta_m = 50, archive_size = -1)</p>
+<ul class="simple">
+<li>gen: Number of generations to evolve.</li>
+<li>cr: Crossover probability</li>
+<li>eta_c: Distribution index for crossover</li>
+<li>m: Mutation probability</li>
+<li>eta_m: Distribution index for mutation</li>
+<li>archive_size: the size of the non_dominated archive. If archive_size=0 then the archive size is set equal to the population size. The population returned after evolve has a size equal to archive_size</li>
+</ul>
+</dd></dl>
+
+</dd></dl>
+
+<hr class="docutils" />
+<dl class="class">
+<dt id="PyGMO.algorithm.sa_corana">
+<em class="property">class </em><tt class="descclassname">PyGMO.algorithm.</tt><tt class="descname">sa_corana</tt><a class="headerlink" href="#PyGMO.algorithm.sa_corana" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="PyGMO.algorithm.PyGMO.algorithm.sa_corana.sa_corana.__init__">
+<tt class="descclassname">sa_corana.</tt><tt class="descname">__init__</tt><big>(</big><em>iter=10000</em>, <em>Ts=10</em>, <em>Tf=0.1</em>, <em>steps=1</em>, <em>bin_size=20</em>, <em>range=1</em><big>)</big><a class="headerlink" href="#PyGMO.algorithm.PyGMO.algorithm.sa_corana.sa_corana.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructs Corana&#8217;s Simulated Annealing</p>
+<p>USAGE: algorithm.sa_corana(iter = 10000, Ts = 10, Tf = .1, steps = 1, bin_size = 20, range = 1)</p>
+<p>NOTE: as this version of simulated annealing loops through the chromosome, the iter number needs to be selected
+large enough to allow the temperature schedule to actuallt make sense. For example if your problem has D dimensions
+then in order to have at least N temperature adjustments (from Ts to Tf) one should select iter = D * N * steps * bin_size.</p>
+<ul class="simple">
+<li>iter: number of total iterations</li>
+<li>Ts: starting temperature</li>
+<li>Tf: final temperature ( &gt; Ts)</li>
+<li>steps: number of steps adjustments</li>
+<li>bin_size: size of the bin used to evaluate the step adjustment</li>
+<li>range: initial size of the neighbourhood (in [0,1])</li>
+</ul>
+</dd></dl>
+
+</dd></dl>
+
+<hr class="docutils" />
+<dl class="class">
+<dt id="PyGMO.algorithm.bee_colony">
+<em class="property">class </em><tt class="descclassname">PyGMO.algorithm.</tt><tt class="descname">bee_colony</tt><a class="headerlink" href="#PyGMO.algorithm.bee_colony" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="PyGMO.algorithm.PyGMO.algorithm.bee_colony.bee_colony.__init__">
+<tt class="descclassname">bee_colony.</tt><tt class="descname">__init__</tt><big>(</big><em>gen=100</em>, <em>limit=20</em><big>)</big><a class="headerlink" href="#PyGMO.algorithm.PyGMO.algorithm.bee_colony.bee_colony.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructs an Artificial Bee Colony Algorithm</p>
+<p>USAGE: algorithm.bee_colony(gen = 100, limit = 20)</p>
+<ul>
+<li><dl class="first docutils">
+<dt>gen: number of &#8216;generations&#8217; (each generation 2*NP function evaluations</dt>
+<dd><p class="first last">are made where NP is the population size)</p>
+</dd>
+</dl>
+</li>
+<li><p class="first">limit: number of tries after which a source of food is dropped if not improved</p>
+</li>
+</ul>
+</dd></dl>
+
+</dd></dl>
+
+<hr class="docutils" />
+<dl class="class">
+<dt id="PyGMO.algorithm.ms">
+<em class="property">class </em><tt class="descclassname">PyGMO.algorithm.</tt><tt class="descname">ms</tt><a class="headerlink" href="#PyGMO.algorithm.ms" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="PyGMO.algorithm.PyGMO.algorithm.ms.ms.__init__">
+<tt class="descclassname">ms.</tt><tt class="descname">__init__</tt><big>(</big><em>algorithm=None</em>, <em>iter=1</em><big>)</big><a class="headerlink" href="#PyGMO.algorithm.PyGMO.algorithm.ms.ms.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructs a Multistart Algorithm</p>
+<p>USAGE: algorithm.ms(algorithm = algorithm.de(), iter = 1)</p>
+<p>NOTE: starting from pop1, at each iteration a random pop2 is evolved
+with the selected algorithm and its final best replaces the worst of pop1</p>
+<ul class="simple">
+<li>algorithm: PyGMO algorithm to be multistarted</li>
+<li>iter: number of multistarts</li>
+</ul>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="PyGMO.algorithm.ms.screen_output">
+<tt class="descname">screen_output</tt><a class="headerlink" href="#PyGMO.algorithm.ms.screen_output" title="Permalink to this definition">¶</a></dt>
+<dd><p>When True, the algorithms produces output on screen</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="PyGMO.algorithm.ms.algorithm">
+<tt class="descname">algorithm</tt><a class="headerlink" href="#PyGMO.algorithm.ms.algorithm" title="Permalink to this definition">¶</a></dt>
+<dd><p>Algorithm to be multistarted</p>
+</dd></dl>
+
+</dd></dl>
+
+<hr class="docutils" />
+<dl class="class">
+<dt id="PyGMO.algorithm.mbh">
+<em class="property">class </em><tt class="descclassname">PyGMO.algorithm.</tt><tt class="descname">mbh</tt><a class="headerlink" href="#PyGMO.algorithm.mbh" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="PyGMO.algorithm.PyGMO.algorithm.mbh.mbh.__init__">
+<tt class="descclassname">mbh.</tt><tt class="descname">__init__</tt><big>(</big><em>algorithm=None</em>, <em>stop=5</em>, <em>perturb=0.05</em>, <em>screen_output=False</em><big>)</big><a class="headerlink" href="#PyGMO.algorithm.PyGMO.algorithm.mbh.mbh.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructs a Monotonic Basin Hopping Algorithm (generalized to accept any algorithm)</p>
+<p>USAGE: algorithm.mbh(algorithm = algorithm.cs(), stop = 5, perturb = 5e-2);</p>
+<p>NOTE: Starting from pop, algorithm is applied to the perturbed pop returning pop2. If pop2 is better than
+pop then pop=pop2 and a counter is reset to zero. If pop2 is not better the counter is incremented. If
+the counter is larger than stop, optimization is terminated</p>
+<ul>
+<li><p class="first">algorithm: &#8216;local&#8217; optimiser</p>
+</li>
+<li><p class="first">stop: number of no improvements before halting the optimization</p>
+</li>
+<li><dl class="first docutils">
+<dt>perturb: non-dimentional perturbation width (can be a list, in which case</dt>
+<dd><p class="first last">it has to have the same dimension of the problem mbh will be applied to)</p>
+</dd>
+</dl>
+</li>
+<li><p class="first">screen_output: activates screen output of the algorithm (do not use in archipealgo, otherwise the screen will be flooded with</p>
+</li>
+<li><p class="first">different island outputs)</p>
+</li>
+</ul>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="PyGMO.algorithm.mbh.screen_output">
+<tt class="descname">screen_output</tt><a class="headerlink" href="#PyGMO.algorithm.mbh.screen_output" title="Permalink to this definition">¶</a></dt>
+<dd><p>When True, the algorithms produces output on screen</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="PyGMO.algorithm.mbh.algorithm">
+<tt class="descname">algorithm</tt><a class="headerlink" href="#PyGMO.algorithm.mbh.algorithm" title="Permalink to this definition">¶</a></dt>
+<dd><p>Algorithm to perform mbh &#8216;local&#8217; search</p>
+</dd></dl>
+
+</dd></dl>
+
+<hr class="docutils" />
+<dl class="class">
+<dt id="PyGMO.algorithm.cstrs_co_evolution">
+<em class="property">class </em><tt class="descclassname">PyGMO.algorithm.</tt><tt class="descname">cstrs_co_evolution</tt><a class="headerlink" href="#PyGMO.algorithm.cstrs_co_evolution" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="PyGMO.algorithm.PyGMO.algorithm.cstrs_co_evolution.cstrs_co_evolution.__init__">
+<tt class="descclassname">cstrs_co_evolution.</tt><tt class="descname">__init__</tt><big>(</big><em>original_algo=None</em>, <em>original_algo_penalties=None</em>, <em>pop_penalties_size=30</em>, <em>gen=20</em>, <em>method=PyGMO.algorithm._algorithm._co_evo_method_type.SIMPLE</em>, <em>pen_lower_bound=0.0</em>, <em>pen_upper_bound=100000.0</em>, <em>f_tol=1e-15</em>, <em>x_tol=1e-15</em><big>)</big><a class="headerlink" href="#PyGMO.algorithm.PyGMO.algorithm.cstrs_co_evolution.cstrs_co_evolution.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructs a co-evolution adaptive penalty algorithm for constrained optimization.</p>
+<p>USAGE: algorithm.cstrs_co_evolution(original_algo = _algorithm.jde(), original_algo_penalties = _algorithm.jde(), pop_penalties_size = 30, gen = 20, method = cstrs_co_evolution.method.SIMPLE, pen_lower_bound = 0, pen_upper_bound = 100000,f_tol = 1e-15,x_tol = 1e-15):</p>
+<ul>
+<li><p class="first">original_algo: optimizer to use as &#8216;original&#8217; optimization method</p>
+</li>
+<li><p class="first">original_algo_penalties: optimizer to use as &#8216;original&#8217; optimization method for population encoding penalties coefficients</p>
+</li>
+<li><p class="first">pop_penalties_size: size of the population encoding the penalty parameters.</p>
+</li>
+<li><p class="first">gen: number of generations.</p>
+</li>
+<li><dl class="first docutils">
+<dt>method: cstrs_co_evolution.method.SIMPLE by default, the method used for the population encoding penalties coefficients.</dt>
+<dd><p class="first last">Three posssibililties are available: SIMPLE,
+SPLIT_NEQ_EQ and SPLIT_CONSTRAINTS. The simple one is the original
+version of the Coello/He implementation (one penalty coefficient weights
+the sum of the constraints violation, one the number of violated constraints).
+The SPLIT_NEQ_EQ, splits the equalities and inequalities constraints in two different sets for the
+penalty weigths, containing respectively inequalities and equalities
+weigths. The SPLIT_CONSTRAINTS splits the constraints in M set of weigths
+with M the number of constraints.</p>
+</dd>
+</dl>
+</li>
+<li><p class="first">pen_lower_bound: the lower boundary used for penalty.</p>
+</li>
+<li><p class="first">pen_upper_bound: the upper boundary used for penalty.</p>
+</li>
+<li><p class="first">ftol: 1e-15 by default. The stopping criteria on the x tolerance.</p>
+</li>
+<li><p class="first">xtol: 1e-15 by default. The stopping criteria on the f tolerance.</p>
+</li>
+</ul>
+</dd></dl>
+
+</dd></dl>
+
+<hr class="docutils" />
+<dl class="class">
+<dt id="PyGMO.algorithm.cstrs_immune_system">
+<em class="property">class </em><tt class="descclassname">PyGMO.algorithm.</tt><tt class="descname">cstrs_immune_system</tt><a class="headerlink" href="#PyGMO.algorithm.cstrs_immune_system" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="PyGMO.algorithm.PyGMO.algorithm.cstrs_immune_system.cstrs_immune_system.__init__">
+<tt class="descclassname">cstrs_immune_system.</tt><tt class="descname">__init__</tt><big>(</big><em>algorithm=None</em>, <em>algorithm_immune=None</em>, <em>gen=1</em>, <em>select_method=PyGMO.algorithm._algorithm._immune_select_method_type.BEST_ANTIBODY</em>, <em>inject_method=PyGMO.algorithm._algorithm._immune_inject_method_type.CHAMPION</em>, <em>distance_method=PyGMO.algorithm._algorithm._immune_distance_method_type.EUCLIDEAN</em>, <em>phi=0.5</em>, <em>gamma=0.5</em>, <em>sigma=0.3333333333333333</em>, <em>f_tol=1e-15</em>, <em>x_tol=1e-15</em><big>)</big><a class="headerlink" href="#PyGMO.algorithm.PyGMO.algorithm.cstrs_immune_system.cstrs_immune_system.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructs an immune system algorithm for constrained optimization.</p>
+<p>USAGE: algorithm._cstrs_immune_system(algorithm = _algorithm.jde(), algorithm_immune = _algorithm.jde(), gen = 1, select_method = cstrs_immune_system.select_method.BEST_ANTIBODY, inject_method = cstrs_immune_system.inject_method.CHAMPION, distance_method = cstrs_immune_system.distance_method.EUCLIDEAN, phi = 0.5, gamma = 0.5, sigma = 1./3., ftol = 1e-15, xtol = 1e-15):</p>
+<ul class="simple">
+<li>algorithm: optimizer to use as &#8216;original&#8217; optimization method. Its number of generations should be set to 1.</li>
+<li>algorithm_2: optimizer to use as &#8216;original&#8217; optimization method for the evolution of the immune system.</li>
+<li>gen: number of generations.</li>
+<li>select_method: cstrs_immune_system.select_method.BEST_ANTIBODY by default, the method used for selecting the antibodies.</li>
+<li>inject_method: cstrs_immune_system.inject_method.CHAMPION by default, the method used for reinjecting the antibodies.</li>
+<li>distance_method: cstrs_immune_system.distance_method.EUCLIDEAN by default, the method used for computing the distance to the antigenes population.</li>
+<li>Two possibilities are available: CHAMPION, and BEST25.</li>
+<li>phi: 0.5 by default. The feasible fraction selection to compute the mean value.</li>
+<li>gamma: 0.5 by default. The number of antigens selected / number of total antigens.</li>
+<li>sigma: 1/3 by default. The number of antibodies / number of antigens.</li>
+<li>ftol: 1e-15 by default. The stopping criteria on the x tolerance.</li>
+<li>xtol: 1e-15 by default. The stopping criteria on the f tolerance.</li>
+</ul>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="PyGMO.algorithm.cstrs_immune_system.screen_output">
+<tt class="descname">screen_output</tt><a class="headerlink" href="#PyGMO.algorithm.cstrs_immune_system.screen_output" title="Permalink to this definition">¶</a></dt>
+<dd><p>When True, the algorithms produces output on screen</p>
+</dd></dl>
+
+</dd></dl>
+
+<hr class="docutils" />
+<dl class="class">
+<dt id="PyGMO.algorithm.cstrs_core">
+<em class="property">class </em><tt class="descclassname">PyGMO.algorithm.</tt><tt class="descname">cstrs_core</tt><a class="headerlink" href="#PyGMO.algorithm.cstrs_core" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="PyGMO.algorithm.PyGMO.algorithm.cstrs_core.cstrs_core.__init__">
+<tt class="descclassname">cstrs_core.</tt><tt class="descname">__init__</tt><big>(</big><em>algorithm=None</em>, <em>repair_algorithm=None</em>, <em>gen=1</em>, <em>repair_frequency=10</em>, <em>repair_ratio=1.0</em>, <em>f_tol=1e-15</em>, <em>x_tol=1e-15</em><big>)</big><a class="headerlink" href="#PyGMO.algorithm.PyGMO.algorithm.cstrs_core.cstrs_core.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructs CORE (Constrained Optimization by Random Evolution) algorithm for constrained optimization (belong to the family of repairing techniques).</p>
+<p>USAGE: algorithm._cstrs_core(algorithm = _algorithm.jde(), repair_algorithm = _algorithm.jde(), gen = 1, repair_frequency = 10, repair_ratio = 1., f_tol = 1e-15, x_tol = 1e-15):</p>
+<ul class="simple">
+<li>algorithm: optimizer to use as &#8216;original&#8217; optimization method. Its number of generations should be set to 1.</li>
+<li>repair_algorithm: optimizer to use as &#8216;repairing&#8217; algorithm. It should be able to deal with population of size 1.</li>
+<li>gen: number of generations.</li>
+<li>repair_frequency: The infeasible are repaired at each repair frequency generations.</li>
+<li>repair_ratio: ratio of repaired individuals over infeasible (a ratio of 1 will repair all the individuals).</li>
+<li>ftol: 1e-15 by default. The stopping criteria on the x tolerance.</li>
+<li>xtol: 1e-15 by default. The stopping criteria on the f tolerance.</li>
+</ul>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="PyGMO.algorithm.cstrs_core.screen_output">
+<tt class="descname">screen_output</tt><a class="headerlink" href="#PyGMO.algorithm.cstrs_core.screen_output" title="Permalink to this definition">¶</a></dt>
+<dd><p>When True, the algorithms produces output on screen</p>
+</dd></dl>
+
+</dd></dl>
+
+<hr class="docutils" />
+<dl class="class">
+<dt id="PyGMO.algorithm.cs">
+<em class="property">class </em><tt class="descclassname">PyGMO.algorithm.</tt><tt class="descname">cs</tt><a class="headerlink" href="#PyGMO.algorithm.cs" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="PyGMO.algorithm.PyGMO.algorithm.cs.cs.__init__">
+<tt class="descclassname">cs.</tt><tt class="descname">__init__</tt><big>(</big><em>max_eval=1</em>, <em>stop_range=0.01</em>, <em>start_range=0.1</em>, <em>reduction_coeff=0.5</em><big>)</big><a class="headerlink" href="#PyGMO.algorithm.PyGMO.algorithm.cs.cs.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructs a Compass Search Algorithm</p>
+<p>USAGE: algorithm.cs(max_eval = 1, stop_range = 0.01, start_range = 0.1, reduction_coeff = 0.5);</p>
+<ul>
+<li><p class="first">max_eval: maximum number of function evaluations</p>
+</li>
+<li><p class="first">stop_range: when the range is reduced to a value smaller than stop_range cs stops</p>
+</li>
+<li><p class="first">start_range: starting range (non-dimensional wrt ub-lb)</p>
+</li>
+<li><dl class="first docutils">
+<dt>reduction_coeff: the range is multiplied by reduction_coeff whenever no improvment is made</dt>
+<dd><p class="first last">across one chromosome</p>
+</dd>
+</dl>
+</li>
+</ul>
+</dd></dl>
+
+</dd></dl>
+
+<hr class="docutils" />
+<dl class="class">
+<dt id="PyGMO.algorithm.ihs">
+<em class="property">class </em><tt class="descclassname">PyGMO.algorithm.</tt><tt class="descname">ihs</tt><a class="headerlink" href="#PyGMO.algorithm.ihs" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="PyGMO.algorithm.PyGMO.algorithm.ihs.ihs.__init__">
+<tt class="descclassname">ihs.</tt><tt class="descname">__init__</tt><big>(</big><em>iter=100</em>, <em>hmcr=0.85</em>, <em>par_min=0.35</em>, <em>par_max=0.99</em>, <em>bw_min=1e-05</em>, <em>bw_max=1</em><big>)</big><a class="headerlink" href="#PyGMO.algorithm.PyGMO.algorithm.ihs.ihs.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructs an Improved Harmony Search Algorithm</p>
+<p>USAGE: algorithm.ihs(iter = 100, hmcr = 0.85, par_min = 0.35, par_max = 0.99, bw_min = 1E-5, bw_max = 1);</p>
+<ul class="simple">
+<li>iter: number of iterations (improvisations)</li>
+<li>hmcr: rate of choosing from memory (in ]0,1[)</li>
+<li>par_min: minimum pitch adjustment rate (in ]0,1[)</li>
+<li>par_max: maximum pitch adjustment rate (in ]0,1[, &gt; par_min)</li>
+<li>bw_min: minimum distance bandwidth</li>
+<li>bw_max: maximum distance bandwidth (&gt; bw_min)</li>
+</ul>
+</dd></dl>
+
+</dd></dl>
+
+<hr class="docutils" />
+<dl class="class">
+<dt id="PyGMO.algorithm.monte_carlo">
+<em class="property">class </em><tt class="descclassname">PyGMO.algorithm.</tt><tt class="descname">monte_carlo</tt><a class="headerlink" href="#PyGMO.algorithm.monte_carlo" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="PyGMO.algorithm.PyGMO.algorithm.monte_carlo.monte_carlo.__init__">
+<tt class="descclassname">monte_carlo.</tt><tt class="descname">__init__</tt><big>(</big><em>iter=10000</em><big>)</big><a class="headerlink" href="#PyGMO.algorithm.PyGMO.algorithm.monte_carlo.monte_carlo.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructs a Monte Carlo Algorithm</p>
+<p>USAGE: algorithm.monte_carlo(iter = 10000)</p>
+<dl class="docutils">
+<dt>NOTE: At the end of each iteration, the randomly generated</dt>
+<dd>point substitutes the worst in the population if better</dd>
+</dl>
+<ul class="simple">
+<li>iter: number of Monte Carlo runs</li>
+</ul>
+</dd></dl>
+
+</dd></dl>
+
+<hr class="docutils" />
+<dl class="class">
+<dt id="PyGMO.algorithm.py_example">
+<em class="property">class </em><tt class="descclassname">PyGMO.algorithm.</tt><tt class="descname">py_example</tt><a class="headerlink" href="#PyGMO.algorithm.py_example" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="PyGMO.algorithm.PyGMO.algorithm.py_example.py_example.__init__">
+<tt class="descclassname">py_example.</tt><tt class="descname">__init__</tt><big>(</big><em>iter=10</em><big>)</big><a class="headerlink" href="#PyGMO.algorithm.PyGMO.algorithm.py_example.py_example.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructs a Monte-Carlo (random sampling) algorithm</p>
+<p>USAGE: algorithm.py_example(iter = 10)</p>
+<dl class="docutils">
+<dt>NOTE: At the end of each iteration, the randomly generated</dt>
+<dd>point substitutes the worst individual in the population if better</dd>
+</dl>
+<ul class="simple">
+<li>iter: number of random samples</li>
+</ul>
+</dd></dl>
+
+</dd></dl>
+
+<hr class="docutils" />
+<dl class="class">
+<dt id="PyGMO.algorithm.py_cmaes">
+<em class="property">class </em><tt class="descclassname">PyGMO.algorithm.</tt><tt class="descname">py_cmaes</tt><a class="headerlink" href="#PyGMO.algorithm.py_cmaes" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="PyGMO.algorithm.PyGMO.algorithm.py_cmaes.py_cmaes.__init__">
+<tt class="descclassname">py_cmaes.</tt><tt class="descname">__init__</tt><big>(</big><em>gen=500</em>, <em>cc=-1</em>, <em>cs=-1</em>, <em>c1=-1</em>, <em>cmu=-1</em>, <em>sigma0=0.5</em>, <em>ftol=1e-06</em>, <em>xtol=1e-06</em>, <em>memory=False</em>, <em>screen_output=False</em><big>)</big><a class="headerlink" href="#PyGMO.algorithm.PyGMO.algorithm.py_cmaes.py_cmaes.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructs a Covariance Matrix Adaptation Evolutionary Strategy (Python)</p>
+<p>USAGE: algorithm.py_cmaes(gen = 500, cc = -1, cs = -1, c1 = -1, cmu = -1, sigma0=0.5, ftol = 1e-6, xtol = 1e-6, memory = False, screen_output = False)</p>
+<p>NOTE: In our variant of the algorithm, particle memory is used to extract the elite and reinsertion
+is made aggressively ..... getting rid of the worst guy). Also, the bounds of the problem
+are enforced, as to allow PaGMO machinery to work. Fine control on each iteration can be achieved
+by calling the algo with gen=1 (algo state is stored, cmaes will continue at next call ... without
+initializing again all its state!!)</p>
+<ul class="simple">
+<li>gen: number of generations</li>
+<li>cc: time constant for C cumulation (in [0,1]) if -1 automatic values are set</li>
+<li>cs: time constant for sigma cumulation (in [0,1]) if -1 automatic values are set</li>
+<li>c1: learning rate for rank-1 update (in [0,1]) if -1 automatic values are set</li>
+<li>cmu: learning rate for rank-mu update (in [0,1]) if -1 automatic values are set</li>
+<li>sigma0: starting step (std)</li>
+<li>xtol: stopping criteria on the x tolerance</li>
+<li>ftol: stopping criteria on the f tolerance</li>
+<li>memory: when True the algorithm preserves memory of covariance, step and more between successive runs</li>
+<li>screen_output: activates screen_output (output at each generation)</li>
+</ul>
+</dd></dl>
+
+</dd></dl>
+
+<hr class="docutils" />
+<dl class="class">
+<dt id="PyGMO.algorithm.cmaes">
+<em class="property">class </em><tt class="descclassname">PyGMO.algorithm.</tt><tt class="descname">cmaes</tt><a class="headerlink" href="#PyGMO.algorithm.cmaes" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="PyGMO.algorithm.PyGMO.algorithm.cmaes.cmaes.__init__">
+<tt class="descclassname">cmaes.</tt><tt class="descname">__init__</tt><big>(</big><em>gen=500</em>, <em>cc=-1</em>, <em>cs=-1</em>, <em>c1=-1</em>, <em>cmu=-1</em>, <em>sigma0=0.5</em>, <em>ftol=1e-06</em>, <em>xtol=1e-06</em>, <em>memory=False</em>, <em>screen_output=False</em><big>)</big><a class="headerlink" href="#PyGMO.algorithm.PyGMO.algorithm.cmaes.cmaes.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructs a Covariance Matrix Adaptation Evolutionary Strategy (C++)</p>
+<p>USAGE: algorithm.cmaes(gen = 500, cc = -1, cs = -1, c1 = -1, cmu = -1, sigma0=0.5, ftol = 1e-6, xtol = 1e-6, memory = False, screen_output = False)</p>
+<p>NOTE: In our variant of the algorithm, particle memory is used to extract the elite and reinsertion
+is made aggressively ..... getting rid of the worst guy). Also, the bounds of the problem
+are enforced, as to allow PaGMO machinery to work. Fine control on each iteration can be achieved
+by calling the algo with memory=True and gen=1</p>
+<ul class="simple">
+<li>gen: number of generations</li>
+<li>cc: time constant for C cumulation (in [0,1]) if -1 automatic values are set</li>
+<li>cs: time constant for sigma cumulation (in [0,1]) if -1 automatic values are set</li>
+<li>c1: learning rate for rank-1 update (in [0,1]) if -1 automatic values are set</li>
+<li>cmu: learning rate for rank-mu update (in [0,1]) if -1 automatic values are set</li>
+<li>sigma0: starting step (std)</li>
+<li>xtol: stopping criteria on the x tolerance</li>
+<li>ftol: stopping criteria on the f tolerance</li>
+<li>memory: if True the algorithm internal state is saved and used for the next call</li>
+<li>screen_output: activates screen output of the algorithm (do not use in archipealgo, otherwise the screen will be flooded with</li>
+<li>different island outputs)</li>
+</ul>
+</dd></dl>
+
+</dd></dl>
+
+<hr class="docutils" />
+<dl class="class">
+<dt id="PyGMO.algorithm.scipy_fmin">
+<em class="property">class </em><tt class="descclassname">PyGMO.algorithm.</tt><tt class="descname">scipy_fmin</tt><a class="headerlink" href="#PyGMO.algorithm.scipy_fmin" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="PyGMO.algorithm.PyGMO.algorithm.scipy_fmin.scipy_fmin.__init__">
+<tt class="descclassname">scipy_fmin.</tt><tt class="descname">__init__</tt><big>(</big><em>maxiter=1</em>, <em>xtol=0.0001</em>, <em>ftol=0.0001</em>, <em>maxfun=None</em>, <em>disp=False</em><big>)</big><a class="headerlink" href="#PyGMO.algorithm.PyGMO.algorithm.scipy_fmin.scipy_fmin.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructs a Nelder-Mead Simplex algorithm (SciPy)</p>
+<p>USAGE: algorithm.scipy_fmin(maxiter=1, xtol=0.0001, ftol=0.0001, maxfun=None, full_output=0, disp=0, retall=0)</p>
+<ul class="simple">
+<li>maxiter: Maximum number of iterations to perform</li>
+<li>xtol: Relative error in xopt acceptable for convergence</li>
+<li>ftol: Relative error in func(xopt) acceptable for convergence</li>
+<li>maxfun: Maximum number of function evaluations to make</li>
+<li>disp: Set to True to print convergence messages</li>
+</ul>
+</dd></dl>
+
+</dd></dl>
+
+<hr class="docutils" />
+<dl class="class">
+<dt id="PyGMO.algorithm.scipy_l_bfgs_b">
+<em class="property">class </em><tt class="descclassname">PyGMO.algorithm.</tt><tt class="descname">scipy_l_bfgs_b</tt><a class="headerlink" href="#PyGMO.algorithm.scipy_l_bfgs_b" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="PyGMO.algorithm.PyGMO.algorithm.scipy_l_bfgs_b.scipy_l_bfgs_b.__init__">
+<tt class="descclassname">scipy_l_bfgs_b.</tt><tt class="descname">__init__</tt><big>(</big><em>maxfun=1</em>, <em>m=10</em>, <em>factr=10000000.0</em>, <em>pgtol=1e-05</em>, <em>epsilon=1e-08</em>, <em>screen_output=False</em><big>)</big><a class="headerlink" href="#PyGMO.algorithm.PyGMO.algorithm.scipy_l_bfgs_b.scipy_l_bfgs_b.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructs a L-BFGS-B algorithm (SciPy)</p>
+<p>NOTE: gradient is numerically approximated</p>
+<p>USAGE: algorithm.scipy_l_bfgs_b(maxfun = 15000, m = 10, factr = 10000000.0, pgtol = 1e-05, epsilon = 1e-08, screen_output = False):</p>
+<ul>
+<li><p class="first">maxfun: maximum number of function evaluations</p>
+</li>
+<li><dl class="first docutils">
+<dt>m: the maximum number of variable metric corrections</dt>
+<dd><p class="first last">used to define the limited memory matrix. (the limited memory BFGS
+method does not store the full hessian but uses this many terms in an
+approximation to it).</p>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>factr: The iteration stops when</dt>
+<dd><p class="first last">(f{k} - f{k+1}) / max{| f{k} | , | f{k+1} |,1} &lt;= factr*epsmch
+where epsmch is the machine precision, which is automatically
+generated by the code. Typical values for factr: 1e12 for
+low accuracy; 1e7 for moderate accuracy; 10.0 for extremely
+high accuracy.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>pgtol: The iteration will stop when</dt>
+<dd><p class="first last">max{| proj g{i} | i = 1, ..., n} &lt;= pgtol
+where proj g{i} is the ith component of the projected gradient.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>epsilon: step size used when approx_grad is true, for numerically</dt>
+<dd><p class="first last">calculating the gradient</p>
+</dd>
+</dl>
+</li>
+<li><p class="first">screen_output: Set to True to print iterations</p>
+</li>
+</ul>
+</dd></dl>
+
+</dd></dl>
+
+<hr class="docutils" />
+<dl class="class">
+<dt id="PyGMO.algorithm.scipy_slsqp">
+<em class="property">class </em><tt class="descclassname">PyGMO.algorithm.</tt><tt class="descname">scipy_slsqp</tt><a class="headerlink" href="#PyGMO.algorithm.scipy_slsqp" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="PyGMO.algorithm.PyGMO.algorithm.scipy_slsqp.scipy_slsqp.__init__">
+<tt class="descclassname">scipy_slsqp.</tt><tt class="descname">__init__</tt><big>(</big><em>max_iter=100</em>, <em>acc=1e-08</em>, <em>epsilon=1.4901161193847656e-08</em>, <em>screen_output=False</em><big>)</big><a class="headerlink" href="#PyGMO.algorithm.PyGMO.algorithm.scipy_slsqp.scipy_slsqp.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructs a Sequential Least SQuares Programming algorithm</p>
+<p>NOTE: gradient is numerically approximated</p>
+<p>USAGE: algorithm.scipy_slsqp(max_iter = 100,acc = 1E-6,epsilon = 1.49e-08, screen_output = False))</p>
+<ul class="simple">
+<li>max_iter: The maximum number of iterations.</li>
+<li>acc: Requested accuracy.</li>
+<li>epsilon: The step size for finite-difference derivative estimates.</li>
+<li>screen_output: Set to True to print iterations</li>
+</ul>
+</dd></dl>
+
+</dd></dl>
+
+<hr class="docutils" />
+<dl class="class">
+<dt id="PyGMO.algorithm.scipy_tnc">
+<em class="property">class </em><tt class="descclassname">PyGMO.algorithm.</tt><tt class="descname">scipy_tnc</tt><a class="headerlink" href="#PyGMO.algorithm.scipy_tnc" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="PyGMO.algorithm.PyGMO.algorithm.scipy_tnc.scipy_tnc.__init__">
+<tt class="descclassname">scipy_tnc.</tt><tt class="descname">__init__</tt><big>(</big><em>maxfun=15000</em>, <em>xtol=-1</em>, <em>ftol=-1</em>, <em>pgtol=1e-05</em>, <em>epsilon=1e-08</em>, <em>screen_output=False</em><big>)</big><a class="headerlink" href="#PyGMO.algorithm.PyGMO.algorithm.scipy_tnc.scipy_tnc.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructs a Truncated Newton Method algorithm (SciPy)</p>
+<p>NOTE: gradient is numerically approximated</p>
+<p>USAGE: algorithm.scipy_tnc(maxfun = 1, xtol = -1, ftol = -1, pgtol = 1e-05, epsilon = 1e-08, screen_output = False)</p>
+<ul>
+<li><p class="first">maxfun: Maximum number of function evaluation.</p>
+</li>
+<li><dl class="first docutils">
+<dt>xtol: Precision goal for the value of x in the stopping criterion</dt>
+<dd><p class="first last">(after applying x scaling factors). If xtol &lt; 0.0, xtol is set to
+sqrt(machine_precision). Defaults to -1.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>ftol: Precision goal for the value of f in the stoping criterion.</dt>
+<dd><p class="first last">If ftol &lt; 0.0, ftol is set to 0.0 defaults to -1.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>pgtol: Precision goal for the value of the projected gradient in the</dt>
+<dd><p class="first last">stopping criterion (after applying x scaling factors). If pgtol
+&lt; 0.0, pgtol is set to 1e-2 * sqrt(accuracy).
+Setting it to 0.0 is not recommended. Defaults to -1.</p>
+</dd>
+</dl>
+</li>
+<li><p class="first">epsilon: The stepsize in a finite difference approximation for the objfun</p>
+</li>
+<li><p class="first">screen_output: Set to True to print iterations</p>
+</li>
+</ul>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="PyGMO.algorithm.scipy_tnc.screen_output">
+<tt class="descname">screen_output</tt><a class="headerlink" href="#PyGMO.algorithm.scipy_tnc.screen_output" title="Permalink to this definition">¶</a></dt>
+<dd><p>When True, the algorithms produces output on screen</p>
+</dd></dl>
+
+</dd></dl>
+
+<hr class="docutils" />
+<dl class="class">
+<dt id="PyGMO.algorithm.scipy_cobyla">
+<em class="property">class </em><tt class="descclassname">PyGMO.algorithm.</tt><tt class="descname">scipy_cobyla</tt><a class="headerlink" href="#PyGMO.algorithm.scipy_cobyla" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="PyGMO.algorithm.PyGMO.algorithm.scipy_cobyla.scipy_cobyla.__init__">
+<tt class="descclassname">scipy_cobyla.</tt><tt class="descname">__init__</tt><big>(</big><em>max_fun=1</em>, <em>rho_end=1e-05</em>, <em>screen_output=False</em><big>)</big><a class="headerlink" href="#PyGMO.algorithm.PyGMO.algorithm.scipy_cobyla.scipy_cobyla.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructs a Constrained Optimization BY Linear Approximation (COBYLA) algorithm (SciPy)</p>
+<p>NOTE: equality constraints are transformed into two inequality constraints automatically</p>
+<p>USAGE: algorithm.scipy_cobyla(max_fun = 1,rho_end = 1E-5,screen_output = False)</p>
+<ul class="simple">
+<li>maxfun: Maximum number of function evaluations.</li>
+<li>rhoend: Final accuracy in the optimization (not precisely guaranteed). This is a lower bound on the size of the trust region.</li>
+<li>screen_output: Set to True to print iterations</li>
+</ul>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="PyGMO.algorithm.scipy_cobyla.screen_output">
+<tt class="descname">screen_output</tt><a class="headerlink" href="#PyGMO.algorithm.scipy_cobyla.screen_output" title="Permalink to this definition">¶</a></dt>
+<dd><p>When True, the algorithms produces output on screen</p>
+</dd></dl>
+
+</dd></dl>
+
+<hr class="docutils" />
+<dl class="class">
+<dt id="PyGMO.algorithm.nlopt_cobyla">
+<em class="property">class </em><tt class="descclassname">PyGMO.algorithm.</tt><tt class="descname">nlopt_cobyla</tt><a class="headerlink" href="#PyGMO.algorithm.nlopt_cobyla" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="PyGMO.algorithm.PyGMO.algorithm.nlopt_cobyla.nlopt_cobyla.__init__">
+<tt class="descclassname">nlopt_cobyla.</tt><tt class="descname">__init__</tt><big>(</big><em>max_iter=100</em>, <em>ftol=1e-06</em>, <em>xtol=1e-06</em><big>)</big><a class="headerlink" href="#PyGMO.algorithm.PyGMO.algorithm.nlopt_cobyla.nlopt_cobyla.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructs a Constrained Optimization BY Linear Approximation (COBYLA) algorithm (NLOPT)</p>
+<p>USAGE: algorithm.nlopt_cobyla(max_iter = 100, ftol = 1e-6, xtol = 1e-6)</p>
+<ul class="simple">
+<li>max_iter: stop-criteria (number of iterations)</li>
+<li>ftol: stop-criteria (absolute on the obj-fun)</li>
+<li>xtol: stop-criteria (absolute on the chromosome)</li>
+</ul>
+</dd></dl>
+
+</dd></dl>
+
+<hr class="docutils" />
+<dl class="class">
+<dt id="PyGMO.algorithm.nlopt_bobyqa">
+<em class="property">class </em><tt class="descclassname">PyGMO.algorithm.</tt><tt class="descname">nlopt_bobyqa</tt><a class="headerlink" href="#PyGMO.algorithm.nlopt_bobyqa" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="PyGMO.algorithm.PyGMO.algorithm.nlopt_bobyqa.nlopt_bobyqa.__init__">
+<tt class="descclassname">nlopt_bobyqa.</tt><tt class="descname">__init__</tt><big>(</big><em>max_iter=100</em>, <em>ftol=1e-06</em>, <em>xtol=1e-06</em><big>)</big><a class="headerlink" href="#PyGMO.algorithm.PyGMO.algorithm.nlopt_bobyqa.nlopt_bobyqa.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructs a BOBYQA algorithm (Bound Optimization BY Quadratic Approximation) (NLOPT)</p>
+<p>USAGE: algorithm.nlopt_bobyqa(max_iter = 100, ftol = 1e-6, xtol = 1e-6)</p>
+<ul class="simple">
+<li>max_iter: stop-criteria (number of iterations)</li>
+<li>ftol: stop-criteria (absolute on the obj-fun)</li>
+<li>xtol: stop-criteria (absolute on the chromosome)</li>
+</ul>
+</dd></dl>
+
+</dd></dl>
+
+<hr class="docutils" />
+<dl class="class">
+<dt id="PyGMO.algorithm.nlopt_sbplx">
+<em class="property">class </em><tt class="descclassname">PyGMO.algorithm.</tt><tt class="descname">nlopt_sbplx</tt><a class="headerlink" href="#PyGMO.algorithm.nlopt_sbplx" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="PyGMO.algorithm.PyGMO.algorithm.nlopt_sbplx.nlopt_sbplx.__init__">
+<tt class="descclassname">nlopt_sbplx.</tt><tt class="descname">__init__</tt><big>(</big><em>max_iter=100</em>, <em>ftol=1e-06</em>, <em>xtol=1e-06</em><big>)</big><a class="headerlink" href="#PyGMO.algorithm.PyGMO.algorithm.nlopt_sbplx.nlopt_sbplx.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructs a Subplex (a variant of Nelder-Mead that uses Nelder-Mead on a sequence of subspaces) (NLOPT)</p>
+<p>USAGE: algorithm.nlopt_sbplx(max_iter = 100, ftol = 1e-6, xtol = 1e-6)</p>
+<ul class="simple">
+<li>max_iter: stop-criteria (number of iterations)</li>
+<li>ftol: stop-criteria (absolute on the obj-fun)</li>
+<li>xtol: stop-criteria (absolute on the chromosome)</li>
+</ul>
+</dd></dl>
+
+</dd></dl>
+
+<hr class="docutils" />
+<dl class="class">
+<dt id="PyGMO.algorithm.nlopt_mma">
+<em class="property">class </em><tt class="descclassname">PyGMO.algorithm.</tt><tt class="descname">nlopt_mma</tt><a class="headerlink" href="#PyGMO.algorithm.nlopt_mma" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="PyGMO.algorithm.PyGMO.algorithm.nlopt_mma.nlopt_mma.__init__">
+<tt class="descclassname">nlopt_mma.</tt><tt class="descname">__init__</tt><big>(</big><em>max_iter=100</em>, <em>ftol=1e-06</em>, <em>xtol=1e-06</em><big>)</big><a class="headerlink" href="#PyGMO.algorithm.PyGMO.algorithm.nlopt_mma.nlopt_mma.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructs a Method of Moving Asymptotes (MMA) algorithm (NLOPT)</p>
+<p>USAGE: algorithm.nlopt_mma(max_iter = 100, ftol = 1e-6, xtol = 1e-6)</p>
+<ul class="simple">
+<li>max_iter: stop-criteria (number of iterations)</li>
+<li>ftol: stop-criteria (absolute on the obj-fun)</li>
+<li>xtol: stop-criteria (absolute on the chromosome)</li>
+</ul>
+</dd></dl>
+
+</dd></dl>
+
+<hr class="docutils" />
+<dl class="class">
+<dt id="PyGMO.algorithm.nlopt_auglag">
+<em class="property">class </em><tt class="descclassname">PyGMO.algorithm.</tt><tt class="descname">nlopt_auglag</tt><a class="headerlink" href="#PyGMO.algorithm.nlopt_auglag" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="PyGMO.algorithm.PyGMO.algorithm.nlopt_auglag.nlopt_auglag.__init__">
+<tt class="descclassname">nlopt_auglag.</tt><tt class="descname">__init__</tt><big>(</big><em>aux_algo_id=1</em>, <em>max_iter=100</em>, <em>ftol=1e-06</em>, <em>xtol=1e-06</em>, <em>aux_max_iter=100</em>, <em>aux_ftol=1e-06</em>, <em>aux_xtol=1e-06</em><big>)</big><a class="headerlink" href="#PyGMO.algorithm.PyGMO.algorithm.nlopt_auglag.nlopt_auglag.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructs an Augmented agrangian Algotihm (NLOPT)</p>
+<p>USAGE: algorithm.nlopt_mma(aux_algo_id = 1, max_iter = 100, ftol = 1e-6, xtol = 1e-6, aux_max_iter = 100, aux_ftol = 1e-6, aux_xtol = 1e-6)</p>
+<ul>
+<li><dl class="first docutils">
+<dt>aux_algo_id: auxiliary  optimizer id</dt>
+<dd><p class="first last">1: SBPLX
+2: COBYLA
+3: BOBYQA
+4: Low Storage BFGS</p>
+</dd>
+</dl>
+</li>
+<li><p class="first">max_iter: stop-criteria (number of iterations)</p>
+</li>
+<li><p class="first">ftol: stop-criteria (absolute on the obj-fun)</p>
+</li>
+<li><p class="first">xtol: stop-criteria (absolute on the chromosome)</p>
+</li>
+<li><p class="first">aux_max_iter: stop-criteria for the auxiliary optimizer (number of iterations)</p>
+</li>
+<li><p class="first">aux_ftol: stop-criteria for the auxiliary optimizer (absolute on the obj-fun)</p>
+</li>
+<li><p class="first">aux_xtol: stop-criteria for the auxiliary optimizer (absolute on the chromosome)</p>
+</li>
+</ul>
+</dd></dl>
+
+</dd></dl>
+
+<hr class="docutils" />
+<dl class="class">
+<dt id="PyGMO.algorithm.nlopt_auglag_eq">
+<em class="property">class </em><tt class="descclassname">PyGMO.algorithm.</tt><tt class="descname">nlopt_auglag_eq</tt><a class="headerlink" href="#PyGMO.algorithm.nlopt_auglag_eq" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="PyGMO.algorithm.PyGMO.algorithm.nlopt_auglag_eq.nlopt_auglag_eq.__init__">
+<tt class="descclassname">nlopt_auglag_eq.</tt><tt class="descname">__init__</tt><big>(</big><em>aux_algo_id=1</em>, <em>max_iter=100</em>, <em>ftol=1e-06</em>, <em>xtol=1e-06</em>, <em>aux_max_iter=100</em>, <em>aux_ftol=1e-06</em>, <em>aux_xtol=1e-06</em><big>)</big><a class="headerlink" href="#PyGMO.algorithm.PyGMO.algorithm.nlopt_auglag_eq.nlopt_auglag_eq.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructs an Augmented agrangian Algotihm (using penalties only for the equalities) (NLOPT)</p>
+<p>USAGE: algorithm.nlopt_auglag_eq(aux_algo_id = 1, max_iter = 100, ftol = 1e-6, xtol = 1e-6, aux_max_iter = 100, aux_ftol = 1e-6, aux_xtol = 1e-6)</p>
+<ul>
+<li><dl class="first docutils">
+<dt>aux_algo_id: auxiliary (local) optimizer id</dt>
+<dd><p class="first last">1: COBYLA
+2: MMA</p>
+</dd>
+</dl>
+</li>
+<li><p class="first">max_iter: stop-criteria (number of iterations)</p>
+</li>
+<li><p class="first">ftol: stop-criteria (absolute on the obj-fun)</p>
+</li>
+<li><p class="first">xtol: stop-criteria (absolute on the chromosome)</p>
+</li>
+<li><p class="first">aux_max_iter: stop-criteria for the auxiliary optimizer (number of iterations)</p>
+</li>
+<li><p class="first">aux_ftol: stop-criteria for the auxiliary optimizer (absolute on the obj-fun)</p>
+</li>
+<li><p class="first">aux_xtol: stop-criteria for the auxiliary optimizer (absolute on the chromosome)</p>
+</li>
+</ul>
+</dd></dl>
+
+</dd></dl>
+
+<hr class="docutils" />
+<dl class="class">
+<dt id="PyGMO.algorithm.nlopt_slsqp">
+<em class="property">class </em><tt class="descclassname">PyGMO.algorithm.</tt><tt class="descname">nlopt_slsqp</tt><a class="headerlink" href="#PyGMO.algorithm.nlopt_slsqp" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="PyGMO.algorithm.PyGMO.algorithm.nlopt_slsqp.nlopt_slsqp.__init__">
+<tt class="descclassname">nlopt_slsqp.</tt><tt class="descname">__init__</tt><big>(</big><em>max_iter=100</em>, <em>ftol=1e-06</em>, <em>xtol=1e-06</em><big>)</big><a class="headerlink" href="#PyGMO.algorithm.PyGMO.algorithm.nlopt_slsqp.nlopt_slsqp.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructs a Sequential Least SQuares Programming algorithm (SLSQP) algorithm (NLOPT)</p>
+<p>USAGE: algorithm.nlopt_slsqp(max_iter = 100, ftol = 1e-6, xtol = 1e-6)</p>
+<ul class="simple">
+<li>max_iter: stop-criteria (number of iterations)</li>
+<li>ftol: stop-criteria (absolute on the obj-fun)</li>
+<li>xtol: stop-criteria (absolute on the chromosome)</li>
+</ul>
+</dd></dl>
+
+</dd></dl>
+
+<hr class="docutils" />
+<dl class="class">
+<dt id="PyGMO.algorithm.gsl_nm2rand">
+<em class="property">class </em><tt class="descclassname">PyGMO.algorithm.</tt><tt class="descname">gsl_nm2rand</tt><a class="headerlink" href="#PyGMO.algorithm.gsl_nm2rand" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="PyGMO.algorithm.PyGMO.algorithm.gsl_nm2rand.gsl_nm2rand.__init__">
+<tt class="descclassname">gsl_nm2rand.</tt><tt class="descname">__init__</tt><big>(</big><em>max_iter=100</em>, <em>step_size=1e-08</em>, <em>tol=1e-08</em><big>)</big><a class="headerlink" href="#PyGMO.algorithm.PyGMO.algorithm.gsl_nm2rand.gsl_nm2rand.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructs a Nelder-Mead algorithm (Variant2 + randomly oriented initial simplex) (GSL)</p>
+<p>USAGE: algorithm.gsl_nm2rand(max_iter = 100, step_size = 1e-8, tol = 1e-8);</p>
+<ul class="simple">
+<li>max_iter: maximum number of iterations</li>
+<li>step_size: size of the first trial step.</li>
+<li>tol: accuracy of the line minimisation.</li>
+</ul>
+</dd></dl>
+
+</dd></dl>
+
+<hr class="docutils" />
+<dl class="class">
+<dt id="PyGMO.algorithm.gsl_nm2">
+<em class="property">class </em><tt class="descclassname">PyGMO.algorithm.</tt><tt class="descname">gsl_nm2</tt><a class="headerlink" href="#PyGMO.algorithm.gsl_nm2" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="PyGMO.algorithm.PyGMO.algorithm.gsl_nm2.gsl_nm2.__init__">
+<tt class="descclassname">gsl_nm2.</tt><tt class="descname">__init__</tt><big>(</big><em>max_iter=100</em>, <em>step_size=1e-08</em>, <em>tol=1e-08</em><big>)</big><a class="headerlink" href="#PyGMO.algorithm.PyGMO.algorithm.gsl_nm2.gsl_nm2.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructs a Nelder-Mead algorithm (Variant2) (GSL)</p>
+<p>USAGE: algorithm.gsl_nm2(max_iter = 100, step_size = 1e-8, tol = 1e-8)</p>
+<ul class="simple">
+<li>max_iter: maximum number of iterations</li>
+<li>step_size: size of the first trial step.</li>
+<li>tol: accuracy of the line minimisation.</li>
+</ul>
+</dd></dl>
+
+</dd></dl>
+
+<hr class="docutils" />
+<dl class="class">
+<dt id="PyGMO.algorithm.gsl_nm">
+<em class="property">class </em><tt class="descclassname">PyGMO.algorithm.</tt><tt class="descname">gsl_nm</tt><a class="headerlink" href="#PyGMO.algorithm.gsl_nm" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="PyGMO.algorithm.PyGMO.algorithm.gsl_nm.gsl_nm.__init__">
+<tt class="descclassname">gsl_nm.</tt><tt class="descname">__init__</tt><big>(</big><em>max_iter=100</em>, <em>step_size=1e-08</em>, <em>tol=1e-08</em><big>)</big><a class="headerlink" href="#PyGMO.algorithm.PyGMO.algorithm.gsl_nm.gsl_nm.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructs a Nelder-Mead Algorithm (GSL)</p>
+<p>USAGE: algorithm.gsl_nm(max_iter = 100, step_size = 1e-8, tol = 1e-8);</p>
+<ul class="simple">
+<li>max_iter: maximum number of iterations</li>
+<li>step_size: size of the first trial step.</li>
+<li>tol: accuracy of the line minimisation.</li>
+</ul>
+</dd></dl>
+
+</dd></dl>
+
+<hr class="docutils" />
+<dl class="class">
+<dt id="PyGMO.algorithm.gsl_pr">
+<em class="property">class </em><tt class="descclassname">PyGMO.algorithm.</tt><tt class="descname">gsl_pr</tt><a class="headerlink" href="#PyGMO.algorithm.gsl_pr" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="PyGMO.algorithm.PyGMO.algorithm.gsl_pr.gsl_pr.__init__">
+<tt class="descclassname">gsl_pr.</tt><tt class="descname">__init__</tt><big>(</big><em>max_iter=100</em>, <em>step_size=1e-08</em>, <em>tol=1e-08</em>, <em>grad_step_size=0.01</em>, <em>grad_tol=0.0001</em><big>)</big><a class="headerlink" href="#PyGMO.algorithm.PyGMO.algorithm.gsl_pr.gsl_pr.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructs a Polak-Ribiere conjugate gradient (GSL)</p>
+<p>USAGE: algorithm.gsl_pr2(max_iter = 100, step_size = 1e-8, tol = 1e-8, grad_step_size = 0.01, grad_tol = 0.0001);</p>
+<ul class="simple">
+<li>max_iter: maximum number of iterations</li>
+<li>step_size: size of the first trial step.</li>
+<li>tol: accuracy of the line minimisation.</li>
+<li>grad_step_size: step size for the numerical computation of the gradient.</li>
+<li>grad_tol: tolerance when testing the norm of the gradient as stopping criterion.</li>
+</ul>
+</dd></dl>
+
+</dd></dl>
+
+<hr class="docutils" />
+<dl class="class">
+<dt id="PyGMO.algorithm.gsl_fr">
+<em class="property">class </em><tt class="descclassname">PyGMO.algorithm.</tt><tt class="descname">gsl_fr</tt><a class="headerlink" href="#PyGMO.algorithm.gsl_fr" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="PyGMO.algorithm.PyGMO.algorithm.gsl_fr.gsl_fr.__init__">
+<tt class="descclassname">gsl_fr.</tt><tt class="descname">__init__</tt><big>(</big><em>max_iter=100</em>, <em>step_size=1e-08</em>, <em>tol=1e-08</em>, <em>grad_step_size=0.01</em>, <em>grad_tol=0.0001</em><big>)</big><a class="headerlink" href="#PyGMO.algorithm.PyGMO.algorithm.gsl_fr.gsl_fr.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructs a Fletcher-Reeves conjugate gradient (GSL)</p>
+<p>USAGE: algorithm.gsl_fr(max_iter = 100, step_size = 1e-8, tol = 1e-8, grad_step_size = 0.01, grad_tol = 0.0001)</p>
+<ul class="simple">
+<li>max_iter: maximum number of iterations</li>
+<li>step_size: size of the first trial step.</li>
+<li>tol: accuracy of the line minimisation.</li>
+<li>grad_step_size: step size for the numerical computation of the gradient.</li>
+<li>grad_tol: tolerance when testing the norm of the gradient as stopping criterion.</li>
+</ul>
+</dd></dl>
+
+</dd></dl>
+
+<hr class="docutils" />
+<dl class="class">
+<dt id="PyGMO.algorithm.gsl_bfgs2">
+<em class="property">class </em><tt class="descclassname">PyGMO.algorithm.</tt><tt class="descname">gsl_bfgs2</tt><a class="headerlink" href="#PyGMO.algorithm.gsl_bfgs2" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="PyGMO.algorithm.PyGMO.algorithm.gsl_bfgs2.gsl_bfgs2.__init__">
+<tt class="descclassname">gsl_bfgs2.</tt><tt class="descname">__init__</tt><big>(</big><em>max_iter=100</em>, <em>step_size=1e-08</em>, <em>tol=1e-08</em>, <em>grad_step_size=0.01</em>, <em>grad_tol=0.0001</em><big>)</big><a class="headerlink" href="#PyGMO.algorithm.PyGMO.algorithm.gsl_bfgs2.gsl_bfgs2.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructs a BFGS2 Algorithm (GSL)</p>
+<p>NOTE: in GSL, BFGS2 is a more efficient version of BFGS</p>
+<p>USAGE: algorithm.gsl_bfgs2(max_iter = 100, step_size = 1e-8, tol = 1e-8, grad_step_size = 0.01, grad_tol = 0.0001);</p>
+<ul class="simple">
+<li>max_iter: maximum number of iterations</li>
+<li>step_size: size of the first trial step.</li>
+<li>tol: accuracy of the line minimisation.</li>
+<li>grad_step_size: step size for the numerical computation of the gradient.</li>
+<li>grad_tol: tolerance when testing the norm of the gradient as stopping criterion.</li>
+</ul>
+</dd></dl>
+
+</dd></dl>
+
+<hr class="docutils" />
+<dl class="class">
+<dt id="PyGMO.algorithm.gsl_bfgs">
+<em class="property">class </em><tt class="descclassname">PyGMO.algorithm.</tt><tt class="descname">gsl_bfgs</tt><a class="headerlink" href="#PyGMO.algorithm.gsl_bfgs" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="PyGMO.algorithm.PyGMO.algorithm.gsl_bfgs.gsl_bfgs.__init__">
+<tt class="descclassname">gsl_bfgs.</tt><tt class="descname">__init__</tt><big>(</big><em>max_iter=100</em>, <em>step_size=1e-08</em>, <em>tol=1e-08</em>, <em>grad_step_size=0.01</em>, <em>grad_tol=0.0001</em><big>)</big><a class="headerlink" href="#PyGMO.algorithm.PyGMO.algorithm.gsl_bfgs.gsl_bfgs.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructs a BFGS Algorithm (GSL)</p>
+<p>USAGE: algorithm.gsl_bfgs(max_iter = 100, step_size = 1e-8, tol = 1e-8, grad_step_size = 0.01, grad_tol = 0.0001)</p>
+<ul class="simple">
+<li>max_iter: maximum number of iterations</li>
+<li>step_size: size of the first trial step.</li>
+<li>tol: accuracy of the line minimisation.</li>
+<li>grad_step_size: step size for the numerical computation of the gradient.</li>
+<li>grad_tol: tolerance when testing the norm of the gradient as stopping criterion.</li>
+</ul>
+</dd></dl>
+
+</dd></dl>
+
+<hr class="docutils" />
+<dl class="class">
+<dt id="PyGMO.algorithm.snopt">
+<em class="property">class </em><tt class="descclassname">PyGMO.algorithm.</tt><tt class="descname">snopt</tt><a class="headerlink" href="#PyGMO.algorithm.snopt" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="PyGMO.algorithm.PyGMO.algorithm.snopt.snopt.__init__">
+<tt class="descclassname">snopt.</tt><tt class="descname">__init__</tt><big>(</big><em>major_iter=100</em>, <em>feas_tol=1e-08</em>, <em>opt_tol=1e-06</em>, <em>screen_output=False</em><big>)</big><a class="headerlink" href="#PyGMO.algorithm.PyGMO.algorithm.snopt.snopt.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructs SNOPT Algorithm</p>
+<p>USAGE: algorithm.snopt(major_iter = 100, feas_tol = 1e-6, opt_tol = 1e-6, screen_output = False);</p>
+<ul class="simple">
+<li>major_iter: Maximum number of major iterations</li>
+<li>feas_tol: Feasibility tolerance</li>
+<li>opt_tol: Optimality tolerance</li>
+<li>screen_output: Activates output on screen</li>
+</ul>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="PyGMO.algorithm.snopt.screen_output">
+<tt class="descname">screen_output</tt><a class="headerlink" href="#PyGMO.algorithm.snopt.screen_output" title="Permalink to this definition">¶</a></dt>
+<dd><p>When True, the algorithms produces output on screen</p>
+</dd></dl>
+
+</dd></dl>
+
+<hr class="docutils" />
+<dl class="class">
+<dt id="PyGMO.algorithm.ipopt">
+<em class="property">class </em><tt class="descclassname">PyGMO.algorithm.</tt><tt class="descname">ipopt</tt><a class="headerlink" href="#PyGMO.algorithm.ipopt" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="PyGMO.algorithm.PyGMO.algorithm.ipopt.ipopt.__init__">
+<tt class="descclassname">ipopt.</tt><tt class="descname">__init__</tt><big>(</big><em>max_iter=100</em>, <em>constr_viol_tol=1e-08</em>, <em>dual_inf_tol=1e-08</em>, <em>compl_inf_tol=1e-08</em>, <em>nlp_scaling_method=True</em>, <em>obj_scaling_factor=1.0</em>, <em>mu_init=0.1</em>, <em>screen_output=False</em><big>)</big><a class="headerlink" href="#PyGMO.algorithm.PyGMO.algorithm.ipopt.ipopt.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructs an Interior Point OPTimization Algorithm (IPOPT)</p>
+<p>USAGE: algorithm.ipopt(major_iter = 100, constr_viol_tol = 1e-08, dual_inf_tol = 1e-08, compl_inf_tol = 1e-08, screen_output = False);</p>
+<ul class="simple">
+<li>max_iter: Maximum number of major iterations</li>
+<li>constr_viol_tol: Constraint violation tolerance</li>
+<li>dual_inf_tol: Dual infeasibility tolerance</li>
+<li>compl_inf_tol: Complementary feasibility tolerance</li>
+<li>nlp_scaling_method Select if the &#8220;gradient-based&#8221; scaling of the  NLP should be used</li>
+<li>obj_scaling_factor Scaling factor for the objective function.</li>
+<li>mu_init Initial value for the barrier parameter.</li>
+<li>screen_output: Activates output on screen</li>
+</ul>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="PyGMO.algorithm.ipopt.screen_output">
+<tt class="descname">screen_output</tt><a class="headerlink" href="#PyGMO.algorithm.ipopt.screen_output" title="Permalink to this definition">¶</a></dt>
+<dd><p>When True, the algorithms produces output on screen</p>
+</dd></dl>
+
+</dd></dl>
+
+<hr class="docutils" />
+<dl class="class">
+<dt id="PyGMO.algorithm.cstrs_self_adaptive">
+<em class="property">class </em><tt class="descclassname">PyGMO.algorithm.</tt><tt class="descname">cstrs_self_adaptive</tt><a class="headerlink" href="#PyGMO.algorithm.cstrs_self_adaptive" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="PyGMO.algorithm.PyGMO.algorithm.cstrs_self_adaptive.cstrs_self_adaptive.__init__">
+<tt class="descclassname">cstrs_self_adaptive.</tt><tt class="descname">__init__</tt><big>(</big><em>algorithm=None</em>, <em>max_iter=100</em>, <em>f_tol=1e-15</em>, <em>x_tol=1e-15</em><big>)</big><a class="headerlink" href="#PyGMO.algorithm.PyGMO.algorithm.cstrs_self_adaptive.cstrs_self_adaptive.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructs a Self-Adaptive Fitness constraints handling Meta Algorithm.</p>
+<p>The key idea of this constraint handling technique is to represent the
+constraint violation by a single infeasibility measure, and to adapt
+dynamically the penalization of infeasible solutions.</p>
+<p>USAGE: algorithm.self_adaptive(algorithm = algorithm.jde(), max_iter  = 100, f_tol = 1e-15, x_tol = 1e-15);</p>
+<ul class="simple">
+<li>algorithm: original optimizer</li>
+<li>max_iter: stop-criteria (number of iterations)</li>
+<li>ftol: 1e-15 by default. The stopping criteria on the x tolerance.</li>
+<li>xtol: 1e-15 by default. The stopping criteria on the f tolerance.</li>
+</ul>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+</div>
+
+
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="problems.html" class="btn btn-neutral float-right" title="Problems"/>Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="island.html" class="btn btn-neutral" title="Island and Archipelago"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2015, Dario Izzo and Francesco Biscani.
+    </p>
+  </div>
+
+  <a href="https://github.com/snide/sphinx_rtd_theme">Sphinx theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+</body>
+</html>

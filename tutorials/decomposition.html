@@ -1,0 +1,264 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Decomposition &mdash; PyGMO 1.1.7dev documentation</title>
+  
+
+  
+  
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  
+  
+
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:'../',
+        VERSION:'1.1.7dev',
+        COLLAPSE_INDEX:false,
+        FILE_SUFFIX:'.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+    <script type="text/javascript">
+        jQuery(function () {
+            SphinxRtdTheme.StickyNav.enable();
+        });
+    </script>
+  
+
+  
+    <link rel="top" title="PyGMO 1.1.7dev documentation" href="../index.html"/>
+        <link rel="up" title="Meta-problems" href="meta_problems_meta_algorithms.html"/>
+        <link rel="next" title="Multi Objective Optimization with PyGMO" href="multi_objective_optimization_with_PyGMO.html"/>
+        <link rel="prev" title="The Noisy meta-problem" href="noisy.html"/> 
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        <a href="../index.html" class="fa fa-home"> PyGMO</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        
+        
+            <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../install.html">Install PyGMO</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../install.html#preparing-your-system-to-compile-pygmo">Preparing your system to compile PyGMO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../install.html#download-pygmo-code">Download PyGMO code</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../install.html#compiling-and-installing-under-unix">Compiling and Installing under Unix</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../install.html#compiling-and-installing-under-windows">Compiling and Installing under Windows</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../quickstart.html">Quick Start</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../quickstart.html#on-one-cpu">On one CPU</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../quickstart.html#on-many-cpus">On many CPUs ...</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../quickstart.html#and-migrating-solutions">... and migrating solutions ...</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../quickstart.html#and-between-different-algorithms">... and between different algorithms ...</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Tutorials</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="adding_problems_and_algorithms_to_PyGMO.html">Adding new problems and algorithms to PyGMO</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="meta_problems_meta_algorithms.html">Meta-problems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="multi_objective_optimization_with_PyGMO.html">Multi Objective Optimization with PyGMO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hypervolumes_in_PyGMO.html">Hypervolumes with PyGMO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dealing_with_constraints_in_PyGMO.html">Dealing with constraints in PyGMO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="racing.html">Racing in PyGMO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tsp.html">Traveling Salesman Problems with PyGMO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="landscape_analysis_with_DrPyGMO.html">Landscape Analysis using Dr. PyGMO</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/index.html">Examples</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../examples/example1.html">A study on Mixing Variants of Differential Evolution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples/example2.html">Monitoring the Information Flow in a large archipelago</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples/example3.html">Testing Algorithms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples/example4.html">Multi-objective optimization in the asynchronous island model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples/example5.html">Designing and optimizing interplanetary trajectories</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples/example6.html">Participating to the CEC2013 Competition (v 1.1.5)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples/example7.html">Travelling Salesman Problem for Active Space Debris Removal</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples/local_optimization.html">Third-party Non-linear optimizers in PyGMO</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../documentation/index.html">User Documentation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../documentation/individual.html">Individual and Champion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../documentation/population.html">Population</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../documentation/migration.html">Migration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../documentation/topology.html">Topology</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../documentation/island.html">Island and Archipelago</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../documentation/algorithms.html">Algorithms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../documentation/problems.html">Problems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../documentation/hypervolume.html">Hypervolume</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../documentation/racing.html">Racing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../documentation/analysis.html">Dr. PyGMO - Analysis Module</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference external" href="http://esa.github.io/pagmo/">PaGMO API</a></li>
+</ul>
+
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../index.html">PyGMO</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="index.html">Tutorials</a> &raquo;</li>
+      
+          <li><a href="meta_problems_meta_algorithms.html">Meta-problems</a> &raquo;</li>
+      
+    <li>Decomposition</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          <a href="../_sources/tutorials/decomposition.txt" rel="nofollow"> View page source</a>
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            
+  <div class="section" id="decomposition">
+<span id="id1"></span><h1>Decomposition<a class="headerlink" href="#decomposition" title="Permalink to this headline">¶</a></h1>
+<p>In this tutorial we will learn how to use the decompose meta-problems to solve a multi-objective problem.
+The decompose meta-problem transforms a multi-objective problem into a single-objective one having as
+fitness function a convex combination (defined by a weight vector) of the original objectives.
+Let us start creating a decomposed problem from a multi-objective one.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">In</span> <span class="p">[</span><span class="mi">1</span><span class="p">]:</span> <span class="kn">from</span> <span class="nn">PyGMO</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="n">In</span> <span class="p">[</span><span class="mi">2</span><span class="p">]:</span> <span class="n">orig_prob</span> <span class="o">=</span> <span class="n">problem</span><span class="o">.</span><span class="n">zdt</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">In</span> <span class="p">[</span><span class="mi">3</span><span class="p">]:</span> <span class="n">prob</span> <span class="o">=</span> <span class="n">problem</span><span class="o">.</span><span class="n">decompose</span><span class="p">(</span><span class="n">problem</span> <span class="o">=</span> <span class="n">orig_prob</span><span class="p">,</span> <span class="n">weights</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">])</span>
+</pre></div>
+</div>
+<p>In this way the 2 objectives of the original problem are equally weighted. If we don&#8217;t define the
+weight vector, then it is randomly generated.</p>
+<p>We then proceed by solving the new decomposed problem using a single-objective optimization algorithm.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">In</span> <span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="n">alg</span> <span class="o">=</span> <span class="n">algorithm</span><span class="o">.</span><span class="n">jde</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span>
+<span class="n">In</span> <span class="p">[</span><span class="mi">5</span><span class="p">]</span> <span class="n">pop</span> <span class="o">=</span> <span class="n">population</span><span class="p">(</span><span class="n">prob</span><span class="p">,</span> <span class="mi">200</span><span class="p">)</span>
+<span class="n">In</span> <span class="p">[</span><span class="mi">6</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">xrange</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
+            <span class="n">pop</span> <span class="o">=</span> <span class="n">alg</span><span class="o">.</span><span class="n">evolve</span><span class="p">(</span><span class="n">pop</span><span class="p">)</span>
+            <span class="k">print</span> <span class="s">&quot;Generation &quot;</span><span class="p">,</span> <span class="n">i</span>
+            <span class="k">print</span> <span class="s">&quot;Distance from Pareto Front (p-distance): &quot;</span> <span class="p">,</span> <span class="n">orig_prob</span><span class="o">.</span><span class="n">p_distance</span><span class="p">(</span><span class="n">pop</span><span class="p">)</span>
+            <span class="k">print</span> <span class="s">&quot;Original fitness: &quot;</span> <span class="p">,</span> <span class="n">orig_prob</span><span class="o">.</span><span class="n">objfun</span><span class="p">(</span><span class="n">pop</span><span class="o">.</span><span class="n">champion</span><span class="o">.</span><span class="n">x</span><span class="p">)</span>
+            <span class="k">print</span> <span class="s">&quot;Decomposed fitness: &quot;</span> <span class="p">,</span> <span class="n">pop</span><span class="o">.</span><span class="n">champion</span><span class="o">.</span><span class="n">f</span>
+</pre></div>
+</div>
+<p>We see how the fitness of the new problem is equal to the average of the original 2 objectives</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">Out</span> <span class="p">[</span><span class="mi">7</span><span class="p">]</span> <span class="n">Distance</span> <span class="kn">from</span> <span class="nn">Pareto</span> <span class="nn">Front</span> <span class="p">(</span><span class="n">p</span><span class="o">-</span><span class="n">distance</span><span class="p">):</span>  <span class="mf">0.569852362819</span>
+        <span class="n">Original</span> <span class="n">fitness</span><span class="p">:</span>  <span class="p">(</span><span class="mf">0.376410003683959</span><span class="p">,</span> <span class="mf">0.6055773596287406</span><span class="p">)</span>
+        <span class="n">Decomposed</span> <span class="n">fitness</span><span class="p">:</span>  <span class="p">(</span><span class="mf">0.4909936816563498</span><span class="p">,)</span>
+
+        <span class="n">Generation</span>  <span class="mi">1</span>
+        <span class="n">Distance</span> <span class="kn">from</span> <span class="nn">Pareto</span> <span class="nn">Front</span> <span class="p">(</span><span class="n">p</span><span class="o">-</span><span class="n">distance</span><span class="p">):</span>  <span class="mf">0.0962829285609</span>
+        <span class="n">Original</span> <span class="n">fitness</span><span class="p">:</span>  <span class="p">(</span><span class="mf">0.25292383041734323</span><span class="p">,</span> <span class="mf">0.528506927611418</span><span class="p">)</span>
+        <span class="n">Decomposed</span> <span class="n">fitness</span><span class="p">:</span>  <span class="p">(</span><span class="mf">0.39071537901438064</span><span class="p">,)</span>
+
+        <span class="n">Generation</span>  <span class="mi">2</span>
+        <span class="n">Distance</span> <span class="kn">from</span> <span class="nn">Pareto</span> <span class="nn">Front</span> <span class="p">(</span><span class="n">p</span><span class="o">-</span><span class="n">distance</span><span class="p">):</span>  <span class="mf">0.0164014486696</span>
+        <span class="n">Original</span> <span class="n">fitness</span><span class="p">:</span>  <span class="p">(</span><span class="mf">0.25426237266331964</span><span class="p">,</span> <span class="mf">0.499545293860021</span><span class="p">)</span>
+        <span class="n">Decomposed</span> <span class="n">fitness</span><span class="p">:</span>  <span class="p">(</span><span class="mf">0.3769038332616703</span><span class="p">,)</span>
+
+        <span class="n">Generation</span>  <span class="mi">3</span>
+        <span class="n">Distance</span> <span class="kn">from</span> <span class="nn">Pareto</span> <span class="nn">Front</span> <span class="p">(</span><span class="n">p</span><span class="o">-</span><span class="n">distance</span><span class="p">):</span>  <span class="mf">0.00251788007034</span>
+        <span class="n">Original</span> <span class="n">fitness</span><span class="p">:</span>  <span class="p">(</span><span class="mf">0.24129082628054865</span><span class="p">,</span> <span class="mf">0.5095238228445969</span><span class="p">)</span>
+        <span class="n">Decomposed</span> <span class="n">fitness</span><span class="p">:</span>  <span class="p">(</span><span class="mf">0.37540732456257275</span><span class="p">,)</span>
+
+        <span class="n">Generation</span>  <span class="mi">4</span>
+        <span class="n">Distance</span> <span class="kn">from</span> <span class="nn">Pareto</span> <span class="nn">Front</span> <span class="p">(</span><span class="n">p</span><span class="o">-</span><span class="n">distance</span><span class="p">):</span>  <span class="mf">0.000420874501332</span>
+        <span class="n">Original</span> <span class="n">fitness</span><span class="p">:</span>  <span class="p">(</span><span class="mf">0.2500151198152518</span><span class="p">,</span> <span class="mf">0.5000990342618756</span><span class="p">)</span>
+        <span class="n">Decomposed</span> <span class="n">fitness</span><span class="p">:</span>  <span class="p">(</span><span class="mf">0.3750570770385637</span><span class="p">,)</span>
+
+        <span class="n">Generation</span>  <span class="mi">5</span>
+        <span class="n">Distance</span> <span class="kn">from</span> <span class="nn">Pareto</span> <span class="nn">Front</span> <span class="p">(</span><span class="n">p</span><span class="o">-</span><span class="n">distance</span><span class="p">):</span>  <span class="mf">7.23681824182e-05</span>
+        <span class="n">Original</span> <span class="n">fitness</span><span class="p">:</span>  <span class="p">(</span><span class="mf">0.24995048982014567</span><span class="p">,</span> <span class="mf">0.5000683842135499</span><span class="p">)</span>
+        <span class="n">Decomposed</span> <span class="n">fitness</span><span class="p">:</span>  <span class="p">(</span><span class="mf">0.3750094370168478</span><span class="p">,)</span>
+</pre></div>
+</div>
+</div>
+
+
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="multi_objective_optimization_with_PyGMO.html" class="btn btn-neutral float-right" title="Multi Objective Optimization with PyGMO"/>Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="noisy.html" class="btn btn-neutral" title="The Noisy meta-problem"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2015, Dario Izzo and Francesco Biscani.
+    </p>
+  </div>
+
+  <a href="https://github.com/snide/sphinx_rtd_theme">Sphinx theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+</body>
+</html>

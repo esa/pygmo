@@ -1,0 +1,348 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Racing the individuals in stochastic optimization problems &mdash; PyGMO 1.1.7dev documentation</title>
+  
+
+  
+  
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  
+  
+
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:'../',
+        VERSION:'1.1.7dev',
+        COLLAPSE_INDEX:false,
+        FILE_SUFFIX:'.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+    <script type="text/javascript">
+        jQuery(function () {
+            SphinxRtdTheme.StickyNav.enable();
+        });
+    </script>
+  
+
+  
+    <link rel="top" title="PyGMO 1.1.7dev documentation" href="../index.html"/>
+        <link rel="up" title="Racing in PyGMO" href="racing.html"/>
+        <link rel="next" title="Racing algorithms" href="racing_algorithms.html"/>
+        <link rel="prev" title="Racing in PyGMO" href="racing.html"/> 
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        <a href="../index.html" class="fa fa-home"> PyGMO</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        
+        
+            <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../install.html">Install PyGMO</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../install.html#preparing-your-system-to-compile-pygmo">Preparing your system to compile PyGMO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../install.html#download-pygmo-code">Download PyGMO code</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../install.html#compiling-and-installing-under-unix">Compiling and Installing under Unix</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../install.html#compiling-and-installing-under-windows">Compiling and Installing under Windows</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../quickstart.html">Quick Start</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../quickstart.html#on-one-cpu">On one CPU</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../quickstart.html#on-many-cpus">On many CPUs ...</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../quickstart.html#and-migrating-solutions">... and migrating solutions ...</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../quickstart.html#and-between-different-algorithms">... and between different algorithms ...</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Tutorials</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="adding_problems_and_algorithms_to_PyGMO.html">Adding new problems and algorithms to PyGMO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="meta_problems_meta_algorithms.html">Meta-problems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="multi_objective_optimization_with_PyGMO.html">Multi Objective Optimization with PyGMO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hypervolumes_in_PyGMO.html">Hypervolumes with PyGMO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dealing_with_constraints_in_PyGMO.html">Dealing with constraints in PyGMO</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="racing.html">Racing in PyGMO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tsp.html">Traveling Salesman Problems with PyGMO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="landscape_analysis_with_DrPyGMO.html">Landscape Analysis using Dr. PyGMO</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/index.html">Examples</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../examples/example1.html">A study on Mixing Variants of Differential Evolution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples/example2.html">Monitoring the Information Flow in a large archipelago</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples/example3.html">Testing Algorithms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples/example4.html">Multi-objective optimization in the asynchronous island model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples/example5.html">Designing and optimizing interplanetary trajectories</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples/example6.html">Participating to the CEC2013 Competition (v 1.1.5)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples/example7.html">Travelling Salesman Problem for Active Space Debris Removal</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples/local_optimization.html">Third-party Non-linear optimizers in PyGMO</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../documentation/index.html">User Documentation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../documentation/individual.html">Individual and Champion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../documentation/population.html">Population</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../documentation/migration.html">Migration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../documentation/topology.html">Topology</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../documentation/island.html">Island and Archipelago</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../documentation/algorithms.html">Algorithms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../documentation/problems.html">Problems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../documentation/hypervolume.html">Hypervolume</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../documentation/racing.html">Racing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../documentation/analysis.html">Dr. PyGMO - Analysis Module</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference external" href="http://esa.github.io/pagmo/">PaGMO API</a></li>
+</ul>
+
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../index.html">PyGMO</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="index.html">Tutorials</a> &raquo;</li>
+      
+          <li><a href="racing.html">Racing in PyGMO</a> &raquo;</li>
+      
+    <li>Racing the individuals in stochastic optimization problems</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          <a href="../_sources/tutorials/racing_individuals.txt" rel="nofollow"> View page source</a>
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            
+  <div class="section" id="racing-the-individuals-in-stochastic-optimization-problems">
+<span id="racing-individuals"></span><h1>Racing the individuals in stochastic optimization problems<a class="headerlink" href="#racing-the-individuals-in-stochastic-optimization-problems" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="background">
+<h2>Background<a class="headerlink" href="#background" title="Permalink to this headline">¶</a></h2>
+<p>When trying to solve a stochastic optimization problem, an algorithm will
+have to handle the stochasticity in order to obtain the true optimal solution.
+During the optimization process of a population based algorithm,
+it is often required to identify which individuals are more superior than the
+others, for example in the environmental selection process of SGA,
+neighbourhood information update of PSO, and so on. In this tutorial we will
+introduce the method of racing which tries to achieve the task efficiently.
+Our main goal is <strong>to reconstruct the full ordering among the individuals
+by their true performance</strong>. The main obstacle is that we can only observe
+the non-determinstic performance of each individual, whose ground truth is
+distorted by the stochasticity of the problem. A direct consequence of this
+goal is the ability to extract N top performing individuals among a pool of
+them, which can be a very useful information for an optimization algorithm.</p>
+</div>
+<div class="section" id="racing-with-pygmo">
+<h2>Racing with PyGMO<a class="headerlink" href="#racing-with-pygmo" title="Permalink to this headline">¶</a></h2>
+<p>Racing is a mechanism based on statistical testing, and the main idea is that
+an individual can be dropped immediately once statistical significance evidence
+is present, so that we do not waste unnecessary objective function evaluation
+on these clearly inferior individuals. This way, the other individuals whose
+performance are not obviously good or bad will be evaluated more frequently &#8211;
+possibly yielding a better accuracy. The current racing implementation is based
+on F-Race <a class="footnote-reference" href="#id3" id="id1">[1]</a>, and some implementation details are adapted from <a class="footnote-reference" href="#id4" id="id2">[2]</a>.</p>
+<p>In this tutorial we will look at a special class of stochastic problems &#8211; the
+noisy problems. We will use Ackley as the base (noise-less) problem. To race the
+individuals in the population, we can simply do:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">In</span> <span class="p">[</span><span class="mi">1</span><span class="p">]:</span> <span class="kn">from</span> <span class="nn">PyGMO</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="n">In</span> <span class="p">[</span><span class="mi">2</span><span class="p">]:</span> <span class="n">prob</span> <span class="o">=</span> <span class="n">problem</span><span class="o">.</span><span class="n">noisy</span><span class="p">(</span><span class="n">problem</span><span class="o">.</span><span class="n">ackley</span><span class="p">())</span>
+<span class="n">In</span> <span class="p">[</span><span class="mi">3</span><span class="p">]:</span> <span class="n">pop</span> <span class="o">=</span> <span class="n">population</span><span class="p">(</span><span class="n">prob</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+<span class="n">In</span> <span class="p">[</span><span class="mi">4</span><span class="p">]:</span> <span class="n">winners</span> <span class="o">=</span> <span class="n">pop</span><span class="o">.</span><span class="n">race</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>which will extract a single winner. There are some other parameters which can
+be adjusted, for example:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">In</span> <span class="p">[</span><span class="mi">5</span><span class="p">]:</span> <span class="n">winners</span> <span class="o">=</span> <span class="n">pop</span><span class="o">.</span><span class="n">race</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">200</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>will race until 3 individuals remain, evaluate at the start every individuals for
+at least 10 times, with an objective function evaluation budget of 200 times and
+perform statistical testing at the confidence level of 0.01. You can even provide
+a list of indices to specify a subset of individuals to be raced, for example:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">In</span> <span class="p">[</span><span class="mi">6</span><span class="p">]:</span> <span class="n">winners</span> <span class="o">=</span> <span class="n">pop</span><span class="o">.</span><span class="n">race</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">200</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">])</span>
+</pre></div>
+</div>
+<p>will return the best individual among the first five individuals in the population.</p>
+</div>
+<div class="section" id="why-racing-a-comparative-study">
+<h2>Why racing: A comparative study<a class="headerlink" href="#why-racing-a-comparative-study" title="Permalink to this headline">¶</a></h2>
+<p>Racing does not magically identify the winners &#8211; it still requires that additional
+function evaluation be performed. One may ask: why should one use racing, when there
+is a simpler approach of simply evaluating each individual multiple times equally?
+In the following we try to answer this question by justiying the use of racing.</p>
+<p>Assume that we have a limited amount of objective evaluation budget, and that we want
+to extract the best few individuals from a population. The following are the possible
+approaches that we could use:</p>
+<ul class="simple">
+<li><strong>Brute-force by fitness</strong>: Evaluate all individuals an equal number of times and record
+the average of their fitness values. Identify the best few individuals using the sorted
+averaged fitness values. Note that this method is only applicable for use in
+unconstrained, single-objective problems.</li>
+<li><strong>Brute-force by ranks</strong>: Similar to the above, but replace the raw fitness values to a
+nominal relative ranking. This can be done by using the built-in <tt class="docutils literal"><span class="pre">get_best_idx()</span></tt>
+function in <tt class="docutils literal"><span class="pre">population</span></tt> class. This method is thus able to handle constrained
+or multi-objective problems.</li>
+<li><strong>Racing</strong>: This is similar to the brute-force by ranks method, except that the
+computational budget for function evaluation is more cleverly distributed among
+different individuals.</li>
+</ul>
+<p>To quantitatively measure the peformance of each method, we define a notion
+called <em>rank sum error</em>. Rank sum error measures how well a method extracts
+the true winners.</p>
+<p>To obtain the rank sum error metric, we first construct population on the
+basic noise-less problem and calculate the original ordering of the individuals
+(for example, via <tt class="docutils literal"><span class="pre">get_best_idx()</span></tt>). Then, we construct another population
+(on which the racing / brute-force method will be executed) associated with the
+corresponding noisy problem, by inserting the individuals using the ordering
+calculated previously. This way, although the fitness of the individuals are
+disguised by the noise, we know that the best individual is at index 0, the
+second best is at index 1, and so on. As our goal is to extract the best
+individuals, the ground truth rank sum is simply the sum of [0,1,2,3,...,pop_size].
+We compute the rank sum of the winnner list returned by different methods, and
+denote its differerence with the ground truth as the rank sum error.</p>
+<p>We set up a few configurations and plot the rank sum errors for different methods,
+averaged over 200 independent trials. The default strength of the noise is normally
+distributed, having a zero mean and a standard deviation of 0.5. Please refer to
+<tt class="docutils literal"><span class="pre">racing.py</span></tt> contained in PyGMO <tt class="docutils literal"><span class="pre">examples/</span></tt> directory for more details.</p>
+<div class="section" id="varying-noise-level">
+<h3>Varying noise level<a class="headerlink" href="#varying-noise-level" title="Permalink to this headline">¶</a></h3>
+<p>Problems considered: Ackley (Single objective), CEC2006-g1 (Constrained single objective), ZDT1 (Multi-objective)</p>
+<a class="reference internal image-reference" href="../_images/Ackley-racing-varying-noise.png"><img alt="../_images/Ackley-racing-varying-noise.png" src="../_images/Ackley-racing-varying-noise.png" style="width: 250pt;" /></a>
+<a class="reference internal image-reference" href="../_images/CEC2006-g1-racing-varying-noise.png"><img alt="../_images/CEC2006-g1-racing-varying-noise.png" src="../_images/CEC2006-g1-racing-varying-noise.png" style="width: 250pt;" /></a>
+<a class="reference internal image-reference" href="../_images/ZDT1-racing-varying-noise.png"><img alt="../_images/ZDT1-racing-varying-noise.png" src="../_images/ZDT1-racing-varying-noise.png" style="width: 250pt;" /></a>
+</div>
+<div class="section" id="varying-initial-population-sizes">
+<h3>Varying initial population sizes<a class="headerlink" href="#varying-initial-population-sizes" title="Permalink to this headline">¶</a></h3>
+<p>Problems considered: Ackley (Single objective), CEC2006-g1 (Constrained single objective), ZDT1 (Multi-objective)</p>
+<a class="reference internal image-reference" href="../_images/Ackley-racing-varying-initialpopsize.png"><img alt="../_images/Ackley-racing-varying-initialpopsize.png" src="../_images/Ackley-racing-varying-initialpopsize.png" style="width: 250pt;" /></a>
+<a class="reference internal image-reference" href="../_images/CEC2006-g1-racing-varying-initialpopsize.png"><img alt="../_images/CEC2006-g1-racing-varying-initialpopsize.png" src="../_images/CEC2006-g1-racing-varying-initialpopsize.png" style="width: 250pt;" /></a>
+<a class="reference internal image-reference" href="../_images/ZDT1-racing-varying-initialpopsize.png"><img alt="../_images/ZDT1-racing-varying-initialpopsize.png" src="../_images/ZDT1-racing-varying-initialpopsize.png" style="width: 250pt;" /></a>
+</div>
+<div class="section" id="varying-evaluation-budget">
+<h3>Varying evaluation budget<a class="headerlink" href="#varying-evaluation-budget" title="Permalink to this headline">¶</a></h3>
+<p>Problems considered: Ackley (Single objective), CEC2006-g1 (Constrained single objective), ZDT1 (Multi-objective)</p>
+<a class="reference internal image-reference" href="../_images/Ackley-racing-varying-budget.png"><img alt="../_images/Ackley-racing-varying-budget.png" src="../_images/Ackley-racing-varying-budget.png" style="width: 250pt;" /></a>
+<a class="reference internal image-reference" href="../_images/CEC2006-g1-racing-varying-budget.png"><img alt="../_images/CEC2006-g1-racing-varying-budget.png" src="../_images/CEC2006-g1-racing-varying-budget.png" style="width: 250pt;" /></a>
+<a class="reference internal image-reference" href="../_images/ZDT1-racing-varying-budget.png"><img alt="../_images/ZDT1-racing-varying-budget.png" src="../_images/ZDT1-racing-varying-budget.png" style="width: 250pt;" /></a>
+<p>Generally, it is observed that the racing method yields lower rank sum error
+than the simple methods. The simulation results above demonstrate empirically
+how racing could improve the ability to reconstruct the correct ordering of the
+individuals in face of a stochastic environment.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">For multiobjective case the benefit of racing is more apparent when budget is
+large enough. Brute force can even be as good as racing when noise is
+high or initial population size is large. A possible reason is due to the
+involvement of Pareto ranks in racing, which brings about large &#8220;jumps&#8221; in
+the observation data, causing difficulties for the statistical testing. One
+possible way to reduce this effect is to use a larger budget. This implies that
+while racing is able to handle multiobjective problems, they require a more
+careful treatment.</p>
+</div>
+<table class="docutils footnote" frame="void" id="id3" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id1">[1]</a></td><td>Birattari, M., Stützle, T., Paquete, L., &amp; Varrentrapp, K. (2002). A Racing Algorithm for Configuring Metaheuristics. GECCO ’02 Proceedings of the Genetic and Evolutionary Computation Conference (pp. 11–18). Morgan Kaufmann Publishers Inc.</td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="id4" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id2">[2]</a></td><td>Heidrich-Meisner, Verena, &amp; Christian Igel (2009). Hoeffding and Bernstein Races for Selecting Policies in Evolutionary Direct Policy Search. Proceedings of the 26th Annual International Conference on Machine Learning, pp. 401-408. ACM Press.</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+
+
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="racing_algorithms.html" class="btn btn-neutral float-right" title="Racing algorithms"/>Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="racing.html" class="btn btn-neutral" title="Racing in PyGMO"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2015, Dario Izzo and Francesco Biscani.
+    </p>
+  </div>
+
+  <a href="https://github.com/snide/sphinx_rtd_theme">Sphinx theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+</body>
+</html>

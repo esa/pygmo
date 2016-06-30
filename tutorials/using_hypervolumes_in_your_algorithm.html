@@ -1,0 +1,364 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Using hypervolumes in your own algorithm &mdash; PyGMO 1.1.7dev documentation</title>
+  
+
+  
+  
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  
+  
+
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:'../',
+        VERSION:'1.1.7dev',
+        COLLAPSE_INDEX:false,
+        FILE_SUFFIX:'.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+    <script type="text/javascript">
+        jQuery(function () {
+            SphinxRtdTheme.StickyNav.enable();
+        });
+    </script>
+  
+
+  
+    <link rel="top" title="PyGMO 1.1.7dev documentation" href="../index.html"/>
+        <link rel="up" title="Hypervolumes with PyGMO" href="hypervolumes_in_PyGMO.html"/>
+        <link rel="next" title="Dealing with constraints in PyGMO" href="dealing_with_constraints_in_PyGMO.html"/>
+        <link rel="prev" title="Migration based on hypervolume contribution" href="migration_based_on_hypervolumes.html"/> 
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        <a href="../index.html" class="fa fa-home"> PyGMO</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        
+        
+            <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../install.html">Install PyGMO</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../install.html#preparing-your-system-to-compile-pygmo">Preparing your system to compile PyGMO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../install.html#download-pygmo-code">Download PyGMO code</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../install.html#compiling-and-installing-under-unix">Compiling and Installing under Unix</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../install.html#compiling-and-installing-under-windows">Compiling and Installing under Windows</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../quickstart.html">Quick Start</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../quickstart.html#on-one-cpu">On one CPU</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../quickstart.html#on-many-cpus">On many CPUs ...</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../quickstart.html#and-migrating-solutions">... and migrating solutions ...</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../quickstart.html#and-between-different-algorithms">... and between different algorithms ...</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Tutorials</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="adding_problems_and_algorithms_to_PyGMO.html">Adding new problems and algorithms to PyGMO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="meta_problems_meta_algorithms.html">Meta-problems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="multi_objective_optimization_with_PyGMO.html">Multi Objective Optimization with PyGMO</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="hypervolumes_in_PyGMO.html">Hypervolumes with PyGMO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dealing_with_constraints_in_PyGMO.html">Dealing with constraints in PyGMO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="racing.html">Racing in PyGMO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tsp.html">Traveling Salesman Problems with PyGMO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="landscape_analysis_with_DrPyGMO.html">Landscape Analysis using Dr. PyGMO</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/index.html">Examples</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../examples/example1.html">A study on Mixing Variants of Differential Evolution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples/example2.html">Monitoring the Information Flow in a large archipelago</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples/example3.html">Testing Algorithms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples/example4.html">Multi-objective optimization in the asynchronous island model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples/example5.html">Designing and optimizing interplanetary trajectories</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples/example6.html">Participating to the CEC2013 Competition (v 1.1.5)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples/example7.html">Travelling Salesman Problem for Active Space Debris Removal</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples/local_optimization.html">Third-party Non-linear optimizers in PyGMO</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../documentation/index.html">User Documentation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../documentation/individual.html">Individual and Champion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../documentation/population.html">Population</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../documentation/migration.html">Migration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../documentation/topology.html">Topology</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../documentation/island.html">Island and Archipelago</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../documentation/algorithms.html">Algorithms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../documentation/problems.html">Problems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../documentation/hypervolume.html">Hypervolume</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../documentation/racing.html">Racing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../documentation/analysis.html">Dr. PyGMO - Analysis Module</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference external" href="http://esa.github.io/pagmo/">PaGMO API</a></li>
+</ul>
+
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../index.html">PyGMO</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="index.html">Tutorials</a> &raquo;</li>
+      
+          <li><a href="hypervolumes_in_PyGMO.html">Hypervolumes with PyGMO</a> &raquo;</li>
+      
+    <li>Using hypervolumes in your own algorithm</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          <a href="../_sources/tutorials/using_hypervolumes_in_your_algorithm.txt" rel="nofollow"> View page source</a>
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            
+  <div class="section" id="using-hypervolumes-in-your-own-algorithm">
+<span id="using-hypervolumes-in-your-algorithm"></span><h1>Using hypervolumes in your own algorithm<a class="headerlink" href="#using-hypervolumes-in-your-own-algorithm" title="Permalink to this headline">¶</a></h1>
+<p>In this tutorial we will show how to use the hypervolume features in your own custom evolutionary algorithms.
+If you haven&#8217;t already, we suggest getting familiar with the tutorial <a class="reference internal" href="adding_a_new_algorithm.html#adding-a-new-algorithm"><em>Adding a new algorithm</em></a>.</p>
+<p>As it is often the case in the tutorials, we will present a fairly simple MOO algorithm, which we would not expect to be particularly good.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">PyGMO</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">PyGMO.util</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">import</span> <span class="nn">random</span>
+
+<span class="k">class</span> <span class="nc">my_hv_moo_alg</span><span class="p">(</span><span class="n">algorithm</span><span class="o">.</span><span class="n">base</span><span class="p">):</span>
+   <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">   A custom steady-state algorithm, based on the hypervolume computation.</span>
+<span class="sd">   &quot;&quot;&quot;</span>
+
+   <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">gen</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span> <span class="n">p_m</span> <span class="o">=</span> <span class="mf">0.02</span><span class="p">):</span>
+      <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">      Constructs an instance of the algorithm.</span>
+
+<span class="sd">      USAGE: my_hv_moo_alg(gen=10, p_m=0.02)</span>
+
+<span class="sd">      NOTE: Evolves the population using the least contributor feature.</span>
+
+<span class="sd">      * gen: number of generations</span>
+<span class="sd">      * p_m: probability of mutation</span>
+<span class="sd">      &quot;&quot;&quot;</span>
+      <span class="c"># We start by calling the base constructor</span>
+      <span class="nb">super</span><span class="p">(</span><span class="n">my_hv_moo_alg</span><span class="p">,</span><span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">()</span>
+      <span class="c"># Store the number of generations</span>
+      <span class="bp">self</span><span class="o">.</span><span class="n">__gen</span> <span class="o">=</span> <span class="n">gen</span>
+      <span class="bp">self</span><span class="o">.</span><span class="n">__p_m</span> <span class="o">=</span> <span class="n">p_m</span>
+
+   <span class="c"># Performs a very simple crossover step</span>
+   <span class="k">def</span> <span class="nf">cross</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ind1</span><span class="p">,</span> <span class="n">ind2</span><span class="p">):</span>
+      <span class="n">x1</span> <span class="o">=</span> <span class="n">ind1</span><span class="o">.</span><span class="n">cur_x</span>
+      <span class="n">x2</span> <span class="o">=</span> <span class="n">ind2</span><span class="o">.</span><span class="n">cur_x</span>
+      <span class="k">return</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">((</span><span class="n">x1</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">x2</span><span class="p">[</span><span class="n">i</span><span class="p">],))</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">xrange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">x1</span><span class="p">)))</span>
+
+   <span class="c"># Gaussian mutation</span>
+   <span class="k">def</span> <span class="nf">mutate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">lb</span><span class="p">,</span> <span class="n">ub</span><span class="p">):</span>
+
+      <span class="c"># Implementation of the Gaussian operator</span>
+      <span class="k">def</span> <span class="nf">_g_op</span><span class="p">(</span><span class="n">i</span><span class="p">):</span>
+         <span class="k">return</span> <span class="nb">min</span><span class="p">(</span><span class="nb">max</span><span class="p">(</span><span class="n">random</span><span class="o">.</span><span class="n">gauss</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="p">(</span><span class="n">ub</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">-</span><span class="n">lb</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> <span class="o">*</span> <span class="mf">0.1</span><span class="p">),</span> <span class="n">lb</span><span class="p">[</span><span class="n">i</span><span class="p">]),</span> <span class="n">ub</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+
+      <span class="c"># Condition for the mutation to happen</span>
+      <span class="k">def</span> <span class="nf">_rnd_mut</span><span class="p">():</span>
+         <span class="k">return</span> <span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">()</span> <span class="o">&lt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">__p_m</span>
+
+      <span class="k">return</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">_g_op</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">if</span> <span class="n">_rnd_mut</span><span class="p">()</span> <span class="k">else</span> <span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">xrange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)))</span>
+
+   <span class="c"># Evolve method</span>
+   <span class="k">def</span> <span class="nf">evolve</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pop</span><span class="p">):</span>
+      <span class="c">#If the population is empty (i.e. no individuals) nothing happens</span>
+      <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">pop</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+           <span class="k">return</span> <span class="n">pop</span>
+
+      <span class="c">#The algorithm now starts manipulating the population</span>
+      <span class="n">prob</span> <span class="o">=</span> <span class="n">pop</span><span class="o">.</span><span class="n">problem</span>
+      <span class="n">lb</span><span class="p">,</span> <span class="n">ub</span> <span class="o">=</span> <span class="n">prob</span><span class="o">.</span><span class="n">lb</span><span class="p">,</span> <span class="n">prob</span><span class="o">.</span><span class="n">ub</span>
+      <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__gen</span><span class="p">):</span>
+         <span class="c"># Initiate new individual by a crossover of two random individuals</span>
+         <span class="n">idx1</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">pop</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+         <span class="n">idx2</span> <span class="o">=</span> <span class="p">(</span><span class="n">idx1</span> <span class="o">+</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">pop</span><span class="p">)</span> <span class="o">-</span> <span class="mi">2</span><span class="p">))</span> <span class="o">%</span> <span class="nb">len</span><span class="p">(</span><span class="n">pop</span><span class="p">)</span>
+         <span class="n">ind1</span> <span class="o">=</span> <span class="n">pop</span><span class="p">[</span><span class="n">idx1</span><span class="p">]</span>
+         <span class="n">ind2</span> <span class="o">=</span> <span class="n">pop</span><span class="p">[</span><span class="n">idx2</span><span class="p">]</span>
+
+         <span class="n">new_x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">mutate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">cross</span><span class="p">(</span><span class="n">ind1</span><span class="p">,</span> <span class="n">ind2</span><span class="p">),</span> <span class="n">lb</span><span class="p">,</span> <span class="n">ub</span><span class="p">)</span>
+         <span class="n">pop</span><span class="o">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">new_x</span><span class="p">)</span>
+
+         <span class="c"># Remove the least contributor</span>
+         <span class="n">hv</span> <span class="o">=</span> <span class="n">hypervolume</span><span class="p">(</span><span class="n">pop</span><span class="p">)</span>
+         <span class="n">ref_point</span> <span class="o">=</span> <span class="n">hv</span><span class="o">.</span><span class="n">get_nadir_point</span><span class="p">(</span><span class="mf">1.0</span><span class="p">)</span>
+         <span class="n">lc_idx</span> <span class="o">=</span> <span class="n">hv</span><span class="o">.</span><span class="n">least_contributor</span><span class="p">(</span><span class="n">ref_point</span><span class="p">)</span>
+
+         <span class="n">pop</span><span class="o">.</span><span class="n">erase</span><span class="p">(</span><span class="n">lc_idx</span><span class="p">)</span>
+      <span class="k">return</span> <span class="n">pop</span>
+
+   <span class="k">def</span> <span class="nf">get_name</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+         <span class="k">return</span> <span class="s">&quot;Custom HV-based MOO&quot;</span>
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+   <span class="n">prob</span> <span class="o">=</span> <span class="n">problem</span><span class="o">.</span><span class="n">dtlz</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+   <span class="n">alg</span> <span class="o">=</span> <span class="n">my_hv_moo_alg</span><span class="p">(</span><span class="n">gen</span> <span class="o">=</span> <span class="mi">100</span><span class="p">,</span> <span class="n">p_m</span><span class="o">=</span><span class="mf">0.02</span><span class="p">)</span>
+   <span class="n">pop</span> <span class="o">=</span> <span class="n">population</span><span class="p">(</span><span class="n">prob</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+   <span class="c"># Establish a constant reference point, so the increase is noticed</span>
+   <span class="n">ref_point</span> <span class="o">=</span> <span class="p">(</span><span class="mi">3000</span><span class="p">,)</span> <span class="o">*</span> <span class="mi">3</span>
+   <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">xrange</span><span class="p">(</span><span class="mi">100</span><span class="p">):</span>
+      <span class="n">pop</span> <span class="o">=</span> <span class="n">alg</span><span class="o">.</span><span class="n">evolve</span><span class="p">(</span><span class="n">pop</span><span class="p">)</span>
+      <span class="k">print</span> <span class="s">&quot;P-Distance: </span><span class="si">%.5f</span><span class="s">, Hypervolume: </span><span class="si">%.5f</span><span class="s">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">prob</span><span class="o">.</span><span class="n">p_distance</span><span class="p">(</span><span class="n">pop</span><span class="p">),</span> <span class="n">hypervolume</span><span class="p">(</span><span class="n">pop</span><span class="p">)</span><span class="o">.</span><span class="n">compute</span><span class="p">(</span><span class="n">ref_point</span><span class="p">))</span>
+   <span class="n">prob</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">pop</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">&quot;__main__&quot;</span><span class="p">:</span>
+   <span class="n">main</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>You can copy the whole code above and save it as a python script (e.g. <strong>my_alg.py</strong>), this way you can execute it yourself by issuing the following in the command line: <strong>python my_alg.py</strong>.</p>
+<p>The algorithm does the following in the <em>evolve</em> method:</p>
+<ol class="arabic simple">
+<li>Establish a new individual by performing a very simple crossover on two random individuals</li>
+<li>Apply the Gaussian mutation operator</li>
+<li>Push the newly obtained vector to the population</li>
+<li>Establish the least contributor using the <cite>PyGMO.util.hypervolume</cite> object</li>
+<li>Remove the least contributor from the population</li>
+</ol>
+<p>Script above should produce an output similar to the one below:</p>
+<div class="highlight-bash"><div class="highlight"><pre>P-Distance: 0.77281, Hypervolume: 26999518559.47130
+P-Distance: 0.66491, Hypervolume: 26999704053.34119
+P-Distance: 0.51330, Hypervolume: 26999704183.90998
+.
+.
+.
+P-Distance: 0.00026, Hypervolume: 26999999999.42529
+P-Distance: 0.00026, Hypervolume: 26999999999.42529
+P-Distance: 0.00024, Hypervolume: 26999999999.42531
+</pre></div>
+</div>
+<p>We can observe an improvement over the consecutive generations both in the distance to the Pareto front (P-Distance) and the hypervolume indicator itself.
+The result of the script should be a plot similar to the one below:</p>
+<a class="reference internal image-reference" href="../_images/hv_custom_algo.png"><img alt="../_images/hv_custom_algo.png" src="../_images/hv_custom_algo.png" style="width: 850px;" /></a>
+<p>Custom algorithms can also be used in the archipelago evolution.
+For this, we will employ the information from the previous tutorial <a class="reference internal" href="migration_based_on_hypervolumes.html#migration-based-on-hypervolumes"><em>Migration based on hypervolume contribution</em></a>. Substitute the <tt class="docutils literal"><span class="pre">main()</span></tt> method in the script above with the following experiment, which will initiate an archipelago with our custom algorithm on-board.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+   <span class="n">prob</span> <span class="o">=</span> <span class="n">problem</span><span class="o">.</span><span class="n">dtlz</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+   <span class="n">alg</span> <span class="o">=</span> <span class="n">my_hv_moo_alg</span><span class="p">(</span><span class="n">gen</span> <span class="o">=</span> <span class="mi">100</span><span class="p">,</span> <span class="n">p_m</span><span class="o">=</span><span class="mf">0.02</span><span class="p">)</span>
+
+   <span class="c"># Initiate the migration policies</span>
+   <span class="n">s_pol</span> <span class="o">=</span> <span class="n">migration</span><span class="o">.</span><span class="n">hv_best_s_policy</span><span class="p">(</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">migration</span><span class="o">.</span><span class="n">rate_type</span><span class="o">.</span><span class="n">fractional</span><span class="p">)</span>
+   <span class="n">r_pol</span> <span class="o">=</span> <span class="n">migration</span><span class="o">.</span><span class="n">hv_fair_r_policy</span><span class="p">(</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">migration</span><span class="o">.</span><span class="n">rate_type</span><span class="o">.</span><span class="n">fractional</span><span class="p">)</span>
+
+   <span class="c"># Set up the archipelago</span>
+   <span class="n">n_islands</span> <span class="o">=</span> <span class="mi">16</span>
+   <span class="n">n_individuals</span> <span class="o">=</span> <span class="mi">64</span>
+   <span class="n">arch</span> <span class="o">=</span> <span class="n">archipelago</span><span class="p">(</span><span class="n">topology</span><span class="o">=</span><span class="n">topology</span><span class="o">.</span><span class="n">fully_connected</span><span class="p">())</span>
+   <span class="n">islands</span> <span class="o">=</span> <span class="p">[</span><span class="n">island</span><span class="p">(</span><span class="n">alg</span><span class="p">,</span> <span class="n">prob</span><span class="p">,</span> <span class="n">n_individuals</span><span class="p">,</span> <span class="n">s_policy</span><span class="o">=</span><span class="n">s_pol</span><span class="p">,</span> <span class="n">r_policy</span><span class="o">=</span><span class="n">r_pol</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">xrange</span><span class="p">(</span><span class="n">n_islands</span><span class="p">)]</span>
+   <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">islands</span><span class="p">:</span>
+      <span class="n">arch</span><span class="o">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+
+   <span class="c"># Evolve</span>
+   <span class="n">n_steps</span> <span class="o">=</span> <span class="mi">20</span>
+   <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="nb">xrange</span><span class="p">(</span><span class="n">n_steps</span><span class="p">):</span>
+      <span class="k">print</span> <span class="s">&quot;Evolving archipelago, step </span><span class="si">%d</span><span class="s">/</span><span class="si">%d</span><span class="s">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">n_steps</span><span class="p">)</span>
+      <span class="n">arch</span><span class="o">.</span><span class="n">evolve</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+   <span class="c"># Merge all populations across the islands together</span>
+   <span class="n">pop</span> <span class="o">=</span> <span class="n">population</span><span class="p">(</span><span class="n">prob</span><span class="p">)</span>
+   <span class="k">for</span> <span class="n">isl</span> <span class="ow">in</span> <span class="n">arch</span><span class="p">:</span>
+      <span class="k">for</span> <span class="n">ind</span> <span class="ow">in</span> <span class="n">isl</span><span class="o">.</span><span class="n">population</span><span class="p">:</span>
+         <span class="n">pop</span><span class="o">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">ind</span><span class="o">.</span><span class="n">cur_x</span><span class="p">)</span>
+
+   <span class="k">print</span> <span class="s">&quot;Final P-Distance: &quot;</span><span class="p">,</span> <span class="n">prob</span><span class="o">.</span><span class="n">p_distance</span><span class="p">(</span><span class="n">pop</span><span class="p">)</span>
+   <span class="n">prob</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">pop</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The execution of the script should result in a plot similar to the one below:</p>
+<a class="reference internal image-reference" href="../_images/hv_custom_algo_archi.png"><img alt="../_images/hv_custom_algo_archi.png" src="../_images/hv_custom_algo_archi.png" style="width: 850px;" /></a>
+</div>
+
+
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="dealing_with_constraints_in_PyGMO.html" class="btn btn-neutral float-right" title="Dealing with constraints in PyGMO"/>Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="migration_based_on_hypervolumes.html" class="btn btn-neutral" title="Migration based on hypervolume contribution"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2015, Dario Izzo and Francesco Biscani.
+    </p>
+  </div>
+
+  <a href="https://github.com/snide/sphinx_rtd_theme">Sphinx theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+</body>
+</html>

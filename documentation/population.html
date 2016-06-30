@@ -1,0 +1,436 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Population &mdash; PyGMO 1.1.7dev documentation</title>
+  
+
+  
+  
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  
+  
+
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:'../',
+        VERSION:'1.1.7dev',
+        COLLAPSE_INDEX:false,
+        FILE_SUFFIX:'.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+    <script type="text/javascript">
+        jQuery(function () {
+            SphinxRtdTheme.StickyNav.enable();
+        });
+    </script>
+  
+
+  
+    <link rel="top" title="PyGMO 1.1.7dev documentation" href="../index.html"/>
+        <link rel="up" title="User Documentation" href="index.html"/>
+        <link rel="next" title="Migration" href="migration.html"/>
+        <link rel="prev" title="Individual and Champion" href="individual.html"/> 
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        <a href="../index.html" class="fa fa-home"> PyGMO</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        
+        
+            <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../install.html">Install PyGMO</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../install.html#preparing-your-system-to-compile-pygmo">Preparing your system to compile PyGMO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../install.html#download-pygmo-code">Download PyGMO code</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../install.html#compiling-and-installing-under-unix">Compiling and Installing under Unix</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../install.html#compiling-and-installing-under-windows">Compiling and Installing under Windows</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../quickstart.html">Quick Start</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../quickstart.html#on-one-cpu">On one CPU</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../quickstart.html#on-many-cpus">On many CPUs ...</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../quickstart.html#and-migrating-solutions">... and migrating solutions ...</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../quickstart.html#and-between-different-algorithms">... and between different algorithms ...</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/index.html">Tutorials</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/adding_problems_and_algorithms_to_PyGMO.html">Adding new problems and algorithms to PyGMO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/meta_problems_meta_algorithms.html">Meta-problems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/multi_objective_optimization_with_PyGMO.html">Multi Objective Optimization with PyGMO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/hypervolumes_in_PyGMO.html">Hypervolumes with PyGMO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/dealing_with_constraints_in_PyGMO.html">Dealing with constraints in PyGMO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/racing.html">Racing in PyGMO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/tsp.html">Traveling Salesman Problems with PyGMO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/landscape_analysis_with_DrPyGMO.html">Landscape Analysis using Dr. PyGMO</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/index.html">Examples</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../examples/example1.html">A study on Mixing Variants of Differential Evolution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples/example2.html">Monitoring the Information Flow in a large archipelago</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples/example3.html">Testing Algorithms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples/example4.html">Multi-objective optimization in the asynchronous island model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples/example5.html">Designing and optimizing interplanetary trajectories</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples/example6.html">Participating to the CEC2013 Competition (v 1.1.5)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples/example7.html">Travelling Salesman Problem for Active Space Debris Removal</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples/local_optimization.html">Third-party Non-linear optimizers in PyGMO</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">User Documentation</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="individual.html">Individual and Champion</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="">Population</a></li>
+<li class="toctree-l2"><a class="reference internal" href="migration.html">Migration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="topology.html">Topology</a></li>
+<li class="toctree-l2"><a class="reference internal" href="island.html">Island and Archipelago</a></li>
+<li class="toctree-l2"><a class="reference internal" href="algorithms.html">Algorithms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="problems.html">Problems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hypervolume.html">Hypervolume</a></li>
+<li class="toctree-l2"><a class="reference internal" href="racing.html">Racing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="analysis.html">Dr. PyGMO - Analysis Module</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference external" href="http://esa.github.io/pagmo/">PaGMO API</a></li>
+</ul>
+
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../index.html">PyGMO</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="index.html">User Documentation</a> &raquo;</li>
+      
+    <li>Population</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          <a href="../_sources/documentation/population.txt" rel="nofollow"> View page source</a>
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            
+  <div class="section" id="population">
+<h1>Population<a class="headerlink" href="#population" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="PyGMO.population">
+<em class="property">class </em><tt class="descclassname">PyGMO.</tt><tt class="descname">population</tt><a class="headerlink" href="#PyGMO.population" title="Permalink to this definition">¶</a></dt>
+<dd><p>This class represents the concept of a <em>population</em> as a collection of <a class="reference internal" href="individual.html#PyGMO.individual" title="PyGMO.individual"><tt class="xref py py-class docutils literal"><span class="pre">PyGMO.individual</span></tt></a> evaluated w.r.t. a <tt class="xref py py-class docutils literal"><span class="pre">PyGMO.problem</span></tt>.
+A <em>population</em> in PyGMO makes sure that all the individuals it contains are consistent w.r.t. the problem and it constantly keeps
+its <a class="reference internal" href="individual.html#PyGMO.champion" title="PyGMO.champion"><tt class="xref py py-class docutils literal"><span class="pre">PyGMO.champion</span></tt></a> updated. Also (relevant only for multi-objective problems) the <em>population</em>, keeps constantly updated
+1) a domination list that is a list containing, per individual I, the indexes of the individuals I dominates, and 2) a domination count
+that is a list containing, per individual I, the number of individuals that dominate individual I.
+From an evolutionary point of view one can see the <em>population</em> as a set of individuals living in an environment (the <tt class="xref py py-class docutils literal"><span class="pre">problem</span></tt>) which defines their fitness values</p>
+<dl class="method">
+<dt id="PyGMO.population.__init__">
+<tt class="descname">__init__</tt><big>(</big><em>(PyGMO.problem)prob</em><span class="optional">[</span>, <em>(int)n_individuals</em>, <em>(int)seed</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#PyGMO.population.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructs a population containing n_individuals (default is an empty population) evaluated w.r.t. prob.
+Each individual gets initialized at random with his chromosome in [<tt class="xref py py-class docutils literal"><span class="pre">problem.lb</span></tt>, <tt class="xref py py-class docutils literal"><span class="pre">problem.ub</span></tt>] and his velocity
+in [(<tt class="xref py py-class docutils literal"><span class="pre">problem.lb</span></tt>-<tt class="xref py py-class docutils literal"><span class="pre">problem.ub</span></tt>)/2, (<tt class="xref py py-class docutils literal"><span class="pre">problem.ub</span></tt>- <tt class="xref py py-class docutils literal"><span class="pre">problem.lb</span></tt>)/2].
+The initialization process of the population can be seeded by providing the argument <cite>seed</cite>.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">PyGMO</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="n">prob</span> <span class="o">=</span> <span class="n">problem</span><span class="o">.</span><span class="n">schwefel</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span>
+<span class="n">pop1</span> <span class="o">=</span> <span class="n">population</span><span class="p">(</span><span class="n">prob</span><span class="p">)</span> <span class="c">#empty population</span>
+<span class="n">pop2</span> <span class="o">=</span> <span class="n">population</span><span class="p">(</span><span class="n">prob</span><span class="p">,</span><span class="mi">20</span><span class="p">)</span> <span class="c">#population with 20 individuals</span>
+<span class="n">pop3</span> <span class="o">=</span> <span class="n">population</span><span class="p">(</span><span class="n">prob</span><span class="p">,</span><span class="mi">20</span><span class="p">,</span><span class="mi">123</span><span class="p">)</span> <span class="c">#population with 20 individuals intialized with seed=123</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt>
+<tt class="descname">__init__</tt><big>(</big><em>(PyGMO.population)pop</em><big>)</big></dt>
+<dd><p>Constructs a new <em>population</em> performing a deep-copy of a second population pop.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">PyGMO</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="n">prob</span> <span class="o">=</span> <span class="n">problem</span><span class="o">.</span><span class="n">schwefel</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span>
+<span class="n">pop1</span> <span class="o">=</span> <span class="n">population</span><span class="p">(</span><span class="n">prob</span><span class="p">,</span><span class="mi">10</span><span class="p">)</span> <span class="c">#population with 10 individuals</span>
+<span class="n">pop2</span> <span class="o">=</span> <span class="n">population</span><span class="p">(</span><span class="n">pop1</span><span class="p">)</span>    <span class="c">#a second identical population with 10 individuals</span>
+                           <span class="c">#(the problem and the individuals are copies of the original pop1)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="PyGMO.population.push_back">
+<tt class="descname">push_back</tt><big>(</big><em>(list) x</em><big>)</big><a class="headerlink" href="#PyGMO.population.push_back" title="Permalink to this definition">¶</a></dt>
+<dd><p>Appends an <tt class="xref py py-class docutils literal"><span class="pre">individual</span></tt> having chromosme x to the population, if compatible with the <tt class="xref py py-class docutils literal"><span class="pre">problem</span></tt>. Its velocity
+is initialized at random, its memory is set equal to the current position.</p>
+<p>NOTE: There is no way to push_back into a <em>population</em> directly an <a class="reference internal" href="individual.html#PyGMO.individual" title="PyGMO.individual"><tt class="xref py py-class docutils literal"><span class="pre">PyGMO.individual</span></tt></a>
+This design choice was made as there would be no way to ensure efficiently that the information contained
+in the <a class="reference internal" href="individual.html#PyGMO.individual" title="PyGMO.individual"><tt class="xref py py-class docutils literal"><span class="pre">PyGMO.individual</span></tt></a> is consistent (if not by wasting one function evaluation) with the <tt class="xref py py-class docutils literal"><span class="pre">PyGMO.problem</span></tt> defining the <em>population</em></p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">PyGMO</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="n">prob</span> <span class="o">=</span> <span class="n">problem</span><span class="o">.</span><span class="n">schwefel</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">pop</span> <span class="o">=</span> <span class="n">population</span><span class="p">(</span><span class="n">prob</span><span class="p">)</span>
+<span class="n">pop</span><span class="o">.</span><span class="n">push_back</span><span class="p">([</span><span class="mf">1.12</span><span class="p">,</span><span class="mf">2.34</span><span class="p">])</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="PyGMO.population.erase">
+<tt class="descname">erase</tt><big>(</big><em>(int) idx</em><big>)</big><a class="headerlink" href="#PyGMO.population.erase" title="Permalink to this definition">¶</a></dt>
+<dd><p>Erases the <tt class="xref py py-class docutils literal"><span class="pre">individual</span></tt> with index idx from the <em>population</em>. Domination list and
+domination count are updated accordingly.</p>
+<p>NOTE: after such an operation all indexes will be renamed so that if the individual with idx = n is erased,
+after the erase has completed the individual that had idx=n+1 will have idx = n</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">PyGMO</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="n">prob</span> <span class="o">=</span> <span class="n">problem</span><span class="o">.</span><span class="n">schwefel</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">pop</span> <span class="o">=</span> <span class="n">population</span><span class="p">(</span><span class="n">prob</span><span class="p">,</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">pop</span><span class="o">.</span><span class="n">erase</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="PyGMO.population.set_x">
+<tt class="descname">set_x</tt><big>(</big><em>(int)idx</em>, <em>(list) x</em><big>)</big><a class="headerlink" href="#PyGMO.population.set_x" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the chromosome of the <a class="reference internal" href="individual.html#PyGMO.individual" title="PyGMO.individual"><tt class="xref py py-class docutils literal"><span class="pre">PyGMO.individual</span></tt></a> with index idx in the population to x. Updates autatically the memory and
+the <em>population</em> <tt class="xref py py-class docutils literal"><span class="pre">champion</span></tt></p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">PyGMO</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="n">prob</span> <span class="o">=</span> <span class="n">problem</span><span class="o">.</span><span class="n">schwefel</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">pop</span> <span class="o">=</span> <span class="n">population</span><span class="p">(</span><span class="n">prob</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">pop</span><span class="o">.</span><span class="n">set_x</span><span class="p">(</span><span class="mi">0</span><span class="p">,[</span><span class="mf">3.12</span><span class="p">,</span><span class="mf">4.56</span><span class="p">])</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="PyGMO.population.set_v">
+<tt class="descname">set_v</tt><big>(</big><em>(int)idx</em>, <em>(list) v</em><big>)</big><a class="headerlink" href="#PyGMO.population.set_v" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the velocity of the <a class="reference internal" href="individual.html#PyGMO.individual" title="PyGMO.individual"><tt class="xref py py-class docutils literal"><span class="pre">PyGMO.individual</span></tt></a> with index idx in the population to v</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">PyGMO</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="n">prob</span> <span class="o">=</span> <span class="n">problem</span><span class="o">.</span><span class="n">schwefel</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">pop</span> <span class="o">=</span> <span class="n">population</span><span class="p">(</span><span class="n">prob</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">pop</span><span class="o">.</span><span class="n">set_v</span><span class="p">(</span><span class="mi">0</span><span class="p">,[</span><span class="mf">0.12</span><span class="p">,</span><span class="o">-</span><span class="mf">0.22</span><span class="p">])</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="PyGMO.population.get_domination_list">
+<tt class="descname">get_domination_list</tt><big>(</big><em>(int)idx</em><big>)</big><a class="headerlink" href="#PyGMO.population.get_domination_list" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a list containing all the indexes of the individual dominated by the individual with index idx</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">PyGMO</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="n">prob</span> <span class="o">=</span> <span class="n">problem</span><span class="o">.</span><span class="n">zdt</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">pop</span> <span class="o">=</span> <span class="n">population</span><span class="p">(</span><span class="n">prob</span><span class="p">,</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">ls</span> <span class="o">=</span> <span class="n">pop</span><span class="o">.</span><span class="n">get_domination_list</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="PyGMO.population.get_domination_count">
+<tt class="descname">get_domination_count</tt><big>(</big><em>(int)idx</em><big>)</big><a class="headerlink" href="#PyGMO.population.get_domination_count" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the domination count for the individual idx (that is how many individuals in the population dominate idx?)</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">PyGMO</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="n">prob</span> <span class="o">=</span> <span class="n">problem</span><span class="o">.</span><span class="n">zdt</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">pop</span> <span class="o">=</span> <span class="n">population</span><span class="p">(</span><span class="n">prob</span><span class="p">,</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">c</span> <span class="o">=</span> <span class="n">pop</span><span class="o">.</span><span class="n">get_domination_count</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="PyGMO.population.compute_pareto_fronts">
+<tt class="descname">compute_pareto_fronts</tt><big>(</big><big>)</big><a class="headerlink" href="#PyGMO.population.compute_pareto_fronts" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the Pareto fronts of the population in form of a list of lists each one containing the idx
+of the individuals belonging to a particular Pareto Front</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">PyGMO</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="n">prob</span> <span class="o">=</span> <span class="n">problem</span><span class="o">.</span><span class="n">zdt</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">pop</span> <span class="o">=</span> <span class="n">population</span><span class="p">(</span><span class="n">prob</span><span class="p">,</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">pf</span> <span class="o">=</span> <span class="n">pop</span><span class="o">.</span><span class="n">compute_pareto_fronts</span><span class="p">()</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="PyGMO.population.plot_pareto_fronts">
+<tt class="descname">plot_pareto_fronts</tt><big>(</big><em>comp = [0,1]</em><big>)</big><a class="headerlink" href="#PyGMO.population.plot_pareto_fronts" title="Permalink to this definition">¶</a></dt>
+<dd><p>Plots the pareto fronts in a sliced 2-D graph representing the two objective function components specified
+in comp</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">PyGMO</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="n">prob</span> <span class="o">=</span> <span class="n">problem</span><span class="o">.</span><span class="n">zdt</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">pop</span> <span class="o">=</span> <span class="n">population</span><span class="p">(</span><span class="n">prob</span><span class="p">,</span><span class="mi">100</span><span class="p">)</span>
+<span class="n">pf</span> <span class="o">=</span> <span class="n">pop</span><span class="o">.</span><span class="n">plot_pareto_fronts</span><span class="p">()</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="PyGMO.population.get_best_idx">
+<tt class="descname">get_best_idx</tt><big>(</big><em>(int) n</em><big>)</big><a class="headerlink" href="#PyGMO.population.get_best_idx" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the n best indexes of the <a class="reference internal" href="individual.html#PyGMO.individual" title="PyGMO.individual"><tt class="xref py py-class docutils literal"><span class="pre">PyGMO.individual</span></tt></a> in a <em>population</em>. The best
+<a class="reference internal" href="individual.html#PyGMO.individual" title="PyGMO.individual"><tt class="xref py py-class docutils literal"><span class="pre">PyGMO.individual</span></tt></a> are computed according to non-dominated sorting in populations that
+have a multi-objective problem.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="PyGMO.population.get_worst_idx">
+<tt class="descname">get_worst_idx</tt><big>(</big><big>)</big><a class="headerlink" href="#PyGMO.population.get_worst_idx" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the index of the worst <a class="reference internal" href="individual.html#PyGMO.individual" title="PyGMO.individual"><tt class="xref py py-class docutils literal"><span class="pre">PyGMO.individual</span></tt></a> in a <em>population</em>. The worst
+<a class="reference internal" href="individual.html#PyGMO.individual" title="PyGMO.individual"><tt class="xref py py-class docutils literal"><span class="pre">PyGMO.individual</span></tt></a> is computed according to non-dominated sorting in populations that
+have a multi-objective problem.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">PyGMO</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="n">prob</span> <span class="o">=</span> <span class="n">problem</span><span class="o">.</span><span class="n">zdt</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">pop</span> <span class="o">=</span> <span class="n">population</span><span class="p">(</span><span class="n">prob</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span> <span class="c">#population with 3 individuals</span>
+<span class="n">best_guy</span> <span class="o">=</span> <span class="n">pop</span><span class="o">.</span><span class="n">get_best_idx</span><span class="p">()</span>
+<span class="n">worst_guy</span> <span class="o">=</span> <span class="n">pop</span><span class="o">.</span><span class="n">get_worst_idx</span><span class="p">()</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="PyGMO.population.mean_velocity">
+<tt class="descname">mean_velocity</tt><big>(</big><big>)</big><a class="headerlink" href="#PyGMO.population.mean_velocity" title="Permalink to this definition">¶</a></dt>
+<dd><p>Evaluates the <em>population</em> mean velocity</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">PyGMO</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="n">prob</span> <span class="o">=</span> <span class="n">problem</span><span class="o">.</span><span class="n">schwefel</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">pop</span> <span class="o">=</span> <span class="n">population</span><span class="p">(</span><span class="n">prob</span><span class="p">,</span><span class="mi">30</span><span class="p">)</span>
+<span class="n">v</span> <span class="o">=</span> <span class="n">pop</span><span class="o">.</span><span class="n">mean_velocity</span><span class="p">()</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="PyGMO.population.race">
+<tt class="descname">race</tt><big>(</big><em>(int) n_winners</em>, <em>(int) min_trials=0</em>, <em>(int) max_feval=500</em>, <em>(float) delta=0.05</em>, <em>(list) racers_idx=</em><span class="optional">[</span><span class="optional">]</span><big>)</big><a class="headerlink" href="#PyGMO.population.race" title="Permalink to this definition">¶</a></dt>
+<dd><p>Races individuals in a population</p>
+<ul class="simple">
+<li>n_winners: number of winners in the race</li>
+<li>min_trials: minimum amount of evaluations before an individual can stop racing</li>
+<li>delta: Statistical test confidence</li>
+<li>racers_idx: indices of the individuals in pop to be raced</li>
+</ul>
+</dd></dl>
+
+<dl class="method">
+<dt id="PyGMO.population.repair">
+<tt class="descname">repair</tt><big>(</big><em>(int) idx</em>, <em>(:class:`problem`) repair_algo</em><big>)</big><a class="headerlink" href="#PyGMO.population.repair" title="Permalink to this definition">¶</a></dt>
+<dd><p>Repairs the individual at the position idx</p>
+<ul class="simple">
+<li>idx: index of the individual to repair</li>
+<li>repair_algo: &#8216;repairing&#8217; optimization algorithm to use. It should be able to deal with population of size 1.</li>
+</ul>
+</dd></dl>
+
+<dl class="attribute">
+<dt>
+<tt class="descname">champion</tt></dt>
+<dd><p>Returns a copy of the <em>population</em> <a class="reference internal" href="individual.html#PyGMO.champion" title="PyGMO.champion"><tt class="xref py py-class docutils literal"><span class="pre">PyGMO.champion</span></tt></a></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt>
+<tt class="descname">problem</tt></dt>
+<dd><p>Returns a copy of the <tt class="xref py py-class docutils literal"><span class="pre">problem</span></tt> in the <em>population</em></p>
+<p>NOTE: since it is only a copy that is returned, it is impossible to modify a problem in a population
+directly. The following code is thus WRONG as it changes the bounds of an instance of the problem that is created
+on the fly and then destroyed</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">PyGMO</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="n">prob</span> <span class="o">=</span> <span class="n">problem</span><span class="o">.</span><span class="n">schwefel</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">pop</span> <span class="o">=</span> <span class="n">population</span><span class="p">(</span><span class="n">prob</span><span class="p">,</span><span class="mi">30</span><span class="p">)</span>
+<span class="n">lb</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">prob</span><span class="o">.</span><span class="n">lb</span><span class="p">)</span>
+<span class="n">ub</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">prob</span><span class="o">.</span><span class="n">ub</span><span class="p">)</span>
+<span class="n">lb</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">=-</span><span class="mi">10</span>
+<span class="n">pop</span><span class="o">.</span><span class="n">problem</span><span class="o">.</span><span class="n">set_bounds</span><span class="p">(</span><span class="n">lb</span><span class="p">,</span><span class="n">ub</span><span class="p">)</span> <span class="c">#This line is completely uneffective ...</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="migration.html" class="btn btn-neutral float-right" title="Migration"/>Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="individual.html" class="btn btn-neutral" title="Individual and Champion"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2015, Dario Izzo and Francesco Biscani.
+    </p>
+  </div>
+
+  <a href="https://github.com/snide/sphinx_rtd_theme">Sphinx theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+</body>
+</html>

@@ -1,0 +1,262 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Participating to the CEC2013 Competition (v 1.1.5) &mdash; PyGMO 1.1.7dev documentation</title>
+  
+
+  
+  
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  
+  
+
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:'../',
+        VERSION:'1.1.7dev',
+        COLLAPSE_INDEX:false,
+        FILE_SUFFIX:'.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+    <script type="text/javascript">
+        jQuery(function () {
+            SphinxRtdTheme.StickyNav.enable();
+        });
+    </script>
+  
+
+  
+    <link rel="top" title="PyGMO 1.1.7dev documentation" href="../index.html"/>
+        <link rel="up" title="Examples" href="index.html"/>
+        <link rel="next" title="Travelling Salesman Problem for Active Space Debris Removal" href="example7.html"/>
+        <link rel="prev" title="Designing and optimizing interplanetary trajectories" href="example5.html"/> 
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        <a href="../index.html" class="fa fa-home"> PyGMO</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        
+        
+            <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../install.html">Install PyGMO</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../install.html#preparing-your-system-to-compile-pygmo">Preparing your system to compile PyGMO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../install.html#download-pygmo-code">Download PyGMO code</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../install.html#compiling-and-installing-under-unix">Compiling and Installing under Unix</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../install.html#compiling-and-installing-under-windows">Compiling and Installing under Windows</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../quickstart.html">Quick Start</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../quickstart.html#on-one-cpu">On one CPU</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../quickstart.html#on-many-cpus">On many CPUs ...</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../quickstart.html#and-migrating-solutions">... and migrating solutions ...</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../quickstart.html#and-between-different-algorithms">... and between different algorithms ...</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/index.html">Tutorials</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/adding_problems_and_algorithms_to_PyGMO.html">Adding new problems and algorithms to PyGMO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/meta_problems_meta_algorithms.html">Meta-problems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/multi_objective_optimization_with_PyGMO.html">Multi Objective Optimization with PyGMO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/hypervolumes_in_PyGMO.html">Hypervolumes with PyGMO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/dealing_with_constraints_in_PyGMO.html">Dealing with constraints in PyGMO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/racing.html">Racing in PyGMO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/tsp.html">Traveling Salesman Problems with PyGMO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/landscape_analysis_with_DrPyGMO.html">Landscape Analysis using Dr. PyGMO</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Examples</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="example1.html">A study on Mixing Variants of Differential Evolution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example2.html">Monitoring the Information Flow in a large archipelago</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example3.html">Testing Algorithms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example4.html">Multi-objective optimization in the asynchronous island model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example5.html">Designing and optimizing interplanetary trajectories</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="">Participating to the CEC2013 Competition (v 1.1.5)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example7.html">Travelling Salesman Problem for Active Space Debris Removal</a></li>
+<li class="toctree-l2"><a class="reference internal" href="local_optimization.html">Third-party Non-linear optimizers in PyGMO</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../documentation/index.html">User Documentation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../documentation/individual.html">Individual and Champion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../documentation/population.html">Population</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../documentation/migration.html">Migration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../documentation/topology.html">Topology</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../documentation/island.html">Island and Archipelago</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../documentation/algorithms.html">Algorithms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../documentation/problems.html">Problems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../documentation/hypervolume.html">Hypervolume</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../documentation/racing.html">Racing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../documentation/analysis.html">Dr. PyGMO - Analysis Module</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference external" href="http://esa.github.io/pagmo/">PaGMO API</a></li>
+</ul>
+
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../index.html">PyGMO</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="index.html">Examples</a> &raquo;</li>
+      
+    <li>Participating to the CEC2013 Competition (v 1.1.5)</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          <a href="../_sources/examples/example6.txt" rel="nofollow"> View page source</a>
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            
+  <div class="section" id="participating-to-the-cec2013-competition-v-1-1-5">
+<h1>Participating to the CEC2013 Competition (v 1.1.5)<a class="headerlink" href="#participating-to-the-cec2013-competition-v-1-1-5" title="Permalink to this headline">¶</a></h1>
+<p>In this example we will show how to use PaGMO to test algorithms on the
+<a class="reference external" href="http://www.ntu.edu.sg/home/EPNSugan/index_files/CEC2013/CEC2013.htm">test problem suite</a> used in the
+Special Session &amp; Competition on Real-Parameter Single Objective Optimization at CEC-2013, Cancun, Mexico 21-23 June 2013</p>
+<p>The first thing to do is to download the text files defining the 28 problems of the CEC2013 competition. These
+can be found in <a class="reference external" href="http://web.mysites.ntu.edu.sg/epnsugan/PublicSite/Shared%20Documents/CEC2013/cec13-c-code.zip">this zip file</a>
+in the folder called input_files. We will assume, in the rest of this tutorial, that you have put these
+files in the directory ~/Documents/input_files/.</p>
+<p>Let us start with trying out for problem dimension D=2 the algorithm CMA-ES. As the competition rules
+allow D * 10000 function evaluation, we choose a population of 50 with 400 generations.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">PyGMO</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="nb">dir</span> <span class="o">=</span> <span class="s">&quot;/home/my_user/Documents/input_data/&quot;</span>
+<span class="n">algo</span> <span class="o">=</span> <span class="n">algorithm</span><span class="o">.</span><span class="n">cmaes</span><span class="p">(</span><span class="mi">500</span><span class="p">,</span><span class="n">xtol</span><span class="o">=</span><span class="mf">1e-9</span><span class="p">,</span><span class="n">ftol</span><span class="o">=</span><span class="mf">1e-9</span><span class="p">)</span>
+<span class="n">D</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">error</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">28</span><span class="p">):</span>
+        <span class="n">prob</span> <span class="o">=</span> <span class="n">problem</span><span class="o">.</span><span class="n">cec2013</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="n">D</span><span class="p">,</span> <span class="n">prob_id</span><span class="o">=</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="n">path</span><span class="o">=</span><span class="nb">dir</span><span class="p">)</span>
+        <span class="n">pop</span> <span class="o">=</span> <span class="n">population</span><span class="p">(</span><span class="n">prob</span><span class="p">,</span><span class="mi">60</span><span class="p">)</span>
+        <span class="n">pop</span> <span class="o">=</span> <span class="n">algo</span><span class="o">.</span><span class="n">evolve</span><span class="p">(</span><span class="n">pop</span><span class="p">)</span>
+        <span class="n">error</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">pop</span><span class="o">.</span><span class="n">champion</span><span class="o">.</span><span class="n">f</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1400</span> <span class="o">-</span> <span class="mi">100</span><span class="o">*</span><span class="n">i</span> <span class="o">-</span> <span class="mi">100</span><span class="o">*</span><span class="p">(</span><span class="n">i</span><span class="o">&gt;</span><span class="mi">13</span><span class="p">))</span>
+<span class="k">print</span> <span class="n">error</span>
+</pre></div>
+</div>
+<p>Note the strange definition of the error which is due to the shift in the objective function value that has been
+defined for the CEC 2013 problems.</p>
+<p>The list error now contains the error made by CMA-ES in solving each one of the 28 test problems. One can loop on
+this procedure (say 25 times) and produce the box plots with the following command:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">boxplot</span><span class="p">([</span><span class="n">error</span><span class="p">[</span><span class="n">s</span><span class="p">::</span><span class="mi">28</span><span class="p">]</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">28</span><span class="p">)])</span>
+</pre></div>
+</div>
+<p>Which produces the output below.</p>
+<img alt="../_images/ex6_cmaes_D_2.png" src="../_images/ex6_cmaes_D_2.png" />
+<p>From the image above we see immediately that the problems from 1 to 20 are significantly easier to solve for CMA-ES than the last eight.</p>
+<p>We may now try to do the same with a larger number of dimensions, say D=10. As we can now take advantage of an increased number of
+function evaluations (100000), we set up CMA-ES differently (i.e. we use a larger population and more maximum iterations).</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">PyGMO</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="nb">dir</span> <span class="o">=</span> <span class="s">&quot;/home/my_user/Documents/input_data/&quot;</span>
+<span class="n">algo</span> <span class="o">=</span> <span class="n">algorithm</span><span class="o">.</span><span class="n">cmaes</span><span class="p">(</span><span class="mi">1000</span><span class="p">,</span><span class="n">xtol</span><span class="o">=</span><span class="mf">1e-9</span><span class="p">,</span><span class="n">ftol</span><span class="o">=</span><span class="mf">1e-9</span><span class="p">)</span>
+<span class="n">D</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">error</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">25</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">28</span><span class="p">):</span>
+                <span class="n">prob</span> <span class="o">=</span> <span class="n">problem</span><span class="o">.</span><span class="n">cec2013</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="n">D</span><span class="p">,</span> <span class="n">prob_id</span><span class="o">=</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="n">path</span><span class="o">=</span><span class="nb">dir</span><span class="p">)</span>
+                <span class="n">pop</span> <span class="o">=</span> <span class="n">population</span><span class="p">(</span><span class="n">prob</span><span class="p">,</span><span class="mi">100</span><span class="p">)</span>
+                <span class="n">pop</span> <span class="o">=</span> <span class="n">algo</span><span class="o">.</span><span class="n">evolve</span><span class="p">(</span><span class="n">pop</span><span class="p">)</span>
+                <span class="n">error</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">pop</span><span class="o">.</span><span class="n">champion</span><span class="o">.</span><span class="n">f</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1400</span> <span class="o">-</span> <span class="mi">100</span><span class="o">*</span><span class="n">i</span> <span class="o">-</span> <span class="mi">100</span><span class="o">*</span><span class="p">(</span><span class="n">i</span><span class="o">&gt;</span><span class="mi">13</span><span class="p">))</span>
+<span class="n">boxplot</span><span class="p">([</span><span class="n">error</span><span class="p">[</span><span class="n">s</span><span class="p">::</span><span class="mi">28</span><span class="p">]</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">28</span><span class="p">)])</span>
+</pre></div>
+</div>
+<p>Which produces the plot below.</p>
+<img alt="../_images/ex6_cmaes_D_10.png" src="../_images/ex6_cmaes_D_10.png" />
+<p>The same can be produced for different algorithms:</p>
+<img alt="../_images/ex6_jde_D_10.png" src="../_images/ex6_jde_D_10.png" />
+<img alt="../_images/ex6_de1220_D_10.png" src="../_images/ex6_de1220_D_10.png" />
+</div>
+
+
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="example7.html" class="btn btn-neutral float-right" title="Travelling Salesman Problem for Active Space Debris Removal"/>Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="example5.html" class="btn btn-neutral" title="Designing and optimizing interplanetary trajectories"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2015, Dario Izzo and Francesco Biscani.
+    </p>
+  </div>
+
+  <a href="https://github.com/snide/sphinx_rtd_theme">Sphinx theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+</body>
+</html>

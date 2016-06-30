@@ -1,0 +1,303 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Dealing with constraints in PyGMO &mdash; PyGMO 1.1.7dev documentation</title>
+  
+
+  
+  
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  
+  
+
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:'../',
+        VERSION:'1.1.7dev',
+        COLLAPSE_INDEX:false,
+        FILE_SUFFIX:'.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+    <script type="text/javascript">
+        jQuery(function () {
+            SphinxRtdTheme.StickyNav.enable();
+        });
+    </script>
+  
+
+  
+    <link rel="top" title="PyGMO 1.1.7dev documentation" href="../index.html"/>
+        <link rel="up" title="Tutorials" href="index.html"/>
+        <link rel="next" title="Death penalty" href="death_penalty.html"/>
+        <link rel="prev" title="Using hypervolumes in your own algorithm" href="using_hypervolumes_in_your_algorithm.html"/> 
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        <a href="../index.html" class="fa fa-home"> PyGMO</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        
+        
+            <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../install.html">Install PyGMO</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../install.html#preparing-your-system-to-compile-pygmo">Preparing your system to compile PyGMO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../install.html#download-pygmo-code">Download PyGMO code</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../install.html#compiling-and-installing-under-unix">Compiling and Installing under Unix</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../install.html#compiling-and-installing-under-windows">Compiling and Installing under Windows</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../quickstart.html">Quick Start</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../quickstart.html#on-one-cpu">On one CPU</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../quickstart.html#on-many-cpus">On many CPUs ...</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../quickstart.html#and-migrating-solutions">... and migrating solutions ...</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../quickstart.html#and-between-different-algorithms">... and between different algorithms ...</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Tutorials</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="adding_problems_and_algorithms_to_PyGMO.html">Adding new problems and algorithms to PyGMO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="meta_problems_meta_algorithms.html">Meta-problems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="multi_objective_optimization_with_PyGMO.html">Multi Objective Optimization with PyGMO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hypervolumes_in_PyGMO.html">Hypervolumes with PyGMO</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="">Dealing with constraints in PyGMO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="racing.html">Racing in PyGMO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tsp.html">Traveling Salesman Problems with PyGMO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="landscape_analysis_with_DrPyGMO.html">Landscape Analysis using Dr. PyGMO</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/index.html">Examples</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../examples/example1.html">A study on Mixing Variants of Differential Evolution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples/example2.html">Monitoring the Information Flow in a large archipelago</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples/example3.html">Testing Algorithms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples/example4.html">Multi-objective optimization in the asynchronous island model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples/example5.html">Designing and optimizing interplanetary trajectories</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples/example6.html">Participating to the CEC2013 Competition (v 1.1.5)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples/example7.html">Travelling Salesman Problem for Active Space Debris Removal</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples/local_optimization.html">Third-party Non-linear optimizers in PyGMO</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../documentation/index.html">User Documentation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../documentation/individual.html">Individual and Champion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../documentation/population.html">Population</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../documentation/migration.html">Migration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../documentation/topology.html">Topology</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../documentation/island.html">Island and Archipelago</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../documentation/algorithms.html">Algorithms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../documentation/problems.html">Problems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../documentation/hypervolume.html">Hypervolume</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../documentation/racing.html">Racing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../documentation/analysis.html">Dr. PyGMO - Analysis Module</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference external" href="http://esa.github.io/pagmo/">PaGMO API</a></li>
+</ul>
+
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../index.html">PyGMO</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="index.html">Tutorials</a> &raquo;</li>
+      
+    <li>Dealing with constraints in PyGMO</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          <a href="../_sources/tutorials/dealing_with_constraints_in_PyGMO.txt" rel="nofollow"> View page source</a>
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            
+  <div class="section" id="dealing-with-constraints-in-pygmo">
+<span id="id1"></span><h1>Dealing with constraints in PyGMO<a class="headerlink" href="#dealing-with-constraints-in-pygmo" title="Permalink to this headline">¶</a></h1>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="death_penalty.html">Death penalty</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="death_penalty.html#method">Method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="death_penalty.html#application">Application</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="multi_objective_transformation.html">Multi-objective transformation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="multi_objective_transformation.html#method">Method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="multi_objective_transformation.html#application">Application</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="self_adaptive_penalty.html">Self-adaptive penalty</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="self_adaptive_penalty.html#method">Method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="self_adaptive_penalty.html#application">Application</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="co_evolution_penalty_method.html">Co-evolution penalty method</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="co_evolution_penalty_method.html#method">Method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="co_evolution_penalty_method.html#application">Application</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="immune_system.html">Immune system method for constraint handling</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="immune_system.html#method">Method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="immune_system.html#application">Application</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="repair_methods.html">Repair methods</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="repair_methods.html#method">Method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="repair_methods.html#application">Application</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<p>Evolutionary Optimization techniques have been successfully
+applied in a wide range of real-life optimization problems and
+a variety of them have been already integrated into the
+PaGMO/PyGMO collection of heuristic optimization methods.
+Several constraint handling approaches for evolutionary
+algorithms have been developed in the recent years and divided
+in five main classes (survey of techniques in [1]): Penalty
+Methods, Special Representations and Operators, Repair
+Algorithms, Separation of Objective and Constraints and Hybrid
+Methods. Among them few approaches have been identified as
+promising techniques and have been integrated into the existing
+PaGMO/PyGMO infrastructure.</p>
+<p>In particular:</p>
+<ul class="simple">
+<li>Four Penalty Methods: Death penalty (infeasible individual are rejected in the selection procedure regardless their level of infeasibility, [2]); Self Adaptive Fitness Formulation (the fitness of the infeasible individual is increased as to favor those solutions which are nearly feasible and also have a good objective function value, [3]); and Co-evolutionary Penalty (collaborative evolution of two populations, the second one encoding the penalty factors to be used in the fitness evaluation of the individuals of the first population, [4]).</li>
+<li>Separation of Objective and Constraints: Multi-objective Optimization (the constrained optimization problem is transformed into a multiobjective optimization problem where each constraint violation represents an additional objective [5]).</li>
+<li>Hybrid Methods: Immune System (part of the feasible population is transformed into antigen population, the infeasible solutions generate antibodies those evolving, with particular immune operators, until they become sufficiently similar to the antigen population and then recombined to continue with the evolution [6]); Local Repair Techniques (the infeasible solutions are locally repaired with gradient based unconstrained optimization techniques minimizing the sum of the constraints violations [7]).</li>
+</ul>
+<p>All of these techniques have been implmented in PaGMO/PyGMO to
+effectively solve constrained optimization problems and to have a
+consistent framework to assess the performances of the different
+constraints handling techniques. In fact, from [1], it is important
+to be able to establish under what conditions certain constraints
+handling techniques are more efficient and more convenient than other
+ones (that might depends the number of linear/non-linear constraints,
+number of local optima, continuity of the objective function...).
+From the previous studies, only inconclusive evidences of techniques
+from benchmarks could be drawn. This is due to the fact that most of
+the studies were incomplete (i.e run only on one test case) or
+inconsistent, making it difficult to retrieve information for best
+practices in constrained stochastic optimization.</p>
+<p>Each approach has a different implementation strategy:</p>
+<ul class="simple">
+<li>Death Penalty and Multi-objective Optimization redefine statically the optimization problem (i.e. the new optimization problem is the same during all the evolutions), two meta-problems have been created to cope with these techniques. The meta-problem takes the original constrained problem as input and generate a new unconstrained problem (respectively single and multi-objective).</li>
+<li>Self Adaptive redefines dynamically the optimization problem (information are extrapolated from the current population to assign the new fitness function), a meta-algorithm that internally invokes the evolution of the population on a modified problem has been implemented. The meta-algorithm is constructed given an heuristic algorithm and the constrained problem.</li>
+<li>Co-Evolutionary Penalty and Immune System are meta-algorithms as well. They are constructed as before with an heuristic algorithm and a constrained problem. Internally the method performs a preprocessing on the population and defines a modified problem suitable for the evolution.</li>
+<li>Local Repair Technique is a meta-algorithm that takes as argument two algorithms (an heuristic and a local one), it instantiates a new population (the infeasible solutions) with an unconstrained problem defined by the sum of the violation of the constraints and invokes the evolve method of the local technique to solve it.</li>
+</ul>
+<p>References:</p>
+<p>[1] Coello Coello C.A. Theoretical and Numerical Constraints-Handling Techniques
+Used with Evolutionary Algorithms: A Survey of the State of the Art, Comput.
+Methods Appl. Mech Engrg. 191, pp. 1245-1287, 2000.</p>
+<p>[2] Bäck, T., Hoffmeister, F. and Schwell, H.P. A Survey of evolution strategies,
+Proceedings of the Fourth International Conference on Genetic Algorithms, Morgan
+Kaufmann, 2-9, 1991.</p>
+<p>[3] Farmani, R. and Wright, J. Self-adaptive fitness formulation for constrained
+optimization, IEEE Transactions on Evolutionary Computation, 7 (5), pp. 445- 455, 2003.</p>
+<p>[4] Coello Coello C.A. Use of Self-Adaptive Penalty Approach for Engineering
+Optimization Problems, Comput. Ind. 41(2), pp. 113-127, 2000.</p>
+<p>[5] Coello Coello C.A. Treating Constraints as Objectives for Single-Objective
+Evolutionary Optimization, Engrg. Optim., 32(3), pp. 275-308, 2000.</p>
+<p>[6] Hajela P. and Lee J. Constrained Genetic Search via Schema Adaptation. An
+Immune Network Solution, Proceedings of the First World Congress of Structural
+and Multidisciplinary Optimization, pp. 915-920, 1995.</p>
+<p>[7] Belur S.V. CORE: Constrained Optimization by Random Evolution, Late Breaking
+Papers at the Genetic Programming Conference, pp. 280-286, 1997.</p>
+<p>[8] J. J. Liang, T. P. Runarsson, E. Mezura-Montes, M. Clerc, P. N. Suganthan, C. A.
+Coello Coello, K. Deb, Problem Definitions and Evaluation Criteria for the
+CEC 2006, Special Session on Constrained Real-Parameter Optimization, Technical
+Report, Nanyang Technological University, Singapore, 2006.</p>
+</div>
+
+
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="death_penalty.html" class="btn btn-neutral float-right" title="Death penalty"/>Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="using_hypervolumes_in_your_algorithm.html" class="btn btn-neutral" title="Using hypervolumes in your own algorithm"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2015, Dario Izzo and Francesco Biscani.
+    </p>
+  </div>
+
+  <a href="https://github.com/snide/sphinx_rtd_theme">Sphinx theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+</body>
+</html>

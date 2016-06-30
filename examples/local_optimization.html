@@ -1,0 +1,377 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Third-party Non-linear optimizers in PyGMO &mdash; PyGMO 1.1.7dev documentation</title>
+  
+
+  
+  
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  
+  
+
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:'../',
+        VERSION:'1.1.7dev',
+        COLLAPSE_INDEX:false,
+        FILE_SUFFIX:'.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+    <script type="text/javascript">
+        jQuery(function () {
+            SphinxRtdTheme.StickyNav.enable();
+        });
+    </script>
+  
+
+  
+    <link rel="top" title="PyGMO 1.1.7dev documentation" href="../index.html"/>
+        <link rel="up" title="Examples" href="index.html"/>
+        <link rel="next" title="User Documentation" href="../documentation/index.html"/>
+        <link rel="prev" title="Travelling Salesman Problem for Active Space Debris Removal" href="example7.html"/> 
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        <a href="../index.html" class="fa fa-home"> PyGMO</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        
+        
+            <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../install.html">Install PyGMO</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../install.html#preparing-your-system-to-compile-pygmo">Preparing your system to compile PyGMO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../install.html#download-pygmo-code">Download PyGMO code</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../install.html#compiling-and-installing-under-unix">Compiling and Installing under Unix</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../install.html#compiling-and-installing-under-windows">Compiling and Installing under Windows</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../quickstart.html">Quick Start</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../quickstart.html#on-one-cpu">On one CPU</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../quickstart.html#on-many-cpus">On many CPUs ...</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../quickstart.html#and-migrating-solutions">... and migrating solutions ...</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../quickstart.html#and-between-different-algorithms">... and between different algorithms ...</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/index.html">Tutorials</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/adding_problems_and_algorithms_to_PyGMO.html">Adding new problems and algorithms to PyGMO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/meta_problems_meta_algorithms.html">Meta-problems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/multi_objective_optimization_with_PyGMO.html">Multi Objective Optimization with PyGMO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/hypervolumes_in_PyGMO.html">Hypervolumes with PyGMO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/dealing_with_constraints_in_PyGMO.html">Dealing with constraints in PyGMO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/racing.html">Racing in PyGMO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/tsp.html">Traveling Salesman Problems with PyGMO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/landscape_analysis_with_DrPyGMO.html">Landscape Analysis using Dr. PyGMO</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Examples</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="example1.html">A study on Mixing Variants of Differential Evolution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example2.html">Monitoring the Information Flow in a large archipelago</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example3.html">Testing Algorithms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example4.html">Multi-objective optimization in the asynchronous island model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example5.html">Designing and optimizing interplanetary trajectories</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example6.html">Participating to the CEC2013 Competition (v 1.1.5)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example7.html">Travelling Salesman Problem for Active Space Debris Removal</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="">Third-party Non-linear optimizers in PyGMO</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../documentation/index.html">User Documentation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../documentation/individual.html">Individual and Champion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../documentation/population.html">Population</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../documentation/migration.html">Migration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../documentation/topology.html">Topology</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../documentation/island.html">Island and Archipelago</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../documentation/algorithms.html">Algorithms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../documentation/problems.html">Problems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../documentation/hypervolume.html">Hypervolume</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../documentation/racing.html">Racing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../documentation/analysis.html">Dr. PyGMO - Analysis Module</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference external" href="http://esa.github.io/pagmo/">PaGMO API</a></li>
+</ul>
+
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../index.html">PyGMO</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="index.html">Examples</a> &raquo;</li>
+      
+    <li>Third-party Non-linear optimizers in PyGMO</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          <a href="../_sources/examples/local_optimization.txt" rel="nofollow"> View page source</a>
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            
+  <div class="section" id="third-party-non-linear-optimizers-in-pygmo">
+<span id="local-optimization"></span><h1>Third-party Non-linear optimizers in PyGMO<a class="headerlink" href="#third-party-non-linear-optimizers-in-pygmo" title="Permalink to this headline">¶</a></h1>
+<p>Besides a variety of available metaheuristics and global optimization algorithms, PaGMO interfaces to several popular local optimizers (full list available on page <a class="reference internal" href="../documentation/algorithms.html#algorithms"><em>Algorithms</em></a>).
+Local optimization algorithms are interfaced such that they are compatible with all of other PyGMO features, such as island model.
+In this example we will present several features and use cases of nonlinear local optimizers available in PyGMO.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Almost all of the local optimizers (with an exception of <a class="reference internal" href="../documentation/algorithms.html#PyGMO.algorithm.cs" title="PyGMO.algorithm.cs"><tt class="xref py py-class docutils literal"><span class="pre">PyGMO.algorithm.cs</span></tt></a> available in PaGMO are interfaces to third-party dependencies.
+When using Python local optimizers (such as <a class="reference internal" href="../documentation/algorithms.html#PyGMO.algorithm.scipy_fmin" title="PyGMO.algorithm.scipy_fmin"><tt class="xref py py-class docutils literal"><span class="pre">PyGMO.algorithm.scipy_fmin</span></tt></a>), corresponding Python dependencies have to be installed.
+To use other high-performance optimizers (e.g.: <a class="reference internal" href="../documentation/algorithms.html#PyGMO.algorithm.snopt" title="PyGMO.algorithm.snopt"><tt class="xref py py-class docutils literal"><span class="pre">PyGMO.algorithm.snopt</span></tt></a>), PaGMO has to be compiled with the corresponding flag (e.g.: <tt class="docutils literal"><span class="pre">ENABLE_SNOPT</span></tt>), while the library has to be installed and visible to the build system.</p>
+</div>
+<p>In the remainder of this section we will show how to use the SNOPT and WHORP nonlinear optimizers in PyGMO.</p>
+<div class="section" id="snopt-library">
+<h2>SNOPT library<a class="headerlink" href="#snopt-library" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="installation">
+<h3>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h3>
+<p>To use SNOPT you first need to obtain either the full version of the library, or request a trial version from here:
+<a class="reference external" href="https://ccom.ucsd.edu/~optimizers/downloads.php">https://ccom.ucsd.edu/~optimizers/downloads.php</a>
+Installation is to be followed according with the instructions provided on SNOPT software, according to your operating system.</p>
+<p>Once SNOPT is installed in the system, you need to recompile PaGMO with <tt class="docutils literal"><span class="pre">ENABLE_SNOPT=ON</span></tt> flag.</p>
+</div>
+<div class="section" id="usage">
+<h3>Usage<a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h3>
+<p>The following script optimizes the <a class="reference internal" href="../documentation/problems.html#PyGMO.problem.luksan_vlcek_1" title="PyGMO.problem.luksan_vlcek_1"><tt class="xref py py-class docutils literal"><span class="pre">PyGMO.problem.luksan_vlcek_1</span></tt></a> problem using default SNOPT configuration.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">PyGMO</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="n">prob</span> <span class="o">=</span> <span class="n">problem</span><span class="o">.</span><span class="n">luksan_vlcek_1</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+<span class="c"># One &#39;individual&#39;, i.e. initial condition, is sufficient for local optimization</span>
+<span class="n">pop</span> <span class="o">=</span> <span class="n">population</span><span class="p">(</span><span class="n">prob</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>  <span class="c"># Population with one individual</span>
+<span class="n">alg</span> <span class="o">=</span> <span class="n">algorithm</span><span class="o">.</span><span class="n">snopt</span><span class="p">()</span>  <span class="c"># Use SNOPT library</span>
+<span class="n">pop</span> <span class="o">=</span> <span class="n">alg</span><span class="o">.</span><span class="n">evolve</span><span class="p">(</span><span class="n">pop</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">pop</span><span class="o">.</span><span class="n">champion</span><span class="o">.</span><span class="n">x</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">pop</span><span class="o">.</span><span class="n">champion</span><span class="o">.</span><span class="n">f</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Additionally, several parameters of SNOPT are exposed to the Python interface:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="c"># Set the upper limit on number of iterations, feasibility and optimality tolerances</span>
+<span class="c"># and print SNOPT output the screen.</span>
+<span class="n">alg</span> <span class="o">=</span> <span class="n">algorithm</span><span class="o">.</span><span class="n">snopt</span><span class="p">(</span><span class="n">major_iter</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">feas_tol</span><span class="o">=</span><span class="mf">1e-10</span><span class="p">,</span> <span class="n">opt_tol</span><span class="o">=</span><span class="mf">1e-10</span><span class="p">,</span> <span class="n">screen_output</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<span class="n">pop</span> <span class="o">=</span> <span class="n">population</span><span class="p">(</span><span class="n">prob</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">pop</span> <span class="o">=</span> <span class="n">alg</span><span class="o">.</span><span class="n">evolve</span><span class="p">(</span><span class="n">pop</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">pop</span><span class="o">.</span><span class="n">champion</span><span class="o">.</span><span class="n">x</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">pop</span><span class="o">.</span><span class="n">champion</span><span class="o">.</span><span class="n">f</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="worhp-library">
+<h2>WORHP library<a class="headerlink" href="#worhp-library" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id1">
+<h3>Installation<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">PyGMO is supporting WORHP with version 1.8</p>
+</div>
+<p>Compiled WORHP library interface can be found at <a class="reference external" href="http://www.worhp.de/">http://www.worhp.de/</a>.
+The software package contains the binaries and the header files, which have to be installed in the system (see installation guide available on the official WORHP website).</p>
+<p>WORHP optimizer, besides requiring third party dependencies, also checks for a valid license and a configuration file.
+License file <tt class="docutils literal"><span class="pre">worhp.lic</span></tt> can either reside in the current working directory or be referenced by the <tt class="docutils literal"><span class="pre">WORHP_LICENSE_FILE</span></tt> environment variable (either full or absolute path with the filename). Similarly the parameter configuration file <tt class="docutils literal"><span class="pre">param.xml</span></tt> can reside in the working directory or be referenced by <tt class="docutils literal"><span class="pre">WORHP_PARAM_FILE</span></tt>. PaGMO needs to be compiled witht the flag <tt class="docutils literal"><span class="pre">ENABLE_WORHP=ON</span></tt>.</p>
+</div>
+<div class="section" id="id2">
+<h3>Usage<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<p>Use case of <tt class="xref py py-class docutils literal"><span class="pre">PyGMO.algorithm.worhp</span></tt> is the same as that of the SNOPT as show previously.
+Additionally to three key parameters exposed in the constructor, it is also possible to set some WORHP parameters through the setter.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Three parameters are already exposed in the constructor of worhp algorithm (<tt class="docutils literal"><span class="pre">TolFeas</span></tt>, <tt class="docutils literal"><span class="pre">TolOpti</span></tt> and <tt class="docutils literal"><span class="pre">MaxIter</span></tt>).
+Each of those is also set to the default values other than the specified in the default configuration file.
+<strong>All parameters set by a setter method, as well as the parameters in the constructor (also the defaults!) are oveloading the values from the configuration file ``param.xml``.</strong>
+List of setter-exposed WORHP parameters is available at: <a class="reference external" href="https://github.com/esa/pagmo/blob/master/src/algorithm/worhp_cpp_wrapper/set_get_params.cpp">https://github.com/esa/pagmo/blob/master/src/algorithm/worhp_cpp_wrapper/set_get_params.cpp</a></p>
+</div>
+<p>Script below shows a use case of WORHP as local optimizer in PaGMO:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">PyGMO</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="n">prob</span> <span class="o">=</span> <span class="n">problem</span><span class="o">.</span><span class="n">py_pl2pl</span><span class="p">()</span>
+<span class="n">pop</span> <span class="o">=</span> <span class="n">population</span><span class="p">(</span><span class="n">prob</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">alg</span> <span class="o">=</span> <span class="n">algorithm</span><span class="o">.</span><span class="n">worhp</span><span class="p">(</span><span class="n">MaxIter</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">TolFeas</span><span class="o">=</span><span class="mf">1e-10</span><span class="p">)</span>
+<span class="n">alg</span><span class="o">.</span><span class="n">set_param</span><span class="p">(</span><span class="s">&quot;AcceptTolOpti&quot;</span><span class="p">,</span> <span class="mf">1e-4</span><span class="p">)</span>
+<span class="n">pop</span> <span class="o">=</span> <span class="n">alg</span><span class="o">.</span><span class="n">evolve</span><span class="p">(</span><span class="n">pop</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">pop</span><span class="o">.</span><span class="n">champion</span><span class="o">.</span><span class="n">x</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">pop</span><span class="o">.</span><span class="n">champion</span><span class="o">.</span><span class="n">f</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="snopt-and-worhp-comparison">
+<h2>SNOPT and WORHP comparison<a class="headerlink" href="#snopt-and-worhp-comparison" title="Permalink to this headline">¶</a></h2>
+<p>In this section we will aim at providing some basic comparison between two algorithms on one standard benchmark problem and a trajectory optimization problem.</p>
+<p>First, we will define functions used for running and experiment and plotting the results:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">PyGMO</span> <span class="kn">import</span> <span class="n">population</span><span class="p">,</span> <span class="n">problem</span><span class="p">,</span> <span class="n">algorithm</span>
+<span class="kn">import</span> <span class="nn">PyKEP</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">import</span> <span class="nn">random</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">matplotlib.gridspec</span> <span class="kn">as</span> <span class="nn">gridspec</span>
+
+<span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="n">seed</span><span class="p">,</span> <span class="n">alg</span><span class="p">,</span> <span class="n">prob</span><span class="p">):</span>
+    <span class="n">pop</span> <span class="o">=</span> <span class="n">population</span><span class="p">(</span><span class="n">prob</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">seed</span><span class="p">)</span>
+    <span class="n">pop</span> <span class="o">=</span> <span class="n">alg</span><span class="o">.</span><span class="n">evolve</span><span class="p">(</span><span class="n">pop</span><span class="p">)</span>
+    <span class="n">feas</span> <span class="o">=</span> <span class="n">prob</span><span class="o">.</span><span class="n">feasibility_x</span><span class="p">(</span><span class="n">pop</span><span class="o">.</span><span class="n">champion</span><span class="o">.</span><span class="n">x</span><span class="p">)</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">pop</span><span class="o">.</span><span class="n">champion</span><span class="o">.</span><span class="n">f</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">pop</span><span class="o">.</span><span class="n">problem</span><span class="o">.</span><span class="n">fevals</span><span class="p">,</span> <span class="n">feas</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">plot</span><span class="p">(</span><span class="n">l</span><span class="p">,</span> <span class="n">title</span><span class="p">,</span> <span class="n">ax</span><span class="p">):</span>
+    <span class="n">a1</span><span class="p">,</span> <span class="n">a2</span> <span class="o">=</span> <span class="nb">zip</span><span class="p">(</span><span class="o">*</span><span class="n">l</span><span class="p">)</span>
+
+    <span class="n">d</span> <span class="o">=</span> <span class="nb">filter</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">a1</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">d</span><span class="p">:</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="o">*</span><span class="n">d</span><span class="p">)[</span><span class="mi">0</span><span class="p">],</span> <span class="nb">zip</span><span class="p">(</span><span class="o">*</span><span class="n">d</span><span class="p">)[</span><span class="mi">1</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="s">&#39;r&#39;</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s">&#39;o&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s">&#39;WORHP, {}/{} feasible&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">d</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">a1</span><span class="p">)))</span>
+
+    <span class="n">d</span> <span class="o">=</span> <span class="nb">filter</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">a2</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">d</span><span class="p">:</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="o">*</span><span class="n">d</span><span class="p">)[</span><span class="mi">0</span><span class="p">],</span> <span class="nb">zip</span><span class="p">(</span><span class="o">*</span><span class="n">d</span><span class="p">)[</span><span class="mi">1</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="s">&#39;g&#39;</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s">&#39;o&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s">&#39;SNOPT, {}/{} feasible&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">d</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">a1</span><span class="p">)))</span>
+
+    <span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s">&#39;Objective function value&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s">&#39;Function evaluations&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="n">title</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>We compute 100 solutions to Luksan-Vlcek problem (dim=10) using SNOPT and WORHP, and plot the obtained objective function value against the number of function evaluations.
+For each comparison we start with the same initial conditions.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">prob</span> <span class="o">=</span> <span class="n">problem</span><span class="o">.</span><span class="n">luksan_vlcek_1</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+
+<span class="n">l</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">N</span> <span class="o">=</span> <span class="mi">100</span>  <span class="c"># number of restarts</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">stdout</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s">&quot;Computing {} luksan_vlcek_1 solutions..</span><span class="se">\n</span><span class="s">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">N</span><span class="p">))</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">N</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
+    <span class="n">tmp</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">seed</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1000000</span><span class="p">)</span>  <span class="c"># We start from the same initial conditions</span>
+    <span class="n">tmp</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">run</span><span class="p">(</span><span class="n">seed</span><span class="p">,</span> <span class="n">algorithm</span><span class="o">.</span><span class="n">worhp</span><span class="p">(</span><span class="n">MaxIter</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">TolFeas</span><span class="o">=</span><span class="mf">1e-8</span><span class="p">,</span> <span class="n">TolOpti</span><span class="o">=</span><span class="mf">1e-8</span><span class="p">),</span> <span class="n">prob</span><span class="p">))</span>
+    <span class="n">tmp</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">run</span><span class="p">(</span><span class="n">seed</span><span class="p">,</span> <span class="n">algorithm</span><span class="o">.</span><span class="n">snopt</span><span class="p">(</span><span class="n">major_iter</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">feas_tol</span><span class="o">=</span><span class="mf">1e-8</span><span class="p">,</span> <span class="n">opt_tol</span><span class="o">=</span><span class="mf">1e-8</span><span class="p">),</span> <span class="n">prob</span><span class="p">))</span>
+    <span class="n">l</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">tmp</span><span class="p">)</span>
+    <span class="n">sys</span><span class="o">.</span><span class="n">stdout</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s">&quot;{}/{} &quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">N</span><span class="p">))</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xscale</span><span class="p">(</span><span class="s">&#39;log&#39;</span><span class="p">)</span>
+<span class="n">plot</span><span class="p">(</span><span class="n">l</span><span class="p">,</span> <span class="s">&quot;Luksan Vlcek 1 (D=10)&quot;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">())</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Results of the script are as follows:</p>
+<img alt="../_images/local_optimization_luksan.png" src="../_images/local_optimization_luksan.png" />
+<p>It can be concluded that SNOPT algorithm spends less function evaluations to achieve similar solution quality, while both algorithms get stuck in local optimia in roughly half of the runs.</p>
+<p>Similarly we compute 20 solutions to Python planet to planet (Earth to Mars) problem (Requires PyKEP, while PyGMO needs to be compiled with <tt class="docutils literal"><span class="pre">ENABLE_GTOC=ON</span></tt>):</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="c"># Warning: This is a very long test, Change N to something smaller (5) to get a quick overview</span>
+<span class="n">N</span> <span class="o">=</span> <span class="mi">20</span>  <span class="c"># number of restarts</span>
+
+<span class="n">gs</span> <span class="o">=</span> <span class="n">gridspec</span><span class="o">.</span><span class="n">GridSpec</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">ll</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">ax_i</span><span class="p">,</span> <span class="n">n_seg</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">([</span><span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">40</span><span class="p">]):</span>
+    <span class="n">l</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">sys</span><span class="o">.</span><span class="n">stdout</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s">&quot;Computing {} py_pl2pl solutions for {} segments..</span><span class="se">\n</span><span class="s">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">N</span><span class="p">,</span> <span class="n">n_seg</span><span class="p">))</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">N</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
+        <span class="n">prob</span> <span class="o">=</span> <span class="n">problem</span><span class="o">.</span><span class="n">py_pl2pl</span><span class="p">(</span><span class="n">nseg</span><span class="o">=</span><span class="n">n_seg</span><span class="p">)</span>
+        <span class="n">tmp</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">seed</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1000000</span><span class="p">)</span>  <span class="c"># We start from the same initial conditions</span>
+        <span class="n">tmp</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">run</span><span class="p">(</span><span class="n">seed</span><span class="p">,</span> <span class="n">algorithm</span><span class="o">.</span><span class="n">worhp</span><span class="p">(</span><span class="n">MaxIter</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">TolFeas</span><span class="o">=</span><span class="mf">1e-8</span><span class="p">,</span> <span class="n">TolOpti</span><span class="o">=</span><span class="mf">1e-8</span><span class="p">),</span> <span class="n">prob</span><span class="p">))</span>
+        <span class="n">tmp</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">run</span><span class="p">(</span><span class="n">seed</span><span class="p">,</span> <span class="n">algorithm</span><span class="o">.</span><span class="n">snopt</span><span class="p">(</span><span class="n">major_iter</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">feas_tol</span><span class="o">=</span><span class="mf">1e-8</span><span class="p">,</span> <span class="n">opt_tol</span><span class="o">=</span><span class="mf">1e-8</span><span class="p">),</span> <span class="n">prob</span><span class="p">))</span>
+        <span class="n">l</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">tmp</span><span class="p">)</span>
+        <span class="n">sys</span><span class="o">.</span><span class="n">stdout</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s">&quot;{}/{} &quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">N</span><span class="p">))</span>
+    <span class="n">ll</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">l</span><span class="p">)</span>
+    <span class="n">sys</span><span class="o">.</span><span class="n">stdout</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">)</span>
+    <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="n">gs</span><span class="p">[</span><span class="n">ax_i</span> <span class="o">/</span> <span class="mi">2</span><span class="p">,</span> <span class="n">ax_i</span> <span class="o">%</span> <span class="mi">2</span><span class="p">])</span>
+    <span class="n">plot</span><span class="p">(</span><span class="n">l</span><span class="p">,</span> <span class="s">&quot;Python Planet to Planet (N segments={})&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">n_seg</span><span class="p">),</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<img alt="../_images/local_optimization_pl2pl.png" src="../_images/local_optimization_pl2pl.png" />
+</div>
+</div>
+
+
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../documentation/index.html" class="btn btn-neutral float-right" title="User Documentation"/>Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="example7.html" class="btn btn-neutral" title="Travelling Salesman Problem for Active Space Debris Removal"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2015, Dario Izzo and Francesco Biscani.
+    </p>
+  </div>
+
+  <a href="https://github.com/snide/sphinx_rtd_theme">Sphinx theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+</body>
+</html>

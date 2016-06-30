@@ -1,0 +1,300 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Multi-objective transformation &mdash; PyGMO 1.1.7dev documentation</title>
+  
+
+  
+  
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  
+  
+
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:'../',
+        VERSION:'1.1.7dev',
+        COLLAPSE_INDEX:false,
+        FILE_SUFFIX:'.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+    <script type="text/javascript">
+        jQuery(function () {
+            SphinxRtdTheme.StickyNav.enable();
+        });
+    </script>
+  
+
+  
+    <link rel="top" title="PyGMO 1.1.7dev documentation" href="../index.html"/>
+        <link rel="up" title="Dealing with constraints in PyGMO" href="dealing_with_constraints_in_PyGMO.html"/>
+        <link rel="next" title="Self-adaptive penalty" href="self_adaptive_penalty.html"/>
+        <link rel="prev" title="Death penalty" href="death_penalty.html"/> 
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        <a href="../index.html" class="fa fa-home"> PyGMO</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        
+        
+            <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../install.html">Install PyGMO</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../install.html#preparing-your-system-to-compile-pygmo">Preparing your system to compile PyGMO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../install.html#download-pygmo-code">Download PyGMO code</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../install.html#compiling-and-installing-under-unix">Compiling and Installing under Unix</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../install.html#compiling-and-installing-under-windows">Compiling and Installing under Windows</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../quickstart.html">Quick Start</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../quickstart.html#on-one-cpu">On one CPU</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../quickstart.html#on-many-cpus">On many CPUs ...</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../quickstart.html#and-migrating-solutions">... and migrating solutions ...</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../quickstart.html#and-between-different-algorithms">... and between different algorithms ...</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Tutorials</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="adding_problems_and_algorithms_to_PyGMO.html">Adding new problems and algorithms to PyGMO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="meta_problems_meta_algorithms.html">Meta-problems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="multi_objective_optimization_with_PyGMO.html">Multi Objective Optimization with PyGMO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hypervolumes_in_PyGMO.html">Hypervolumes with PyGMO</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="dealing_with_constraints_in_PyGMO.html">Dealing with constraints in PyGMO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="racing.html">Racing in PyGMO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tsp.html">Traveling Salesman Problems with PyGMO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="landscape_analysis_with_DrPyGMO.html">Landscape Analysis using Dr. PyGMO</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/index.html">Examples</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../examples/example1.html">A study on Mixing Variants of Differential Evolution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples/example2.html">Monitoring the Information Flow in a large archipelago</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples/example3.html">Testing Algorithms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples/example4.html">Multi-objective optimization in the asynchronous island model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples/example5.html">Designing and optimizing interplanetary trajectories</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples/example6.html">Participating to the CEC2013 Competition (v 1.1.5)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples/example7.html">Travelling Salesman Problem for Active Space Debris Removal</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples/local_optimization.html">Third-party Non-linear optimizers in PyGMO</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../documentation/index.html">User Documentation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../documentation/individual.html">Individual and Champion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../documentation/population.html">Population</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../documentation/migration.html">Migration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../documentation/topology.html">Topology</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../documentation/island.html">Island and Archipelago</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../documentation/algorithms.html">Algorithms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../documentation/problems.html">Problems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../documentation/hypervolume.html">Hypervolume</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../documentation/racing.html">Racing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../documentation/analysis.html">Dr. PyGMO - Analysis Module</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference external" href="http://esa.github.io/pagmo/">PaGMO API</a></li>
+</ul>
+
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../index.html">PyGMO</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="index.html">Tutorials</a> &raquo;</li>
+      
+          <li><a href="dealing_with_constraints_in_PyGMO.html">Dealing with constraints in PyGMO</a> &raquo;</li>
+      
+    <li>Multi-objective transformation</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          <a href="../_sources/tutorials/multi_objective_transformation.txt" rel="nofollow"> View page source</a>
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            
+  <div class="section" id="multi-objective-transformation">
+<span id="id1"></span><h1>Multi-objective transformation<a class="headerlink" href="#multi-objective-transformation" title="Permalink to this headline">¶</a></h1>
+<p>The multi-objective transformation is a technique to solve constrained
+problem by transforming the initial single (or multi) objective constrained problem
+into a multi-objective unconstrained problem with the number of objectives
+equal to the sum of the number of objectives and the number of constraints.
+In this tutorial, we are going to solve a single objective constrained problem
+using this technique.</p>
+<div class="section" id="method">
+<h2>Method<a class="headerlink" href="#method" title="Permalink to this headline">¶</a></h2>
+<p>The multi-objective transformation consists in treating each
+constraints of a constrained optimization problem as objectives of a multi-objective
+problem, the first objective(s) being the cost function(s) itself. Three
+different implementation of this method are available in PaGMO/PyGMO.</p>
+<p>The first one called OBJ_CSTRS splits all the constraints into
+different objectives, generating a problem with <em>nobj+m</em> objectives (where
+<em>nobj</em> is the number of objectives and <em>m</em> is the number of constraints).
+The transformation adopted is the one of Coello Coello in the CHVEGA algorithm where the <em>nobj+j</em> objective
+is the j-th constraints violation (if the j-th constraint is violated),
+otherwise it is the overall number of violated constraints, otherwise if the solution
+is feasible it is the aggregation of the objectives. This formulation makes sense if the
+multiobjective algorithm is based on a population decomposition according to the different
+objectives as VEGA or PADE.
+The second one called OBJ_CSTRSVIO has <em>nobj+1</em> objectives, the first nobj
+are the objective functions to be optimized and the
+last objective is the sum of the constraints violations.
+The third methodology has <em>nobj+2</em>
+objectives, the first nobj are the objective functions, the second is the
+sum of inequality constraints violation and the third one is the sum of equality
+constraints violation.</p>
+<p>In all cases, when a constraint is satisfied, the
+associated objective is either a measure of the number of the violated
+constraints, if at least one constraint is violated, or the objective
+function by itself. That way, each objectives commonly helps to reduce
+the number of constraints violation to find feasible solutions.</p>
+</div>
+<div class="section" id="application">
+<h2>Application<a class="headerlink" href="#application" title="Permalink to this headline">¶</a></h2>
+<p>The problem considered here is the problem g04 from the Congress on
+Evolutionary Computation 2006 (CEC2006). This problem has a quadratic
+objective function with six non linear inequality constraints.
+In the optimum two constraints are active.</p>
+<p>To solve it, in PaGMO/PyGMO, the
+meta-problem that modifies the original constrained problem into a
+multi-objective one is used. Then a multi-objective optimizer called
+VEGA is used to solve it. This optimizer is a simple extention of simple genetic algorithm
+to solve multi-objective algorithms. The population considered is composed
+by 280 individulas (40 individuals per objectives: (6+1) * 40 = 280 since VEGA equally
+divides the original population into a number of subpopulations equal to the number of objectives).</p>
+<p>Step by step, the PyGMO library is imported and the
+populations size and the number of generation for the algorithm are initialized.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">In</span> <span class="p">[</span><span class="mi">1</span><span class="p">]:</span> <span class="kn">from</span> <span class="nn">PyGMO</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="n">In</span> <span class="p">[</span><span class="mi">2</span><span class="p">]:</span> <span class="n">pop_size</span> <span class="o">=</span> <span class="mi">280</span>
+<span class="n">In</span> <span class="p">[</span><span class="mi">3</span><span class="p">]:</span> <span class="n">n_gen</span> <span class="o">=</span> <span class="mi">500</span>
+</pre></div>
+</div>
+<p>Then the problem, the meta-problem (using the first methodology OBJ_CSTRS) and the algorithm are created.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">In</span> <span class="p">[</span><span class="mi">4</span><span class="p">]:</span> <span class="n">prob</span> <span class="o">=</span> <span class="n">problem</span><span class="o">.</span><span class="n">cec2006</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+<span class="n">In</span> <span class="p">[</span><span class="mi">5</span><span class="p">]:</span> <span class="n">prob_mo</span> <span class="o">=</span> <span class="n">problem</span><span class="o">.</span><span class="n">con2mo</span><span class="p">(</span><span class="n">prob</span><span class="p">,</span><span class="n">problem</span><span class="o">.</span><span class="n">con2mo</span><span class="o">.</span><span class="n">method</span><span class="o">.</span><span class="n">OBJ_CSTRS</span><span class="p">)</span>
+<span class="n">In</span> <span class="p">[</span><span class="mi">6</span><span class="p">]:</span> <span class="n">algo_mo</span> <span class="o">=</span> <span class="n">algorithm</span><span class="o">.</span><span class="n">vega</span><span class="p">(</span><span class="n">gen</span> <span class="o">=</span> <span class="n">n_gen</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The next step consists in creating the population and evolving it.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">In</span> <span class="p">[</span><span class="mi">7</span><span class="p">]:</span> <span class="n">pop</span> <span class="o">=</span> <span class="n">population</span><span class="p">(</span><span class="n">prob_mo</span><span class="p">,</span> <span class="n">pop_size</span><span class="p">)</span>
+<span class="n">In</span> <span class="p">[</span><span class="mi">8</span><span class="p">]:</span> <span class="n">pop</span> <span class="o">=</span> <span class="n">algo_mo</span><span class="o">.</span><span class="n">evolve</span><span class="p">(</span><span class="n">pop</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>From that point, the obtained solutions can be printed.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">In</span> <span class="p">[</span><span class="mi">9</span><span class="p">]:</span> <span class="k">print</span><span class="p">(</span><span class="n">pop</span><span class="o">.</span><span class="n">champion</span><span class="o">.</span><span class="n">x</span><span class="p">)</span>
+<span class="n">In</span> <span class="p">[</span><span class="mi">10</span><span class="p">]:</span> <span class="k">print</span><span class="p">(</span><span class="n">prob</span><span class="o">.</span><span class="n">objfun</span><span class="p">(</span><span class="n">pop</span><span class="o">.</span><span class="n">champion</span><span class="o">.</span><span class="n">x</span><span class="p">))</span>
+<span class="n">In</span> <span class="p">[</span><span class="mi">11</span><span class="p">]:</span> <span class="k">print</span><span class="p">(</span><span class="n">prob</span><span class="o">.</span><span class="n">compute_constraints</span><span class="p">(</span><span class="n">pop</span><span class="o">.</span><span class="n">champion</span><span class="o">.</span><span class="n">x</span><span class="p">))</span>
+<span class="n">Out</span> <span class="p">[</span><span class="mi">1</span><span class="p">]:</span>
+<span class="p">(</span><span class="mf">78.09947909827132</span><span class="p">,</span> <span class="mf">33.30065259242254</span><span class="p">,</span> <span class="mf">30.894527032856043</span><span class="p">,</span> <span class="mf">44.013876005779935</span><span class="p">,</span> <span class="mf">35.07762608948753</span><span class="p">)</span>
+<span class="p">(</span><span class="o">-</span><span class="mf">30476.229905572058</span><span class="p">,)</span>
+<span class="p">(</span><span class="o">-</span><span class="mf">0.2613258099525382</span><span class="p">,</span> <span class="o">-</span><span class="mf">91.73867419004746</span><span class="p">,</span> <span class="o">-</span><span class="mf">11.284338550618045</span><span class="p">,</span> <span class="o">-</span><span class="mf">8.715661449381955</span><span class="p">,</span> <span class="o">-</span><span class="mf">4.980246388885227</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.019753611114772696</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The solution found by this algorithm is close to the optimum value:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">In</span> <span class="p">[</span><span class="mi">12</span><span class="p">:</span> <span class="k">print</span><span class="p">(</span><span class="n">prob</span><span class="o">.</span><span class="n">best_x</span><span class="p">)</span>
+<span class="n">In</span> <span class="p">[</span><span class="mi">13</span><span class="p">]:</span> <span class="k">print</span><span class="p">(</span><span class="n">prob</span><span class="o">.</span><span class="n">best_f</span><span class="p">)</span>
+<span class="n">In</span> <span class="p">[</span><span class="mi">14</span><span class="p">]:</span> <span class="k">print</span><span class="p">(</span><span class="n">prob</span><span class="o">.</span><span class="n">best_c</span><span class="p">)</span>
+<span class="n">Out</span> <span class="p">[</span><span class="mi">2</span><span class="p">]:</span>
+<span class="p">((</span><span class="mf">78.0</span><span class="p">,</span> <span class="mf">33.0</span><span class="p">,</span> <span class="mf">29.9952560256816</span><span class="p">,</span> <span class="mf">45.0</span><span class="p">,</span> <span class="mf">36.77581290578821</span><span class="p">),)</span>
+<span class="p">((</span><span class="o">-</span><span class="mf">30665.538671783317</span><span class="p">,),)</span>
+<span class="p">((</span><span class="mf">0.0</span><span class="p">,</span> <span class="o">-</span><span class="mf">92.0</span><span class="p">,</span> <span class="o">-</span><span class="mf">11.159499691073137</span><span class="p">,</span> <span class="o">-</span><span class="mf">8.840500308926863</span><span class="p">,</span> <span class="o">-</span><span class="mf">4.9999999999999964</span><span class="p">,</span> <span class="o">-</span><span class="mf">3.552713678800501e-15</span><span class="p">),)</span>
+</pre></div>
+</div>
+<p>Due to the stochastic behavior of the algorithm in a single run it might not converge to the exact optimum. We invite you
+to play with the population size and the number of generations
+to see the behavior of this constraints handling technique.</p>
+</div>
+</div>
+
+
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="self_adaptive_penalty.html" class="btn btn-neutral float-right" title="Self-adaptive penalty"/>Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="death_penalty.html" class="btn btn-neutral" title="Death penalty"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2015, Dario Izzo and Francesco Biscani.
+    </p>
+  </div>
+
+  <a href="https://github.com/snide/sphinx_rtd_theme">Sphinx theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+</body>
+</html>
